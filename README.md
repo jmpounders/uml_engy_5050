@@ -5,7 +5,10 @@ HOW I MADE THIS SITE
 2. Untracked and cleared out all files.
 3. Configured sphinx to build to the root of the repository.
 4. Setup the sphinx project.
+5. Create a .nojekyll file so that github doesn't get confused by underscore prefixes.
 5. Added and committed all files.
+
+Question... files and directories between branches?
 
 The commands follow.
 
