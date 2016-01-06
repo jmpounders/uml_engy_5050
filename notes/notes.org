@@ -1,0 +1,25 @@
+#+TITLE: ENGY 5050
+#+STARTUP: indent nostars
+
+* Neutron-Nucleus Reactions
+A neutron striking a nucleus may elicit a number of different reactions.  The types of reactions may be broadly divided into /absorption/ and /scattering/ reactions.  Absorption reactions are those in which the neutron is integrated into the nucleus, forming a new nucleus.  Normally this results in an excited, unstable nucleus.  The most common way for the nucleus to alleviate the pressure of the new nucleon is through emission of a photon.  The neutron never re-emerges, so this type of reaction is called a /capture/ reaction.  For fissile isotopes, the absorption process normally causes the nucleus to split violently into two pieces, or in other words, /fission/.
+
+Scattering-type reactions can be broadly divided into two categories: /elastic/ and /inelastic/.  Elastic scattering may be viewed as a classical collision between two solid, non-deformable objects.  Billiard balls are the prototypical example.  Because neither object is "deformed" or excited, energy and linear momentum are conserved in the system.  This is in contrast to inelastic collisions.  
+
+In inelastic scattering reactions, the neutron is actually temporarily absorbed into the nucleus, bringing the nucleus to a compound, excited state.  The compound nucleus then relaxes by emitting both a neutron /and/ a photon within a small fraction of a second.  The absorption-reemission process is so fast (with respect to all other time scales of neutron transport) that it may safely be regarded as instantaneous.  Because of the photon emission, neither the kinetic energy nor the momentum of the neutron-nucleus system is conserved.
+
+Nuclear interactions are typically labeled by identifying the target nucleus, the incoming projectile/particle, particles emitted after the reaction, and the nucleus remaining when the dust settles.  For example, given a nucleus $A$ that is struck by a particle $p$ leading to the emission of particle $q$ and a new nucleus $B$ one would write $A(p,q)B$.  If the nuclei $A$ and $B$ are implicitly assumed then we may simply identify the reaction as a $(p,q)$ reaction.  Thus our reaction hierarchy so far may be written as
+
+- Absorptions
+  - Capture, $(n,\gamma)$
+  - Fission, $(n,f)$
+- Scattering
+  - Elastic scattering, $(n,n)$
+  - Inelastic scattering, $(n,n')$
+
+Note that we have abused the original notation somewhat (this is standard) by writing $f$ in place of an ejected particle to denote fission.  We have also written $n'$ as the ejected particle in inelastic scattering as a reminder that the ejected particle will in general /not/ be the same neutron that struck the nucleus.  In some cases, high-energy inelastic scattering reactions may in fact yield more than one neutrons, in which would be denoted $(n,2n)$, $(n,3n)$, etc. with no apostrophe on the ejected particles.
+
+** Elastic Scattering
+
+* References
+- [[ebib:Hebert2009][Hebert]]
