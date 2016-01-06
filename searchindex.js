@@ -1,1 +1,1 @@
-Search.setIndex({envversion:46,filenames:["index"],objects:{},objnames:{},objtypes:{},terms:{content:0,index:0,modul:0,page:0,search:0},titles:["Welcome to ENGY 5050&#8217;s documentation!"],titleterms:{document:0,engi:0,indic:0,tabl:0,welcom:0}})
+Search.setIndex({envversion:46,filenames:["index","problems","syllabus"],objects:{},objnames:{},objtypes:{},terms:{problem:[],syllabu:0},titles:["Nuclear Reactor Physics","Problems","Syllabus"],titleterms:{nuclear:0,physic:0,problem:1,reactor:0,syllabu:2}})
