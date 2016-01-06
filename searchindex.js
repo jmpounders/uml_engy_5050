@@ -1,1 +1,1 @@
-Search.setIndex({envversion:46,filenames:["index","problems","syllabus"],objects:{},objnames:{},objtypes:{},terms:{problem:[],syllabu:0},titles:["Nuclear Reactor Physics","Problems","Syllabus"],titleterms:{nuclear:0,physic:0,problem:1,reactor:0,syllabu:2}})
+Search.setIndex({envversion:46,filenames:["index","problems","syllabus"],objects:{},objnames:{},objtypes:{},terms:{problem:[],syllabu:[]},titles:["Nuclear Reactor Physics","Problems","Syllabus"],titleterms:{nuclear:0,physic:0,problem:1,reactor:0,syllabu:2}})

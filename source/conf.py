@@ -119,7 +119,10 @@ html_theme = 'alabaster'
 # documentation.
 html_theme_options = {
     'font_family':'"adelle",Georgia,"Times New Roman",serif',
-    'head_font_family':'"adelle",Georgia,"Times New Roman",serif' 
+    'head_font_family':'"adelle",Georgia,"Times New Roman",serif',
+    'logo':'vertical_logo.png',
+    'logo_name':'true',
+    'github_button':'false'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -127,14 +130,14 @@ html_theme_options = {
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+#html_title = 'title'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-#html_short_title = None
+#html_short_title = 'short title'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = 'vertical_logo.png'
+#html_logo = 'vertical_logo.png'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -162,6 +165,8 @@ html_static_path = ['_static']
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
     '**': [
+        'about.html',
+        'navigation.html',
         'globaltoc.html',
         'localtoc.html',
         'searchbox.html',

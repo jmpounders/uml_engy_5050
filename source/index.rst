@@ -8,6 +8,7 @@ Nuclear Reactor Physics
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
    syllabus
    problems
