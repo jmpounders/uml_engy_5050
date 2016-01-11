@@ -1,4 +1,7 @@
 #+TITLE: ENGY 5050
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+#+OPTIONS: H:4
 #+STARTUP: indent nostars
 
 * Neutron-Nucleus Reactions
@@ -19,7 +22,159 @@ Nuclear interactions are typically labeled by identifying the target nucleus, th
 
 Note that we have abused the original notation somewhat (this is standard) by writing $f$ in place of an ejected particle to denote fission.  We have also written $n'$ as the ejected particle in inelastic scattering as a reminder that the ejected particle will in general /not/ be the same neutron that struck the nucleus.  In some cases, high-energy inelastic scattering reactions may in fact yield more than one neutrons, in which would be denoted $(n,2n)$, $(n,3n)$, etc. with no apostrophe on the ejected particles.
 
-** Elastic Scattering
+** Scattering Reactions
+To describe the kinematics of neutron-nucleus scattering we will begin with several assumptions.
+1. Relativistic effects can be neglected.  The kinetic energies of neutrons emitted from fission are low enough so that the space-time effects described by relativity may be neglected.
+2. Neutron-neutron interactions will be neglected.  Because the density of nuclei in a reactor is much higher than the density of neutrons, neutrons are much more likely to collide with nuclei than they are with other neutrons.
+3. Neutrons travel in straight lines between collisions.  This assumption holds because neutrons are neutrally-charged particles and the effect of gravity on neutron trajectories is negligible.
+4. Reactors materials are isotropic.  This means that a material has no preferred orientation.  On the scale of neutron-nucleus interactions in a reactor this is a valid assumption.
 
-* References
+*** Scattering Kinematics
+
+Let us now consider the specific kinematics associated with scattering.
+- $\vec{V}_n$, $\vec{V}_n'$ :: initial and final velocity of the neutron.
+- $E$, $E'$ :: initial and final kinetic energy of the neutron.
+- $\vec{V}_A$, $\vec{V}_A'$ :: initial and final velocity of the nucleus.
+We also define the angles $\gamma$, $\theta$, and $\psi$ as shown in the figure.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+  \draw (-4,0) circle [radius=0.5cm];
+  \draw (4,0) circle [radius = 2cm];
+\end{tikzpicture}
+\end{figure}
+
+The analysis of scattering kinematics is greatly simplifed by working in the center-of-mass reference frame (CM) rather than the laboratory reference frame (LAB).  The origin in the CM reference frame is 
+\begin{align*}
+  \vec{r}_{CM} = \frac{1}{A+1} \left( \vec{r}_n + A\vec{r}_A \right)
+\end{align*}
+where $\vec{r}_n$ and $\vec{r}_A$ are the positions of the neutron and the nucleus, respectively, and $A$ is the atomic mass ratio of the nucleus.  Consequently we may deduce that the origin of the CM system is moving with a velocity of
+\begin{align*}
+  \vec{V}_{CM} = \frac{1}{A+1} \left(\vec{V}_n + A\vec{V}_A \right).
+\end{align*}
+
+The velocities of the neutron and nuclear in the CM system are given by the following relations:
+\begin{subequations}
+\begin{align*}
+  \vec{v}_n  &= \vec{V}_n - \vec{V}_{CM} \\
+  \vec{v}_n' &= \vec{V}_n' - \vec{V}_{CM} \\ 
+  \vec{v}_A  &= \vec{V}_A - \vec{V}_{CM} \\
+  \vec{v}_A' &= \vec{V}_A' - \vec{V}_{CM}
+\end{align*}
+\label{eq:cmDefs}
+\end{subequations}
+We will also define the /relative/ velocity between the neutron and nucleus, which is the same in both the CM and LAB systems:
+\begin{align*}
+  \vec{V}_R = \vec{V}_n - \vec{V}_A
+\end{align*}
+This definition allows us to write the CM neutron and nucleus velocities as
+\begin{subequations}
+\begin{align}
+  \vec{v}_n = \frac{A}{A+1}\vec{V}_R \\
+  \vec{v}_A = \frac{-1}{A+1}\vec{V}_R
+\end{align}
+\label{eq:cmVelRel}
+\end{subequations}
+Thus in the CM system, both neutron and nucleus are moving along the same line in opposite directions before the collision.
+
+Consider now the kinetic energy of the system before the collision.  Letting the variable, $e$, denote the kinetic energy of a particle in the CM system (i.e., relative to the CM velocity) we  have
+\begin{align*}
+  e_n + e_A = e_{\text{exc}}
+\end{align*}
+where the subscripts are used in the same way as they were in the velocity variables.  The new variable $e_{\text{exc}}$ is called the /excitation energy/, which is the energy that is available for the reaction, and may be written
+\begin{align*}
+  e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2.
+\end{align*}
+
+*** Elastic Scattering
+
+We will now assume that linear momentum is conserved through the collision.  In the LAB system this means
+\begin{align*}
+  \vec{V}_n + A\vec{V}_A = \vec{V}_n' + A\vec{V}_A'
+\end{align*}
+By using the definitions in Eq. \eqref{eq:cmDefs} we see that this relationship carries over to CM system, allowing us to write
+\begin{align*}
+  \vec{v}_n + A\vec{v}_A = \vec{v}_n' + A\vec{v}_A'
+\end{align*}
+Writing the left-hand-side of this expression (i.e., the pre-collision linear momentum) in terms of the relative velocity reveals that net linear momentum both before and after the collision is zero:
+\begin{align*}
+  \frac{A}{A+1}\vec{V}_R - \frac{A}{A+1}\vec{V}_R = \vec{0}
+\end{align*}
+This means that
+\begin{align*}
+  \vec{v}_n = -A \vec{v}_A, \\
+  \vec{V}_n' = -A \vec{v}_A'.
+\end{align*}
+
+Insert another picture here
+
+Let us now additionally assume conservation of kinetic energy before and after the collision.  That is, 
+\begin{align*}
+  e_n + e_A = e_n' + e_A' = e_{\text{exc}}.
+\end{align*}
+Using Eq. \eqref{ref:eq:cmVelRel}, we find that 
+\begin{align*}
+  v_n = v_n' = \frac{A}{A+1}V_R,
+\end{align*}
+and
+\begin{align*}
+  v_A = v_A' = \frac{1}{A+1}V_R.
+\end{align*}
+
+**** Stationary Target Nucleus
+Consider the special case where target nucleus is stationary, i.e. $\vec{V}_A = 0$.  From the previous section we know that
+\begin{align*}
+  \vec{V}_{CM} = \frac{1}{A+1} \vec{V}_n, \text{ and} \\
+  v_n = v_n' = \frac{A}{A+1}V_n.
+\end{align*}
+We can sketch a diagram of the relationship between the LAB and CM velocities and the velocity of the center-of-mass.
+
+From this diagram, we can apply the law of cosines to find
+\begin{equation}
+  V_n'^2 = V_{CM}^2 + v_n'^2 + 2 V_{CM}v_n'\cos(\pi-\varphi)
+\end{equation}
+which simplifies to
+\begin{equation}
+  V_n'^2 = \left[ \frac{A^2+1}{(A+1)^2} + 2 \frac{A}{(A+1)^2}\cos(\varphi) \right] \vec{V}_n^2.
+\end{equation}
+An immediate implication of this expression is the relationship between the final and initial kinetic energies of the neutron and the scattering angle in the CM system:
+\begin{align*}
+  \frac{E_n'}{E_n} = \frac{V_n'^2}{\vec{V}_n^2}
+                   = \frac{(1+\alpha) + (1-\alpha) \cos(\varphi)}{(A+1)^2}
+\end{align*}
+where
+\begin{align*}
+  \alpha = \left( \frac{A-1}{A+1} \right)^2
+\end{align*}
+
+To understand this a bit better let's consider a few limiting cases.
+- $A=1$ :: This is the case of a neutron scattering off a hydrogen nucleus, and $\alpha = 0$.  For a glancing collision, the angle of deflect ($\varphi$ or $\theta$) will be very small.  Thus $E_n' \approx E_n$ and no appreciable energy is lost in the collision.  For a direct hit, in which case the neutron bounces straight back ($\varphi = \theta = \pi$) we have $E_n' = 0$--the neutron lost /all/ of its energy in a single collision.
+- $A>>1$ :: In this case the neutron hits something big, and $\alpha \approx 1$.  Under these circumstances $E_n' \approx E_n$ /regardless/ of the deflection angle.  Think of throwing a tennis ball against a brick wall.
+
+Another important ramification is that for any fixed size of the target nucleus, $A$, their is a limited range of possible final energies for the neutron.  The largest energy loss will occur when the neutron is scattered directly backward, in which case $E_n' = \alpha E_n$.  On the other hand, for a small-angle glancing collision, the final energy will be only slightly less than the initial energy and $E_n' \approx E_n$.  Note that under our current assumptions (namely, that the target nucleus is stationary) the neutron will never /gain/ energy.
+
+The preceding work shows us that the amount of energy lost by a neutron depends on the mass of the target nucleus and the cosine of the deflection angle in the CM system.  We can derive a similar relationship between the energy loss and the cosine of the deflection angle in the LAB system, which is often more useful from simulation perspective.
+
+Again starting with the diagram and using the law of cosines we have
+\begin{align*}
+  v_n'^2 = V_n'^2 + V_{CM}^2 - 2 V_n' V_{CM} \cos\theta.
+\end{align*}
+This simplifies to 
+\begin{align*}
+  \left( \frac{A}{A+1} \right)^2 V_n^2 = V_n'^2 + \left( \frac{1}{A+1} \right)^2 V_n^2 - \frac{2}{A+1} V_n' V_n \cos\theta.
+\end{align*}
+Multiplying by the mass of a neutron squared divided by four (to get an expression in terms of energies) and solving for $\cos\theta$ yields
+\begin{align*}
+  \cos\theta = \frac{1}{2}\left( A+1 \right) \sqrt{\frac{E_n'}{E_n}}
+             - \frac{1}{2}\left( A-1 \right) \sqrt{\frac{E_n}{E_n'}}.
+\end{align*}
+
+** Problems
+1. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
+2. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
+
+** References
 - [[ebib:Hebert2009][Hebert]]
+- [[ebib:Duderstadt:Hamilton1976][Duderstadt and Hamilton]]
+- [[ebib:Stacey2001][Stacey]]
