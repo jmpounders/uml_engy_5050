@@ -45,11 +45,12 @@ What Next?
 
 We have addressed how energy is created (fission) and where most of the energy that is created gets deposited in the reactor (where the fission happened).  As to *how much* energy is created, we saw that roughly 200 MeV of recoverable energy is released per fission.
 
-We are now able to refine our "grand problem" a bit.  To determine where and how much power is being is generated (i.e., the rate at which energy is being deposited into the reactor) we need to determine where fission is happening and how the fission reaction rate.
+We are now able to refine our "fundamental question" a bit.  To determine where and how much power is being is generated (i.e., the rate at which energy is being deposited into the reactor) we need to determine where fission is happening and the fission reaction rate.
 
 Fissions in a reactor are part of a *chain reaction*.  That is, a neutron induces fission in a fissile isotope, several neutrons are released, and on average one of those neutrons will cause an additional fission.  Therefore if we can determine, to a reasonable degree of accuracy, where the neutrons are in a reactor then we can calculate the fission reaction rate and subsequently the distribution of power in the reactor.
 
 Thus we may rephrase the fundamental question we began with as the following problem:
 
-    To determine the where and how much *power* is begin generated in a nuclear reactor we need to determine the distribution of *neutrons* in space and time.
+    To determine  where and how much *power* is begin generated in a nuclear reactor we need to determine the distribution of *neutrons* in space and time.
 
+This course will unpack this question in stages, building off your undergraduate foundation in basic radiation science, nuclear reactor theory, and mathematics.
