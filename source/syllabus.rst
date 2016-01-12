@@ -10,6 +10,8 @@ Syllabus
 
 You are welcome to stop by my office anytime if you have questions, need some help, or just want to chat.  I suggest calling or emailing first, just to make sure I am in my office.  My office is in the 301 office suite, at the top of the main Pinanski stairwell.  My office is all the way in the back of the suite.  (If the suite door is locked it means no one is home!)
 
+See this `short video <https://www.youtube.com/watch?v=yQq1-_ujXrM>`_ for what "office hours" can do for you (and possible side effects).
+
 Course Description
 ------------------
 
