@@ -1,4 +1,4 @@
-% Created 2016-01-12 Tue 12:49
+% Created 2016-01-12 Tue 17:13
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -358,5 +358,91 @@ In a fission reaction, the energy \(e_{\text{exc}} + \Delta BE\) is enough to ov
 \item \href{Stacey2001}{Stacey}
 \end{itemize}
 \section{Cross Sections}
+\label{sec:orgheadline13}
+We have already assumed that neutrons travel along straight trajectories between collisions and argued that this is indeed a valid assumption within studies of nuclear reactor physics.  But how can we characterize the frequency of collisions for neutrons traveling along a given trajectory?  Put another way, if a neutron start along a trajectory from a known point, how long should we expect it to travel before it experiences a collision.  This is clearly a problem for probability.  Hebert (2009) summarizes the problem nicely.
+
+\begin{quote}
+The probablity for a neutron located at \(\vec{r}\) and moving in a material at velocity \(\vec{V}_n\) to undergo a nuclear reaction in a differential element of trajectory \(ds\) is independent of the past history of the neutron and is proportional to \(ds\).
+\end{quote}
+
+In concrete terms, let's say that we have a  neutron that starts moving at a fixed velocity a medium  containing a exactly one kind of nucleus.  Then define \(P[ds]\) as the probability that the neutron will experience a collision within a differential distance \(ds\), and consider the following
+\begin{itemize}
+\item We were told (above) that the probability \(P[ds]\) is proportional to \(ds\).
+\item From intuition, we can also convince ourselves that this probability should also be proportional to the number of "target" nuclei present, so let's define \(N\) as the density of nuclei.
+\end{itemize}
+From these observations we may write
+\begin{align*}
+  P[ds] = \sigma N ds
+\end{align*}
+The quantity \(P[ds]\) is a probability, so it should be unitless.  Given that \(N\) is a density and \(ds\) is length, we can infer that the proportionality constant, \(\sigma\), has units of length squared or area.  The constant \(\sigma\) is called the \emph{microscopic cross section}.  It is common to express the microscopic cross section in units of \emph{barns} (b) where \(1 \text{ b} = 10^{-24} \text{ cm}^2\).
+
+The product of the first two variables appearing on the right-hand-side of the probability definition is called the \emph{macroscopic cross section}, written as
+\begin{align*}
+  \Sigma = \sigma N,
+\end{align*}
+which may be interpreted as the probability \emph{per unit path-length} of a collision.  Thus we may write the probability of a neutron collision over the differential path-length \(ds\) as
+\begin{align*}
+  P[ds] = \Sigma ds.
+\end{align*}
+
+Next, consider a \emph{population} of neutrons with a density, \(n\).  For now let's assume that all neutrons have the same speed, but they need not be moving in the same direction.  The number of neutrons that will experience a collision within the differential path-length \(ds\) along each of their individual trajectories will be \(P[ds]\) multiplied by the number of neutrons.  If we multiply by the \emph{density} of neutrons rather than the \emph{number} of neutrons then we get the (differential) density of neutron collisions within a (differential) distance \(ds\) of collective neutron travel:
+\begin{align*}
+  dC = \Sigma n ds.
+\end{align*}
+Note the units of (collisions) per unit volume.
+
+Because all neutrons are moving at the same speed, \(V_n\), we may relate the distance \(ds\) (of "collective neutron travel") to a time interval \(dt = \frac{ds}{V_n}\).  Thus the density of neutron collisions is \(dC = \Sigma n V_n dt\).  Dividing by \(dt\) and taking \(dt \rightarrow 0\) gives us an important quantity in reactor physics, called the \emph{reaction rate density}:
+\begin{align*}
+  R = \frac{dC}{dt} = \Sigma n V_n.
+\end{align*}
+Because we have officially taken the limit \(dt \rightarrow 0\) (and correspondingly \(ds \rightarrow 0\)), this quantity is a point-wise, instantaneous value.
+
+The product of neutron density and neutron speed, \(n V_n\), appearing on the right-hand-side of the reaction rate density is a ubiquitous quantity in reactor physics, called the \emph{scalar flux}:
+\begin{align*}
+  \phi = n V_n.
+\end{align*}
+
+We have previously established that there are several different types of nuclear reactions (radiative capture, elastic and inelastic scattering, etc.)  Each type of reaction is represented by unique microscopic cross section.  For a reaction of type \(x\), for example, we may write the corresponding cross section \(\sigma_x\).  Multiplying by the nuclide density provides the corresponding macroscopic cross section \(\Sigma_x = N \sigma_x\).
+
+If there is more than one type of nuclide present, we may simply add the contributions from each to obtain macroscopic cross section for the mixture:
+\begin{align*}
+  \Sigma_x = \sum_i N_i \sigma_{x,i}.
+\end{align*}
+More over we may sum across all reaction types to obtain the \emph{total} macroscopic cross sections, which is the probability per unit path-length of \emph{any} collision:
+\begin{align*}
+  \Sigma = \sum_x \Sigma_x.
+\end{align*}
+
+Now consider a monoenergetic beam of neutrons with uniform velocity \(\vec{V}_n\) impinging normally on the surface of slab with a total macroscopic cross section \(\Sigma\).  On average, how far will a neutron travel into the slab before experiencing its first collision?
+
+First construct a balance equation for the uncollided neutron density as a function of \(x\).  We know that the rate of neutron removal (with respect to \(x\)) will be the rate of neutron collisions, and there are no sources of uncollided neutrons inside the slab.  Thus,
+\begin{align*}
+  \frac{dn}{dx} = -\Sigma n(x).
+\end{align*}
+We can solve this equation to determine
+\begin{align*}
+  n(x) = n(0) e^{-\Sigma x}.
+\end{align*}
+The probability that a neutron will reach a distance \(x\) without experiencing is a collision is thus
+\begin{align*}
+  p_0(x) = \frac{n(x)}{n(0)} = e^{-\Sigma x}.
+\end{align*}
+
+Next, the probability of a neutron experiencing its first collision between \(x\) and \(x+dx\) is the product of (1) the probability of the neutron reaching \(x\) and (2) the probability of the neutron colliding between \(x\) and \(x+dx\):
+\begin{align*}
+  p_c(x)dx = p_0(x) \Sigma dx = \Sigma e^{-\Sigma x} dx.
+\end{align*}
+
+Finally, the average distance to first collision, which we will call \(\lambda\), may be obtained by taking the integral
+\begin{align*}
+  \lambda = \int_0^\infty x p_c(x) dx = \frac{1}{\Sigma}.
+\end{align*}
+The quantity \(\lambda\) is called the \emph{mean-free-path} and, for an infinite, homogeneous medium, is equal to the inverse of the total macroscopic cross section.
+
+
+\subsection{References}
 \label{sec:orgheadline12}
+\begin{itemize}
+\item \href{Hebert2009}{Hebert (2009)}
+\end{itemize}
 \end{document}
