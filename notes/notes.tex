@@ -1,4 +1,4 @@
-% Created 2016-01-11 Mon 17:02
+% Created 2016-01-12 Tue 12:49
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -16,6 +16,7 @@
 \usepackage{hyperref}
 \usepackage{tikz}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
 \author{Justin Pounders}
 \date{\today}
 \title{ENGY 5050}
@@ -33,7 +34,7 @@
 
 
 \section{Neutron-Nucleus Reactions}
-\label{sec:orgheadline7}
+\label{sec:orgheadline11}
 A neutron striking a nucleus may elicit a number of different reactions.  The types of reactions may be broadly divided into \emph{absorption} and \emph{scattering} reactions.  Absorption reactions are those in which the neutron is integrated into the nucleus, forming a new nucleus.  Normally this results in an excited, unstable nucleus.  The most common way for the nucleus to alleviate the pressure of the new nucleon is through emission of a photon.  The neutron never re-emerges, so this type of reaction is called a \emph{capture} reaction.  For fissile isotopes, the absorption process normally causes the nucleus to split violently into two pieces, or in other words, \emph{fission}.
 
 Scattering-type reactions can be broadly divided into two categories: \emph{elastic} and \emph{inelastic}.  Elastic scattering may be viewed as a classical collision between two solid, non-deformable objects.  Billiard balls are the prototypical example.  Because neither object is "deformed" or excited, energy and linear momentum are conserved in the system.  This is in contrast to inelastic collisions.  
@@ -58,7 +59,7 @@ Nuclear interactions are typically labeled by identifying the target nucleus, th
 Note that we have abused the original notation somewhat (this is standard) by writing \(f\) in place of an ejected particle to denote fission.  We have also written \(n'\) as the ejected particle in inelastic scattering as a reminder that the ejected particle will in general \emph{not} be the same neutron that struck the nucleus.  In some cases, high-energy inelastic scattering reactions may in fact yield more than one neutrons, in which would be denoted \((n,2n)\), \((n,3n)\), etc. with no apostrophe on the ejected particles.
 
 \subsection{Scattering Reactions}
-\label{sec:orgheadline4}
+\label{sec:orgheadline8}
 To describe the kinematics of neutron-nucleus scattering we will begin with several assumptions.
 \begin{enumerate}
 \item Relativistic effects can be neglected.  The kinetic energies of neutrons emitted from fission are low enough so that the space-time effects described by relativity may be neglected.
@@ -80,10 +81,41 @@ We also define the angles \(\gamma\), \(\theta\), and \(\psi\) as shown in the f
 
 \begin{figure}
 \centering
-\begin{tikzpicture}
-  \draw (-7,0) circle [radius=1cm];
-  \draw (7,0) circle [radius = 3cm];
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.75]
+  \draw (3,0) circle [radius=1];
+  \draw (3,0) node {\large n};
+  \draw [->,thick] (4.5,0) -- (9.5,0);
+  \draw (7.25,1) node {$\vec{V}_n$};
+
+  \draw (15,-5) circle [radius=2];
+  \draw (15,-5) node {\huge A};
+  \draw [->,thick] (13,-3) -- (10.5,-0.5);
+  \draw (11,-2) node {$\vec{V}_A$};
+
+  \draw[dashed] (10,0) -- (18,0);
+
+  \draw (12,0) arc [start angle=0, end angle=-45, radius=2];
+  \draw (12.3,-1) node {$\gamma$};
+
+  \draw (15.77,-12.11) circle [radius=1];
+  \draw (15.77,-12.11) node {\large n};
+  \draw [<-,thick] (14.5,-12.75) -- (10,-15);
+  \draw (11.75,-13) node {$\vec{V}_n$};
+
+  \draw (14.87,-18.25) circle [radius=2];
+  \draw (14.87,-18.25) node {\huge A};
+  \draw [<-,thick] (13,-17) -- (10,-15);
+  \draw (11,-16.5) node {$\vec{V}_A$};
+
+  \draw[dashed] (2,-15) -- (18,-15);
+
+  \draw (12,-15) arc [start angle=0, end angle=-33.69, radius=2];
+  \draw (12.34,-15.7) node {$\psi$};
+
+  \draw (11.5,-15) arc [start angle=0, end angle=26.57, radius=1.5];
+  \draw (12.3,-14.4) node {$\theta$};
 \end{tikzpicture}
+\caption{Neutron-nucleus collision in LAB coordinates.}
 \end{figure}
 
 The analysis of scattering kinematics is greatly simplifed by working in the center-of-mass reference frame (CM) rather than the laboratory reference frame (LAB).  The origin in the CM reference frame is 
@@ -149,7 +181,37 @@ This means that
   \vec{V}_n' = -A \vec{v}_A'.
 \end{align*}
 
-Insert another picture here
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.75]
+  \draw (3,0) circle [radius=1];
+  \draw (3,0) node {\large n};
+  \draw [->,thick] (4.5,0) -- (9.5,0);
+  \draw (7.25,1) node {$\vec{v}_n$};
+
+  \draw (15.5,0) circle [radius=2];
+  \draw (15.5,0) node {\huge A};
+  \draw [->,thick] (13,0) -- (10.5,0);
+  \draw (12,1) node {$\vec{v}_A$};
+
+
+  \draw (15.77,-10.11) circle [radius=1];
+  \draw (15.77,-10.11) node {\large n};
+  \draw [<-,thick] (14.5,-10.75) -- (10,-13);
+  \draw (11.75,-11) node {$\vec{v}_n'$};
+
+  \draw (5.3,-15.35) circle [radius=2];
+  \draw (5.3,-15.35) node {\huge A};
+  \draw [<-,thick] (7.3,-14.34) -- (10,-13);
+  \draw (9.8,-14.2) node {$\vec{v}_A'$};
+
+  \draw[dashed] (2,-13) -- (18,-13);
+
+  \draw (11.5,-13) arc [start angle=0, end angle=26.57, radius=1.5];
+  \draw (12.3,-12.4) node {$\theta$};
+\end{tikzpicture}
+\caption{Neutron-nucleus collision in CM coordinates.}
+\end{figure}
 
 Let us now additionally assume conservation of kinetic energy before and after the collision.  That is, 
 \begin{align*}
@@ -172,6 +234,29 @@ Consider the special case where target nucleus is stationary, i.e. \(\vec{V}_A =
   v_n = v_n' = \frac{A}{A+1}V_n.
 \end{align*}
 We can sketch a diagram of the relationship between the LAB and CM velocities and the velocity of the center-of-mass.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.75]
+  \draw [->,thick] (0,0) -- (13,0);
+  \draw (6.5,0) node[anchor=north] {$\vec{V}_{CM}$};
+
+  \draw [->,thick] (0,0) -- (20,8);
+  \draw (10,4) node[anchor=south east] {$\vec{V}_n'$};
+
+  \draw [->,thick] (13,0) -- (19.65,7.6);
+  \draw (16.5,4) node[anchor=north west] {$\vec{v}_n'$};
+
+  \draw [dashed] (13,0) -- (21,0);
+
+  \draw (15,0) arc [start angle=0, end angle=48.84, radius=2];
+  \draw (15.5,1) node {$\varphi$};
+
+  \draw (4,0) arc [start angle=0, end angle=21.8, radius=4];
+  \draw (4.5,1) node {$\theta$};
+\end{tikzpicture}
+\caption{Relationship between final neutron velocities in LAB and CM.}
+\end{figure}
 
 From this diagram, we can apply the law of cosines to find
 \begin{equation}
@@ -215,18 +300,63 @@ Multiplying by the mass of a neutron squared divided by four (to get an expressi
              - \frac{1}{2}\left( A-1 \right) \sqrt{\frac{E_n}{E_n'}}.
 \end{align*}
 
-\subsection{Problems}
+\subsubsection{Reactions Involving a Compound Nucleus}
+\label{sec:orgheadline7}
+Elastic scattering may be viewed a billiard ball collision.  The neutron and nucleus exchange kinetic energy and linear momentum but nothing else.  In collisions such as inelastic scattering, neutron capture, and fission however, the neutron and nucleus combine to form a new, compound nucleus.  Moreover, this compound nucleus will generally be in an \emph{excited} state, having received additional internal energy from the collision.  We may write such a reaction as
+\begin{align*}
+  \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
+  \rightarrow \leftidx{^{A+1}_Z}{X}{^*}
+\end{align*}
+where the * symbol is used to indicate an excited state.  The first reaction in this process is the absorption of a neutron into the target nucleus.  The resultant excited nucleus will then decay, generally on a time scale of \(10^{-14}\) to \(10^{-21}\) seconds.
+
+There are two sources of the excitation energy in a compound nucleus.  First, there is the kinetic energy that is available to the reaction.  This energy, \(e_{\text{exc}}\), is the total pre-collision kinetic energy of the neutron and nucleus in the CM reference frame.  Second, there is a potential source of energy arising from the change in binding energy between the original and compound nuclei.  This change in energy may be expressed as
+\begin{align*}
+  \Delta BE = \left[ M(A,z) + m_n - M(A+1,Z) \right] c^2
+\end{align*}
+where \(M(A,Z)\) is the mass of nucleus \(\leftidx{^A_Z}{X}{}\), \(m_n\) is the mass of the neutron and \(c\) is the speed of light in a vacuum.  Thus the total energy available to the reaction is \(e_{\text{exc}} + \Delta BE\).
+
+Because of the quantum nature of reality, which is very important at the nuclear scale, a nucleus is not allowed to be excited to an arbitrary energy level.  Rather a nucleus may only sit at certain discrete energy levels, at or above its ground state.  Nuclei in excited states will seek to return to the stable ground state through some combination of photon and/or neutron emission.  For some nuclei, the additional energy is sufficient to cause fission.  A discussion of the quantum effects surrounding nucleus formation and de-excitation can quickly become quite involved.  While interesting, that discussion is beyond the objectives of our present endeavor.  Thus the following brief sections will only present a high-level summary of the things it might be good to know as nuclear \emph{engineer}.
+
+\paragraph{Inelastic Scattering}
+\label{sec:orgheadline4}
+Inelastic scattering involves the formation of a compound nucleus which subsequently decays through the emission of a neutron and one or more photons (\(\gamma\) rays):
+\begin{align*}
+  \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
+  \rightarrow \leftidx{^{A+1}_Z}{X}{^*}
+  \rightarrow \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} + \gamma
+\end{align*}
+The presence of the photon at the end of this reaction clearly indicates that energy has not been conserved between the neutron-nucleus pair.  What has happened instead, is that upon ejection of the neutron, the \(\leftidx{^A_Z}{X}{}\) was actually left in an excited state and emitted one (or more) photons to return to the ground state.
+
+When considering the energetics of inelastic scattering, note that the final nucleus is simply the original target nucleus.  Thus the role of the change in binding energy has no net effect on the energy of the system.  There was \(e_\text{exc}\) energy available before the collision (from the kinetic energy of the neutron and nucleus) and there is still \(e_\text{exc}\) energy available after the collision, although the photon has appeared and claimed part of the available energy.
+
+A second consideration is that for the compound nucleus to decay into an excited state, there must have been at least enough energy, \(e_\text{exc}\), to bridge the gap between the ground and the first excited state.  Otherwise there would not have been enough energy available after the neutron emission for the target nucleus to be in an excited state!  This type of reaction is known as a \emph{threshold} reaction, because the energy of the colliding pair must meet a certain "threshold" value before the reaction can take place.  Note that if the compound nucleus emits a neutron and returns the target nucleus to its ground state, then there is no photon emission (which is only a result of de-excitation), thus the total energy of the reaction \(e_\text{exc}\) is shared between the neutron and nucleus as kinetic energy.  This, however, implies overall conservation of kinetic energy between the neutron and nucleus, thus it is an \emph{elastic} scattering event!
+
+\paragraph{Radiative Capture}
 \label{sec:orgheadline5}
+A radiative capture reaction is essentially an inelastic neutron scattering \emph{without the neutron}.  That is, the target nucleus absorbs a neutron then de-excites simply by emitting one or more photons:
+\begin{align*}
+  \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
+  \rightarrow \leftidx{^{A+1}_Z}{X}{^*} + \gamma
+\end{align*}
+Note that the total amount of energy to be relieved through the emission of photons is \(e_{\text{exc}} + \Delta BE\).
+
+\paragraph{Fission Reactions}
+\label{sec:orgheadline6}
+In a fission reaction, the energy \(e_{\text{exc}} + \Delta BE\) is enough to overcome the fission barrier (which is an energy threshold), and the nucleus splits into two fragments plus several free neutrons and photons.  The nuclear configuration of the fission fragments and the number of free neutrons emitted are both statistical quantities.  
+\subsection{Problems}
+\label{sec:orgheadline9}
 \begin{enumerate}
 \item Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
 \item Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
 \end{enumerate}
 
 \subsection{References}
-\label{sec:orgheadline6}
+\label{sec:orgheadline10}
 \begin{itemize}
 \item \href{Hebert2009}{Hebert}
 \item \href{Duderstadt:Hamilton1976}{Duderstadt and Hamilton}
 \item \href{Stacey2001}{Stacey}
 \end{itemize}
+\section{Cross Sections}
+\label{sec:orgheadline12}
 \end{document}
