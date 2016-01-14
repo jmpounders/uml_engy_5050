@@ -1,4 +1,4 @@
-% Created 2016-01-12 Tue 17:13
+% Created 2016-01-14 Thu 09:23
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -34,7 +34,9 @@
 
 
 \section{Neutron-Nucleus Reactions}
-\label{sec:orgheadline11}
+\label{sec:orgheadline12}
+\subsection{Introduction}
+\label{sec:orgheadline1}
 A neutron striking a nucleus may elicit a number of different reactions.  The types of reactions may be broadly divided into \emph{absorption} and \emph{scattering} reactions.  Absorption reactions are those in which the neutron is integrated into the nucleus, forming a new nucleus.  Normally this results in an excited, unstable nucleus.  The most common way for the nucleus to alleviate the pressure of the new nucleon is through emission of a photon.  The neutron never re-emerges, so this type of reaction is called a \emph{capture} reaction.  For fissile isotopes, the absorption process normally causes the nucleus to split violently into two pieces, or in other words, \emph{fission}.
 
 Scattering-type reactions can be broadly divided into two categories: \emph{elastic} and \emph{inelastic}.  Elastic scattering may be viewed as a classical collision between two solid, non-deformable objects.  Billiard balls are the prototypical example.  Because neither object is "deformed" or excited, energy and linear momentum are conserved in the system.  This is in contrast to inelastic collisions.  
@@ -59,7 +61,7 @@ Nuclear interactions are typically labeled by identifying the target nucleus, th
 Note that we have abused the original notation somewhat (this is standard) by writing \(f\) in place of an ejected particle to denote fission.  We have also written \(n'\) as the ejected particle in inelastic scattering as a reminder that the ejected particle will in general \emph{not} be the same neutron that struck the nucleus.  In some cases, high-energy inelastic scattering reactions may in fact yield more than one neutrons, in which would be denoted \((n,2n)\), \((n,3n)\), etc. with no apostrophe on the ejected particles.
 
 \subsection{Scattering Reactions}
-\label{sec:orgheadline8}
+\label{sec:orgheadline9}
 To describe the kinematics of neutron-nucleus scattering we will begin with several assumptions.
 \begin{enumerate}
 \item Relativistic effects can be neglected.  The kinetic energies of neutrons emitted from fission are low enough so that the space-time effects described by relativity may be neglected.
@@ -69,7 +71,7 @@ To describe the kinematics of neutron-nucleus scattering we will begin with seve
 \end{enumerate}
 
 \subsubsection{Scattering Kinematics}
-\label{sec:orgheadline1}
+\label{sec:orgheadline2}
 
 Let us now consider the specific kinematics associated with scattering.
 \begin{description}
@@ -161,7 +163,7 @@ where the subscripts are used in the same way as they were in the velocity varia
 \end{align*}
 
 \subsubsection{Elastic Scattering}
-\label{sec:orgheadline3}
+\label{sec:orgheadline4}
 
 We will now assume that linear momentum is conserved through the collision.  In the LAB system this means
 \begin{align*}
@@ -227,7 +229,7 @@ and
 \end{align*}
 
 \paragraph{Stationary Target Nucleus}
-\label{sec:orgheadline2}
+\label{sec:orgheadline3}
 Consider the special case where target nucleus is stationary, i.e. \(\vec{V}_A = 0\).  From the previous section we know that
 \begin{align*}
   \vec{V}_{CM} = \frac{1}{A+1} \vec{V}_n, \text{ and} \\
@@ -301,7 +303,7 @@ Multiplying by the mass of a neutron squared divided by four (to get an expressi
 \end{align*}
 
 \subsubsection{Reactions Involving a Compound Nucleus}
-\label{sec:orgheadline7}
+\label{sec:orgheadline5}
 Elastic scattering may be viewed a billiard ball collision.  The neutron and nucleus exchange kinetic energy and linear momentum but nothing else.  In collisions such as inelastic scattering, neutron capture, and fission however, the neutron and nucleus combine to form a new, compound nucleus.  Moreover, this compound nucleus will generally be in an \emph{excited} state, having received additional internal energy from the collision.  We may write such a reaction as
 \begin{align*}
   \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
@@ -315,10 +317,8 @@ There are two sources of the excitation energy in a compound nucleus.  First, th
 \end{align*}
 where \(M(A,Z)\) is the mass of nucleus \(\leftidx{^A_Z}{X}{}\), \(m_n\) is the mass of the neutron and \(c\) is the speed of light in a vacuum.  Thus the total energy available to the reaction is \(e_{\text{exc}} + \Delta BE\).
 
-Because of the quantum nature of reality, which is very important at the nuclear scale, a nucleus is not allowed to be excited to an arbitrary energy level.  Rather a nucleus may only sit at certain discrete energy levels, at or above its ground state.  Nuclei in excited states will seek to return to the stable ground state through some combination of photon and/or neutron emission.  For some nuclei, the additional energy is sufficient to cause fission.  A discussion of the quantum effects surrounding nucleus formation and de-excitation can quickly become quite involved.  While interesting, that discussion is beyond the objectives of our present endeavor.  Thus the following brief sections will only present a high-level summary of the things it might be good to know as nuclear \emph{engineer}.
-
-\paragraph{Inelastic Scattering}
-\label{sec:orgheadline4}
+\subsubsection{Inelastic Scattering}
+\label{sec:orgheadline6}
 Inelastic scattering involves the formation of a compound nucleus which subsequently decays through the emission of a neutron and one or more photons (\(\gamma\) rays):
 \begin{align*}
   \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
@@ -331,8 +331,8 @@ When considering the energetics of inelastic scattering, note that the final nuc
 
 A second consideration is that for the compound nucleus to decay into an excited state, there must have been at least enough energy, \(e_\text{exc}\), to bridge the gap between the ground and the first excited state.  Otherwise there would not have been enough energy available after the neutron emission for the target nucleus to be in an excited state!  This type of reaction is known as a \emph{threshold} reaction, because the energy of the colliding pair must meet a certain "threshold" value before the reaction can take place.  Note that if the compound nucleus emits a neutron and returns the target nucleus to its ground state, then there is no photon emission (which is only a result of de-excitation), thus the total energy of the reaction \(e_\text{exc}\) is shared between the neutron and nucleus as kinetic energy.  This, however, implies overall conservation of kinetic energy between the neutron and nucleus, thus it is an \emph{elastic} scattering event!
 
-\paragraph{Radiative Capture}
-\label{sec:orgheadline5}
+\subsubsection{Radiative Capture}
+\label{sec:orgheadline7}
 A radiative capture reaction is essentially an inelastic neutron scattering \emph{without the neutron}.  That is, the target nucleus absorbs a neutron then de-excites simply by emitting one or more photons:
 \begin{align*}
   \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
@@ -340,26 +340,28 @@ A radiative capture reaction is essentially an inelastic neutron scattering \emp
 \end{align*}
 Note that the total amount of energy to be relieved through the emission of photons is \(e_{\text{exc}} + \Delta BE\).
 
-\paragraph{Fission Reactions}
-\label{sec:orgheadline6}
+\subsubsection{Fission Reactions}
+\label{sec:orgheadline8}
 In a fission reaction, the energy \(e_{\text{exc}} + \Delta BE\) is enough to overcome the fission barrier (which is an energy threshold), and the nucleus splits into two fragments plus several free neutrons and photons.  The nuclear configuration of the fission fragments and the number of free neutrons emitted are both statistical quantities.  
 \subsection{Problems}
-\label{sec:orgheadline9}
+\label{sec:orgheadline10}
 \begin{enumerate}
 \item Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
 \item Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
 \end{enumerate}
 
 \subsection{References}
-\label{sec:orgheadline10}
+\label{sec:orgheadline11}
 \begin{itemize}
 \item \href{Hebert2009}{Hebert}
 \item \href{Duderstadt:Hamilton1976}{Duderstadt and Hamilton}
 \item \href{Stacey2001}{Stacey}
 \end{itemize}
 \section{Cross Sections}
+\label{sec:orgheadline20}
+\subsection{What is a Cross Section?}
 \label{sec:orgheadline13}
-We have already assumed that neutrons travel along straight trajectories between collisions and argued that this is indeed a valid assumption within studies of nuclear reactor physics.  But how can we characterize the frequency of collisions for neutrons traveling along a given trajectory?  Put another way, if a neutron start along a trajectory from a known point, how long should we expect it to travel before it experiences a collision.  This is clearly a problem for probability.  Hebert (2009) summarizes the problem nicely.
+We have already assumed that neutrons travel along straight trajectories between collisions and argued that this is indeed a valid assumption within studies of nuclear reactor physics.  But how can we characterize the frequency of collisions for neutrons traveling along a given trajectory?  Put another way, if a neutron starts along a trajectory from a known point, how long should we expect it to travel before it experiences a collision.  This is clearly a problem for probability.  Hebert (2009) summarizes the problem nicely.
 
 \begin{quote}
 The probablity for a neutron located at \(\vec{r}\) and moving in a material at velocity \(\vec{V}_n\) to undergo a nuclear reaction in a differential element of trajectory \(ds\) is independent of the past history of the neutron and is proportional to \(ds\).
@@ -439,10 +441,106 @@ Finally, the average distance to first collision, which we will call \(\lambda\)
 \end{align*}
 The quantity \(\lambda\) is called the \emph{mean-free-path} and, for an infinite, homogeneous medium, is equal to the inverse of the total macroscopic cross section.
 
+\subsection{Resonance}
+\label{sec:orgheadline17}
+Because of the quantum nature of reality, which is very important at the nuclear scale, a nucleus is not allowed to be excited to an arbitrary energy level.  Rather a nucleus may only sit at certain discrete energy levels, at or above its ground state.  Nuclei in excited states will seek to return to the stable ground state, typically though photon emission, although at high enough energy a neutron or even alpha particle may be emitted.  For some nuclei, the additional energy is sufficient to cause fission.  
 
+Although each excitation level, say \(e_i\), is discrete, it's value is not precisely defined due to the Heisenberg uncertainty principle.  Rather each excited state is associated with an energy width, \(\gamma_i\), that is centered at \(e_i\) and related to the average lifetime of the excited state, \(\tau_i\) by
+\begin{align*}
+  \gamma_i = \frac{\hbar}{\tau_i}.
+\end{align*}
+Note that the average lifetime \(\tau_i\) is equal to the inverse of the decay constant for the excited state.
+
+An excited, compound nucleus at excitation level \(e_i\) with width \(\gamma_i\) may have several options for de-excitation: emitting a photon, a neutron, etc., for example.  Each one of these "options" is called a \emph{decay channel}.  The energy width, \(\gamma_i\), of the excited state may be written as a sum of the widths associated with each possible decay channel:
+\begin{equation}
+  \gamma_i = \sum_x \gamma_{i,x},
+\end{equation}
+where \(x\) represents a decay channel.
+
+A discussion of the quantum effects surrounding nucleus formation and de-excitation can quickly become quite involved.  While interesting, that discussion is beyond the objectives of our present endeavor.  Thus the following brief sections will only present a high-level summary of the things it might be good to know as nuclear \emph{engineer}.
+
+Recall that there is \(e^* = e_{\text{exc}} + \Delta BE\) of energy available to a newly-created compound nucleus that has been struck by a neutron.  When \(e^*\) is close to an excitation level \(e_i\) of the compound nucleus--if the available reaction energy puts the compound nucleus rather precisely into an excited state--then we observe a \emph{resonance} condition.  A resonance condition means that is \emph{very likely} that the compound nucleus will be formed at the excited state corresponding to the \(e_i\) level.  Resonance conditions have a significant impact on the likelihood that a reaction will take place, and consequently the cross section for that reaction will be significantly affected.
+
+\subsubsection{Single Level Breit-Wigner Formula}
+\label{sec:orgheadline14}
+There is a result from quantum mechanics that provides an expression for a reaction cross section in the vicinity of a resonance.  The formula is known as the \emph{single level Breit-Wigner Formula} (SLBW).  The "single level" qualifier belies the assumption the resonance in question is well-separated from nearby resonances.  Conversely, if two energy states are close enough together that their associated energy widths (\(\gamma_i\) \(\gamma_{i+1}\), for example) overlap, then the there will be interference effects between the two states.  This will then lead to more complex expressions for describing the corresponding resonance effects that manifest in the cross sections.
+
+For a reaction of type \(x\) from which there are no emerging neutrons (e.g., radiative capture), the SLBW may be written
+\begin{align*}
+  \sigma_x(e_{\text{exc}}) = \sigma_0 \frac{\gamma_{x,i}\gamma_i}{\gamma_i^2+4(e_\text{ext}-e_i)^2}
+\end{align*}
+where
+\begin{align*}
+ \sigma_0 &= 4\pi \lambda^2 g_J \frac{\gamma_{n,1}(e_\text{exc})}{\gamma_i},  \\
+  g_J &= \frac{2J+1}{2(2I+1)}, \text{ and} \\
+  \lambda &= \frac{\hbar}{\sqrt{2e_\text{exc} \left( \frac{Am}{A+1} \right)}}.
+\end{align*}
+The quantity \(g_J\) is a statistical factor expressed in terms of the spin of the target nucleus (\(I\)) and compound nucleus (\(J\)).  The parameter \(\lambda\) is the de Broglie wavelength of the incident neutron in the CM system.
+
+For an elastic scattering reaction, the SLBW becomes
+\begin{align*}
+  \sigma_e(e_\text{exc}) = \sigma_p^\ell 
+                         + \sigma_0 \left[ \frac{2}{\gamma_i}(e_\text{exc}-e_i) \sin 2\phi_\ell 
+                                         + \frac{\gamma_{n,i}}{\gamma_i} -2 \sin^2 \phi_\ell \right] \frac{\gamma_i^2}{\gamma_i^2+4(e_\text{exc}-e_i)^2}
+\end{align*}
+where
+\begin{align*}
+  \sigma_p^\ell = 4\pi \lambda^2 \left( 2\ell + 1 \right) \sin^2 \phi_\ell
+\end{align*}
+is called the \emph{potential} cross section.
+In this expressions the quantity \(\ell\) is the integer \emph{angular momentum quantum number}, which enumerates several types of elastic scattering reactions:
+\begin{align*}
+  \ell = 
+  \begin{cases}
+    0; & s\text{-wave interaction} \\
+    1; & p\text{-wave interaction} \\
+    2; & d\text{-wave interaction} \\
+    \text{etc.} &
+  \end{cases}
+\end{align*}
+Most elastic scattering reactions in thermal reactors will be \$s\$-wave interactions, characterized by relatively low incident neutron energies.  Heavy target nuclei may give rise to higher-waver interactions.  The first few \(\phi_\ell\) \emph{shift factors} are given by
+\begin{align*}
+  \phi_0 &= \frac{a}{\lambda}, \\
+  \phi_1 &= \frac{a}{\lambda} - \tan^{-1} \frac{a}{\lambda}, \\
+  \phi_2 &= \frac{a}{\lambda} - \tan^{-1} \frac{\frac{3a}{\lambda}}{3 - \left( \frac{a}{\lambda} \right)^2}
+\end{align*}
+where \(a\) is the nucleus \emph{diffusion radius}, which can be thought of as the "radius of influence" of the nucleus.  (A nucleus does not have a well-defined boundary in the quantum world!)
+
+The expressions so far have been defined with respect to the CM system.  Most of us do not live in the center-of-mass world of nuclear collision; we operate in a world that is stationary with respect to \emph{us}, i.e., the LAB system, and would prefer to work accordingly.  The excitation energy \(e_\text{exc}\) in the CM system can be converted to a LAB energy easily:
+\begin{align*}
+  E_\text{exc} = \frac{A+1}{A}e_\text{exc} = \frac{1}{2} m_n V_R^2.
+\end{align*}
+If we assume that the target nucleus is stationary, then \(E_\text{exc}\) is simply the initial kinetic energy of the neutron.
+
+With regard to resonance descriptions, a resonance at \(e_i\) with a width \(\gamma_{x,i}\) for decay channel \(x\) in the CM system becomes the following in the LAB system:
+\begin{align*}
+  E_i &= \frac{A+1}{A} e_i, \\
+  \Gamma_{x,i} &= \frac{A+1}{A} \gamma_{x,i}.
+\end{align*}
+The SLBW formulas remain valid in the LAB as long as the lowercase (CM) variables above are replaced by their uppercase (LAB) counterparts.
+
+\subsubsection{Limitations of SLBW}
+\label{sec:orgheadline15}
+The main assumption of the SLBW was that resonances were well-separated and did not interfere with one another.  In reality this assumption breaks down, especially in heavy target nuclei and high energies (\(\gtrsim 10\) keV).  There is a more accurate representation of closely-spaced resonances called the multilevel Breit-Wigner (MLBW) formula.  The complexity of this formula increases significantly.  The MLBW is, however, often used in computer codes that calculate neutron cross sections for reactor physics applications.
+
+\subsubsection{Resonance Distributions}
+\label{sec:orgheadline16}
+The location and density of resonances varies by nuclide and energy.  In general both the number and density of resonances increases with larger nuclides and higher incident neutron energies.  Below 1-10 keV resonances are typically separated enough so that experimentalists can determine the location and width of the resonances. At higher energies, however, the resonances become so tightly spaced that is impossible, at present, to distinguish one from the other.  We say that these resonances are \emph{unresolved}, or lie in the \emph{unresolved resonance range}, in contrast to the \emph{resolved resonance range} at lower energies.
+\subsection{Problems}
+\label{sec:orgheadline18}
+\begin{enumerate}
+\item In general the ratio of the diffusion radius of a nucleus (\(a\)) to the neutron wavelength (\(\lambda\)), i.e. \(\frac{a}{\lambda} << 1\).  Under this assumption, derive an approximate expression for the \emph{potential} cross section for \(s\)-wave interactions.
+\end{enumerate}
 \subsection{References}
-\label{sec:orgheadline12}
+\label{sec:orgheadline19}
 \begin{itemize}
 \item \href{Hebert2009}{Hebert (2009)}
 \end{itemize}
+\section{Nuclear Physics in 60 Seconds}
+\label{sec:orgheadline21}
+\textbf{Notation:} An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, \(Z\), while the number of neutrons is given by \(N\).  The mass number, \(A\), is the sum of the number of neutrons and protons.  A neutral atom, \(X\), is typically written with the \(A\) and \(Z\) numbers prepended, i.e., \(\leftidx{^A_Z}{X}{}\), with the neutron number implicit.
+
+\textbf{Mass:} Masses on the nuclear scale at typically expressed in units of \emph{atomic mass units} (u), defined so that the mass of a neutron atom of \(\leftidx{^12_6}{C}{}\) is exactly 12 u.
+
+\textbf{Quantum Description:}  A common and quite accurate quantum description of the nucleus is given by the \emph{shell model}, which is analogous to the description of atomic electrons.  Neutrons, protons and electrons are all classified as \emph{fermions}, which are particles with a spin of \(\frac{1}{2}\hbar\) that obey the Pauli exclusion principle.  Neutrons and protons in a nucleus reside in discrete energy states and posses angular momentum that also occurs in discrete amounts.  The angular momentum is specified by the positive, integer quantum nunber \(\ell \geq 0\), and the first few angular momentum states are are labeled \(s\), \(p\), \(d\), \(f\), etc, again in analogy to atomic electrons.  The \emph{ground state} of a nucleus occurs when all of the nuclear particles are in the lowest energy states allowed by the Pauli exclusion principle.  An \emph{excited state} occurs when a nucleon is elevated to a higher (and unstable) energy level.
 \end{document}
