@@ -10,7 +10,8 @@ Nuclear Reactor Physics
    :maxdepth: 1
    :hidden:
 
-   syllabus
+   preface
+   grandproblem
    problems
 
 

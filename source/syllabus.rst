@@ -20,40 +20,34 @@ add content
 Prerequisites
 -------------
 
-add content
+By taking this course, I assume that you have some prior exposure to basic radiation science, reactor theory,  differential equation, and basic numerical methods, presumably all at the undergraduate level.  I will provide only *brief* reviews of the relevant information from these areas where appropriate.
+
+Throughout the course we will use computational software to look at data and solve certain problems.  Most of this work will be done using the Python programming language, although prior exposure to Python is *not* required.  Our use of Python will be rather superficial, and the required skills will be developed as we go along.  That being said, some prior experience of solving engineering and mathematics problems using a computer (with Matlab, for example) is expected.
 
 Learning Objectives
 -------------------
 
 add content
 
-Assessments
------------
-
-add content
-
 Reference Material
 ------------------
 
-Books
-~~~~~
+There is no required textbook for this class.  Reference material and instructor notes will be made available via the website.  The content for this course, however, is drawn from several reference texts.  These texts are listed below.  Resource pertaining to the Python programming language are also provided.
 
-add list
-
-Software
-~~~~~~~~
-
-add content
+- James Duderstand and Louis Hamilton, *Nuclear Reactor Analysis*
+- George Bell and Samuel Glasstone, *Nuclear Reactor Theory* (out of print)
+- Alain Hebert, *Applied Reactor Physics*
+- Weston Stacey, *Nuclear Reactor Physics*
 
 Supplemental Material
 ~~~~~~~~~~~~~~~~~~~~~
 
 add content
 
-Grading
--------
+Assessments and Grading
+-----------------------
 
-add content
+The graded assessments for this course will consist of homework assignments and projects.
 
 Feedback
 --------
