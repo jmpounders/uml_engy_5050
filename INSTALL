@@ -1,12 +1,7 @@
-bash /vagrant/Anaconda2-2.4.1-Linux-x86_64.sh 
-source .bashrc
-which conda
-sudo apt-get install git
-git clone https://github.com/pyne/pyne.git
-git clone https://github.com/pyne/install_scripts.git
-cd install_scripts/
-bash ubuntu_15.04.sh 
-source .bashrc
-python
-history > /vagrant/hist
+bash /vagrant/pyne_install_ubuntu14.sh 
+source .bashrc 
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py 
+sudo pip install jupyter
+mkdir /vagrant/notebooks
 ipython notebook --notebook-dir=/vagrant/notebooks --no-browser --ip=0.0.0.0
