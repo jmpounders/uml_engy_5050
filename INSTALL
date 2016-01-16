@@ -4,4 +4,9 @@ wget https://bootstrap.pypa.io/get-pip.py
 sudo python get-pip.py 
 sudo pip install jupyter
 mkdir /vagrant/notebooks
+sudo apt-get install swig
+git clone https://github.com/mit-crpg/PINSPEC.git PINSPEC
+cd PINSPEC/
+python setup.py install --user
+python setup.py install --user
 ipython notebook --notebook-dir=/vagrant/notebooks --no-browser --ip=0.0.0.0
