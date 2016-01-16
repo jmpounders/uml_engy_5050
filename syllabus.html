@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="ENGY 5050 1.0 documentation" href="index.html" />
     <link rel="up" title="Preface" href="preface.html" />
-    <link rel="next" title="The Grand Problem" href="problems.html" />
+    <link rel="next" title="Up and Running" href="upandrunning.html" />
     <link rel="prev" title="Preface" href="preface.html" />
    
   
@@ -57,7 +57,10 @@
 </ul>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Office hours:</th><td class="field-body"><p class="first last">By appointment</p>
+<tr class="field-odd field"><th class="field-name">Office hours:</th><td class="field-body"><p class="first">By appointment</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Course website:</th><td class="field-body"><p class="first last"><a class="reference external" href="http://jmpounders.github.io/uml_engy_5050/">http://jmpounders.github.io/uml_engy_5050/</a></p>
 </td>
 </tr>
 </tbody>
@@ -66,34 +69,58 @@
 <p>See this <a class="reference external" href="https://www.youtube.com/watch?v=yQq1-_ujXrM">short video</a> for what &#8220;office hours&#8221; can do for you (and possible side effects).</p>
 <div class="section" id="course-description">
 <h2>Course Description<a class="headerlink" href="#course-description" title="Permalink to this headline">¶</a></h2>
-<p>add content</p>
+<p>In this course we will explore the fundamental principles of nuclear reactor physics and the mathematical descriptions thereof.  We will do this by focusing on <em>problems</em>.  Fundamentally there is only one problem that reactor physicists aim to solve: determine where and how much power a nuclear reactor is going to generate.  This course exists because that is a tough problem&#8211;a problem which preoccuppied many of the top physicists and mathematicians of the early-to-mid twentieth century.  While many of the fundamental technical challenges have been worked out, reactor physics continues to be an active area of research today, as engineers seek to design reactors that are safer, more efficient, and more accident-tolerant.</p>
+<p>We are going to unfold reactor physics by decomposing the fundamental problem into smaller subproblems so that, by the end, we will have a decent picture of what it takes to perform reactor analyses.  The sequencing of problems will follow a logical, though not necessarily linear, flow.  Starting from basic physics we will work our way up to transport theory, then ply that theory into something useful for an engineering analysis.</p>
 </div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>By taking this course, I assume that you have some prior exposure to basic radiation science, reactor theory,  differential equation, and basic numerical methods, presumably all at the undergraduate level.  I will provide only <em>brief</em> reviews of the relevant information from these areas where appropriate.</p>
+<div class="section" id="expectations">
+<h2>Expectations<a class="headerlink" href="#expectations" title="Permalink to this headline">¶</a></h2>
+<p>By taking this course, I assume that you have some prior exposure to basic radiation science, differential equations, and basic numerical methods, presumably all at the undergraduate level.  I will provide only <em>brief</em> reviews of the relevant information from these areas where appropriate.</p>
+<p>Class periods will primarily focus on discussion and problem solving.  Many of the concepts will be introduced thorugh reading assignments issued <em>before</em> the given class period.  These reading assignments are a critical component of the course structure, so it is imperative that you take them seriously.</p>
 <p>Throughout the course we will use computational software to look at data and solve certain problems.  Most of this work will be done using the Python programming language, although prior exposure to Python is <em>not</em> required.  Our use of Python will be rather superficial, and the required skills will be developed as we go along.  That being said, some prior experience of solving engineering and mathematics problems using a computer (with Matlab, for example) is expected.</p>
 </div>
 <div class="section" id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
-<p>add content</p>
+<p>By the end of this course you should be able to describe the fundamental physical principles underlying fission-based thermal power generation, including the mathematical formulations of that problem.  That is not a simple a task.  To achieve it you will learn how to blend basic nuclear physics with neutral particle transport theory to predict the distribution of the fission reaction rate in geometries typical of nuclear power reactors.</p>
 </div>
 <div class="section" id="reference-material">
 <h2>Reference Material<a class="headerlink" href="#reference-material" title="Permalink to this headline">¶</a></h2>
-<p>There is no required textbook for this class.  Reference material and instructor notes will be made available via the website.  The content for this course, however, is drawn from several reference texts.  These texts are listed below.  Resource pertaining to the Python programming language are also provided.</p>
+<p>There is no required textbook for this class.  Reference material and instructor notes will be made available via the website.  The content for this course, however, is drawn from several reference texts.  These texts are listed below.</p>
 <ul class="simple">
 <li>James Duderstand and Louis Hamilton, <em>Nuclear Reactor Analysis</em></li>
 <li>George Bell and Samuel Glasstone, <em>Nuclear Reactor Theory</em> (out of print)</li>
 <li>Alain Hebert, <em>Applied Reactor Physics</em></li>
 <li>Weston Stacey, <em>Nuclear Reactor Physics</em></li>
 </ul>
-<div class="section" id="supplemental-material">
-<h3>Supplemental Material<a class="headerlink" href="#supplemental-material" title="Permalink to this headline">¶</a></h3>
-<p>add content</p>
-</div>
+<p>Resource pertaining to the Python programming language are provided below, although most of what you will need will be provided as supplemental content on the course website.</p>
+<ul class="simple">
+<li>The official documentation for Python 2.7: <a class="reference external" href="https://docs.python.org/2.7/">https://docs.python.org/2.7/</a><ul>
+<li>A very thorough tutorial: <a class="reference external" href="https://docs.python.org/2.7/tutorial/index.html">https://docs.python.org/2.7/tutorial/index.html</a></li>
+</ul>
+</li>
+<li>Learn Python the Hard Way: <a class="reference external" href="http://learnpythonthehardway.org/book/">http://learnpythonthehardway.org/book/</a></li>
+<li>Google: <a class="reference external" href="https://www.google.com/">https://www.google.com/</a></li>
+</ul>
 </div>
 <div class="section" id="assessments-and-grading">
 <h2>Assessments and Grading<a class="headerlink" href="#assessments-and-grading" title="Permalink to this headline">¶</a></h2>
-<p>The graded assessments for this course will consist of homework assignments and projects.</p>
+<p>The graded assessments for this course will consist of homework assignments and projects.  Class participation is also critical and will contribute to your final grade.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Homework</td>
+<td>30%</td>
+</tr>
+<tr class="row-even"><td>Projects</td>
+<td>60%</td>
+</tr>
+<tr class="row-odd"><td>Participation</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="feedback">
 <h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
@@ -125,7 +152,7 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="preface.html">Preface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="problems.html">The Grand Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">Problems</a></li>
 </ul>
 
 
@@ -133,12 +160,9 @@
   <ul>
 <li><a class="reference internal" href="#">Syllabus</a><ul>
 <li><a class="reference internal" href="#course-description">Course Description</a></li>
-<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#expectations">Expectations</a></li>
 <li><a class="reference internal" href="#learning-objectives">Learning Objectives</a></li>
-<li><a class="reference internal" href="#reference-material">Reference Material</a><ul>
-<li><a class="reference internal" href="#supplemental-material">Supplemental Material</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#reference-material">Reference Material</a></li>
 <li><a class="reference internal" href="#assessments-and-grading">Assessments and Grading</a></li>
 <li><a class="reference internal" href="#feedback">Feedback</a></li>
 </ul>
@@ -163,7 +187,7 @@
   <li><a href="index.html">Documentation overview</a><ul>
   <li><a href="preface.html">Preface</a><ul>
       <li>Previous: <a href="preface.html" title="previous chapter">Preface</a></li>
-      <li>Next: <a href="problems.html" title="next chapter">The Grand Problem</a></li>
+      <li>Next: <a href="upandrunning.html" title="next chapter">Up and Running</a></li>
   </ul></li>
   </ul></li>
 </ul>

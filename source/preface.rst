@@ -5,6 +5,5 @@ Preface
    :maxdepth: 1
               
    syllabus
-   about
    upandrunning
    

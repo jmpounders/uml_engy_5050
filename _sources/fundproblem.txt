@@ -1,5 +1,5 @@
-The Grand Problem
-=================
+The Fundamental Problem
+=======================
 
 The fundamental question of reactor physics can be expressed as follows:
 
