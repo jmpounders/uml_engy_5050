@@ -35,8 +35,21 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   sudo apt-get update
-  #   sudo apt-get install -y apache2
-  # SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+    bash /vagrant/pyne_install_ubuntu14.sh 
+    source .bashrc 
+    wget https://bootstrap.pypa.io/get-pip.py
+    sudo python get-pip.py 
+    sudo pip install jupyter
+    mkdir /vagrant/notebooks
+    sudo apt-get install swig
+    git clone https://github.com/mit-crpg/PINSPEC.git PINSPEC
+    cd PINSPEC/
+    python setup.py install --user
+    python setup.py install --user
+  SHELL
+
+  config.vm.provision "shell", run: "always", inline: <<-SHELL
+    ipython notebook --notebook-dir=/vagrant/notebooks --no-browser --ip=0.0.0.0 &
+  SHELL
 end
