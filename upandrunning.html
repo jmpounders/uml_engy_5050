@@ -61,6 +61,10 @@
 <li>From a command prompt/terminal, navigate to the VM folder (using the <code class="docutils literal"><span class="pre">cd</span></code> command) and enter the command <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code>.</li>
 </ul>
 <p>The first time you run the <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> command, the base VM will be downloaded from the internet, provisioned, then started in the background.  This process will likely take a long time, so plan accordingly!  Once your VM is installed and provisioned the first time it will be much quicker to load it in the future.</p>
+<div class="section" id="what-is-happening-anyway">
+<h3>What is happening, anyway?<a class="headerlink" href="#what-is-happening-anyway" title="Permalink to this headline">¶</a></h3>
+<p>The &#8220;provisioning&#8221; process is downloading and installing several pieces of software that we will likely need over the course of the semester.  All of these installations occur <em>inside</em> the virtual machine, so the rest of your computer will <em>not</em> be affected.  The VM provides a safe, uniform, reproducible environment so that we are all working from the same page, regardless of what you operating system you call home.</p>
+</div>
 </div>
 <div class="section" id="using-the-system">
 <h2>Using the System<a class="headerlink" href="#using-the-system" title="Permalink to this headline">¶</a></h2>
@@ -114,7 +118,10 @@
   <ul>
 <li><a class="reference internal" href="#">Up and Running</a><ul>
 <li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
+<li><a class="reference internal" href="#what-is-happening-anyway">What is happening, anyway?</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#using-the-system">Using the System</a></li>
 <li><a class="reference internal" href="#shutting-down">Shutting Down</a></li>
 <li><a class="reference internal" href="#uninstalling">Uninstalling</a></li>

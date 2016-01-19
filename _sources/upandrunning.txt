@@ -25,6 +25,11 @@ You do need to decide where you want to access your VM from.  You should create 
 
 The first time you run the ``vagrant up`` command, the base VM will be downloaded from the internet, provisioned, then started in the background.  This process will likely take a long time, so plan accordingly!  Once your VM is installed and provisioned the first time it will be much quicker to load it in the future.
 
+What is happening, anyway?
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The "provisioning" process is downloading and installing several pieces of software that we will likely need over the course of the semester.  All of these installations occur *inside* the virtual machine, so the rest of your computer will *not* be affected.  The VM provides a safe, uniform, reproducible environment so that we are all working from the same page, regardless of what you operating system you call home.
+
 Using the System
 ----------------
 
