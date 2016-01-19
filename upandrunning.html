@@ -44,34 +44,41 @@
 <h1>Up and Running<a class="headerlink" href="#up-and-running" title="Permalink to this headline">¶</a></h1>
 <p>Throughout the course we will use various computer-based tools to as an aid to solving problems.  Most of the tools are written in some combination of Fortran, C++, and Python, with numerous support libraries.  Trying to get everyone up and running with a system that works on various operating systems is a headache I want to avoid.  Therefore, I have packaged all the computational tools that will be needed in this course into a virual environment.  Once it is setup on your computer, most of your interaction with the virtual environment will be through a simple web application.</p>
 <p>Installation of this virtual environment should be straight-forward, but expect to spend an hour or two to get everything downloaded and installed initially.  Once everything is installed, you will probably need another hour or so to play around and make sure you can operate successfully in this environment.</p>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Two pieces of third-party software are required to administer the virtual machine (VM).  Both are free and do not require a sign-up.</p>
 <ul class="simple">
-<li>Install VirtualBox.</li>
-<li>Install Vagrant.</li>
-<li>Download the Vagrantfile.</li>
-<li>vagrant up</li>
+<li>Download and install VirtualBox from <a class="reference external" href="https://www.virtualbox.org/">here</a>.</li>
+<li>Download and install Vagrant from <a class="reference external" href="https://www.vagrantup.com/">here</a>.</li>
 </ul>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Now that the machinery is in place, you need to create and configure the VM.  I have made this easy: all you need to do is download a configuration file and then run a single command from a command prompt/terminal.</p>
+<p>You do need to decide where you want to access your VM from.  You should create a new folder/directory for this.  This new folder should be easily accessible, e.g., in your &#8220;Documents&#8221; folder, your home/user folder, etc.  For me, this is a folder named <code class="docutils literal"><span class="pre">uml_engy_5050</span></code> in my home directory.  I will call this the &#8220;VM folder.&#8221;</p>
+<ul class="simple">
+<li>Download the Vagrantfile to the VM folder that you just created.</li>
+<li>From a command prompt/terminal, navigate to the VM folder (using the <code class="docutils literal"><span class="pre">cd</span></code> command) and enter the command <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code>.</li>
+</ul>
+<p>The first time you run the <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> command, the base VM will be downloaded from the internet, provisioned, then started in the background.  This process will likely take a long time, so plan accordingly!  Once your VM is installed and provisioned the first time it will be much quicker to load it in the future.</p>
 </div>
 <div class="section" id="using-the-system">
 <h2>Using the System<a class="headerlink" href="#using-the-system" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Start the jupyter session</li>
-<li>Save/locate files</li>
-</ul>
+<p>If you just installed the VM following the instructions in the previous example, your VM is already up and running.  If your VM is not currently running because you shut it down or rebooted your computer, just run <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> from a command prompt in your VM folder.</p>
+<p>Next, open a web browser and enter <code class="docutils literal"><span class="pre">127</span></code> in the address bar.</p>
+<p>Save/locate files</p>
 </div>
 <div class="section" id="shutting-down">
 <h2>Shutting Down<a class="headerlink" href="#shutting-down" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Shutdown jupyter</li>
-<li>vagrant halt</li>
 </ul>
+<p>To shutdown your VM issue the command <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">halt</span></code> from a command prompt in your VM folder.  This will stop the VM and free up all of the resources that the VM was using.</p>
 </div>
 <div class="section" id="uninstalling">
 <h2>Uninstalling<a class="headerlink" href="#uninstalling" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>vagrant destroy</li>
-</ul>
+<p>If you want to completely eradicate the VM and all memory of it from your computer, run the command <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">destroy</span></code> from the VM folder.  If you decide you want it back, you can run <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> again, and this will start the installation and provisioning process from scratch.</p>
+<p>VirtualBox and Vagrant ship with their own uninstallers.</p>
 </div>
 </div>
 
@@ -106,7 +113,8 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Up and Running</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#setup">Setup</a></li>
 <li><a class="reference internal" href="#using-the-system">Using the System</a></li>
 <li><a class="reference internal" href="#shutting-down">Shutting Down</a></li>
 <li><a class="reference internal" href="#uninstalling">Uninstalling</a></li>

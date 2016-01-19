@@ -304,7 +304,7 @@ In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to over
 1. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
 2. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
 
-* Cross Sections
+* Cross Sections                                                   :noexport:
 ** What is a Cross Section?
 We have already assumed that neutrons travel along straight trajectories between collisions and argued that this is indeed a valid assumption within studies of nuclear reactor physics.  But how can we characterize the frequency of collisions for neutrons traveling along a given trajectory?  Put another way, if a neutron starts along a trajectory from a known point, how long should we expect it to travel before it experiences a collision.  This is clearly a problem for probability.  Hebert (2009) summarizes the problem nicely.
 
@@ -469,7 +469,7 @@ The location and density of resonances varies by nuclide and energy.  In general
 - [[ebib:Hebert2009][Hebert (2009)]]
 ** Problems                                                       :noexport:
 1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$), i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ cross section for \(s\)-wave interactions.
-* Nuclear Physics in 60 Seconds
+* Nuclear Physics in 60 Seconds                                    :noexport:
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 
 *Mass:* Masses on the nuclear scale at typically expressed in units of /atomic mass units/ (u), defined so that the mass of a neutron atom of $\leftidx{^12_6}{C}{}$ is exactly 12 u.
