@@ -120,7 +120,7 @@ html_theme = 'alabaster'
 html_theme_options = {
     'font_family':'"adelle",Georgia,"Times New Roman",serif',
     'head_font_family':'"adelle",Georgia,"Times New Roman",serif',
-    'logo':'vertical_logo.png',
+    'logo':'UMLRR-internal.png',
     'logo_name':'true',
     'github_button':'false'
 }

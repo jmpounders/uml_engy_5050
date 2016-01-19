@@ -1,6 +1,0 @@
-About This Course
-=================
-
-In this course we are going to focus on *problems*.  Fundamentally there is only one problem that reactor physicists aim to solve: determine where and how much power a nuclear reactor is going to generate.  This course exists because that is a tough problem--a problem which preoccuppied many of the top physicists and mathematicians of the early-to-mid twentieth century.  While many of the fundamental technical challenges have been worked out, reactor physics continues to be an active area of research today, as engineers seek to design reactors that are safer, more efficient, and more accident-tolerant.
-
-We are going to explore reactor physics by decomposing the fundamental problem into smaller subproblems so that, by the end, we will have a decent picture of what it takes to perform reactor analyses.  The sequencing of problems will follow a logical, though not necessarily linear, flow.  Starting from basic physics we will work our way up to transport theory, then ply that theory into something useful for an engineering analysis.

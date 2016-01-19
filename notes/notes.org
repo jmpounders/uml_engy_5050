@@ -1,7 +1,10 @@
 #+TITLE: ENGY 5050
 #+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{fancyhdr}
 #+LATEX_HEADER: \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 #+LATEX_HEADER_EXTRA: \newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
+#+LATEX_HEADER_EXTRA: \pagestyle{fancyplain}
+#+LATEX_HEADER_EXTRA: \cfoot{{\it ENGY 5050, Nuclear Reactor Physics, UMass Lowell}}
 #+OPTIONS: H:4
 #+STARTUP: indent nostars
 
@@ -176,7 +179,7 @@ Let us now additionally assume conservation of kinetic energy before and after t
 \begin{align*}
   e_n + e_A = e_n' + e_A' = e_{\text{exc}}.
 \end{align*}
-Using Eq. \eqref{ref:eq:cmVelRel}, we find that 
+Using Eq. \eqref{eq:cmVelRel}, we find that 
 \begin{align*}
   v_n = v_n' = \frac{A}{A+1}V_R,
 \end{align*}
@@ -293,14 +296,14 @@ Note that the total amount of energy to be relieved through the emission of phot
 
 *** Fission Reactions
 In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to overcome the fission barrier (which is an energy threshold), and the nucleus splits into two fragments plus several free neutrons and photons.  The nuclear configuration of the fission fragments and the number of free neutrons emitted are both statistical quantities.  
-** Problems
-1. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
-2. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
-
 ** References
 - [[ebib:Hebert2009][Hebert]]
 - [[ebib:Duderstadt:Hamilton1976][Duderstadt and Hamilton]]
 - [[ebib:Stacey2001][Stacey]]
+** Problems                                                       :noexport:
+1. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
+2. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
+
 * Cross Sections
 ** What is a Cross Section?
 We have already assumed that neutrons travel along straight trajectories between collisions and argued that this is indeed a valid assumption within studies of nuclear reactor physics.  But how can we characterize the frequency of collisions for neutrons traveling along a given trajectory?  Put another way, if a neutron starts along a trajectory from a known point, how long should we expect it to travel before it experiences a collision.  This is clearly a problem for probability.  Hebert (2009) summarizes the problem nicely.
@@ -462,10 +465,10 @@ The main assumption of the SLBW was that resonances were well-separated and did 
 
 *** Resonance Distributions
 The location and density of resonances varies by nuclide and energy.  In general both the number and density of resonances increases with larger nuclides and higher incident neutron energies.  Below 1-10 keV resonances are typically separated enough so that experimentalists can determine the location and width of the resonances. At higher energies, however, the resonances become so tightly spaced that is impossible, at present, to distinguish one from the other.  We say that these resonances are /unresolved/, or lie in the /unresolved resonance range/, in contrast to the /resolved resonance range/ at lower energies.
-** Problems
-1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$), i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ cross section for \(s\)-wave interactions.
 ** References
 - [[ebib:Hebert2009][Hebert (2009)]]
+** Problems                                                       :noexport:
+1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$), i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ cross section for \(s\)-wave interactions.
 * Nuclear Physics in 60 Seconds
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 
