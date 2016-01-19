@@ -3,3 +3,4 @@
 auto
 *.out
 *.toc
+.vagrant
