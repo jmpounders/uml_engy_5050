@@ -5,5 +5,5 @@ Problems
    :maxdepth: 1
    :numbered:
 
-   fundproblem
-   neutronInteractions
+   problems/1_fundproblem
+   problems/2_neutronInteractions

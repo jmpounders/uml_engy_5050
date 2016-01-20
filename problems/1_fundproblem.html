@@ -8,26 +8,26 @@
     
     <title>1. The Fundamental Problem &mdash; ENGY 5050 1.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '../',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="ENGY 5050 1.0 documentation" href="index.html" />
-    <link rel="up" title="Problems" href="problems.html" />
-    <link rel="next" title="2. How do neutrons interact with matter?" href="neutronInteractions.html" />
-    <link rel="prev" title="Problems" href="problems.html" />
+    <link rel="top" title="ENGY 5050 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Problems" href="../problems.html" />
+    <link rel="next" title="2. How do neutrons interact with matter?" href="2_neutronInteractions.html" />
+    <link rel="prev" title="Problems" href="../problems.html" />
    
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
@@ -45,19 +45,21 @@
 <p>The fundamental question of reactor physics can be expressed as follows:</p>
 <blockquote>
 <div><em>Where</em> and <em>how much</em> power is being generated in a nuclear reactor at any given point in time?</div></blockquote>
-<p>We will spend the semester breaking down this question into a series of consecutative, hierarchical problems to be solved.  Before proceeding we must first begin by asking how is energy created in a reactor in the first place.</p>
+<p>We will spend the semester breaking down this question into a series of consecutive, hierarchical problems to be solved.  Before proceeding we must first begin by considering how energy is created in a reactor in the first place.</p>
 <div class="section" id="how-is-energy-created-in-a-reactor">
 <h2>1.1. How Is Energy Created in a Reactor?<a class="headerlink" href="#how-is-energy-created-in-a-reactor" title="Permalink to this headline">¶</a></h2>
-<p>For <em>fission</em> reactors, which is the exclusive purvey of this course, the answer is unsurprisingly that energy is released whenever an atom fissions.  This energy appears in the form of kinetic energy born by ejected neutrons, fission fragmens, and photons.  This initial burst of kinetic energy is the <em>prompt</em> release.  In contrast, the fission fragments are almost always unstable and tend to emit a succession of beta particles and neutrinos, and in some cases neutrons until stability is reached.  The drawn out release of energy associated with the decay of fission fragments is the <em>delayed</em> energy release.  The kinetic energy of these particles, in way or another, is imparted to the reactor itself through collisions, thereby heating the reactor.</p>
+<p>For <em>fission</em> reactors, which is the exclusive purvey of this course, the answer is unsurprisingly that energy is released whenever an atom fissions.  This energy appears in the form of kinetic energy born by ejected neutrons, fission fragmens, and photons.  This initial burst of kinetic energy is the <em>prompt</em> release.  In contrast, the fission fragments are almost always unstable and tend to emit a succession of beta particles and neutrinos, and in some cases neutrons until stability is reached.  The drawn out release of energy associated with the decay of fission fragments is the <em>delayed</em> energy release.  The kinetic energy of these particles, in one way or another, is imparted to the reactor itself through collisions, thereby heating the reactor.</p>
 </div>
 <div class="section" id="where-is-energy-created-in-a-reactor">
 <h2>1.2. Where Is Energy Created in a Reactor?<a class="headerlink" href="#where-is-energy-created-in-a-reactor" title="Permalink to this headline">¶</a></h2>
-<p>The preceeding addresses, in rough measure, <em>how</em> energy is created, but not <em>where</em> it is created.
-- Fission fragments are very large and tend not to travel very far from the site of fission.
-- Photons may travel anywhere from 10 to 100 cm, loosing energy through collisions as the go.
-- Neutrons likewise travel anywhere from 10 to 100 cm, loosing energy through collisions as they go.  Neutrons may also be absorbed into nuclei.  When this happens, the absorbing nuclei tends to respond by emitting a photon (a <em>capture gammas</em>), which will continue the transport of energy through the reactor.
-- Beta particles emitted from fission fragments will not travel very far.
-- Most neutrinos will zip through the reactor, through the center of the earth and into outer space and never be heard from again.</p>
+<p>The preceeding addresses, in rough measure, <em>how</em> energy is created, but not <em>where</em> it is created.</p>
+<ul class="simple">
+<li>Fission fragments are very large and tend not to travel very far from the site of fission.</li>
+<li>Photons may travel anywhere from 10 to 100 cm, loosing energy through collisions as the go.</li>
+<li>Neutrons likewise travel anywhere from 10 to 100 cm, loosing energy through collisions as they go.  Neutrons may also be absorbed into nuclei.  When this happens, the absorbing nuclei tends to respond by emitting a photon (a <em>capture gamma</em>), which will continue the transport of energy through the reactor.</li>
+<li>Beta particles emitted from fission fragments will not travel very far.</li>
+<li>Most neutrinos will zip through the reactor, through the center of the earth and into outer space and never be heard from again.</li>
+</ul>
 <p>As you can now imagine, the generation of energy in a reactor, even from a single fission, is a very dynamic and somewhat chaotic process.  Fortunately, most of the fission energy appears as the kinetic energy of the fission fragments, which tend to stay put.  Thus most of the <em>recoverable</em> energy from fission is deposited very near the point where the fission occured.  Looking at the table below, you can see that with uranium-235, there is about 200 MeV of energy released per fission.  If this fission occurs in a fuel rod, about 90% of that energy will be deposited <em>inside</em> the fuel rod.  In fact, it is common practice to assume that <em>all</em> fission energy is deposited inside the fuel rod as this makes modeling nuclear reactors much simpler.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -110,8 +112,8 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <p class="logo">
-  <a href="index.html">
-    <img class="logo" src="_static/UMLRR-internal.png" alt="Logo"/>
+  <a href="../index.html">
+    <img class="logo" src="../_static/UMLRR-internal.png" alt="Logo"/>
     
     <h1 class="logo logo-name">ENGY 5050</h2>
     
@@ -125,14 +127,14 @@
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="problems.html">Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="courselog.html">Course Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../problems.html">Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courselog.html">Course Log</a></li>
 </ul>
 
 
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">1. The Fundamental Problem</a><ul>
 <li><a class="reference internal" href="#how-is-energy-created-in-a-reactor">1.1. How Is Energy Created in a Reactor?</a></li>
@@ -144,7 +146,7 @@
 
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
+    <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -157,10 +159,10 @@
 <script type="text/javascript">$('#searchbox').show(0);</script><div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="problems.html">Problems</a><ul>
-      <li>Previous: <a href="problems.html" title="previous chapter">Problems</a></li>
-      <li>Next: <a href="neutronInteractions.html" title="next chapter">2. How do neutrons interact with matter?</a></li>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../problems.html">Problems</a><ul>
+      <li>Previous: <a href="../problems.html" title="previous chapter">Problems</a></li>
+      <li>Next: <a href="2_neutronInteractions.html" title="next chapter">2. How do neutrons interact with matter?</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -177,7 +179,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
-      <a href="_sources/fundproblem.txt"
+      <a href="../_sources/problems/1_fundproblem.txt"
           rel="nofollow">Page source</a>
     </div>
 

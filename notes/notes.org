@@ -37,10 +37,10 @@ To describe the kinematics of neutron-nucleus scattering we will begin with seve
 *** Scattering Kinematics
 
 Let us now consider the specific kinematics associated with scattering.
-- $\vec{V}_n$, $\vec{V}_n'$ :: initial and final velocity of the neutron.
-- $E$, $E'$ :: initial and final kinetic energy of the neutron.
-- $\vec{V}_A$, $\vec{V}_A'$ :: initial and final velocity of the nucleus.
-We also define the angles $\gamma$, $\theta$, and $\psi$ as shown in the figure.
+- $\vec{V}_n$, $\vec{V}_n'$ : :: initial and final velocity of the neutron.
+- $E$, $E'$ : :: initial and final kinetic energy of the neutron.
+- $\vec{V}_A$, $\vec{V}_A'$ : :: initial and final velocity of the nucleus.
+We also define the angles $\gamma$, $\theta$, and $\psi$ as shown in Figure \ref{fig::scatteringLAB}.
 
 \begin{figure}
 \centering
@@ -79,6 +79,7 @@ We also define the angles $\gamma$, $\theta$, and $\psi$ as shown in the figure.
   \draw (12.3,-14.4) node {$\theta$};
 \end{tikzpicture}
 \caption{Neutron-nucleus collision in LAB coordinates.}
+\label{fig::scatteringLAB}
 \end{figure}
 
 The analysis of scattering kinematics is greatly simplifed by working in the center-of-mass reference frame (CM) rather than the laboratory reference frame (LAB).  The origin in the CM reference frame is 
@@ -112,36 +113,7 @@ This definition allows us to write the CM neutron and nucleus velocities as
 \end{align}
 \label{eq:cmVelRel}
 \end{subequations}
-Thus in the CM system, both neutron and nucleus are moving along the same line in opposite directions before the collision.
-
-Consider now the kinetic energy of the system before the collision.  Letting the variable, $e$, denote the kinetic energy of a particle in the CM system (i.e., relative to the CM velocity) we  have
-\begin{align*}
-  e_n + e_A = e_{\text{exc}}
-\end{align*}
-where the subscripts are used in the same way as they were in the velocity variables.  The new variable $e_{\text{exc}}$ is called the /excitation energy/, which is the energy that is available for the reaction, and may be written
-\begin{align*}
-  e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2.
-\end{align*}
-
-*** Elastic Scattering
-
-We will now assume that linear momentum is conserved through the collision.  In the LAB system this means
-\begin{align*}
-  \vec{V}_n + A\vec{V}_A = \vec{V}_n' + A\vec{V}_A'
-\end{align*}
-By using the definitions in Eq. \eqref{eq:cmDefs} we see that this relationship carries over to CM system, allowing us to write
-\begin{align*}
-  \vec{v}_n + A\vec{v}_A = \vec{v}_n' + A\vec{v}_A'
-\end{align*}
-Writing the left-hand-side of this expression (i.e., the pre-collision linear momentum) in terms of the relative velocity reveals that net linear momentum both before and after the collision is zero:
-\begin{align*}
-  \frac{A}{A+1}\vec{V}_R - \frac{A}{A+1}\vec{V}_R = \vec{0}
-\end{align*}
-This means that
-\begin{align*}
-  \vec{v}_n = -A \vec{v}_A, \\
-  \vec{V}_n' = -A \vec{v}_A'.
-\end{align*}
+Thus in the CM system, both neutron and nucleus are moving along the same line in opposite directions before the collision, as shown in Figure \ref{fig::scatteringCM}.
 
 \begin{figure}
 \centering
@@ -173,7 +145,37 @@ This means that
   \draw (12.3,-12.4) node {$\theta$};
 \end{tikzpicture}
 \caption{Neutron-nucleus collision in CM coordinates.}
+\label{fig::scatteringCM}
 \end{figure}
+
+Consider now the kinetic energy of the system before the collision.  Letting the variable, $e$, denote the kinetic energy of a particle in the CM system (i.e., relative to the CM velocity) we  have
+\begin{align*}
+  e_n + e_A = e_{\text{exc}}
+\end{align*}
+where the subscripts are used in the same way as they were in the velocity variables.  The new variable $e_{\text{exc}}$ is called the /excitation energy/, which is the energy that is available for the reaction, and may be written
+\begin{align*}
+  e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2.
+\end{align*}
+
+*** Elastic Scattering
+
+We will now assume that linear momentum is conserved through the collision.  In the LAB system this means
+\begin{align*}
+  \vec{V}_n + A\vec{V}_A = \vec{V}_n' + A\vec{V}_A'
+\end{align*}
+By using the definitions in Eq. \eqref{eq:cmDefs} we see that this relationship carries over to CM system, allowing us to write
+\begin{align*}
+  \vec{v}_n + A\vec{v}_A = \vec{v}_n' + A\vec{v}_A'
+\end{align*}
+Writing the left-hand-side of this expression (i.e., the pre-collision linear momentum) in terms of the relative velocity reveals that net linear momentum both before and after the collision is zero:
+\begin{align*}
+  \frac{A}{A+1}\vec{V}_R - \frac{A}{A+1}\vec{V}_R = \vec{0}
+\end{align*}
+This means that
+\begin{align*}
+  \vec{v}_n = -A \vec{v}_A, \\
+  \vec{V}_n' = -A \vec{v}_A'.
+\end{align*}
 
 Let us now additionally assume conservation of kinetic energy before and after the collision.  That is, 
 \begin{align*}
@@ -217,6 +219,7 @@ We can sketch a diagram of the relationship between the LAB and CM velocities an
   \draw (4.5,1) node {$\theta$};
 \end{tikzpicture}
 \caption{Relationship between final neutron velocities in LAB and CM.}
+\label{fig::scatteringVelLABvsCM}
 \end{figure}
 
 From this diagram, we can apply the law of cosines to find
@@ -238,8 +241,8 @@ where
 \end{align*}
 
 To understand this a bit better let's consider a few limiting cases.
-- $A=1$ :: This is the case of a neutron scattering off a hydrogen nucleus, and $\alpha = 0$.  For a glancing collision, the angle of deflect ($\varphi$ or $\theta$) will be very small.  Thus $E_n' \approx E_n$ and no appreciable energy is lost in the collision.  For a direct hit, in which case the neutron bounces straight back ($\varphi = \theta = \pi$) we have $E_n' = 0$--the neutron lost /all/ of its energy in a single collision.
-- $A>>1$ :: In this case the neutron hits something big, and $\alpha \approx 1$.  Under these circumstances $E_n' \approx E_n$ /regardless/ of the deflection angle.  Think of throwing a tennis ball against a brick wall.
+- $A=1$ : :: This is the case of a neutron scattering off a hydrogen nucleus, and $\alpha = 0$.  For a glancing collision, the angle of deflect ($\varphi$ or $\theta$) will be very small.  Thus $E_n' \approx E_n$ and no appreciable energy is lost in the collision.  For a direct hit, in which case the neutron bounces straight back ($\varphi = \theta = \pi$) we have $E_n' = 0$--the neutron lost /all/ of its energy in a single collision.
+- $A>>1$ : :: In this case the neutron hits something big, and $\alpha \approx 1$.  Under these circumstances $E_n' \approx E_n$ /regardless/ of the deflection angle.  Think of throwing a tennis ball against a brick wall.
 
 Another important ramification is that for any fixed size of the target nucleus, $A$, their is a limited range of possible final energies for the neutron.  The largest energy loss will occur when the neutron is scattered directly backward, in which case $E_n' = \alpha E_n$.  On the other hand, for a small-angle glancing collision, the final energy will be only slightly less than the initial energy and $E_n' \approx E_n$.  Note that under our current assumptions (namely, that the target nucleus is stationary) the neutron will never /gain/ energy.
 
@@ -284,7 +287,7 @@ The presence of the photon at the end of this reaction clearly indicates that en
 
 When considering the energetics of inelastic scattering, note that the final nucleus is simply the original target nucleus.  Thus the role of the change in binding energy has no net effect on the energy of the system.  There was $e_\text{exc}$ energy available before the collision (from the kinetic energy of the neutron and nucleus) and there is still $e_\text{exc}$ energy available after the collision, although the photon has appeared and claimed part of the available energy.
 
-A second consideration is that for the compound nucleus to decay into an excited state, there must have been at least enough energy, $e_\text{exc}$, to bridge the gap between the ground and the first excited state.  Otherwise there would not have been enough energy available after the neutron emission for the target nucleus to be in an excited state!  This type of reaction is known as a /threshold/ reaction, because the energy of the colliding pair must meet a certain "threshold" value before the reaction can take place.  Note that if the compound nucleus emits a neutron and returns the target nucleus to its ground state, then there is no photon emission (which is only a result of de-excitation), thus the total energy of the reaction $e_\text{exc}$ is shared between the neutron and nucleus as kinetic energy.  This, however, implies overall conservation of kinetic energy between the neutron and nucleus, thus it is an /elastic/ scattering event!
+A second consideration is that for the compound nucleus to decay into an excited state, there must have been at least enough energy, $e_\text{exc}$, to bridge the gap between the ground and the first excited state of the original nucleus.  Otherwise there would not have been enough energy available after the neutron emission for the target nucleus to be in an excited state!  This type of reaction is known as a /threshold/ reaction, because the energy of the colliding pair must meet a certain "threshold" value before the reaction can take place.  Note that if the compound nucleus emits a neutron and returns the target nucleus to its ground state, then there is no photon emission (which is only a result of de-excitation), thus the total energy of the reaction $e_\text{exc}$ is shared between the neutron and nucleus as kinetic energy.  This, however, implies overall conservation of kinetic energy between the neutron and nucleus, thus it is an /elastic/ scattering event!
 
 *** Radiative Capture
 A radiative capture reaction is essentially an inelastic neutron scattering /without the neutron/.  That is, the target nucleus absorbs a neutron then de-excites simply by emitting one or more photons:
@@ -301,8 +304,9 @@ In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to over
 - [[ebib:Duderstadt:Hamilton1976][Duderstadt and Hamilton]]
 - [[ebib:Stacey2001][Stacey]]
 ** Problems                                                       :noexport:
-1. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
-2. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
+1. In the formation of a compound nucleus, why is the available energy equal to $e_\text{exc}$, the energy in the CM system, rather than the total kinetic energy in the LAB system?
+2. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
+3. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
 
 * Cross Sections                                                   :noexport:
 ** What is a Cross Section?

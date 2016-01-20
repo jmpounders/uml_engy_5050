@@ -8,7 +8,7 @@ We have established that the fundamental problem in reactor physics is to determ
 Background
 ----------
 
-See the :download:`reference notes <../notes/neutronNucleusInteractions.pdf>`.
+:download:`Reference notes, Neutron-Nucleus Reactions <../../notes/neutronNucleusInteractions.pdf>`.
 
 Comrehension Assessment
 -----------------------

@@ -13,6 +13,7 @@ Nuclear Reactor Physics
    preface
    problems
    appendix
+   courselog
 
 Welcome to the course website for Nuclear Reactor Physics (ENGY 5050) at UMass Lowell.  Introductory notes and orientation material are located in the :doc:`preface`.  The course content is contained in the :doc:`problems`.
 

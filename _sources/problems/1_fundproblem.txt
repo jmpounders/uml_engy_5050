@@ -5,20 +5,21 @@ The fundamental question of reactor physics can be expressed as follows:
 
     *Where* and *how much* power is being generated in a nuclear reactor at any given point in time?
 
-We will spend the semester breaking down this question into a series of consecutative, hierarchical problems to be solved.  Before proceeding we must first begin by asking how is energy created in a reactor in the first place. 
+We will spend the semester breaking down this question into a series of consecutive, hierarchical problems to be solved.  Before proceeding we must first begin by considering how energy is created in a reactor in the first place. 
 
 How Is Energy Created in a Reactor?
 -----------------------------------
 
-For *fission* reactors, which is the exclusive purvey of this course, the answer is unsurprisingly that energy is released whenever an atom fissions.  This energy appears in the form of kinetic energy born by ejected neutrons, fission fragmens, and photons.  This initial burst of kinetic energy is the *prompt* release.  In contrast, the fission fragments are almost always unstable and tend to emit a succession of beta particles and neutrinos, and in some cases neutrons until stability is reached.  The drawn out release of energy associated with the decay of fission fragments is the *delayed* energy release.  The kinetic energy of these particles, in way or another, is imparted to the reactor itself through collisions, thereby heating the reactor.
+For *fission* reactors, which is the exclusive purvey of this course, the answer is unsurprisingly that energy is released whenever an atom fissions.  This energy appears in the form of kinetic energy born by ejected neutrons, fission fragmens, and photons.  This initial burst of kinetic energy is the *prompt* release.  In contrast, the fission fragments are almost always unstable and tend to emit a succession of beta particles and neutrinos, and in some cases neutrons until stability is reached.  The drawn out release of energy associated with the decay of fission fragments is the *delayed* energy release.  The kinetic energy of these particles, in one way or another, is imparted to the reactor itself through collisions, thereby heating the reactor.
 
 Where Is Energy Created in a Reactor?
 -------------------------------------
 
 The preceeding addresses, in rough measure, *how* energy is created, but not *where* it is created.
+
 - Fission fragments are very large and tend not to travel very far from the site of fission.
 - Photons may travel anywhere from 10 to 100 cm, loosing energy through collisions as the go.
-- Neutrons likewise travel anywhere from 10 to 100 cm, loosing energy through collisions as they go.  Neutrons may also be absorbed into nuclei.  When this happens, the absorbing nuclei tends to respond by emitting a photon (a *capture gammas*), which will continue the transport of energy through the reactor.
+- Neutrons likewise travel anywhere from 10 to 100 cm, loosing energy through collisions as they go.  Neutrons may also be absorbed into nuclei.  When this happens, the absorbing nuclei tends to respond by emitting a photon (a *capture gamma*), which will continue the transport of energy through the reactor.
 - Beta particles emitted from fission fragments will not travel very far.
 - Most neutrinos will zip through the reactor, through the center of the earth and into outer space and never be heard from again.
 
