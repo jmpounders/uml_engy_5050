@@ -20,7 +20,7 @@ Now that the machinery is in place, you need to create and configure the VM.  I 
 
 You do need to decide where you want to access your VM from.  You should create a new folder/directory for this.  This new folder should be easily accessible, e.g., in your "Documents" folder, your home/user folder, etc.  For me, this is a folder named ``uml_engy_5050`` in my home directory.  I will call this the "VM folder."
 
-- Download the Vagrantfile to the VM folder that you just created.
+- Download the :download:`Vagrantfile <Vagrantfile>` to the VM folder that you just created.
 - From a command prompt/terminal, navigate to the VM folder (using the ``cd`` command) and enter the command ``vagrant up``.
 
 The first time you run the ``vagrant up`` command, the base VM will be downloaded from the internet, provisioned, then started in the background.  This process will likely take a long time, so plan accordingly!  Once your VM is installed and provisioned the first time it will be much quicker to load it in the future.

@@ -5,7 +5,7 @@
 #+LATEX_HEADER_EXTRA: \newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
 #+LATEX_HEADER_EXTRA: \pagestyle{fancyplain}
 #+LATEX_HEADER_EXTRA: \cfoot{{\it ENGY 5050, Nuclear Reactor Physics, UMass Lowell}}
-#+OPTIONS: H:4
+#+OPTIONS: H:4 tex:imagemagick
 #+STARTUP: indent nostars
 
 * Neutron-Nucleus Reactions
@@ -477,3 +477,9 @@ The location and density of resonances varies by nuclide and energy.  In general
 *Quantum Description:*  A common and quite accurate quantum description of the nucleus is given by the /shell model/, which is analogous to the description of atomic electrons.  Neutrons, protons and electrons are all classified as /fermions/, which are particles with a spin of $\frac{1}{2}\hbar$ that obey the Pauli exclusion principle.  Neutrons and protons in a nucleus reside in discrete energy states and posses angular momentum that also occurs in discrete amounts.  The angular momentum is specified by the positive, integer quantum nunber $\ell \geq 0$, and the first few angular momentum states are are labeled $s$, $p$, $d$, $f$, etc, again in analogy to atomic electrons.  The /ground state/ of a nucleus occurs when all of the nuclear particles are in the lowest energy states allowed by the Pauli exclusion principle.  An /excited state/ occurs when a nucleon is elevated to a higher (and unstable) energy level.
 
 
+* COMMENT setup
+#+begin_src emacs-lisp :results silent
+  (setq org-babel-latex-htlatex "htlatex")
+  (defmacro by-backend (&rest body)
+    `(case (if (boundp 'backend) (org-export-backend-name backend) nil) ,@body))
+#+end_src
