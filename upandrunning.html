@@ -54,30 +54,37 @@
 </div>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
-<p>Now that the machinery is in place, you need to create and configure the VM.  I have made this easy: all you need to do is download a configuration file and then run a single command from a command prompt/terminal.</p>
+<p>Now that the machinery is in place, you need to create and configure the VM.  I have made this easy: all you need to do is download a configuration file and install script, then run a single command from a command prompt/terminal.</p>
 <p>You do need to decide where you want to access your VM from.  You should create a new folder/directory for this.  This new folder should be easily accessible, e.g., in your &#8220;Documents&#8221; folder, your home/user folder, etc.  For me, this is a folder named <code class="docutils literal"><span class="pre">uml_engy_5050</span></code> in my home directory.  I will call this the &#8220;VM folder.&#8221;</p>
 <ul class="simple">
-<li>Download the <a class="reference download internal" href="_downloads/Vagrantfile"><code class="xref download docutils literal"><span class="pre">Vagrantfile</span></code></a> to the VM folder that you just created.</li>
+<li>Download the <a class="reference download internal" href="_downloads/Vagrantfile"><code class="xref download docutils literal"><span class="pre">Vagrantfile</span></code></a> and <a class="reference download internal" href="_downloads/pyne_install_ubuntu14.sh"><code class="xref download docutils literal"><span class="pre">pyne_install_ubuntu14.sh</span></code></a> files to the VM folder that you just created.  These file names <em>must</em> appear as they are written above for the installation to work.</li>
 <li>From a command prompt/terminal, navigate to the VM folder (using the <code class="docutils literal"><span class="pre">cd</span></code> command) and enter the command <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code>.</li>
 </ul>
 <p>The first time you run the <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> command, the base VM will be downloaded from the internet, provisioned, then started in the background.  This process will likely take a long time, so plan accordingly!  Once your VM is installed and provisioned the first time it will be much quicker to load it in the future.</p>
 <div class="section" id="what-is-happening-anyway">
 <h3>What is happening, anyway?<a class="headerlink" href="#what-is-happening-anyway" title="Permalink to this headline">¶</a></h3>
-<p>The &#8220;provisioning&#8221; process is downloading and installing several pieces of software that we will likely need over the course of the semester.  All of these installations occur <em>inside</em> the virtual machine, so the rest of your computer will <em>not</em> be affected.  The VM provides a safe, uniform, reproducible environment so that we are all working from the same page, regardless of what you operating system you call home.</p>
+<p>The &#8220;provisioning&#8221; process is downloading and installing several pieces of software that we will likely need over the course of the semester.  All of these installations occur <em>inside</em> the virtual machine, so the rest of your computer will <em>not</em> be affected.  The VM provides a safe, uniform, reproducible environment so that we are all working from the same page, regardless of what operating system you call home.</p>
 </div>
 </div>
 <div class="section" id="using-the-system">
 <h2>Using the System<a class="headerlink" href="#using-the-system" title="Permalink to this headline">¶</a></h2>
 <p>If you just installed the VM following the instructions in the previous example, your VM is already up and running.  If your VM is not currently running because you shut it down or rebooted your computer, just run <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> from a command prompt in your VM folder.</p>
-<p>Next, open a web browser and enter <code class="docutils literal"><span class="pre">127</span></code> in the address bar.</p>
-<p>Save/locate files</p>
+<p>Next, open a web browser and enter <code class="docutils literal"><span class="pre">127.0.0.1:8888</span></code> in the address bar.  This will open the <a class="reference external" href="http://jupyter.org/">Jupyter</a> console, which is shown below.</p>
+<div class="figure align-center" id="id2">
+<img alt="_images/jupyter_home.png" src="_images/jupyter_home.png" />
+<p class="caption"><span class="caption-text">The Jupyter Home Page.</span></p>
+</div>
+<p>Jupyter is a front-end system for interactivly running various pieces of code.  We will use it interacting with Python and several support libraries implemented in Python.  (Jupyter is an outgrowth of the <a class="reference external" href="http://ipython.org/notebook.html">IPython Notebooks</a> project.  IPython, short for <em>interactive python</em> is still the default kernel for Jupyter, but Jupyter has added many more languages in addition to Python.)</p>
+<p>The Jupyter system is fundamentally a collection of <em>notebooks</em>.  Each notebook can contain &#8220;live&#8221; Python code, mathematical equations, visualizations, and text.  We will explore these functionalities in class rather than try to explain everything here.  To create a new notebook, click on the &#8220;New&#8221; button in the upper-right hand corner of the screen, then select &#8220;Python 2.&#8221;  This will open a new tab in your web browser containing an empty noteboook, as shown below.</p>
+<div class="figure align-center" id="id3">
+<img alt="_images/jupyter_nb.png" src="_images/jupyter_nb.png" />
+<p class="caption"><span class="caption-text">A Jupyter Notebook.</span></p>
+</div>
+<p>Ideally, each notebook should contain all of the code <em>and</em> notes that go toward the solution of a particular problem.  These notebooks can be saved (from the notebook itself) and opened later (from the Jupyter home screen).  All saved notebooks will automatically be saved in a <code class="docutils literal"><span class="pre">notebooks</span></code> folder within your VM folder.</p>
 </div>
 <div class="section" id="shutting-down">
 <h2>Shutting Down<a class="headerlink" href="#shutting-down" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Shutdown jupyter</li>
-</ul>
-<p>To shutdown your VM issue the command <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">halt</span></code> from a command prompt in your VM folder.  This will stop the VM and free up all of the resources that the VM was using.</p>
+<p>To shutdown your VM issue the command <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">halt</span></code> from a command prompt in your VM folder.  This will stop the Jupyter server, shutdown the VM operatiing system, and free up all of the resources that the VM was using.  Make sure you save any open Jupyter notebooks <em>before</em> shutting down the VM!</p>
 </div>
 <div class="section" id="uninstalling">
 <h2>Uninstalling<a class="headerlink" href="#uninstalling" title="Permalink to this headline">¶</a></h2>

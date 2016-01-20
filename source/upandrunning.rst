@@ -16,11 +16,11 @@ Two pieces of third-party software are required to administer the virtual machin
 Setup
 -----
 
-Now that the machinery is in place, you need to create and configure the VM.  I have made this easy: all you need to do is download a configuration file and then run a single command from a command prompt/terminal.
+Now that the machinery is in place, you need to create and configure the VM.  I have made this easy: all you need to do is download a configuration file and install script, then run a single command from a command prompt/terminal.
 
 You do need to decide where you want to access your VM from.  You should create a new folder/directory for this.  This new folder should be easily accessible, e.g., in your "Documents" folder, your home/user folder, etc.  For me, this is a folder named ``uml_engy_5050`` in my home directory.  I will call this the "VM folder."
 
-- Download the :download:`Vagrantfile <Vagrantfile>` to the VM folder that you just created.
+- Download the :download:`Vagrantfile <Vagrantfile>` and :download:`pyne_install_ubuntu14.sh <pyne_install_ubuntu14.sh>` files to the VM folder that you just created.  These file names *must* appear as they are written above for the installation to work.
 - From a command prompt/terminal, navigate to the VM folder (using the ``cd`` command) and enter the command ``vagrant up``.
 
 The first time you run the ``vagrant up`` command, the base VM will be downloaded from the internet, provisioned, then started in the background.  This process will likely take a long time, so plan accordingly!  Once your VM is installed and provisioned the first time it will be much quicker to load it in the future.
@@ -28,23 +28,35 @@ The first time you run the ``vagrant up`` command, the base VM will be downloade
 What is happening, anyway?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The "provisioning" process is downloading and installing several pieces of software that we will likely need over the course of the semester.  All of these installations occur *inside* the virtual machine, so the rest of your computer will *not* be affected.  The VM provides a safe, uniform, reproducible environment so that we are all working from the same page, regardless of what you operating system you call home.
+The "provisioning" process is downloading and installing several pieces of software that we will likely need over the course of the semester.  All of these installations occur *inside* the virtual machine, so the rest of your computer will *not* be affected.  The VM provides a safe, uniform, reproducible environment so that we are all working from the same page, regardless of what operating system you call home.
 
 Using the System
 ----------------
 
 If you just installed the VM following the instructions in the previous example, your VM is already up and running.  If your VM is not currently running because you shut it down or rebooted your computer, just run ``vagrant up`` from a command prompt in your VM folder.
 
-Next, open a web browser and enter ``127`` in the address bar.
+Next, open a web browser and enter ``127.0.0.1:8888`` in the address bar.  This will open the `Jupyter <http://jupyter.org/>`_ console, which is shown below.
 
-Save/locate files
+.. figure:: jupyter_home.png
+   :align: center
+
+   The Jupyter Home Page.
+
+Jupyter is a front-end system for interactivly running various pieces of code.  We will use it interacting with Python and several support libraries implemented in Python.  (Jupyter is an outgrowth of the `IPython Notebooks <http://ipython.org/notebook.html>`_ project.  IPython, short for *interactive python* is still the default kernel for Jupyter, but Jupyter has added many more languages in addition to Python.)
+
+The Jupyter system is fundamentally a collection of *notebooks*.  Each notebook can contain "live" Python code, mathematical equations, visualizations, and text.  We will explore these functionalities in class rather than try to explain everything here.  To create a new notebook, click on the "New" button in the upper-right hand corner of the screen, then select "Python 2."  This will open a new tab in your web browser containing an empty noteboook, as shown below.
+
+.. figure:: jupyter_nb.png
+   :align: center
+
+   A Jupyter Notebook.
+
+Ideally, each notebook should contain all of the code *and* notes that go toward the solution of a particular problem.  These notebooks can be saved (from the notebook itself) and opened later (from the Jupyter home screen).  All saved notebooks will automatically be saved in a ``notebooks`` folder within your VM folder.
 
 Shutting Down
 -------------
-  
-- Shutdown jupyter
 
-To shutdown your VM issue the command ``vagrant halt`` from a command prompt in your VM folder.  This will stop the VM and free up all of the resources that the VM was using.
+To shutdown your VM issue the command ``vagrant halt`` from a command prompt in your VM folder.  This will stop the Jupyter server, shutdown the VM operatiing system, and free up all of the resources that the VM was using.  Make sure you save any open Jupyter notebooks *before* shutting down the VM!
 
 Uninstalling
 ------------

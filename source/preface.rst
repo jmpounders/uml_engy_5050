@@ -6,4 +6,5 @@ Preface
               
    syllabus
    upandrunning
+   jupyterTest
    
