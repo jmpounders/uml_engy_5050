@@ -1,7 +1,7 @@
 Syllabus
 ========
 
-:Course number: ENGY 5050-xxx
+:Course number: ENGY 5050
 :Instructor:    - Dr. Justin Pounders
                 - Pinanski Hall, 301G
                 - 978-934-5204

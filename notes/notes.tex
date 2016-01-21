@@ -1,4 +1,4 @@
-% Created 2016-01-20 Wed 13:09
+% Created 2016-01-21 Thu 09:02
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -322,6 +322,63 @@ There are two sources of the excitation energy in a compound nucleus.  First, th
   \Delta BE = \left[ M(A,z) + m_n - M(A+1,Z) \right] c^2
 \end{align*}
 where \(M(A,Z)\) is the mass of nucleus \(\leftidx{^A_Z}{X}{}\), \(m_n\) is the mass of the neutron and \(c\) is the speed of light in a vacuum.  Thus the total energy available to the reaction is \(e_{\text{exc}} + \Delta BE\).
+
+Figure \ref{fig::compoundNucleus} shows a cartoon depicting the excitation of a nucleus following neutron capture and three possible de-excitation processes (also called \emph{decay channels}).  Elastic scattering has already been discussed, and as we will see, can be treated as a special case of inelastic scattering, which we will now discuss.
+\usetikzlibrary{decorations.pathmorphing}
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.75]
+  \draw (17,0) node [anchor=north] {$\leftidx{^{A+1}_Z}{X}{}$};
+  \draw (14,0) -- (20,0);
+  \draw (14,6) -- (20,6);
+  \draw (14,11) -- (20,11);
+  \draw (14,15) -- (20,15);
+  \draw (14,18) -- (20,18);
+  \draw (14,20) -- (20,20);
+  \draw (14,22) -- (20,22);
+  \draw (14,23.5) -- (20,23.5);
+  \draw (14,0) -- (14,25);
+  \draw (20,0) -- (20,25);
+
+  \draw (7,17) node [anchor=north] {$\leftidx{^A_Z}{X}{}$};
+  \draw (4,17) -- (10,17);
+  \draw (4,21) -- (10,21);
+  \draw (4,24) -- (10,24);
+  \draw (4,17) -- (4,25);
+  \draw (10,17) -- (10,25);
+
+  \draw [dashed] (14,23.5) -- (0,23.5);
+  \draw [dashed] (20,17) -- (0,17);
+  \draw [dashed] (14,0) -- (0,0);
+
+  \draw [<->,thick] (2,0) -- (2,17);
+  \draw (2,8.5) node [fill=white] {$\Delta BE$};
+
+  \draw [<->,thick] (2,17) -- (2,23.5);
+  \draw (2,20.25) node [fill=white] {$e_\text{exc}$};
+
+  \draw [->,thick] (15,23.5) -- (6,21);
+  \filldraw [fill=white, draw=black] (12,22.6) circle [radius=0.15in];
+  \draw (12,22.6) node {1};
+
+  \draw [->,thick] (16,23.5) -- (8,17);
+  \filldraw [fill=white, draw=black] (12,20.25) circle [radius=0.15in];
+  \draw (12,20.25) node {2};
+
+  \draw [->,decorate,decoration={snake}] (6,21) -- (6,17);
+  \draw [->,decorate,decoration={snake}] (17,23.5) -- (17,15);
+  \draw [->,decorate,decoration={snake}] (18,23.5) -- (18,11);
+  \draw [->,decorate,decoration={snake}] (19,23.5) -- (19,6);
+  \filldraw [fill=white, draw=black] (17.8,10) circle [radius=0.15in];
+  \draw (17.8,10) node {3};
+
+  \draw [->] (22,0) -- (22,4);
+  \draw (22,2) node [anchor=west] {$E$};
+\end{tikzpicture}
+\caption{Formation of a compound nucleus following neutron capture.  The decay channels shown are \textcircled{1} inelastic scattering, \textcircled{2} elastic scattering, and \textcircled{3} radiative capture.}
+\label{fig::compoundNucleus}
+\end{figure}
+
 
 \subsubsection{Inelastic Scattering}
 \label{sec:orgheadline6}

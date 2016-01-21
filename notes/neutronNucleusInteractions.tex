@@ -1,4 +1,4 @@
-% Created 2016-01-20 Wed 13:06
+% Created 2016-01-21 Thu 08:59
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -22,10 +22,10 @@
 \cfoot{{\it ENGY 5050, Nuclear Reactor Physics, UMass Lowell}}
 \author{Justin Pounders}
 \date{\today}
-\title{Neutron-Nucleus Reactions}
+\title{ENGY 5050}
 \hypersetup{
  pdfauthor={Justin Pounders},
- pdftitle={Neutron-Nucleus Reactions},
+ pdftitle={ENGY 5050},
  pdfkeywords={},
  pdfsubject={},
  pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
@@ -35,7 +35,10 @@
 \maketitle
 \tableofcontents
 
-\section{Introduction}
+
+\section{Neutron-Nucleus Reactions}
+\label{sec:orgheadline11}
+\subsection{Introduction}
 \label{sec:orgheadline1}
 A neutron striking a nucleus may elicit a number of different reactions.  The types of reactions may be broadly divided into \emph{absorption} and \emph{scattering} reactions.  Absorption reactions are those in which the neutron is integrated into the nucleus, forming a new nucleus.  Normally this results in an excited, unstable nucleus.  The most common way for the nucleus to alleviate the pressure of the new nucleon is through emission of a photon.  The neutron never re-emerges, so this type of reaction is called a \emph{capture} reaction.  For fissile isotopes, the absorption process normally causes the nucleus to split violently into two pieces, or in other words, \emph{fission}.
 
@@ -60,7 +63,7 @@ Nuclear interactions are typically labeled by identifying the target nucleus, th
 
 Note that we have abused the original notation somewhat (this is standard) by writing \(f\) in place of an ejected particle to denote fission.  We have also written \(n'\) as the ejected particle in inelastic scattering as a reminder that the ejected particle will in general \emph{not} be the same neutron that struck the nucleus.  In some cases, high-energy inelastic scattering reactions may in fact yield more than one neutrons, in which would be denoted \((n,2n)\), \((n,3n)\), etc. with no apostrophe on the ejected particles.
 
-\section{Scattering Reactions}
+\subsection{Scattering Reactions}
 \label{sec:orgheadline9}
 To describe the kinematics of neutron-nucleus scattering we will begin with several assumptions.
 \begin{enumerate}
@@ -70,7 +73,7 @@ To describe the kinematics of neutron-nucleus scattering we will begin with seve
 \item Reactors materials are isotropic.  This means that a material has no preferred orientation.  On the scale of neutron-nucleus interactions in a reactor this is a valid assumption.
 \end{enumerate}
 
-\subsection{Scattering Kinematics}
+\subsubsection{Scattering Kinematics}
 \label{sec:orgheadline2}
 
 Let us now consider the specific kinematics associated with scattering.
@@ -196,7 +199,7 @@ where the subscripts are used in the same way as they were in the velocity varia
   e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2.
 \end{align*}
 
-\subsection{Elastic Scattering}
+\subsubsection{Elastic Scattering}
 \label{sec:orgheadline4}
 
 We will now assume that linear momentum is conserved through the collision.  In the LAB system this means
@@ -230,7 +233,7 @@ and
   v_A = v_A' = \frac{1}{A+1}V_R.
 \end{align*}
 
-\subsubsection{Stationary Target Nucleus}
+\paragraph{Stationary Target Nucleus}
 \label{sec:orgheadline3}
 Consider the special case where target nucleus is stationary, i.e. \(\vec{V}_A = 0\).  From the previous section we know that
 \begin{align*}
@@ -305,7 +308,7 @@ Multiplying by the mass of a neutron squared divided by four (to get an expressi
              - \frac{1}{2}\left( A-1 \right) \sqrt{\frac{E_n}{E_n'}}.
 \end{align*}
 
-\subsection{Reactions Involving a Compound Nucleus}
+\subsubsection{Reactions Involving a Compound Nucleus}
 \label{sec:orgheadline5}
 Elastic scattering may be viewed a billiard ball collision.  The neutron and nucleus exchange kinetic energy and linear momentum but nothing else.  In collisions such as inelastic scattering, neutron capture, and fission however, the neutron and nucleus combine to form a new, compound nucleus.  Moreover, this compound nucleus will generally be in an \emph{excited} state, having received additional internal energy from the collision.  We may write such a reaction as
 \begin{align*}
@@ -320,7 +323,64 @@ There are two sources of the excitation energy in a compound nucleus.  First, th
 \end{align*}
 where \(M(A,Z)\) is the mass of nucleus \(\leftidx{^A_Z}{X}{}\), \(m_n\) is the mass of the neutron and \(c\) is the speed of light in a vacuum.  Thus the total energy available to the reaction is \(e_{\text{exc}} + \Delta BE\).
 
-\subsection{Inelastic Scattering}
+Figure \ref{fig::compoundNucleus} shows a cartoon depicting the excitation of a nucleus following neutron capture and three possible de-excitation processes (also called \emph{decay channels}).  Elastic scattering has already been discussed, and as we will see, can be treated as a special case of inelastic scattering, which we will now discuss.
+\usetikzlibrary{decorations.pathmorphing}
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.75]
+  \draw (17,0) node [anchor=north] {$\leftidx{^{A+1}_Z}{X}{}$};
+  \draw (14,0) -- (20,0);
+  \draw (14,6) -- (20,6);
+  \draw (14,11) -- (20,11);
+  \draw (14,15) -- (20,15);
+  \draw (14,18) -- (20,18);
+  \draw (14,20) -- (20,20);
+  \draw (14,22) -- (20,22);
+  \draw (14,23.5) -- (20,23.5);
+  \draw (14,0) -- (14,25);
+  \draw (20,0) -- (20,25);
+
+  \draw (7,17) node [anchor=north] {$\leftidx{^A_Z}{X}{}$};
+  \draw (4,17) -- (10,17);
+  \draw (4,21) -- (10,21);
+  \draw (4,24) -- (10,24);
+  \draw (4,17) -- (4,25);
+  \draw (10,17) -- (10,25);
+
+  \draw [dashed] (14,23.5) -- (0,23.5);
+  \draw [dashed] (20,17) -- (0,17);
+  \draw [dashed] (14,0) -- (0,0);
+
+  \draw [<->,thick] (2,0) -- (2,17);
+  \draw (2,8.5) node [fill=white] {$\Delta BE$};
+
+  \draw [<->,thick] (2,17) -- (2,23.5);
+  \draw (2,20.25) node [fill=white] {$e_\text{exc}$};
+
+  \draw [->,thick] (15,23.5) -- (6,21);
+  \filldraw [fill=white, draw=black] (12,22.6) circle [radius=0.15in];
+  \draw (12,22.6) node {1};
+
+  \draw [->,thick] (16,23.5) -- (8,17);
+  \filldraw [fill=white, draw=black] (12,20.25) circle [radius=0.15in];
+  \draw (12,20.25) node {2};
+
+  \draw [->,decorate,decoration={snake}] (6,21) -- (6,17);
+  \draw [->,decorate,decoration={snake}] (17,23.5) -- (17,15);
+  \draw [->,decorate,decoration={snake}] (18,23.5) -- (18,11);
+  \draw [->,decorate,decoration={snake}] (19,23.5) -- (19,6);
+  \filldraw [fill=white, draw=black] (17.8,10) circle [radius=0.15in];
+  \draw (17.8,10) node {3};
+
+  \draw [->] (22,0) -- (22,4);
+  \draw (22,2) node [anchor=west] {$E$};
+\end{tikzpicture}
+\caption{Formation of a compound nucleus following neutron capture.  The decay channels shown are \textcircled{1} inelastic scattering, \textcircled{2} elastic scattering, and \textcircled{3} radiative capture.}
+\label{fig::compoundNucleus}
+\end{figure}
+
+
+\subsubsection{Inelastic Scattering}
 \label{sec:orgheadline6}
 Inelastic scattering involves the formation of a compound nucleus which subsequently decays through the emission of a neutron and one or more photons (\(\gamma\) rays):
 \begin{align*}
@@ -334,7 +394,7 @@ When considering the energetics of inelastic scattering, note that the final nuc
 
 A second consideration is that for the compound nucleus to decay into an excited state, there must have been at least enough energy, \(e_\text{exc}\), to bridge the gap between the ground and the first excited state of the original nucleus.  Otherwise there would not have been enough energy available after the neutron emission for the target nucleus to be in an excited state!  This type of reaction is known as a \emph{threshold} reaction, because the energy of the colliding pair must meet a certain "threshold" value before the reaction can take place.  Note that if the compound nucleus emits a neutron and returns the target nucleus to its ground state, then there is no photon emission (which is only a result of de-excitation), thus the total energy of the reaction \(e_\text{exc}\) is shared between the neutron and nucleus as kinetic energy.  This, however, implies overall conservation of kinetic energy between the neutron and nucleus, thus it is an \emph{elastic} scattering event!
 
-\subsection{Radiative Capture}
+\subsubsection{Radiative Capture}
 \label{sec:orgheadline7}
 A radiative capture reaction is essentially an inelastic neutron scattering \emph{without the neutron}.  That is, the target nucleus absorbs a neutron then de-excites simply by emitting one or more photons:
 \begin{align*}
@@ -343,10 +403,10 @@ A radiative capture reaction is essentially an inelastic neutron scattering \emp
 \end{align*}
 Note that the total amount of energy to be relieved through the emission of photons is \(e_{\text{exc}} + \Delta BE\).
 
-\subsection{Fission Reactions}
+\subsubsection{Fission Reactions}
 \label{sec:orgheadline8}
 In a fission reaction, the energy \(e_{\text{exc}} + \Delta BE\) is enough to overcome the fission barrier (which is an energy threshold), and the nucleus splits into two fragments plus several free neutrons and photons.  The nuclear configuration of the fission fragments and the number of free neutrons emitted are both statistical quantities.  
-\section{References}
+\subsection{References}
 \label{sec:orgheadline10}
 \begin{itemize}
 \item \href{Hebert2009}{Hebert}
