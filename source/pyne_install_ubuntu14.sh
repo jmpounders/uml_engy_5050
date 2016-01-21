@@ -18,7 +18,8 @@ sudo apt-get install -y build-essential python-numpy python-scipy cython \
 # need to put libhdf5.so on LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
-echo "export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu" >> ~/.bashrc
+touch /home/vagrant/.bashrc
+echo "export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu" >> /home/vagrant/.bashrc
 cd $HOME
 mkdir opt
 cd opt
@@ -37,10 +38,10 @@ make
 make install
 export LD_LIBRARY_PATH=$HOME/opt/moab/lib:$LD_LIBRARY_PATH
 export LIBRARY_PATH=$HOME/opt/moab/lib:$LIBRARY_PATH
-echo "export LD_LIBRARY_PATH=$HOME/opt/moab/lib:\$LD_LIBRARY_PATH" >> ~/.bashrc
-echo "export LIBRARY_PATH=$HOME/opt/moab/lib:\$LIBRARY_PATH" >> ~/.bashrc
-echo "export CPLUS_INCLUDE_PATH=$HOME/opt/moab/include:\$CPLUS_INCLUDE_PATH" >> ~/.bashrc
-echo "export C_INCLUDE_PATH=$HOME/opt/moab/include:\$C_INCLUDE_PATH" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=$HOME/opt/moab/lib:\$LD_LIBRARY_PATH" >> /home/vagrant/.bashrc
+echo "export LIBRARY_PATH=$HOME/opt/moab/lib:\$LIBRARY_PATH" >> /home/vagrant/.bashrc
+echo "export CPLUS_INCLUDE_PATH=$HOME/opt/moab/include:\$CPLUS_INCLUDE_PATH" >> /home/vagrant/.bashrc
+echo "export C_INCLUDE_PATH=$HOME/opt/moab/include:\$C_INCLUDE_PATH" >> /home/vagrant/.bashrc
 cd ../../
 # Install PyTAPS
 wget https://pypi.python.org/packages/source/P/PyTAPS/PyTAPS-1.4.tar.gz
@@ -54,13 +55,13 @@ git clone https://github.com/pyne/pyne.git
 cd pyne
 python setup.py install --user -- -DMOAB_LIBRARY=$HOME/opt/moab/lib -DMOAB_INCLUDE_DIR=$HOME/opt/moab/include
 # python setup.py install --user
-echo "export PATH=$HOME/.local/bin:\$PATH" >> ~/.bashrc
-echo "export LD_LIBRARY_PATH=$HOME/.local/lib:\$LD_LIBRARY_PATH" >> ~/.bashrc
-echo "alias build_pyne='python setup.py install --user -- -DMOAB_LIBRARY=\$HOME/opt/moab/lib -DMOAB_INCLUDE_DIR=\$HOME/opt/moab/include'" >> ~/.bashrc
+echo "export PATH=$HOME/.local/bin:\$PATH" >> /home/vagrant/.bashrc
+echo "export LD_LIBRARY_PATH=$HOME/.local/lib:\$LD_LIBRARY_PATH" >> /home/vagrant/.bashrc
+echo "alias build_pyne='python setup.py install --user -- -DMOAB_LIBRARY=\$HOME/opt/moab/lib -DMOAB_INCLUDE_DIR=\$HOME/opt/moab/include'" >> /home/vagrant/.bashrc
 # Generate nuclear data file
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 ./scripts/nuc_data_make
 # Run all the tests
-cd tests
-nosetests
+#cd tests
+#nosetests
 echo "PyNE build complete. PyNE can be rebuilt with the alias 'build_pyne' executed from $HOME/opt/pyne"
