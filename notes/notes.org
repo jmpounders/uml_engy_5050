@@ -3,6 +3,7 @@
 #+LATEX_HEADER: \usepackage{fancyhdr}
 #+LATEX_HEADER: \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 #+LATEX_HEADER_EXTRA: \newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
+#+LATEX_HEADER_EXTRA: \newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
 #+LATEX_HEADER_EXTRA: \pagestyle{fancyplain}
 #+LATEX_HEADER_EXTRA: \cfoot{{\it ENGY 5050, Nuclear Reactor Physics, UMass Lowell}}
 #+OPTIONS: H:4 tex:imagemagick
@@ -364,6 +365,11 @@ In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to over
 1. In the formation of a compound nucleus, why is the available energy equal to $e_\text{exc}$, the energy in the CM system, rather than the total kinetic energy in the LAB system?
 2. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
 3. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
+4. [Hebert 2.1] Obtain the probability density $f(\mu)$ where $P(\mu)d\mu$ is the probability for the deviation cosine ($\cos\theta$) to have a value equal to $\mu$ (within an interval $d\mu$) in the LAB system.  Assume an elastic and isotropic collision in the CM system.  Neglect the initial velocity of the target nucleus.  (Hint: first obtain the relation between $\mu=\cos\theta$ and $\cos\phi$ by using the Law of Sines in Figure \ref{fig::scatteringVelLABvsCM}.
+5. [Hebert 2.4] Consider a neutron with an initial energy $E_0 = 2$ MeV in the LAB that elastically and isotropically (in CM) scatters off a nucleus that is initially at rest.
+   (a) Express the average lethargy gain $\left< u - u' \right>$ of the neutron in the LAB in terms of the mass ration $A$ of the nucleus.
+   (b) Find the average number of scattering collisions $\left< n \right>$ to slow down a neutron from energy $E_0$ to $E = 0.025$ eV in the LAB.
+   (c) Compute $\left< u - u' \right>$ and $\left< n \right>$ for the following nuclei: \leftidx{^1}{H}{}, \leftidx{^12}{C}{}, and \leftidx{^238}{U}{}.
 
 * Cross Sections                                                   :noexport:
 ** What is a Cross Section?
@@ -536,6 +542,43 @@ The location and density of resonances varies by nuclide and energy.  In general
 *Mass:* Masses on the nuclear scale at typically expressed in units of /atomic mass units/ (u), defined so that the mass of a neutron atom of $\leftidx{^{12}_6}{C}{}$ is exactly 12 u.
 
 *Quantum Description:*  A common and quite accurate quantum description of the nucleus is given by the /shell model/, which is analogous to the description of atomic electrons.  Neutrons, protons and electrons are all classified as /fermions/, which are particles with a spin of $\frac{1}{2}\hbar$ that obey the Pauli exclusion principle.  Neutrons and protons in a nucleus reside in discrete energy states and posses angular momentum that also occurs in discrete amounts.  The angular momentum is specified by the positive, integer quantum nunber $\ell \geq 0$, and the first few angular momentum states are are labeled $s$, $p$, $d$, $f$, etc, again in analogy to atomic electrons.  The /ground state/ of a nucleus occurs when all of the nuclear particles are in the lowest energy states allowed by the Pauli exclusion principle.  An /excited state/ occurs when a nucleon is elevated to a higher (and unstable) energy level.
+
+* Mathematical Odds and Ends                                       :noexport:
+Law sines
+law of cosines
+* Probability and Statistics
+Consider a real and continuous /random variable/, $\xi$.  This variable will take a value somewhere on the interval $[a,b]$, and let the probability of the random variable occurring between $x_1$ and $x_2$ be given by $P\left[ x_1 \leq \xi \leq x_2 \right]$.  We can define a /probability density function/, $f(x)$, such that $f(x)dx$ is the probability that the continuous random variable, $\xi$, will have a value between $x$ and $x+dx$ in the limit of $dx \rightarrow 0$.  In other words,
+\begin{align}
+  \label{eq::probDensFuncDef}
+  f(x)dx = P\left[ x \leq \xi \leq x+dx \right] \;\;.
+\end{align}
+The probability of the random variable $\xi$ having a value somewhere between $x_1$ and $x_2$ is then given by
+\begin{align}
+  \int_{x_1}^{x_2} f(x) dx = P\left[ x_1 \leq \xi \leq x_2 \right] \;\;.
+\end{align}
+Because the random variable $\xi$ must take a value \emph{somewhere} on the interval $[a,b]$, the density function $f(x)$ must be normalized to unity:
+\begin{align}
+  \int_a^b f(x) dx = 1 \;\;.
+\end{align}
+This normalization guarantees (with probability one) that the random variable will have a value somewhere in $[a,b]$.  Note that $a$ and $b$ are allowed to go to plus or minus infinity, respectively.  The interval $[a,b]$ is called the /support/ of $f(x)$.
+
+The /mean/ value of a probability density function is defined by
+\begin{align}
+  \left< x \right> = \int_a^b x f(x) dx \;\;.
+\end{align}
+
+In addition to the probability density function, the /cumulative probability distribution function/ can be defined as the probability that the random variable $\xi$ will take a value less than or equal to $x$:
+%
+\begin{align}
+  F(x) = P\left[ \xi \leq x \right] \;\;\; .
+\end{align}
+%
+The cumulative distribution can be defined in terms of the density function by
+%
+\begin{align}
+  F(x) = \int_a^x f(x') dx' \;\;\; .
+\end{align}
+%
 
 
 * COMMENT setup
