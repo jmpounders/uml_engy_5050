@@ -1,0 +1,78 @@
+% Created 2016-01-24 Sun 13:22
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
+\newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
+\pagestyle{fancyplain}
+\cfoot{{\it ENGY 5050, Nuclear Reactor Physics, UMass Lowell}}
+\author{Justin Pounders}
+\date{\today}
+\title{Mathematical Odds and Ends}
+\hypersetup{
+ pdfauthor={Justin Pounders},
+ pdftitle={Mathematical Odds and Ends},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Trigonometric Identities}
+\label{sec:orgheadline1}
+\begin{align*}
+  \sin\left(A \pm B\right) = \sin A \cos B \pm \cos A \sin B
+\end{align*}
+\begin{align*}
+  \cos\left(A \pm B\right) = \cos A \cos B \mp \sin A \sin B
+\end{align*}
+\section{Law of Sines and Cosines}
+\label{sec:orgheadline2}
+Given the triangle shown in Figure \ref{fig::triangle}, the \emph{law of sines} states that
+\begin{align*}
+  \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = \text{ constant} \;\;.
+\end{align*}
+The \emph{law of cosines} states that
+\begin{align*}
+  c^2 = a^2 + b^2 - 2ab\cos{C}
+\end{align*}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.5]
+  \draw (0,0) -- (23,0) -- (17,15) -- (0,0);
+  \draw (11.5,0) node [anchor=north] {$a$};
+  \draw (20,7.5) node [anchor=south west] {$b$};
+  \draw (8.5,7.5) node [anchor=south east] {$c$};
+
+  \draw (17.5,13.5) arc [start angle=-68.1986, end angle=-138.5673, radius=1.5];
+  \draw (16.5,12.5) node {$A$};
+
+  \draw (1.5,0) arc [start angle=0, end angle=41.424, radius=1.5];
+  \draw (2.5,1) node {$B$};
+
+  \draw (21.5,0) arc [start angle=180, end angle=111.8014, radius=1.5];
+  \draw (20.5,1) node {$C$};
+\end{tikzpicture}
+\caption{A triangle.}
+\label{fig::triangle}
+\end{figure}
+\end{document}

@@ -1,0 +1,71 @@
+% Created 2016-01-24 Sun 13:23
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
+\newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
+\pagestyle{fancyplain}
+\cfoot{{\it ENGY 5050, Nuclear Reactor Physics, UMass Lowell}}
+\author{Justin Pounders}
+\date{\today}
+\title{Probability and Statistics}
+\hypersetup{
+ pdfauthor={Justin Pounders},
+ pdftitle={Probability and Statistics},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+Consider a real and continuous \emph{random variable}, \(\xi\).  This variable will take a value somewhere on the interval \([a,b]\), and let the probability of the random variable occurring between \(x_1\) and \(x_2\) be given by \(P\left[ x_1 \leq \xi \leq x_2 \right]\).  We can define a \emph{probability density function}, \(f(x)\), such that \(f(x)dx\) is the probability that the continuous random variable, \(\xi\), will have a value between \(x\) and \(x+dx\) in the limit of \(dx \rightarrow 0\).  In other words,
+\begin{align}
+  \label{eq::probDensFuncDef}
+  f(x)dx = P\left[ x \leq \xi \leq x+dx \right] \;\;.
+\end{align}
+The probability of the random variable \(\xi\) having a value somewhere between \(x_1\) and \(x_2\) is then given by
+\begin{align}
+  \int_{x_1}^{x_2} f(x) dx = P\left[ x_1 \leq \xi \leq x_2 \right] \;\;.
+\end{align}
+Because the random variable \(\xi\) must take a value \emph{somewhere} on the interval \([a,b]\), the density function \(f(x)\) must be normalized to unity:
+\begin{align}
+  \int_a^b f(x) dx = 1 \;\;.
+\end{align}
+This normalization guarantees (with probability one) that the random variable will have a value somewhere in \([a,b]\).  Note that \(a\) and \(b\) are allowed to go to plus or minus infinity, respectively.  The interval \([a,b]\) is called the \emph{support} of \(f(x)\).
+
+The \emph{mean} value of a probability density function is defined by
+\begin{align}
+  \left< x \right> = \int_a^b x f(x) dx \;\;.
+\end{align}
+
+In addition to the probability density function, the \emph{cumulative probability distribution function} can be defined as the probability that the random variable \(\xi\) will take a value less than or equal to \(x\):
+\%
+\begin{align}
+  F(x) = P\left[ \xi \leq x \right] \;\;\; .
+\end{align}
+\%
+The cumulative distribution can be defined in terms of the density function by
+\%
+\begin{align}
+  F(x) = \int_a^x f(x') dx' \;\;\; .
+\end{align}
+\%
+\end{document}

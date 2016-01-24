@@ -1,4 +1,4 @@
-% Created 2016-01-21 Thu 09:02
+% Created 2016-01-24 Sun 13:30
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -18,6 +18,7 @@
 \usepackage{fancyhdr}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
+\newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
 \pagestyle{fancyplain}
 \cfoot{{\it ENGY 5050, Nuclear Reactor Physics, UMass Lowell}}
 \author{Justin Pounders}
@@ -413,4 +414,264 @@ In a fission reaction, the energy \(e_{\text{exc}} + \Delta BE\) is enough to ov
 \item \href{Duderstadt:Hamilton1976}{Duderstadt and Hamilton}
 \item \href{Stacey2001}{Stacey}
 \end{itemize}
+
+\section{Cross Sections}
+\label{sec:orgheadline18}
+\subsection{What is a Cross Section?}
+\label{sec:orgheadline12}
+We have already assumed that neutrons travel along straight trajectories between collisions and argued that this is indeed a valid assumption within studies of nuclear reactor physics.  But how can we characterize the frequency of collisions for neutrons traveling along a given trajectory?  Put another way, if a neutron starts along a trajectory from a known point, how long should we expect it to travel before it experiences a collision.  This is clearly a problem for probability.  Hebert (2009) summarizes the problem nicely.
+
+\begin{quote}
+The probablity for a neutron located at \(\vec{r}\) and moving in a material at velocity \(\vec{V}_n\) to undergo a nuclear reaction in a differential element of trajectory \(ds\) is independent of the past history of the neutron and is proportional to \(ds\).
+\end{quote}
+
+In concrete terms, let's say that we have a  neutron that starts moving at a fixed velocity a medium  containing a exactly one kind of nucleus.  Then define \(P[ds]\) as the probability that the neutron will experience a collision within a differential distance \(ds\), and consider the following
+\begin{itemize}
+\item We were told (above) that the probability \(P[ds]\) is proportional to \(ds\).
+\item From intuition, we can also convince ourselves that this probability should also be proportional to the number of "target" nuclei present, so let's define \(N\) as the density of nuclei.
+\end{itemize}
+From these observations we may write
+\begin{align*}
+  P[ds] = \sigma N ds
+\end{align*}
+The quantity \(P[ds]\) is a probability, so it should be unitless.  Given that \(N\) is a density and \(ds\) is length, we can infer that the proportionality constant, \(\sigma\), has units of length squared or area.  The constant \(\sigma\) is called the \emph{microscopic cross section}.  It is common to express the microscopic cross section in units of \emph{barns} (b) where \(1 \text{ b} = 10^{-24} \text{ cm}^2\).
+
+The product of the first two variables appearing on the right-hand-side of the probability definition is called the \emph{macroscopic cross section}, written as
+\begin{align*}
+  \Sigma = \sigma N,
+\end{align*}
+which may be interpreted as the probability \emph{per unit path-length} of a collision.  Thus we may write the probability of a neutron collision over the differential path-length \(ds\) as
+\begin{align*}
+  P[ds] = \Sigma ds.
+\end{align*}
+
+Next, consider a \emph{population} of neutrons with a density, \(n\).  For now let's assume that all neutrons have the same speed, but they need not be moving in the same direction.  The number of neutrons that will experience a collision within the differential path-length \(ds\) along each of their individual trajectories will be \(P[ds]\) multiplied by the number of neutrons.  If we multiply by the \emph{density} of neutrons rather than the \emph{number} of neutrons then we get the (differential) density of neutron collisions within a (differential) distance \(ds\) of collective neutron travel:
+\begin{align*}
+  dC = \Sigma n ds.
+\end{align*}
+Note the units of (collisions) per unit volume.
+
+Because all neutrons are moving at the same speed, \(V_n\), we may relate the distance \(ds\) (of "collective neutron travel") to a time interval \(dt = \frac{ds}{V_n}\).  Thus the density of neutron collisions is \(dC = \Sigma n V_n dt\).  Dividing by \(dt\) and taking \(dt \rightarrow 0\) gives us an important quantity in reactor physics, called the \emph{reaction rate density}:
+\begin{align*}
+  R = \frac{dC}{dt} = \Sigma n V_n.
+\end{align*}
+Because we have officially taken the limit \(dt \rightarrow 0\) (and correspondingly \(ds \rightarrow 0\)), this quantity is a point-wise, instantaneous value.
+
+The product of neutron density and neutron speed, \(n V_n\), appearing on the right-hand-side of the reaction rate density is a ubiquitous quantity in reactor physics, called the \emph{scalar flux}:
+\begin{align*}
+  \phi = n V_n.
+\end{align*}
+
+We have previously established that there are several different types of nuclear reactions (radiative capture, elastic and inelastic scattering, etc.)  Each type of reaction is represented by unique microscopic cross section.  For a reaction of type \(x\), for example, we may write the corresponding cross section \(\sigma_x\).  Multiplying by the nuclide density provides the corresponding macroscopic cross section \(\Sigma_x = N \sigma_x\).
+
+If there is more than one type of nuclide present, we may simply add the contributions from each to obtain macroscopic cross section for the mixture:
+\begin{align*}
+  \Sigma_x = \sum_i N_i \sigma_{x,i}.
+\end{align*}
+More over we may sum across all reaction types to obtain the \emph{total} macroscopic cross sections, which is the probability per unit path-length of \emph{any} collision:
+\begin{align*}
+  \Sigma = \sum_x \Sigma_x.
+\end{align*}
+
+\begin{example}[Derivation of Mean-Free-Path]
+Now consider a monoenergetic beam of neutrons with uniform velocity $\vec{V}_n$ impinging normally on the surface of slab with a total macroscopic cross section $\Sigma$.  On average, how far will a neutron travel into the slab before experiencing its first collision?
+
+First construct a balance equation for the uncollided neutron density as a function of $x$.  We know that the rate of neutron removal (with respect to $x$) will be the rate of neutron collisions, and there are no sources of uncollided neutrons inside the slab.  Thus,
+\begin{align*}
+  \frac{dn}{dx} = -\Sigma n(x).
+\end{align*}
+We can solve this equation to determine
+\begin{align*}
+  n(x) = n(0) e^{-\Sigma x}.
+\end{align*}
+The probability that a neutron will reach a distance $x$ without experiencing is a collision is thus
+\begin{align*}
+  p_0(x) = \frac{n(x)}{n(0)} = e^{-\Sigma x}.
+\end{align*}
+
+Next, the probability of a neutron experiencing its first collision between $x$ and $x+dx$ is the product of (1) the probability of the neutron reaching $x$ and (2) the probability of the neutron colliding between $x$ and $x+dx$:
+\begin{align*}
+  p_c(x)dx = p_0(x) \Sigma dx = \Sigma e^{-\Sigma x} dx.
+\end{align*}
+
+Finally, the average distance to first collision, which we will call $\lambda$, may be obtained by taking the integral
+\begin{align*}
+  \lambda = \int_0^\infty x p_c(x) dx = \frac{1}{\Sigma}.
+\end{align*}
+The quantity $\lambda$ is called the /mean-free-path/ and, for an infinite, homogeneous medium, is equal to the inverse of the total macroscopic cross section.
+\end{example}
+
+\subsection{Resonance}
+\label{sec:orgheadline16}
+Because of the quantum nature of reality, which is very important at the nuclear scale, a nucleus is not allowed to be excited to an arbitrary energy level.  Rather a nucleus may only sit at certain discrete energy levels, at or above its ground state.  Nuclei in excited states will seek to return to the stable ground state, typically though photon emission, although at high enough energy a neutron or even alpha particle may be emitted.  For some nuclei, the additional energy is sufficient to cause fission.  
+
+Although each excitation level, say \(e_i\), is discrete, it's value is not precisely defined due to the Heisenberg uncertainty principle.  Rather each excited state is associated with an energy width, \(\gamma_i\), that is centered at \(e_i\) and related to the average lifetime of the excited state, \(\tau_i\) by
+\begin{align*}
+  \gamma_i = \frac{\hbar}{\tau_i}.
+\end{align*}
+Note that the average lifetime \(\tau_i\) is equal to the inverse of the decay constant for the excited state.
+
+An excited, compound nucleus at excitation level \(e_i\) with width \(\gamma_i\) may have several options for de-excitation: emitting a photon, a neutron, etc., for example.  Each one of these "options" is called a \emph{decay channel}.  The energy width, \(\gamma_i\), of the excited state may be written as a sum of the widths associated with each possible decay channel:
+\begin{equation}
+  \gamma_i = \sum_x \gamma_{i,x},
+\end{equation}
+where \(x\) represents a decay channel.
+
+A discussion of the quantum effects surrounding nucleus formation and de-excitation can quickly become quite involved.  While interesting, that discussion is beyond the objectives of our present endeavor.  Thus the following brief sections will only present a high-level summary of the things it might be good to know as nuclear \emph{engineer}.
+
+Recall that there is \(e^* = e_{\text{exc}} + \Delta BE\) of energy available to a newly-created compound nucleus that has been struck by a neutron.  When \(e^*\) is close to an excitation level \(e_i\) of the compound nucleus--if the available reaction energy puts the compound nucleus rather precisely into an excited state--then we observe a \emph{resonance} condition.  A resonance condition means that is \emph{very likely} that the compound nucleus will be formed at the excited state corresponding to the \(e_i\) level.  Resonance conditions have a significant impact on the likelihood that a reaction will take place, and consequently the cross section for that reaction will be significantly affected.
+
+\subsubsection{Single Level Breit-Wigner Formula}
+\label{sec:orgheadline13}
+There is a result from quantum mechanics that provides an expression for a reaction cross section in the vicinity of a resonance.  The formula is known as the \emph{single level Breit-Wigner Formula} (SLBW).  The "single level" qualifier belies the assumption the resonance in question is well-separated from nearby resonances.  Conversely, if two energy states are close enough together that their associated energy widths (\(\gamma_i\) \(\gamma_{i+1}\), for example) overlap, then the there will be interference effects between the two states.  This will then lead to more complex expressions for describing the corresponding resonance effects that manifest in the cross sections.
+
+For a reaction of type \(x\) from which there are no emerging neutrons (e.g., radiative capture), the SLBW may be written
+\begin{align*}
+  \sigma_x(e_{\text{exc}}) = \sigma_0 \frac{\gamma_{x,i}\gamma_i}{\gamma_i^2+4(e_\text{ext}-e_i)^2}
+\end{align*}
+where
+\begin{align*}
+ \sigma_0 &= 4\pi \lambda^2 g_J \frac{\gamma_{n,1}(e_\text{exc})}{\gamma_i},  \\
+  g_J &= \frac{2J+1}{2(2I+1)}, \text{ and} \\
+  \lambda &= \frac{\hbar}{\sqrt{2e_\text{exc} \left( \frac{Am}{A+1} \right)}}.
+\end{align*}
+The quantity \(g_J\) is a statistical factor expressed in terms of the spin of the target nucleus (\(I\)) and compound nucleus (\(J\)).  The parameter \(\lambda\) is the de Broglie wavelength of the incident neutron in the CM system.
+
+For an elastic scattering reaction, the SLBW becomes
+\begin{align*}
+  \sigma_e(e_\text{exc}) = \sigma_p^\ell 
+                         + \sigma_0 \left[ \frac{2}{\gamma_i}(e_\text{exc}-e_i) \sin 2\phi_\ell 
+                                         + \frac{\gamma_{n,i}}{\gamma_i} -2 \sin^2 \phi_\ell \right] \frac{\gamma_i^2}{\gamma_i^2+4(e_\text{exc}-e_i)^2}
+\end{align*}
+where
+\begin{align*}
+  \sigma_p^\ell = 4\pi \lambda^2 \left( 2\ell + 1 \right) \sin^2 \phi_\ell
+\end{align*}
+is called the \emph{potential} cross section.
+In this expressions the quantity \(\ell\) is the integer \emph{angular momentum quantum number}, which enumerates several types of elastic scattering reactions:
+\begin{align*}
+  \ell = 
+  \begin{cases}
+    0; & s\text{-wave interaction} \\
+    1; & p\text{-wave interaction} \\
+    2; & d\text{-wave interaction} \\
+    \text{etc.} &
+  \end{cases}
+\end{align*}
+Most elastic scattering reactions in thermal reactors will be \$s\$-wave interactions, characterized by relatively low incident neutron energies.  Heavy target nuclei may give rise to higher-waver interactions.  The first few \(\phi_\ell\) \emph{shift factors} are given by
+\begin{align*}
+  \phi_0 &= \frac{a}{\lambda}, \\
+  \phi_1 &= \frac{a}{\lambda} - \tan^{-1} \frac{a}{\lambda}, \\
+  \phi_2 &= \frac{a}{\lambda} - \tan^{-1} \frac{\frac{3a}{\lambda}}{3 - \left( \frac{a}{\lambda} \right)^2}
+\end{align*}
+where \(a\) is the nucleus \emph{diffusion radius}, which can be thought of as the "radius of influence" of the nucleus.  (A nucleus does not have a well-defined boundary in the quantum world!)
+
+The expressions so far have been defined with respect to the CM system.  Most of us do not live in the center-of-mass world of nuclear collision; we operate in a world that is stationary with respect to \emph{us}, i.e., the LAB system, and would prefer to work accordingly.  The excitation energy \(e_\text{exc}\) in the CM system can be converted to a LAB energy easily:
+\begin{align*}
+  E_\text{exc} = \frac{A+1}{A}e_\text{exc} = \frac{1}{2} m_n V_R^2.
+\end{align*}
+If we assume that the target nucleus is stationary, then \(E_\text{exc}\) is simply the initial kinetic energy of the neutron.
+
+With regard to resonance descriptions, a resonance at \(e_i\) with a width \(\gamma_{x,i}\) for decay channel \(x\) in the CM system becomes the following in the LAB system:
+\begin{align*}
+  E_i &= \frac{A+1}{A} e_i, \\
+  \Gamma_{x,i} &= \frac{A+1}{A} \gamma_{x,i}.
+\end{align*}
+The SLBW formulas remain valid in the LAB as long as the lowercase (CM) variables above are replaced by their uppercase (LAB) counterparts.
+
+\subsubsection{Limitations of SLBW}
+\label{sec:orgheadline14}
+The main assumption of the SLBW was that resonances were well-separated and did not interfere with one another.  In reality this assumption breaks down, especially in heavy target nuclei and high energies (\(\gtrsim 10\) keV).  There is a more accurate representation of closely-spaced resonances called the multilevel Breit-Wigner (MLBW) formula.  The complexity of this formula increases significantly.  The MLBW is, however, often used in computer codes that calculate neutron cross sections for reactor physics applications.
+
+\subsubsection{Resonance Distributions}
+\label{sec:orgheadline15}
+The location and density of resonances varies by nuclide and energy.  In general both the number and density of resonances increases with larger nuclides and higher incident neutron energies.  Below 1-10 keV resonances are typically separated enough so that experimentalists can determine the location and width of the resonances. At higher energies, however, the resonances become so tightly spaced that is impossible, at present, to distinguish one from the other.  We say that these resonances are \emph{unresolved}, or lie in the \emph{unresolved resonance range}, in contrast to the \emph{resolved resonance range} at lower energies.
+\subsection{References}
+\label{sec:orgheadline17}
+\begin{itemize}
+\item \href{Hebert2009}{Hebert (2009)}
+\end{itemize}
+\section{Nuclear Physics in 60 Seconds}
+\label{sec:orgheadline19}
+\textbf{Notation:} An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, \(Z\), while the number of neutrons is given by \(N\).  The mass number, \(A\), is the sum of the number of neutrons and protons.  A neutral atom, \(X\), is typically written with the \(A\) and \(Z\) numbers prepended, i.e., \(\leftidx{^A_Z}{X}{}\), with the neutron number implicit.
+
+\textbf{Mass:} Masses on the nuclear scale at typically expressed in units of \emph{atomic mass units} (u), defined so that the mass of a neutron atom of \(\leftidx{^{12}_6}{C}{}\) is exactly 12 u.
+
+\textbf{Quantum Description:}  A common and quite accurate quantum description of the nucleus is given by the \emph{shell model}, which is analogous to the description of atomic electrons.  Neutrons, protons and electrons are all classified as \emph{fermions}, which are particles with a spin of \(\frac{1}{2}\hbar\) that obey the Pauli exclusion principle.  Neutrons and protons in a nucleus reside in discrete energy states and posses angular momentum that also occurs in discrete amounts.  The angular momentum is specified by the positive, integer quantum nunber \(\ell \geq 0\), and the first few angular momentum states are are labeled \(s\), \(p\), \(d\), \(f\), etc, again in analogy to atomic electrons.  The \emph{ground state} of a nucleus occurs when all of the nuclear particles are in the lowest energy states allowed by the Pauli exclusion principle.  An \emph{excited state} occurs when a nucleon is elevated to a higher (and unstable) energy level.
+
+\section{Mathematical Odds and Ends}
+\label{sec:orgheadline22}
+\subsection{Trigonometric Identities}
+\label{sec:orgheadline20}
+\begin{align*}
+  \sin\left(A \pm B\right) = \sin A \cos B \pm \cos A \sin B
+\end{align*}
+\begin{align*}
+  \cos\left(A \pm B\right) = \cos A \cos B \mp \sin A \sin B
+\end{align*}
+\subsection{Law of Sines and Cosines}
+\label{sec:orgheadline21}
+Given the triangle shown in Figure \ref{fig::triangle}, the \emph{law of sines} states that
+\begin{align*}
+  \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = \text{ constant} \;\;.
+\end{align*}
+The \emph{law of cosines} states that
+\begin{align*}
+  c^2 = a^2 + b^2 - 2ab\cos{C}
+\end{align*}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.5]
+  \draw (0,0) -- (23,0) -- (17,15) -- (0,0);
+  \draw (11.5,0) node [anchor=north] {$a$};
+  \draw (20,7.5) node [anchor=south west] {$b$};
+  \draw (8.5,7.5) node [anchor=south east] {$c$};
+
+  \draw (17.5,13.5) arc [start angle=-68.1986, end angle=-138.5673, radius=1.5];
+  \draw (16.5,12.5) node {$A$};
+
+  \draw (1.5,0) arc [start angle=0, end angle=41.424, radius=1.5];
+  \draw (2.5,1) node {$B$};
+
+  \draw (21.5,0) arc [start angle=180, end angle=111.8014, radius=1.5];
+  \draw (20.5,1) node {$C$};
+\end{tikzpicture}
+\caption{A triangle.}
+\label{fig::triangle}
+\end{figure}
+\section{Probability and Statistics}
+\label{sec:orgheadline23}
+Consider a real and continuous \emph{random variable}, \(\xi\).  This variable will take a value somewhere on the interval \([a,b]\), and let the probability of the random variable occurring between \(x_1\) and \(x_2\) be given by \(P\left[ x_1 \leq \xi \leq x_2 \right]\).  We can define a \emph{probability density function}, \(f(x)\), such that \(f(x)dx\) is the probability that the continuous random variable, \(\xi\), will have a value between \(x\) and \(x+dx\) in the limit of \(dx \rightarrow 0\).  In other words,
+\begin{align}
+  \label{eq::probDensFuncDef}
+  f(x)dx = P\left[ x \leq \xi \leq x+dx \right] \;\;.
+\end{align}
+The probability of the random variable \(\xi\) having a value somewhere between \(x_1\) and \(x_2\) is then given by
+\begin{align}
+  \int_{x_1}^{x_2} f(x) dx = P\left[ x_1 \leq \xi \leq x_2 \right] \;\;.
+\end{align}
+Because the random variable \(\xi\) must take a value \emph{somewhere} on the interval \([a,b]\), the density function \(f(x)\) must be normalized to unity:
+\begin{align}
+  \int_a^b f(x) dx = 1 \;\;.
+\end{align}
+This normalization guarantees (with probability one) that the random variable will have a value somewhere in \([a,b]\).  Note that \(a\) and \(b\) are allowed to go to plus or minus infinity, respectively.  The interval \([a,b]\) is called the \emph{support} of \(f(x)\).
+
+The \emph{mean} value of a probability density function is defined by
+\begin{align}
+  \left< x \right> = \int_a^b x f(x) dx \;\;.
+\end{align}
+
+In addition to the probability density function, the \emph{cumulative probability distribution function} can be defined as the probability that the random variable \(\xi\) will take a value less than or equal to \(x\):
+\%
+\begin{align}
+  F(x) = P\left[ \xi \leq x \right] \;\;\; .
+\end{align}
+\%
+The cumulative distribution can be defined in terms of the density function by
+\%
+\begin{align}
+  F(x) = \int_a^x f(x') dx' \;\;\; .
+\end{align}
+\%
 \end{document}

@@ -365,13 +365,15 @@ In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to over
 1. In the formation of a compound nucleus, why is the available energy equal to $e_\text{exc}$, the energy in the CM system, rather than the total kinetic energy in the LAB system?
 2. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
 3. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
-4. [Hebert 2.1] Obtain the probability density $f(\mu)$ where $P(\mu)d\mu$ is the probability for the deviation cosine ($\cos\theta$) to have a value equal to $\mu$ (within an interval $d\mu$) in the LAB system.  Assume an elastic and isotropic collision in the CM system.  Neglect the initial velocity of the target nucleus.  (Hint: first obtain the relation between $\mu=\cos\theta$ and $\cos\phi$ by using the Law of Sines in Figure \ref{fig::scatteringVelLABvsCM}.
+4. [Hebert 2.1] Assume an elastic and isotropic collision in the CM system.  Neglect the initial velocity of the target nucleus.  
+   (a) Obtain the probability density $f(\mu)$ where $f(\mu)d\mu$ is the probability for the deviation cosine ($\cos\theta$) to have a value equal to $\mu$ (within an interval $d\mu$) in the LAB system.  (Hint: first obtain the relation between $\mu=\cos\theta$ and $\cos\phi$ by using the Law of Sines in Figure \ref{fig::scatteringVelLABvsCM}.
+   (b) Plot.
 5. [Hebert 2.4] Consider a neutron with an initial energy $E_0 = 2$ MeV in the LAB that elastically and isotropically (in CM) scatters off a nucleus that is initially at rest.
    (a) Express the average lethargy gain $\left< u - u' \right>$ of the neutron in the LAB in terms of the mass ration $A$ of the nucleus.
    (b) Find the average number of scattering collisions $\left< n \right>$ to slow down a neutron from energy $E_0$ to $E = 0.025$ eV in the LAB.
-   (c) Compute $\left< u - u' \right>$ and $\left< n \right>$ for the following nuclei: \leftidx{^1}{H}{}, \leftidx{^12}{C}{}, and \leftidx{^238}{U}{}.
+   (c) Compute $\left< u - u' \right>$ and $\left< n \right>$ for the following nuclei: \leftidx{^1}{H}{}, \leftidx{^{12}}{C}{}, and \leftidx{^{238}}{U}{}.
 
-* Cross Sections                                                   :noexport:
+* Cross Sections
 ** What is a Cross Section?
 We have already assumed that neutrons travel along straight trajectories between collisions and argued that this is indeed a valid assumption within studies of nuclear reactor physics.  But how can we characterize the frequency of collisions for neutrons traveling along a given trajectory?  Put another way, if a neutron starts along a trajectory from a known point, how long should we expect it to travel before it experiences a collision.  This is clearly a problem for probability.  Hebert (2009) summarizes the problem nicely.
 
@@ -425,6 +427,7 @@ More over we may sum across all reaction types to obtain the /total/ macroscopic
   \Sigma = \sum_x \Sigma_x.
 \end{align*}
 
+\begin{example}[Derivation of Mean-Free-Path]
 Now consider a monoenergetic beam of neutrons with uniform velocity $\vec{V}_n$ impinging normally on the surface of slab with a total macroscopic cross section $\Sigma$.  On average, how far will a neutron travel into the slab before experiencing its first collision?
 
 First construct a balance equation for the uncollided neutron density as a function of $x$.  We know that the rate of neutron removal (with respect to $x$) will be the rate of neutron collisions, and there are no sources of uncollided neutrons inside the slab.  Thus,
@@ -450,6 +453,7 @@ Finally, the average distance to first collision, which we will call $\lambda$, 
   \lambda = \int_0^\infty x p_c(x) dx = \frac{1}{\Sigma}.
 \end{align*}
 The quantity $\lambda$ is called the /mean-free-path/ and, for an infinite, homogeneous medium, is equal to the inverse of the total macroscopic cross section.
+\end{example}
 
 ** Resonance
 Because of the quantum nature of reality, which is very important at the nuclear scale, a nucleus is not allowed to be excited to an arbitrary energy level.  Rather a nucleus may only sit at certain discrete energy levels, at or above its ground state.  Nuclei in excited states will seek to return to the stable ground state, typically though photon emission, although at high enough energy a neutron or even alpha particle may be emitted.  For some nuclei, the additional energy is sufficient to cause fission.  
@@ -536,16 +540,51 @@ The location and density of resonances varies by nuclide and energy.  In general
 - [[ebib:Hebert2009][Hebert (2009)]]
 ** Problems                                                       :noexport:
 1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$), i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ cross section for \(s\)-wave interactions.
-* Nuclear Physics in 60 Seconds                                    :noexport:
+* Nuclear Physics in 60 Seconds
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 
 *Mass:* Masses on the nuclear scale at typically expressed in units of /atomic mass units/ (u), defined so that the mass of a neutron atom of $\leftidx{^{12}_6}{C}{}$ is exactly 12 u.
 
 *Quantum Description:*  A common and quite accurate quantum description of the nucleus is given by the /shell model/, which is analogous to the description of atomic electrons.  Neutrons, protons and electrons are all classified as /fermions/, which are particles with a spin of $\frac{1}{2}\hbar$ that obey the Pauli exclusion principle.  Neutrons and protons in a nucleus reside in discrete energy states and posses angular momentum that also occurs in discrete amounts.  The angular momentum is specified by the positive, integer quantum nunber $\ell \geq 0$, and the first few angular momentum states are are labeled $s$, $p$, $d$, $f$, etc, again in analogy to atomic electrons.  The /ground state/ of a nucleus occurs when all of the nuclear particles are in the lowest energy states allowed by the Pauli exclusion principle.  An /excited state/ occurs when a nucleon is elevated to a higher (and unstable) energy level.
 
-* Mathematical Odds and Ends                                       :noexport:
-Law sines
-law of cosines
+* Mathematical Odds and Ends
+** Trigonometric Identities
+\begin{align*}
+  \sin\left(A \pm B\right) = \sin A \cos B \pm \cos A \sin B
+\end{align*}
+\begin{align*}
+  \cos\left(A \pm B\right) = \cos A \cos B \mp \sin A \sin B
+\end{align*}
+** Law of Sines and Cosines
+Given the triangle shown in Figure \ref{fig::triangle}, the /law of sines/ states that
+\begin{align*}
+  \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = \text{ constant} \;\;.
+\end{align*}
+The /law of cosines/ states that
+\begin{align*}
+  c^2 = a^2 + b^2 - 2ab\cos{C}
+\end{align*}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.5]
+  \draw (0,0) -- (23,0) -- (17,15) -- (0,0);
+  \draw (11.5,0) node [anchor=north] {$a$};
+  \draw (20,7.5) node [anchor=south west] {$b$};
+  \draw (8.5,7.5) node [anchor=south east] {$c$};
+
+  \draw (17.5,13.5) arc [start angle=-68.1986, end angle=-138.5673, radius=1.5];
+  \draw (16.5,12.5) node {$A$};
+
+  \draw (1.5,0) arc [start angle=0, end angle=41.424, radius=1.5];
+  \draw (2.5,1) node {$B$};
+
+  \draw (21.5,0) arc [start angle=180, end angle=111.8014, radius=1.5];
+  \draw (20.5,1) node {$C$};
+\end{tikzpicture}
+\caption{A triangle.}
+\label{fig::triangle}
+\end{figure}
 * Probability and Statistics
 Consider a real and continuous /random variable/, $\xi$.  This variable will take a value somewhere on the interval $[a,b]$, and let the probability of the random variable occurring between $x_1$ and $x_2$ be given by $P\left[ x_1 \leq \xi \leq x_2 \right]$.  We can define a /probability density function/, $f(x)$, such that $f(x)dx$ is the probability that the continuous random variable, $\xi$, will have a value between $x$ and $x+dx$ in the limit of $dx \rightarrow 0$.  In other words,
 \begin{align}
