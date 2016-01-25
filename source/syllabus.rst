@@ -6,7 +6,7 @@ Syllabus
                 - Pinanski Hall, 301G
                 - 978-934-5204
                 - justin_pounders@uml.edu
-:Office hours:  By appointment
+:Office hours:  Tuesdays and Thursdays, 1:00-3:00 PM
 :Course website: `<http://jmpounders.github.io/uml_engy_5050/>`_
 
 You are welcome to stop by my office anytime if you have questions, need some help, or just want to chat.  I suggest calling or emailing first, just to make sure I am in my office.  My office is in the 301 office suite, at the top of the main Pinanski stairwell.  My office is all the way in the back of the suite.  (If the suite door is locked it means no one is home!)
