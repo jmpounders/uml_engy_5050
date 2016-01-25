@@ -28,7 +28,7 @@ We will solve the next problem in terms of *lethargy*, which is a sister variabl
 
 Thus as energy decreases, lethargy increases and *vice versa*.
 
-1. Consider a neutron with an initial energy :math:`E_0 = 2` MeV in the LAB that elastically and isotropically (in CM) scatters off a nucleus that is initially at rest.
+1. Consider a neutron with an initial energy :math:`E = 2` MeV in the LAB that elastically and isotropically (in CM) scatters off a nucleus that is initially at rest.
    
    (a) Express the average lethargy gain :math:`\left< u - u' \right>` of the neutron in the LAB in terms of the mass ration :math:`A` of the nucleus.
    (b) Find the average number of scattering collisions :math:`\left< n \right>` to slow down a neutron from energy :math:`E_0` to :math:`E = 0.025` eV in the LAB.
