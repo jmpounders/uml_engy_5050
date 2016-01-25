@@ -233,7 +233,7 @@ which simplifies to
 An immediate implication of this expression is the relationship between the final and initial kinetic energies of the neutron and the scattering angle in the CM system:
 \begin{align*}
   \frac{E_n'}{E_n} = \frac{V_n'^2}{\vec{V}_n^2}
-                   = \frac{(1+\alpha) + (1-\alpha) \cos(\varphi)}{(A+1)^2}
+                   = \frac{(1+\alpha) + (1-\alpha) \cos(\varphi)}{2}
 \end{align*}
 where
 \begin{align*}
