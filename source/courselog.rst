@@ -11,3 +11,9 @@ Course Log
      - Review Problems 1 and 2
      - Answer Problem 2 Assessment questions
 
+2. Jan 25
+
+   - Review neutron-nuclear interactions
+   - Work on first three in-class problems (problem 2)
+   - Introduce Jupyter
+   - Troubleshoot VM issues
