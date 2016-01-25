@@ -20,6 +20,10 @@ Comrehension Assessment
 In-Class Problems
 -----------------
 
+1. What does it mean for a scattering reaction to be isotropic in CM?  Derive a probability density function describing the probability that a neutron will elastically scatter with an outgoing CM angle :math:`\varphi` assuming that the target nucleus is initially at rest.
+
+2. Derive the probability density function :math:`P(E \rightarrow E')` that a neutron with initial LAB energy :math:`E` will elastically scatter to a new energy :math:`E'`.  Assume that the target nucleus is initially at rest and that scattering is isotropic in CM.
+
 We will solve the next problem in terms of *lethargy*, which is a sister variable to energy.  Given some arbitrary energy :math:`E_0`, define the lethargy corresponding to energy :math:`E` as
 
 .. math::
@@ -28,13 +32,13 @@ We will solve the next problem in terms of *lethargy*, which is a sister variabl
 
 Thus as energy decreases, lethargy increases and *vice versa*.
 
-1. Consider a neutron with an initial energy :math:`E_0 = 2` MeV in the LAB that elastically and isotropically (in CM) scatters off a nucleus that is initially at rest.
+3. Consider a neutron with an initial energy :math:`E = 2` MeV in the LAB that elastically and isotropically (in CM) scatters off a nucleus that is initially at rest.
    
    (a) Express the average lethargy gain :math:`\left< u - u' \right>` of the neutron in the LAB in terms of the mass ration :math:`A` of the nucleus.
    (b) Find the average number of scattering collisions :math:`\left< n \right>` to slow down a neutron from energy :math:`E_0` to :math:`E = 0.025` eV in the LAB.
    (c) Compute :math:`\left< u - u' \right>` and :math:`\left< n \right>` for the following nuclei: :math:`{\vphantom{H}}^1H`, :math:`{\vphantom{C}}^{12}C`, and :math:`{\vphantom{U}}^{238}U`.
 
-2. Assume an elastic and isotropic collision in the CM system between a neutron and a nucleus with a nuclear mass ration of :math:`A`.  Neglect the initial velocity of the target nucleus.
+4. Assume an elastic and isotropic collision in the CM system between a neutron and a nucleus with a nuclear mass ration of :math:`A`.  Neglect the initial velocity of the target nucleus.
    
    (a) Obtain the probability density :math:`f(\mu)` where :math:`f(\mu)d\mu` is the probability for the deviation cosine (:math:`\cos\theta`) to have a value equal to :math:`\mu` (within an interval :math:`d\mu`) in the LAB system.  (Hint: first obtain the relation between :math:`\mu=\cos\theta` and :math:`\cos\phi` by using the Law of Sines in Figure 3 of the notes.
    (b) Plot :math:`f(\mu)` for several values of :math:`A` and :math:`\phi`.
