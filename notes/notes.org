@@ -143,7 +143,7 @@ Thus in the CM system, both neutron and nucleus are moving along the same line i
   \draw[dashed] (2,-13) -- (18,-13);
 
   \draw (11.5,-13) arc [start angle=0, end angle=26.57, radius=1.5];
-  \draw (12.3,-12.4) node {$\theta$};
+  \draw (12.3,-12.4) node {$\varphi$};
 \end{tikzpicture}
 \caption{Neutron-nucleus collision in CM coordinates.}
 \label{fig::scatteringCM}
@@ -159,7 +159,6 @@ where the subscripts are used in the same way as they were in the velocity varia
 \end{align*}
 
 *** Elastic Scattering
-
 We will now assume that linear momentum is conserved through the collision.  In the LAB system this means
 \begin{align*}
   \vec{V}_n + A\vec{V}_A = \vec{V}_n' + A\vec{V}_A'
@@ -372,6 +371,44 @@ In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to over
    (a) Express the average lethargy gain $\left< u - u' \right>$ of the neutron in the LAB in terms of the mass ration $A$ of the nucleus.
    (b) Find the average number of scattering collisions $\left< n \right>$ to slow down a neutron from energy $E_0$ to $E = 0.025$ eV in the LAB.
    (c) Compute $\left< u - u' \right>$ and $\left< n \right>$ for the following nuclei: \leftidx{^1}{H}{}, \leftidx{^{12}}{C}{}, and \leftidx{^{238}}{U}{}.
+** Solutions                                                      :noexport:
+4. Applying the law of sines to Figure \ref{fig::scatteringVelLABvsCM} gives us
+\begin{align*}
+  \frac{\sin\theta}{v_n'} = \frac{sin(\pi-\varphi)}{V_n'} \;\;.
+\end{align*}
+Rearranging and using a trigonometric identity leads to
+\begin{align*}
+  \sin\theta = -\frac{v_n'}{V_n'} sin(\varphi) \;\;.
+\end{align*}
+
+We know from the law of cosines (as was shown in the notes) that
+\begin{align*}
+  V_n'^2 = \left[ \frac{A^2+1}{(A+1)^2} + 2 \frac{A}{(A+1)^2}\cos(\varphi) \right] \vec{V}_n^2 \;\;.
+\end{align*}
+We also know that $v_n' = \frac{A}{A+1}V_n$, which leads to 
+\begin{align*}
+  V_n'^2 = \left[ \frac{A^2+1}{A^2} + 2 \frac{1}{A}\cos(\varphi) \right] (\vec{v}_n')^2 \;\;.
+\end{align*}
+
+Putting these two pieces together leads to
+\begin{align*}
+  \sin^2\theta &= \frac{v_n'}{V_n'} sin^2(\varphi) \\
+               &= \frac{1}{\frac{A^2+1}{A^2} + 2 \frac{1}{A}\cos(\varphi)} sin^2(\varphi) \\
+               &= \frac{A^2 sin^2(\varphi)}{A^2+1 + 2 A \cos(\varphi)}  \;\;.
+\end{align*}
+We can use trigonometry to recast this expression in terms of $\cos\theta$:
+\begin{align*}
+  \cos\theta &= \pm \sqrt{1-\frac{A^2 sin^2(\varphi)}{A^2+1 + 2 A \cos(\varphi)}}  \;\;.
+\end{align*}
+Care must be taken in selecting the appropriate sign.  By inspecting the diagram, we see that a sign change will occur for $\cos\theta$ when $\frac{A^2 sin^2(\varphi)}{A^2+1 + 2 A \cos(\varphi)}=1$.  Call this critical value $\varphi^*$.  When $\varphi \leq \varphi^*$, the positive square root should be taken; when $\varphi > \varphi^*$, the negative square root should be taken.
+
+Our expression relates $\theta$ and $\phi$, but for this to yield a probability density function it must normalize to one.  It can be confirmed that $\cos\theta$ will take values between -1 and 1.  Thus we should check normalization by integrating over this domain: $\int_{-1}^1 \cos\theta d(\cos\theta) = \int_{-1}^1 \mu d\mu = 1$.  Therefore
+\begin{align*}
+  f(\mu) =
+  \begin{cases}
+    
+  \end{cases}
+\end{align*}
 
 * Cross Sections
 ** What is a Cross Section?
