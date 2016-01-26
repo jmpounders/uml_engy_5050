@@ -50,6 +50,13 @@ config.vm.provision "shell", privileged: false, inline: <<-SHELL
   SHELL
 
   config.vm.provision "shell", run: "always", privileged: false, inline: <<-SHELL
+    export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
+    export LD_LIBRARY_PATH=/home/vagrant/opt/moab/lib:$LD_LIBRARY_PATH
+    export LIBRARY_PATH=/home/vagrant/opt/moab/lib:$LIBRARY_PATH
+    export CPLUS_INCLUDE_PATH=/home/vagrant/opt/moab/include:$CPLUS_INCLUDE_PATH
+    export C_INCLUDE_PATH=/home/vagrant/opt/moab/include:$C_INCLUDE_PATH
+    export PATH=/home/vagrant/.local/bin:$PATH
+    export LD_LIBRARY_PATH=/home/vagrant/.local/lib:$LD_LIBRARY_PATH
     ipython notebook --notebook-dir=/vagrant/notebooks --no-browser --ip=0.0.0.0 &
   SHELL
 end
