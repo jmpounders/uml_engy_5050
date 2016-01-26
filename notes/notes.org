@@ -2,6 +2,7 @@
 #+LATEX_HEADER: \usepackage{tikz}
 #+LATEX_HEADER: \usepackage{fancyhdr}
 #+LATEX_HEADER: \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+#+LATEX_HEADER_EXTRA: \renewcommand\vec{\mathbf}
 #+LATEX_HEADER_EXTRA: \newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
 #+LATEX_HEADER_EXTRA: \newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
 #+LATEX_HEADER_EXTRA: \pagestyle{fancyplain}
@@ -547,7 +548,7 @@ In this expressions the quantity $\ell$ is the integer /angular momentum quantum
     \text{etc.} &
   \end{cases}
 \end{align*}
-Most elastic scattering reactions in thermal reactors will be $s$-wave interactions, characterized by relatively low incident neutron energies.  Heavy target nuclei may give rise to higher-waver interactions.  The first few $\phi_\ell$ /shift factors/ are given by
+Most elastic scattering reactions in thermal reactors will be $s\text{-wave}$ interactions, characterized by relatively low incident neutron energies.  Heavy target nuclei may give rise to higher-waver interactions.  The first few $\phi_\ell$ /shift factors/ are given by
 \begin{align*}
   \phi_0 &= \frac{a}{\lambda}, \\
   \phi_1 &= \frac{a}{\lambda} - \tan^{-1} \frac{a}{\lambda}, \\
@@ -573,10 +574,77 @@ The main assumption of the SLBW was that resonances were well-separated and did 
 
 *** Resonance Distributions
 The location and density of resonances varies by nuclide and energy.  In general both the number and density of resonances increases with larger nuclides and higher incident neutron energies.  Below 1-10 keV resonances are typically separated enough so that experimentalists can determine the location and width of the resonances. At higher energies, however, the resonances become so tightly spaced that is impossible, at present, to distinguish one from the other.  We say that these resonances are /unresolved/, or lie in the /unresolved resonance range/, in contrast to the /resolved resonance range/ at lower energies.
+** Non-Stationary Nuclei                                          :noexport:
+In much of our initial discussion on neutron-nuclear interactions we assumed that the target nucleus was stationary ($\vec{V}_A$).  Short of being at absolute zero temperature, this is never the case in reality.  If the speed of the neutron is much larger than the speed of the target nucleus this ma be a good assumption, however, so our previous discussions are justified.  At neutron energies below 1 eV the random, thermal motion of the nuclei is not negligible.
+
+The velocities of nuclei in thermal equilibrium is described by the Maxwell-Boltzmann probability density function,
+\begin{align*}
+  p(\vec{V}_A) = \left( \frac{mA}{2\pi k T} \right)^\frac{3}{2} \exp\left(-\frac{mAV_A^2}{2kT}\right) 
+\end{align*}
+where
+- $k$ :: is the Boltzmann constant,
+- $T$ :: is the absolute temperature of the material,
+- $m$ :: is the neutron mass,
+- $A$ :: is the ratio of the nuclear mass to the mass of a neutron.
+- $p(\vec{V}_A)d^3V_A$ :: is the probability for a nucleus to have a velocity within an interval $d^3V_A$ of $\vec{V}_A$.
+
+We know that for a fixed neutron speed $V_n$ the reaction rate for reaction type $x$ is defined by
+\begin{align*}
+  R_x = N \sigma_x(E_\text{exc}) V_R n,
+\end{align*}
+where $N$ and $n$ are the densities of the nuclei and neutrons, respectively.  Note that because we are not assuming a stationary nucleus, we use the relative speed, $V_R$, which is the speed at which the neutron is approaching the target, $V_R = V_n - V_A$.  Also recall that the excitation energy  in the LAB is $E_\text{exc} = \frac{A+1}{A}e_\text{exc} = \frac{1}{2}mV_R^2$, so we may use $E_\text{exc}$ and $V_R$ interchangeably as the independent variable in the microscopic cross section.  Thus for a fixed neutron speed $V_n$ the reaction rate depends on the speed of the target nucleus which is random.  To account for this thermal motion of the nuclei, we can calculate an average reaction rate over the probability distribution of target nuclei:
+\begin{align*}
+  \left<R_x\right> = \int_0^\infty p(\vec{V}_A) N \sigma_x(\left| \vec{V}_n - \vec{V}_A \right|) \left| \vec{V}_n - \vec{V}_A \right| n d^3V_A \;\;,
+\end{align*}
+where the integral is taken over each of the velocity components.  From this average reaction rate we can define a new /effective/ microscopic cross section averaged over the motion of the nuclei, which for neutron with speed $V_n$ is:
+\begin{align*}
+  \bar{\sigma}_x(V_n) = 
+  \left<\sigma_x(\left| \vec{V}_n - \vec{V}_A \right|)\right> = 
+  \frac{1}{V_n} \int_0^\infty p(\vec{V}_A) \sigma_x(\left| \vec{V}_n - \vec{V}_A \right|) \left| \vec{V}_n - \vec{V}_A \right| d^3V_A \;\;.
+\end{align*}
+
+Plugging in the Maxwell-Boltzmann distribution into this expression yields
+\begin{align*}
+  \bar{\sigma}_x(V_n) = 
+  \frac{1}{V_n} \left( \frac{mA}{2\pi k T} \right)^\frac{3}{2}
+  \int_0^{2\pi} \delta \int_0^\infty dV_{xy} V_{xy} \int_{-\infty}^\infty dV_z \exp\left(-\frac{mAV_A^2}{2kT} \right) \sigma_x(V_R) V_R \;\;.
+\end{align*}
+The expression can be simplified somewhat without approximation.  To begin, consider the velocity of the target nucleus decomposed into a radial ($xy$) and axial ($z$) component:
+\begin{align*}
+  \vec{V}_A = V_{xy} \cos\eta \vec{i} + V_{xy} \sin\eta \vec{j} + V_z \vec{k}
+\end{align*}
+where $\eta \in \left[0, w\pi\right]$, and
+\begin{align*}
+  d^3V_A = V_{xy} d\eta dV_{xy} dV_z \;\;.
+\end{align*}
+The primary quantity that needs to be evaluated for the averaging is the relative speed.  If we define the coordinate reference frame so that the $\vec{k}$ unit vector is pointing in the direction of neutron travel then we have
+\begin{align*}
+  V_R = | \vec{V}_n - \vec{V}_A | = \sqrt{V_{xy}^2  + \left(V_n - V_z\right)^2} \;\;.
+\end{align*}
+Additionally,
+\begin{align*}
+  V_A^2 = V_{xy}^2 + V_z^2 = V_R^2 - V_n^2 + 2V_nV_z \;\;.
+\end{align*}
+Finally, changing the variable of integration of the first integral from $V_{xy}$ to $E_\text{exc}$ using the relationship
+\begin{align*}
+  E_\text{exc} = \frac{1}{2}m\left[V_{xy}^2 + (V_n - V_z)^2\right]
+\end{align*}
+(which requires changing the bounds of the $V_z$ integration) and integrating over $V_z$ yields
+\begin{align*}
+  \bar{\sigma}_x(E) = \frac{1}{\Delta\sqrt{\pi}} \int_0^\infty dE_\text{exc} \sqrt{\frac{E_\text{exc}}{E}} \sigma_x(E_\text{exc}) 
+  \left\{ \exp\left[ -\frac{A}{kT}\left(\sqrt{E_\text{exc}} - \sqrt{E} \right)^2 \right] 
+         \exp\left[ -\frac{A}{kT}\left(\sqrt{E_\text{exc}} + \sqrt{E} \right)^2 \right]  \right\}
+\end{align*}
+where
+\begin{align*}
+  \Delta = 2 \sqrt{\frac{EkT}{A}} \quad \text{and} \quad E = \frac{1}{2}mV_n^2 \;\;.
+\end{align*}
+
 ** References
 - [[ebib:Hebert2009][Hebert (2009)]]
 ** Problems                                                       :noexport:
 1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$), i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ cross section for \(s\)-wave interactions.
+2. Why is 1 eV the cutoff for "thermal" neutrons.
 * Nuclear Physics in 60 Seconds
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 
