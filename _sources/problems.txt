@@ -7,3 +7,4 @@ Problems
 
    problems/1_fundproblem
    problems/2_neutronInteractions
+   problems/3_crossSections

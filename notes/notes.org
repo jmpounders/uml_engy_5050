@@ -88,7 +88,7 @@ The analysis of scattering kinematics is greatly simplifed by working in the cen
 \begin{align}
   \vec{r}_{CM} = \frac{1}{A+1} \left( \vec{r}_n + A\vec{r}_A \right)
 \end{align}
-where $\vec{r}_n$ and $\vec{r}_A$ are the positions of the neutron and the nucleus, respectively, and $A$ is the atomic mass ratio of the nucleus.  Consequently we may deduce that the origin of the CM system is moving with a velocity of
+where $\vec{r}_n$ and $\vec{r}_A$ are the positions of the neutron and the nucleus, respectively, and $A$ is the atomic mass ratio of the nucleus (i.e., the ratio of the mass of the nucleus to the mass of the neutron).  Consequently we may deduce that the origin of the CM system is moving with a velocity of
 \begin{align}
   \vec{V}_{CM} = \frac{1}{A+1} \left(\vec{V}_n + A\vec{V}_A \right).
 \end{align}
@@ -156,8 +156,9 @@ Consider now the kinetic energy of the system before the collision.  Letting the
 \end{align}
 where the subscripts are used in the same way as they were in the velocity variables.  The new variable $e_{\text{exc}}$ is called the /excitation energy/, which is the energy that is available for the reaction, and may be written
 \begin{align}
-  e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2.
+  e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2
 \end{align}
+where $m$ is the mass of a neutron.
 
 *** Elastic Scattering
 We will now assume that linear momentum is conserved through the collision.  In the LAB system this means
@@ -602,7 +603,7 @@ We know that for a fixed neutron speed $V_n$ the reaction rate for reaction type
 \begin{align}
   R_x = N \sigma_x(E_\text{exc}) V_R n,
 \end{align}
-where $N$ and $n$ are the densities of the nuclei and neutrons, respectively.  Note that because we are not assuming a stationary nucleus, we use the relative speed, $V_R$, which is the speed at which the neutron is approaching the target, $V_R = V_n - V_A$.  Also recall that the excitation energy  in the LAB is $E_\text{exc} = \frac{A+1}{A}e_\text{exc} = \frac{1}{2}mV_R^2$, so we may use $E_\text{exc}$ and $V_R$ interchangeably as the independent variable in the microscopic cross section.  Thus for a fixed neutron speed $V_n$ the reaction rate depends on the speed of the target nucleus which is random.  To account for this thermal motion of the nuclei, we can calculate an average reaction rate over the probability distribution of target nuclei:
+where $N$ and $n$ are the densities of the nuclei and neutrons, respectively.  Note that because we are not assuming a stationary nucleus, we use the relative speed, $V_R$, which is the speed at which the neutron is approaching the target, $V_R = V_n - V_A$.  Also recall that the excitation energy  in the LAB is $E_\text{exc} = \frac{A+1}{A}e_\text{exc} = \frac{1}{2}mV_R^2$ (where $m$ is the neutron mass), so we may use $E_\text{exc}$ and $V_R$ interchangeably as the independent variable in the microscopic cross section.  Thus for a fixed neutron speed $V_n$ the reaction rate depends on the speed of the target nucleus which is random.  To account for this thermal motion of the nuclei, we can calculate an average reaction rate over the probability distribution of target nuclei:
 \begin{align}
   \left<R_x\right> = \int_0^\infty p(\vec{V}_A) N \sigma_x(\left| \vec{V}_n - \vec{V}_A \right|) \left| \vec{V}_n - \vec{V}_A \right| n d^3V_A \;\;,
 \end{align}
@@ -663,9 +664,9 @@ Accounting for the thermal motion of nuclei in resonance cross sections is at th
 Applying all of these assumptions and approximations leads to
 \begin{align}
   \label{eq::dopplerSLBWx}
-  \bar{\sigma}_x(E) = \frac{1}{\Delta \sqrt{\pi}} \sigma_0(E) \frac{\Gamma_{x,i}}{2}
-                      \int_{-2E_i/\Gamma_i}^\infty dv \frac{1}{1+v^2}
-                      \exp\left\{ -\frac{A}{kT} \frac{\Gamma_i^2(v-u)^2}{16E}
+  \bar{\sigma}_x(E) &= \frac{1}{\Delta \sqrt{\pi}} \sigma_0(E) \frac{\Gamma_{x,i}}{2}
+                      \int_{-2E_i/\Gamma_i}^\infty dv \frac{1}{1+v^2} \times \\
+                    &\phantom{=}  \exp\left\{ -\frac{A}{kT} \frac{\Gamma_i^2(v-u)^2}{16E}
                                   \left[ 1 - \frac{1}{2}\left( \frac{\Gamma_i(v-u)}{2E} \right)
                                            + \frac{5}{16}\left( \frac{\Gamma_i(v-u)}{2E} \right)^2 + \hdots \right] \right\}
 \end{align}
@@ -772,10 +773,11 @@ Both $\sigma_n(E)$ and $P(E \rightarrow E', \mu)$ depend on the thermal motion o
 ** References
 - [[ebib:Hebert2009][Hebert (2009)]]
 ** Problems                                                       :noexport:
-1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$) is much less than one, i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ cross section for \(s\)-wave interactions.
-2. Why is 1 eV the cutoff for "thermal" neutrons.
-3. Derive Eqn. \ref{eq::dopplerSLBWx}.
-4. Plot some resonance stuff...
+1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$) is much less than one, i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ elastic scattering cross section, $\sigma_p^\ell$, for \(s\)-wave interactions.
+2. Derive the Maxwell-Boltzmann distribution as a function of /kinetic energy/, $E = \frac{1}{2}mA|\vec{V}_A|^2 = \frac{1}{2} m_A V_A^2$. Start with the Maxwell-Boltzmann distribution written as a function of velocity $\vec{V}_A$.  Because this is a /distribution/ the change of variables must be done so that $p(\vec{V}_A) d^3V_A = p(E) dE$.  (Note that although $\vec{V}_A$ is a vector, the direction of the vector is not important, as all that appears in the distribution is $V_A^2$, which is proportional to energy.  Thus we may write $d^3 V_A = 4\pi V_A^2 dV_A$.)
+3. Plot the Maxwell-Boltzmann distribution as a function of kinetic energy using your results from the previous problem.  Use $T = 300$ K.  Does this plot inform the reasoning behind picking an energy of around 1 eV as the cutoff for ``thermal'' neutron energies?
+4. Derive Eqn. \ref{eq::dopplerSLBWx}.
+5. Plot some resonance stuff...
 * Nuclear Physics in 60 Seconds
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 
