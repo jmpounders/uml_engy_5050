@@ -1,5 +1,5 @@
-Up and Running
-==============
+Up and Running (Pyne, Pinspec, and Jupyter)
+===========================================
 
 Throughout the course we will use various computer-based tools to as an aid to solving problems.  Most of the tools are written in some combination of Fortran, C++, and Python, with numerous support libraries.  Trying to get everyone up and running with a system that works on various operating systems is a headache I want to avoid.  Therefore, I have packaged all the computational tools that will be needed in this course into a virual environment.  Once it is setup on your computer, most of your interaction with the virtual environment will be through a simple web application.
 

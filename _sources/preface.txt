@@ -6,5 +6,7 @@ Preface
               
    syllabus
    upandrunning
+   upandrunning_jupyteronly
+   upandrunning_matlab
    jupyterTest
    
