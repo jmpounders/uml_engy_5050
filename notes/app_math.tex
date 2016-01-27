@@ -1,4 +1,4 @@
-% Created 2016-01-24 Sun 13:22
+% Created 2016-01-27 Wed 10:34
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -17,6 +17,7 @@
 \usepackage{tikz}
 \usepackage{fancyhdr}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\renewcommand\vec{\mathbf}
 \newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
 \newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
 \pagestyle{fancyplain}
@@ -29,7 +30,7 @@
  pdftitle={Mathematical Odds and Ends},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.3)}, 
  pdflang={English}}
 \begin{document}
 
@@ -38,22 +39,22 @@
 
 \section{Trigonometric Identities}
 \label{sec:orgheadline1}
-\begin{align*}
+\begin{align}
   \sin\left(A \pm B\right) = \sin A \cos B \pm \cos A \sin B
-\end{align*}
-\begin{align*}
+\end{align}
+\begin{align}
   \cos\left(A \pm B\right) = \cos A \cos B \mp \sin A \sin B
-\end{align*}
+\end{align}
 \section{Law of Sines and Cosines}
 \label{sec:orgheadline2}
 Given the triangle shown in Figure \ref{fig::triangle}, the \emph{law of sines} states that
-\begin{align*}
+\begin{align}
   \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = \text{ constant} \;\;.
-\end{align*}
+\end{align}
 The \emph{law of cosines} states that
-\begin{align*}
+\begin{align}
   c^2 = a^2 + b^2 - 2ab\cos{C}
-\end{align*}
+\end{align}
 
 \begin{figure}
 \centering
@@ -75,4 +76,21 @@ The \emph{law of cosines} states that
 \caption{A triangle.}
 \label{fig::triangle}
 \end{figure}
+\section{Special Functions}
+\label{sec:orgheadline4}
+\subsection{Dirac Delta Function}
+\label{sec:orgheadline3}
+The Dirac delta function is a generalized function defined by
+\begin{align}
+  \int_{-\infty}^\infty \delta(x-a) f(x) dx = f(a)
+\end{align}
+for some function \(f(x)\), and
+\begin{align}
+  \delta(x-a) = 
+  \begin{cases}
+    0, & x\neq a, \\
+    \text{undefined}, & x=a \;\;.
+  \end{cases}
+\end{align}
+The fact that the Delta function is a \emph{generalized} function means that it is only really defined with respect to integration.  Pragmatically this presents no difficulty if it used in probability density functions or other functions that must be integrated to yield physically meaningful results.  It is often used to define functions that exist only at a point because
 \end{document}

@@ -464,7 +464,7 @@ More over we may sum across all reaction types to obtain the /total/ macroscopic
   \Sigma = \sum_x \Sigma_x.
 \end{align}
 
-\begin{example}[Derivation of Mean-Free-Path]
+\begin{example}{Derivation of Mean-Free-Path}
 Now consider a monoenergetic beam of neutrons with uniform velocity $\vec{V}_n$ impinging normally on the surface of slab with a total macroscopic cross section $\Sigma$.  On average, how far will a neutron travel into the slab before experiencing its first collision?
 
 First construct a balance equation for the uncollided neutron density as a function of $x$.  We know that the rate of neutron removal (with respect to $x$) will be the rate of neutron collisions, and there are no sources of uncollided neutrons inside the slab.  Thus,
@@ -583,7 +583,7 @@ The main assumption of the SLBW was that resonances were well-separated and did 
 
 *** Resonance Distributions
 The location and density of resonances varies by nuclide and energy.  In general both the number and density of resonances increases with larger nuclides and higher incident neutron energies.  Below 1-10 keV resonances are typically separated enough so that experimentalists can determine the location and width of the resonances. At higher energies, however, the resonances become so tightly spaced that is impossible, at present, to distinguish one from the other.  We say that these resonances are /unresolved/, or lie in the /unresolved resonance range/, in contrast to the /resolved resonance range/ at lower energies.
-** Non-Stationary Nuclei                                          :noexport:
+** Non-Stationary Nuclei
 In much of our initial discussion on neutron-nuclear interactions we assumed that the target nucleus was stationary ($\vec{V}_A$).  Short of being at absolute zero temperature, this is never the case in reality.  If the speed of the neutron is much larger than the speed of the target nucleus this ma be a good assumption, however, so our previous discussions are justified.  At neutron energies below 1 eV the random, thermal motion of the nuclei is not negligible.
 
 *** Averaging the Microscopic Cross Section
@@ -640,7 +640,7 @@ Finally, changing the variable of integration of the first integral from $V_{xy}
   E_\text{exc} = \frac{1}{2}m\left[V_{xy}^2 + (V_n - V_z)^2\right]
 \end{align}
 (which requires changing the bounds of the $V_z$ integration) and integrating over $V_z$ yields
-\begin{align}\label{eq::avgMirco}
+\begin{align}\label{eq::avgMicro}
   \bar{\sigma}_x(E) = \frac{1}{\Delta\sqrt{\pi}} \int_0^\infty dE_\text{exc} \sqrt{\frac{E_\text{exc}}{E}} \sigma_x(E_\text{exc}) 
   \left\{ \exp\left[ -\frac{A}{kT}\left(\sqrt{E_\text{exc}} - \sqrt{E} \right)^2 \right] 
          \exp\left[ -\frac{A}{kT}\left(\sqrt{E_\text{exc}} + \sqrt{E} \right)^2 \right]  \right\}
@@ -651,7 +651,7 @@ where
 \end{align}
 
 *** Averaging Resonance Cross Sections
-In the case of an isolated, narrow resonance above the thermal neutron energy range we can take several further steps to simplify Eq. \eqref{eq::avgMicro}.
+Accounting for the thermal motion of nuclei in resonance cross sections is at the heart of the /Doppler broadening effect/, which is an important player in both steady-state and transient reactor analysis.  In the case of an isolated, narrow resonance above the thermal neutron energy range we can take several further steps to simplify Eq. \eqref{eq::avgMicro}.
 1. If the neutron has a kinetic energy significantly above the average kinetic energy of the nuclei then $E_\text{exc} \approx E$ and we may assume that $\exp\left[-\frac{A}{kT}\left(\sqrt{E_\text{exc}} + \sqrt{E}\right)^2\right] << \exp\left[-\frac{A}{kT}\left(\sqrt{E_\text{exc}} - \sqrt{E}\right)^2\right]$.  Consequently we will take
    \begin{align}
      \exp\left[-\frac{A}{kT}\left(\sqrt{E_\text{exc}} + \sqrt{E}\right)^2\right] \approx 0 \;\;.
@@ -660,11 +660,122 @@ In the case of an isolated, narrow resonance above the thermal neutron energy ra
 3. When $E_\text{exc}$ is much different than $E$, the first exponential term in Eq. \eqref{eq::avgMicro} will rapidly tend to a small number.  Thus we may generate a Taylor expansion of $\left(\sqrt{E_\text{exc}} - \sqrt{E}\right)$ in $E$ with $E_\text{exc} = E + \varepsilon$ and $\varepsilon << E$.
 4. We assume $s-\text{wave}$ interactions and use lab variables so that Eqs. \eqref{eq::simpleSLBW1} and \eqref{eq::simpleSLBW2} may be used.
 5. Assume that $\Gamma_{x,i}$ and $\Gamma_i$ are constant.  (In reality there is some variation with energy.)
+Applying all of these assumptions and approximations leads to
+\begin{align}
+  \label{eq::dopplerSLBWx}
+  \bar{\sigma}_x(E) = \frac{1}{\Delta \sqrt{\pi}} \sigma_0(E) \frac{\Gamma_{x,i}}{2}
+                      \int_{-2E_i/\Gamma_i}^\infty dv \frac{1}{1+v^2}
+                      \exp\left\{ -\frac{A}{kT} \frac{\Gamma_i^2(v-u)^2}{16E}
+                                  \left[ 1 - \frac{1}{2}\left( \frac{\Gamma_i(v-u)}{2E} \right)
+                                           + \frac{5}{16}\left( \frac{\Gamma_i(v-u)}{2E} \right)^2 + \hdots \right] \right\}
+\end{align}
+where
+\begin{align}
+  u = \frac{2}{\Gamma_i}\left(E - E_i\right)
+  \quad \text{and} \quad
+  v = \frac{2}{\Gamma_i}\left(E_\text{exc} - E_i\right) \;\;.
+\end{align}
+The lower integration limit can be replaced by $-\infty$ because $\Gamma_i << E_i$, leading to the following result:
+\begin{align}
+  \bar{\sigma}_x(E) = \sigma_0(E) \frac{\Gamma_{x,i}}{\Gamma_i} \psi(u,\alpha,\beta)
+\end{align}
+where
+\begin{align}
+  \psi(u,\alpha,\beta) = \frac{1}{\beta\sqrt{\pi}}
+                         \int_{-\infty}^\infty dv \frac{1}{1+v^2} \exp\left\{ -\frac{(v-u)^2}{\beta^2}
+                         \left[ 1 - \frac{1}{2}\alpha(v-u) + \frac{5}{16}\alpha^2(v-u)^2 + \hdots \right] \right\}
+\end{align}
+and
+\begin{align}
+  \alpha = \frac{\Gamma_i}{2E}
+  \quad \text{and} \quad
+  \beta = \frac{2\Delta}{\Gamma_i} \;\;.
+\end{align}
+This expression $\psi(u,\alpha,\beta)$ is called the /generalized Doppler psi function/.
+
+Using the same mathematical treatment, a similar expression can be derivied for the SLBW elastic scattering resonance formula.  The result is
+\begin{align}
+  \label{eq::dopplerSLBWe}
+  \bar{\sigma}_e(E) = 4\pi a^2 + \sigma_0(E)\frac{2a}{\lambda}\phi(u,\alpha,\beta) + \sigma_0(E)\frac{\Gamma_{n,i}}{\Gamma_i}\psi(u,\alpha,\beta)
+\end{align}
+where
+\begin{align}
+  \phi(u,\alpha,\beta) = \frac{1}{\beta\sqrt{\pi}}
+                         \int_{-\infty}^\infty dv \frac{v}{1+v^2} \exp\left\{ -\frac{(v-u)^2}{\beta^2}
+                         \left[ 1 - \frac{1}{2}\alpha(v-u) + \frac{5}{16}\alpha^2(v-u)^2 + \hdots \right] \right\}
+\end{align}
+
+Let's take a moment to summarize what has been done in the preceding. We began with the microscopic cross section $\sigma_x$ that is proportional to the probability of a neutron-nucleus interaction and depends on (equivalent) the excitation energy $E_\text{exc}$ or the relative speed of the neutron-nucleus pair $V_R$.  Either parameter is complicated by the fact that the nuclei are moving in essentially a random fashion, describable by the probability function $p(\vec{V}_A)$.  At thermal equilibrium, this probability function is the Maxwell-Boltzmann distribution, so we can derive an expression for the microscopic cross section that is averaged over the thermal motion of the nuclei.  This was the main result.
+
+Remember that the Maxwell-Boltzmann distribution is a function of the temperature of the material.  Thus as the temperature changes so will the averaged microscopic cross sections.  This phenomenon is called the /Doppler broadening effect/.
+
+The $\phi-\psi$ Doppler functions derived in this section relied on several important assumptions that will not always hold up in reality.  When situations arise in which these functions are not appropriate one may resort to approximate numerical evaluations of Eq. \ref{eq::avgMicro} directly.  This is commonly done in practice.
+*** Other Considerations
+Many absorption-type cross sections (without resonances in the thermal energy range) vary as $1/\sqrt{E}$ at low energies.  This is commonly referred to as a ``$1/v$ energy-dependence,'' where $v$ refers to the neutron speed.  Surprisingly, the thermal motion of nuclei does /not/ affect a cross sections with a $1/v$ energy variation.  In other words, $V_n \bar{\sigma_x}(V_n) = V_R\sigma_x(V_R)$ when $\sigma_x(V_R) \propto V_R^{-1}$.
+
+In stating that the thermal motion of the nuclei follow the Maxwell-Boltzmann distribution, we have implicitly assumed that all nuclei are free to move independently, effectively as molecules in a gas.  Most nuclei, however, are chemically bonded to other nuclei to form molecules.  Molecular motion, including vibration and rotation, for example, affects nuclear motion, so the preceding treatment is not strictly valid.  The primary regime where this becomes important is in neutron scattering at low energy. There are treatments to deal with molecular motion that we will not discuss.  
+
+Arguably the most important example in reactor physics of where molecular motion effects are important is in the thermal scattering of neutrons in water.  An analysts should be aware that water cross sections, and hydrogen bound in water in particular, require special evaluations with respect to temperature.  When obtaining nuclear data for reactor physics calculation, this ``special evaluation'' normally appears as something called a /thermal kernel/ or $S(\alpha,\beta)$ /data/ that is tabulated alongside all the other nuclear cross sections.
+** Differential Scattering Cross Sections
+Up to this point we have considered scattering cross sections only in the sense as they relate to the probability of a scattering event taking place.  In reactor physics analysis, where we want to track the movement of neutrons through a reactor, we often need more information than this.  In particular, if a neutron scatters we want the ability to predict (in a probabilistic sense) how the scattering event will affect the neutrons energy and direction.
+
+In general we can describe probabilistic scattering kinematics as the product of two functions.  The first is the microscopic cross section for the scattering reaction, which relates the likelihood that the scattering event occur.  We can multiply the cross section by a probability function describing the probability that, upon scattering at a certain energy $E$, the neutron will emerge from the collision with a new energy $E'$ and a direction modified by some angle $\theta$.  We write this as
+\begin{align}
+  \sigma_n(E \rightarrow E', \mu) = \sigma_n(E)P(E \rightarrow E', \mu)
+\end{align}
+where $\sigma_n(E)$ is the microscopic cross section for scattering (elastic or inelastic) and $P(E \rightarrow E', \mu)dE'd\mu$ is the probability that the neutron will scatter to energy $E'$ (within an interval $dE'$ through a deviation cosine $\mu = \cos\theta$ (within an interval $d\mu$).  The quantity $\sigma_n(E \rightarrow E', \mu)$ is called the /double differential scattering cross section/ and is sometimes written as
+\begin{align}
+  \sigma_n(E \rightarrow E', \mu) \equiv \frac{d^2\sigma_n(E)}{dE'd\mu} \;\;.
+\end{align}
+
+\begin{example}{Double-Differential Elastic Scattering Cross Section, Stationary Target}
+We previously saw that elastic, isotropic (in CM) scattering off a stationary target leads to the following relationship between energies $E$, $E'$, and CM scattering angle $\varphi$:
+\begin{align}
+  \frac{E_n'}{E_n} = \frac{V_n'^2}{\vec{V}_n^2}
+                   = \frac{(1+\alpha) + (1-\alpha) \cos(\varphi)}{2}
+\end{align}
+where $\alpha = (A-1)^2/(A+1)^2$.  From this we see that energy and direction change are directly correlated.  The probability density function for a neutron scattering isotropically through the cone created by angle $\varphi$ is given by
+\begin{align}
+  P(\phi) = \frac{1}{2} \sin\varphi, \quad \phi\in[0,\pi] \;\;.
+\end{align}
+We see that an increase in $\varphi$ by an amount $d\varphi$ causes a decrease in the exiting energy by an mount $dE'$, and in particular,
+\begin{align}
+  dE' = - \frac{E(1-\alpha)\sin\varphi}{2}d\varphi \;\;.
+\end{align}
+Because energy change is directly related to the deviation angle we may write the following expression for the probability that a neutron will be scattered from energy $E$ to energy $E'$:
+\begin{align}
+  P(E \rightarrow E') dE' = - P(\varphi) d\varphi \;\;.
+\end{align}
+Substituting in the eliminating $d\varphi$ in favor of $dE'$, then cancelling the differential, and subsituting the expression for $P(\varphi)$ leads to
+\begin{align}
+  P(E \rightarrow E') = \frac{1}{E(1-\alpha)} \;\;.
+\end{align}
+
+What we really want is the probability as a function of energy /and/ angle in the LAB, but we just saw that these are correlated.  We previously derived the following results for the LAB deviation cosine in this scenario:
+\begin{align}
+  \mu = \cos\theta = \frac{1}{2}\left( A+1 \right) \sqrt{\frac{E_n'}{E_n}}
+                   - \frac{1}{2}\left( A-1 \right) \sqrt{\frac{E_n}{E_n'}} \;\;.
+\end{align}
+Because energy and angle correlated, the function $P(E \rightarrow E', \mu)$ is really a one-parameter function, not two.  Thus we may write
+\begin{align}
+  P(E \rightarrow E', \mu) = 
+  \begin{cases}
+    \frac{1}{E(1-\alpha)}\delta\left( \mu - \frac{1}{2}\left( A+1 \right) \sqrt{\frac{E_n'}{E_n}}
+                                     - \frac{1}{2}\left( A-1 \right) \sqrt{\frac{E_n}{E_n'}} \right), & \text{if } \alpha E \leq E' \leq E, \\
+    0, & \text{otherwise.}
+  \end{cases}
+\end{align}
+The function $\delta(x)$ is the /Dirac delta function/ (see the Appendix for details).
+\end{example}
+
+Both $\sigma_n(E)$ and $P(E \rightarrow E', \mu)$ depend on the thermal motion of nuclei and there are methods for averaging these quantities over that motion similar to what was shown in the previous section, but these procedures will not be discussed here as they become quite complex, even for the relatively simple case of elastic scattering.
 ** References
 - [[ebib:Hebert2009][Hebert (2009)]]
 ** Problems                                                       :noexport:
-1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$), i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ cross section for \(s\)-wave interactions.
+1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$) is much less than one, i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ cross section for \(s\)-wave interactions.
 2. Why is 1 eV the cutoff for "thermal" neutrons.
+3. Derive Eqn. \ref{eq::dopplerSLBWx}.
+4. Plot some resonance stuff...
 * Nuclear Physics in 60 Seconds
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 
@@ -710,6 +821,21 @@ The /law of cosines/ states that
 \caption{A triangle.}
 \label{fig::triangle}
 \end{figure}
+** Special Functions
+*** Dirac Delta Function
+The Dirac delta function is a generalized function defined by
+\begin{align}
+  \int_{-\infty}^\infty \delta(x-a) f(x) dx = f(a)
+\end{align}
+for some function $f(x)$, and
+\begin{align}
+  \delta(x-a) = 
+  \begin{cases}
+    0, & x\neq a, \\
+    \text{undefined}, & x=a \;\;.
+  \end{cases}
+\end{align}
+The fact that the Delta function is a /generalized/ function means that it is only really defined with respect to integration.  Pragmatically this presents no difficulty if it used in probability density functions or other functions that must be integrated to yield physically meaningful results.  It is often used to define functions that exist only at a point because
 * Probability and Statistics
 Consider a real and continuous /random variable/, $\xi$.  This variable will take a value somewhere on the interval $[a,b]$, and let the probability of the random variable occurring between $x_1$ and $x_2$ be given by $P\left[ x_1 \leq \xi \leq x_2 \right]$.  We can define a /probability density function/, $f(x)$, such that $f(x)dx$ is the probability that the continuous random variable, $\xi$, will have a value between $x$ and $x+dx$ in the limit of $dx \rightarrow 0$.  In other words,
 \begin{align}
