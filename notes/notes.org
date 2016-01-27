@@ -85,28 +85,28 @@ We also define the angles $\gamma$, $\theta$, and $\psi$ as shown in Figure \ref
 \end{figure}
 
 The analysis of scattering kinematics is greatly simplifed by working in the center-of-mass reference frame (CM) rather than the laboratory reference frame (LAB).  The origin in the CM reference frame is 
-\begin{align*}
+\begin{align}
   \vec{r}_{CM} = \frac{1}{A+1} \left( \vec{r}_n + A\vec{r}_A \right)
-\end{align*}
+\end{align}
 where $\vec{r}_n$ and $\vec{r}_A$ are the positions of the neutron and the nucleus, respectively, and $A$ is the atomic mass ratio of the nucleus.  Consequently we may deduce that the origin of the CM system is moving with a velocity of
-\begin{align*}
+\begin{align}
   \vec{V}_{CM} = \frac{1}{A+1} \left(\vec{V}_n + A\vec{V}_A \right).
-\end{align*}
+\end{align}
 
 The velocities of the neutron and nuclear in the CM system are given by the following relations:
 \begin{subequations}
-\begin{align*}
+\begin{align}
   \vec{v}_n  &= \vec{V}_n - \vec{V}_{CM} \\
   \vec{v}_n' &= \vec{V}_n' - \vec{V}_{CM} \\ 
   \vec{v}_A  &= \vec{V}_A - \vec{V}_{CM} \\
   \vec{v}_A' &= \vec{V}_A' - \vec{V}_{CM}
-\end{align*}
+\end{align}
 \label{eq:cmDefs}
 \end{subequations}
 We will also define the /relative/ velocity between the neutron and nucleus, which is the same in both the CM and LAB systems:
-\begin{align*}
+\begin{align}
   \vec{V}_R = \vec{V}_n - \vec{V}_A
-\end{align*}
+\end{align}
 This definition allows us to write the CM neutron and nucleus velocities as
 \begin{subequations}
 \begin{align}
@@ -151,52 +151,52 @@ Thus in the CM system, both neutron and nucleus are moving along the same line i
 \end{figure}
 
 Consider now the kinetic energy of the system before the collision.  Letting the variable, $e$, denote the kinetic energy of a particle in the CM system (i.e., relative to the CM velocity) we  have
-\begin{align*}
+\begin{align}
   e_n + e_A = e_{\text{exc}}
-\end{align*}
+\end{align}
 where the subscripts are used in the same way as they were in the velocity variables.  The new variable $e_{\text{exc}}$ is called the /excitation energy/, which is the energy that is available for the reaction, and may be written
-\begin{align*}
+\begin{align}
   e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2.
-\end{align*}
+\end{align}
 
 *** Elastic Scattering
 We will now assume that linear momentum is conserved through the collision.  In the LAB system this means
-\begin{align*}
+\begin{align}
   \vec{V}_n + A\vec{V}_A = \vec{V}_n' + A\vec{V}_A'
-\end{align*}
+\end{align}
 By using the definitions in Eq. \eqref{eq:cmDefs} we see that this relationship carries over to CM system, allowing us to write
-\begin{align*}
+\begin{align}
   \vec{v}_n + A\vec{v}_A = \vec{v}_n' + A\vec{v}_A'
-\end{align*}
+\end{align}
 Writing the left-hand-side of this expression (i.e., the pre-collision linear momentum) in terms of the relative velocity reveals that net linear momentum both before and after the collision is zero:
-\begin{align*}
+\begin{align}
   \frac{A}{A+1}\vec{V}_R - \frac{A}{A+1}\vec{V}_R = \vec{0}
-\end{align*}
+\end{align}
 This means that
-\begin{align*}
+\begin{align}
   \vec{v}_n = -A \vec{v}_A, \\
   \vec{V}_n' = -A \vec{v}_A'.
-\end{align*}
+\end{align}
 
 Let us now additionally assume conservation of kinetic energy before and after the collision.  That is, 
-\begin{align*}
+\begin{align}
   e_n + e_A = e_n' + e_A' = e_{\text{exc}}.
-\end{align*}
+\end{align}
 Using Eq. \eqref{eq:cmVelRel}, we find that 
-\begin{align*}
+\begin{align}
   v_n = v_n' = \frac{A}{A+1}V_R,
-\end{align*}
+\end{align}
 and
-\begin{align*}
+\begin{align}
   v_A = v_A' = \frac{1}{A+1}V_R.
-\end{align*}
+\end{align}
 
 **** Stationary Target Nucleus
 Consider the special case where target nucleus is stationary, i.e. $\vec{V}_A = 0$.  From the previous section we know that
-\begin{align*}
+\begin{align}
   \vec{V}_{CM} = \frac{1}{A+1} \vec{V}_n, \text{ and} \\
   v_n = v_n' = \frac{A}{A+1}V_n.
-\end{align*}
+\end{align}
 We can sketch a diagram of the relationship between the LAB and CM velocities and the velocity of the center-of-mass.
 
 \begin{figure}
@@ -232,14 +232,14 @@ which simplifies to
   V_n'^2 = \left[ \frac{A^2+1}{(A+1)^2} + 2 \frac{A}{(A+1)^2}\cos(\varphi) \right] \vec{V}_n^2.
 \end{equation}
 An immediate implication of this expression is the relationship between the final and initial kinetic energies of the neutron and the scattering angle in the CM system:
-\begin{align*}
+\begin{align}
   \frac{E_n'}{E_n} = \frac{V_n'^2}{\vec{V}_n^2}
                    = \frac{(1+\alpha) + (1-\alpha) \cos(\varphi)}{2}
-\end{align*}
+\end{align}
 where
-\begin{align*}
+\begin{align}
   \alpha = \left( \frac{A-1}{A+1} \right)^2
-\end{align*}
+\end{align}
 
 To understand this a bit better let's consider a few limiting cases.
 - $A=1$ : :: This is the case of a neutron scattering off a hydrogen nucleus, and $\alpha = 0$.  For a glancing collision, the angle of deflect ($\varphi$ or $\theta$) will be very small.  Thus $E_n' \approx E_n$ and no appreciable energy is lost in the collision.  For a direct hit, in which case the neutron bounces straight back ($\varphi = \theta = \pi$) we have $E_n' = 0$--the neutron lost /all/ of its energy in a single collision.
@@ -250,31 +250,31 @@ Another important ramification is that for any fixed size of the target nucleus,
 The preceding work shows us that the amount of energy lost by a neutron depends on the mass of the target nucleus and the cosine of the deflection angle in the CM system.  We can derive a similar relationship between the energy loss and the cosine of the deflection angle in the LAB system, which is often more useful from simulation perspective.
 
 Again starting with the diagram and using the law of cosines we have
-\begin{align*}
+\begin{align}
   v_n'^2 = V_n'^2 + V_{CM}^2 - 2 V_n' V_{CM} \cos\theta.
-\end{align*}
+\end{align}
 This simplifies to 
-\begin{align*}
+\begin{align}
   \left( \frac{A}{A+1} \right)^2 V_n^2 = V_n'^2 + \left( \frac{1}{A+1} \right)^2 V_n^2 - \frac{2}{A+1} V_n' V_n \cos\theta.
-\end{align*}
+\end{align}
 Multiplying by the mass of a neutron squared divided by four (to get an expression in terms of energies) and solving for $\cos\theta$ yields
-\begin{align*}
+\begin{align}
   \cos\theta = \frac{1}{2}\left( A+1 \right) \sqrt{\frac{E_n'}{E_n}}
              - \frac{1}{2}\left( A-1 \right) \sqrt{\frac{E_n}{E_n'}}.
-\end{align*}
+\end{align}
 
 *** Reactions Involving a Compound Nucleus
 Elastic scattering may be viewed a billiard ball collision.  The neutron and nucleus exchange kinetic energy and linear momentum but nothing else.  In collisions such as inelastic scattering, neutron capture, and fission however, the neutron and nucleus combine to form a new, compound nucleus.  Moreover, this compound nucleus will generally be in an /excited/ state, having received additional internal energy from the collision.  We may write such a reaction as
-\begin{align*}
+\begin{align}
   \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
   \rightarrow \leftidx{^{A+1}_Z}{X}{^*}
-\end{align*}
+\end{align}
 where the * symbol is used to indicate an excited state.  The first reaction in this process is the absorption of a neutron into the target nucleus.  The resultant excited nucleus will then decay, generally on a time scale of $10^{-14}$ to $10^{-21}$ seconds.
 
 There are two sources of the excitation energy in a compound nucleus.  First, there is the kinetic energy that is available to the reaction.  This energy, $e_{\text{exc}}$, is the total pre-collision kinetic energy of the neutron and nucleus in the CM reference frame.  Second, there is a potential source of energy arising from the change in binding energy between the original and compound nuclei.  This change in energy may be expressed as
-\begin{align*}
+\begin{align}
   \Delta BE = \left[ M(A,z) + m_n - M(A+1,Z) \right] c^2
-\end{align*}
+\end{align}
 where $M(A,Z)$ is the mass of nucleus $\leftidx{^A_Z}{X}{}$, $m_n$ is the mass of the neutron and $c$ is the speed of light in a vacuum.  Thus the total energy available to the reaction is $e_{\text{exc}} + \Delta BE$.
 
 Figure \ref{fig::compoundNucleus} shows a cartoon depicting the excitation of a nucleus following neutron capture and three possible de-excitation processes (also called /decay channels/).  Elastic scattering has already been discussed, and as we will see, can be treated as a special case of inelastic scattering, which we will now discuss.
@@ -333,14 +333,13 @@ Figure \ref{fig::compoundNucleus} shows a cartoon depicting the excitation of a 
 \label{fig::compoundNucleus}
 \end{figure}
 
-
 *** Inelastic Scattering
 Inelastic scattering involves the formation of a compound nucleus which subsequently decays through the emission of a neutron and one or more photons (\gamma rays):
-\begin{align*}
+\begin{align}
   \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
   \rightarrow \leftidx{^{A+1}_Z}{X}{^*}
   \rightarrow \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} + \gamma
-\end{align*}
+\end{align}
 The presence of the photon at the end of this reaction clearly indicates that energy has not been conserved between the neutron-nucleus pair.  What has happened instead, is that upon ejection of the neutron, the $\leftidx{^A_Z}{X}{}$ was actually left in an excited state and emitted one (or more) photons to return to the ground state.
 
 When considering the energetics of inelastic scattering, note that the final nucleus is simply the original target nucleus.  Thus the role of the change in binding energy has no net effect on the energy of the system.  There was $e_\text{exc}$ energy available before the collision (from the kinetic energy of the neutron and nucleus) and there is still $e_\text{exc}$ energy available after the collision, although the photon has appeared and claimed part of the available energy.
@@ -349,10 +348,10 @@ A second consideration is that for the compound nucleus to decay into an excited
 
 *** Radiative Capture
 A radiative capture reaction is essentially an inelastic neutron scattering /without the neutron/.  That is, the target nucleus absorbs a neutron then de-excites simply by emitting one or more photons:
-\begin{align*}
+\begin{align}
   \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
   \rightarrow \leftidx{^{A+1}_Z}{X}{^*} + \gamma
-\end{align*}
+\end{align}
 Note that the total amount of energy to be relieved through the emission of photons is $e_{\text{exc}} + \Delta BE$.
 
 *** Fission Reactions
@@ -374,42 +373,42 @@ In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to over
    (c) Compute $\left< u - u' \right>$ and $\left< n \right>$ for the following nuclei: \leftidx{^1}{H}{}, \leftidx{^{12}}{C}{}, and \leftidx{^{238}}{U}{}.
 ** Solutions                                                      :noexport:
 4. Applying the law of sines to Figure \ref{fig::scatteringVelLABvsCM} gives us
-\begin{align*}
+\begin{align}
   \frac{\sin\theta}{v_n'} = \frac{sin(\pi-\varphi)}{V_n'} \;\;.
-\end{align*}
+\end{align}
 Rearranging and using a trigonometric identity leads to
-\begin{align*}
+\begin{align}
   \sin\theta = -\frac{v_n'}{V_n'} sin(\varphi) \;\;.
-\end{align*}
+\end{align}
 
 We know from the law of cosines (as was shown in the notes) that
-\begin{align*}
+\begin{align}
   V_n'^2 = \left[ \frac{A^2+1}{(A+1)^2} + 2 \frac{A}{(A+1)^2}\cos(\varphi) \right] \vec{V}_n^2 \;\;.
-\end{align*}
+\end{align}
 We also know that $v_n' = \frac{A}{A+1}V_n$, which leads to 
-\begin{align*}
+\begin{align}
   V_n'^2 = \left[ \frac{A^2+1}{A^2} + 2 \frac{1}{A}\cos(\varphi) \right] (\vec{v}_n')^2 \;\;.
-\end{align*}
+\end{align}
 
 Putting these two pieces together leads to
-\begin{align*}
+\begin{align}
   \sin^2\theta &= \frac{v_n'}{V_n'} sin^2(\varphi) \\
                &= \frac{1}{\frac{A^2+1}{A^2} + 2 \frac{1}{A}\cos(\varphi)} sin^2(\varphi) \\
                &= \frac{A^2 sin^2(\varphi)}{A^2+1 + 2 A \cos(\varphi)}  \;\;.
-\end{align*}
+\end{align}
 We can use trigonometry to recast this expression in terms of $\cos\theta$:
-\begin{align*}
+\begin{align}
   \cos\theta &= \pm \sqrt{1-\frac{A^2 sin^2(\varphi)}{A^2+1 + 2 A \cos(\varphi)}}  \;\;.
-\end{align*}
+\end{align}
 Care must be taken in selecting the appropriate sign.  By inspecting the diagram, we see that a sign change will occur for $\cos\theta$ when $\frac{A^2 sin^2(\varphi)}{A^2+1 + 2 A \cos(\varphi)}=1$.  Call this critical value $\varphi^*$.  When $\varphi \leq \varphi^*$, the positive square root should be taken; when $\varphi > \varphi^*$, the negative square root should be taken.
 
 Our expression relates $\theta$ and $\phi$, but for this to yield a probability density function it must normalize to one.  It can be confirmed that $\cos\theta$ will take values between -1 and 1.  Thus we should check normalization by integrating over this domain: $\int_{-1}^1 \cos\theta d(\cos\theta) = \int_{-1}^1 \mu d\mu = 1$.  Therefore
-\begin{align*}
+\begin{align}
   f(\mu) =
   \begin{cases}
     
   \end{cases}
-\end{align*}
+\end{align}
 
 * Cross Sections
 ** What is a Cross Section?
@@ -423,73 +422,73 @@ In concrete terms, let's say that we have a  neutron that starts moving at a fix
 - We were told (above) that the probability $P[ds]$ is proportional to $ds$.
 - From intuition, we can also convince ourselves that this probability should also be proportional to the number of "target" nuclei present, so let's define $N$ as the density of nuclei.
 From these observations we may write
-\begin{align*}
+\begin{align}
   P[ds] = \sigma N ds
-\end{align*}
+\end{align}
 The quantity $P[ds]$ is a probability, so it should be unitless.  Given that $N$ is a density and $ds$ is length, we can infer that the proportionality constant, $\sigma$, has units of length squared or area.  The constant $\sigma$ is called the /microscopic cross section/.  It is common to express the microscopic cross section in units of /barns/ (b) where $1 \text{ b} = 10^{-24} \text{ cm}^2$.
 
 The product of the first two variables appearing on the right-hand-side of the probability definition is called the /macroscopic cross section/, written as
-\begin{align*}
+\begin{align}
   \Sigma = \sigma N,
-\end{align*}
+\end{align}
 which may be interpreted as the probability /per unit path-length/ of a collision.  Thus we may write the probability of a neutron collision over the differential path-length $ds$ as
-\begin{align*}
+\begin{align}
   P[ds] = \Sigma ds.
-\end{align*}
+\end{align}
 
 Next, consider a /population/ of neutrons with a density, $n$.  For now let's assume that all neutrons have the same speed, but they need not be moving in the same direction.  The number of neutrons that will experience a collision within the differential path-length $ds$ along each of their individual trajectories will be $P[ds]$ multiplied by the number of neutrons.  If we multiply by the /density/ of neutrons rather than the /number/ of neutrons then we get the (differential) density of neutron collisions within a (differential) distance $ds$ of collective neutron travel:
-\begin{align*}
+\begin{align}
   dC = \Sigma n ds.
-\end{align*}
+\end{align}
 Note the units of (collisions) per unit volume.
 
 Because all neutrons are moving at the same speed, $V_n$, we may relate the distance $ds$ (of "collective neutron travel") to a time interval $dt = \frac{ds}{V_n}$.  Thus the density of neutron collisions is $dC = \Sigma n V_n dt$.  Dividing by $dt$ and taking $dt \rightarrow 0$ gives us an important quantity in reactor physics, called the /reaction rate density/:
-\begin{align*}
+\begin{align}
   R = \frac{dC}{dt} = \Sigma n V_n.
-\end{align*}
+\end{align}
 Because we have officially taken the limit $dt \rightarrow 0$ (and correspondingly $ds \rightarrow 0$), this quantity is a point-wise, instantaneous value.
 
 The product of neutron density and neutron speed, $n V_n$, appearing on the right-hand-side of the reaction rate density is a ubiquitous quantity in reactor physics, called the /scalar flux/:
-\begin{align*}
+\begin{align}
   \phi = n V_n.
-\end{align*}
+\end{align}
 
 We have previously established that there are several different types of nuclear reactions (radiative capture, elastic and inelastic scattering, etc.)  Each type of reaction is represented by unique microscopic cross section.  For a reaction of type $x$, for example, we may write the corresponding cross section $\sigma_x$.  Multiplying by the nuclide density provides the corresponding macroscopic cross section $\Sigma_x = N \sigma_x$.
 
 If there is more than one type of nuclide present, we may simply add the contributions from each to obtain macroscopic cross section for the mixture:
-\begin{align*}
+\begin{align}
   \Sigma_x = \sum_i N_i \sigma_{x,i}.
-\end{align*}
+\end{align}
 More over we may sum across all reaction types to obtain the /total/ macroscopic cross sections, which is the probability per unit path-length of /any/ collision:
-\begin{align*}
+\begin{align}
   \Sigma = \sum_x \Sigma_x.
-\end{align*}
+\end{align}
 
 \begin{example}[Derivation of Mean-Free-Path]
 Now consider a monoenergetic beam of neutrons with uniform velocity $\vec{V}_n$ impinging normally on the surface of slab with a total macroscopic cross section $\Sigma$.  On average, how far will a neutron travel into the slab before experiencing its first collision?
 
 First construct a balance equation for the uncollided neutron density as a function of $x$.  We know that the rate of neutron removal (with respect to $x$) will be the rate of neutron collisions, and there are no sources of uncollided neutrons inside the slab.  Thus,
-\begin{align*}
+\begin{align}
   \frac{dn}{dx} = -\Sigma n(x).
-\end{align*}
+\end{align}
 We can solve this equation to determine
-\begin{align*}
+\begin{align}
   n(x) = n(0) e^{-\Sigma x}.
-\end{align*}
+\end{align}
 The probability that a neutron will reach a distance $x$ without experiencing is a collision is thus
-\begin{align*}
+\begin{align}
   p_0(x) = \frac{n(x)}{n(0)} = e^{-\Sigma x}.
-\end{align*}
+\end{align}
 
 Next, the probability of a neutron experiencing its first collision between $x$ and $x+dx$ is the product of (1) the probability of the neutron reaching $x$ and (2) the probability of the neutron colliding between $x$ and $x+dx$:
-\begin{align*}
+\begin{align}
   p_c(x)dx = p_0(x) \Sigma dx = \Sigma e^{-\Sigma x} dx.
-\end{align*}
+\end{align}
 
 Finally, the average distance to first collision, which we will call $\lambda$, may be obtained by taking the integral
-\begin{align*}
+\begin{align}
   \lambda = \int_0^\infty x p_c(x) dx = \frac{1}{\Sigma}.
-\end{align*}
+\end{align}
 The quantity $\lambda$ is called the /mean-free-path/ and, for an infinite, homogeneous medium, is equal to the inverse of the total macroscopic cross section.
 \end{example}
 
@@ -497,9 +496,9 @@ The quantity $\lambda$ is called the /mean-free-path/ and, for an infinite, homo
 Because of the quantum nature of reality, which is very important at the nuclear scale, a nucleus is not allowed to be excited to an arbitrary energy level.  Rather a nucleus may only sit at certain discrete energy levels, at or above its ground state.  Nuclei in excited states will seek to return to the stable ground state, typically though photon emission, although at high enough energy a neutron or even alpha particle may be emitted.  For some nuclei, the additional energy is sufficient to cause fission.  
 
 Although each excitation level, say $e_i$, is discrete, it's value is not precisely defined due to the Heisenberg uncertainty principle.  Rather each excited state is associated with an energy width, $\gamma_i$, that is centered at $e_i$ and related to the average lifetime of the excited state, $\tau_i$ by
-\begin{align*}
+\begin{align}
   \gamma_i = \frac{\hbar}{\tau_i}.
-\end{align*}
+\end{align}
 Note that the average lifetime $\tau_i$ is equal to the inverse of the decay constant for the excited state.
 
 An excited, compound nucleus at excitation level $e_i$ with width $\gamma_i$ may have several options for de-excitation: emitting a photon, a neutron, etc., for example.  Each one of these "options" is called a /decay channel/.  The energy width, $\gamma_i$, of the excited state may be written as a sum of the widths associated with each possible decay channel:
@@ -516,30 +515,30 @@ Recall that there is $e^* = e_{\text{exc}} + \Delta BE$ of energy available to a
 There is a result from quantum mechanics that provides an expression for a reaction cross section in the vicinity of a resonance.  The formula is known as the /single level Breit-Wigner Formula/ (SLBW).  The "single level" qualifier belies the assumption the resonance in question is well-separated from nearby resonances.  Conversely, if two energy states are close enough together that their associated energy widths ($\gamma_i$ $\gamma_{i+1}$, for example) overlap, then the there will be interference effects between the two states.  This will then lead to more complex expressions for describing the corresponding resonance effects that manifest in the cross sections.
 
 For a reaction of type $x$ from which there are no emerging neutrons (e.g., radiative capture), the SLBW may be written
-\begin{align*}
+\begin{align}
   \sigma_x(e_{\text{exc}}) = \sigma_0 \frac{\gamma_{x,i}\gamma_i}{\gamma_i^2+4(e_\text{ext}-e_i)^2}
-\end{align*}
+\end{align}
 where
-\begin{align*}
+\begin{align}
  \sigma_0 &= 4\pi \lambda^2 g_J \frac{\gamma_{n,1}(e_\text{exc})}{\gamma_i},  \\
   g_J &= \frac{2J+1}{2(2I+1)}, \text{ and} \\
   \lambda &= \frac{\hbar}{\sqrt{2e_\text{exc} \left( \frac{Am}{A+1} \right)}}.
-\end{align*}
+\end{align}
 The quantity $g_J$ is a statistical factor expressed in terms of the spin of the target nucleus ($I$) and compound nucleus ($J$).  The parameter $\lambda$ is the de Broglie wavelength of the incident neutron in the CM system.
 
 For an elastic scattering reaction, the SLBW becomes
-\begin{align*}
+\begin{align}
   \sigma_e(e_\text{exc}) = \sigma_p^\ell 
                          + \sigma_0 \left[ \frac{2}{\gamma_i}(e_\text{exc}-e_i) \sin 2\phi_\ell 
                                          + \frac{\gamma_{n,i}}{\gamma_i} -2 \sin^2 \phi_\ell \right] \frac{\gamma_i^2}{\gamma_i^2+4(e_\text{exc}-e_i)^2}
-\end{align*}
+\end{align}
 where
-\begin{align*}
+\begin{align}
   \sigma_p^\ell = 4\pi \lambda^2 \left( 2\ell + 1 \right) \sin^2 \phi_\ell
-\end{align*}
+\end{align}
 is called the /potential/ cross section.
 In this expressions the quantity $\ell$ is the integer /angular momentum quantum number/, which enumerates several types of elastic scattering reactions:
-\begin{align*}
+\begin{align}
   \ell = 
   \begin{cases}
     0; & s\text{-wave interaction} \\
@@ -547,27 +546,37 @@ In this expressions the quantity $\ell$ is the integer /angular momentum quantum
     2; & d\text{-wave interaction} \\
     \text{etc.} &
   \end{cases}
-\end{align*}
+\end{align}
 Most elastic scattering reactions in thermal reactors will be $s\text{-wave}$ interactions, characterized by relatively low incident neutron energies.  Heavy target nuclei may give rise to higher-waver interactions.  The first few $\phi_\ell$ /shift factors/ are given by
-\begin{align*}
+\begin{align}
   \phi_0 &= \frac{a}{\lambda}, \\
   \phi_1 &= \frac{a}{\lambda} - \tan^{-1} \frac{a}{\lambda}, \\
   \phi_2 &= \frac{a}{\lambda} - \tan^{-1} \frac{\frac{3a}{\lambda}}{3 - \left( \frac{a}{\lambda} \right)^2}
-\end{align*}
+\end{align}
 where $a$ is the nucleus /diffusion radius/, which can be thought of as the "radius of influence" of the nucleus.  (A nucleus does not have a well-defined boundary in the quantum world!)
 
 The expressions so far have been defined with respect to the CM system.  Most of us do not live in the center-of-mass world of nuclear collision; we operate in a world that is stationary with respect to /us/, i.e., the LAB system, and would prefer to work accordingly.  The excitation energy $e_\text{exc}$ in the CM system can be converted to a LAB energy easily:
-\begin{align*}
+\begin{align}
   E_\text{exc} = \frac{A+1}{A}e_\text{exc} = \frac{1}{2} m_n V_R^2.
-\end{align*}
+\end{align}
 If we assume that the target nucleus is stationary, then $E_\text{exc}$ is simply the initial kinetic energy of the neutron.
 
 With regard to resonance descriptions, a resonance at $e_i$ with a width $\gamma_{x,i}$ for decay channel $x$ in the CM system becomes the following in the LAB system:
-\begin{align*}
+\begin{align}
   E_i &= \frac{A+1}{A} e_i, \\
   \Gamma_{x,i} &= \frac{A+1}{A} \gamma_{x,i}.
-\end{align*}
+\end{align}
 The SLBW formulas remain valid in the LAB as long as the lowercase (CM) variables above are replaced by their uppercase (LAB) counterparts.
+
+We will conclude this section by remarking that in the case of a resonance located at an energy $e_{x,i}$ above the thermal energy range (i.e., >1 eV).  If we assume that that $a/\lambda << 1$ then only $s-\text{wave}$ interactions are important.  Then using LAB variables, the SLBW formulas become
+\begin{align}
+  \label{eq::simpleSLBW1}
+  \sigma_x(E_\text{exc}) &=  \sigma_0 \frac{\Gamma_{x,i} \Gamma_i}{\Gamma_i^2 + 4\left(E_\text{exc} - E_i\right)^2} \\
+  \label{eq::simpleSLBW2}
+  \sigma_e(E_\text{exc}) &= 4\pi a^2 
+         + \sigma_0 \frac{2a}{\lambda} \frac{2\Gamma_i\left(E_\text{exc} - E_i\right)}{\Gamma_i^2 + 4\left(E_\text{exc} - E_i\right)^2}
+         + \sigma_0 \frac{\Gamma_{n,i} \Gamma_i}{\Gamma_i^2 + 4\left(E_\text{exc} - E_i\right)^2} \;\;.
+\end{align}
 
 *** Limitations of SLBW
 The main assumption of the SLBW was that resonances were well-separated and did not interfere with one another.  In reality this assumption breaks down, especially in heavy target nuclei and high energies ($\gtrsim 10$ keV).  There is a more accurate representation of closely-spaced resonances called the multilevel Breit-Wigner (MLBW) formula.  The complexity of this formula increases significantly.  The MLBW is, however, often used in computer codes that calculate neutron cross sections for reactor physics applications.
@@ -577,10 +586,11 @@ The location and density of resonances varies by nuclide and energy.  In general
 ** Non-Stationary Nuclei                                          :noexport:
 In much of our initial discussion on neutron-nuclear interactions we assumed that the target nucleus was stationary ($\vec{V}_A$).  Short of being at absolute zero temperature, this is never the case in reality.  If the speed of the neutron is much larger than the speed of the target nucleus this ma be a good assumption, however, so our previous discussions are justified.  At neutron energies below 1 eV the random, thermal motion of the nuclei is not negligible.
 
+*** Averaging the Microscopic Cross Section
 The velocities of nuclei in thermal equilibrium is described by the Maxwell-Boltzmann probability density function,
-\begin{align*}
+\begin{align}
   p(\vec{V}_A) = \left( \frac{mA}{2\pi k T} \right)^\frac{3}{2} \exp\left(-\frac{mAV_A^2}{2kT}\right) 
-\end{align*}
+\end{align}
 where
 - $k$ :: is the Boltzmann constant,
 - $T$ :: is the absolute temperature of the material,
@@ -589,57 +599,67 @@ where
 - $p(\vec{V}_A)d^3V_A$ :: is the probability for a nucleus to have a velocity within an interval $d^3V_A$ of $\vec{V}_A$.
 
 We know that for a fixed neutron speed $V_n$ the reaction rate for reaction type $x$ is defined by
-\begin{align*}
+\begin{align}
   R_x = N \sigma_x(E_\text{exc}) V_R n,
-\end{align*}
+\end{align}
 where $N$ and $n$ are the densities of the nuclei and neutrons, respectively.  Note that because we are not assuming a stationary nucleus, we use the relative speed, $V_R$, which is the speed at which the neutron is approaching the target, $V_R = V_n - V_A$.  Also recall that the excitation energy  in the LAB is $E_\text{exc} = \frac{A+1}{A}e_\text{exc} = \frac{1}{2}mV_R^2$, so we may use $E_\text{exc}$ and $V_R$ interchangeably as the independent variable in the microscopic cross section.  Thus for a fixed neutron speed $V_n$ the reaction rate depends on the speed of the target nucleus which is random.  To account for this thermal motion of the nuclei, we can calculate an average reaction rate over the probability distribution of target nuclei:
-\begin{align*}
+\begin{align}
   \left<R_x\right> = \int_0^\infty p(\vec{V}_A) N \sigma_x(\left| \vec{V}_n - \vec{V}_A \right|) \left| \vec{V}_n - \vec{V}_A \right| n d^3V_A \;\;,
-\end{align*}
+\end{align}
 where the integral is taken over each of the velocity components.  From this average reaction rate we can define a new /effective/ microscopic cross section averaged over the motion of the nuclei, which for neutron with speed $V_n$ is:
-\begin{align*}
+\begin{align}
   \bar{\sigma}_x(V_n) = 
   \left<\sigma_x(\left| \vec{V}_n - \vec{V}_A \right|)\right> = 
   \frac{1}{V_n} \int_0^\infty p(\vec{V}_A) \sigma_x(\left| \vec{V}_n - \vec{V}_A \right|) \left| \vec{V}_n - \vec{V}_A \right| d^3V_A \;\;.
-\end{align*}
+\end{align}
 
 Plugging in the Maxwell-Boltzmann distribution into this expression yields
-\begin{align*}
+\begin{align}
   \bar{\sigma}_x(V_n) = 
   \frac{1}{V_n} \left( \frac{mA}{2\pi k T} \right)^\frac{3}{2}
   \int_0^{2\pi} \delta \int_0^\infty dV_{xy} V_{xy} \int_{-\infty}^\infty dV_z \exp\left(-\frac{mAV_A^2}{2kT} \right) \sigma_x(V_R) V_R \;\;.
-\end{align*}
+\end{align}
 The expression can be simplified somewhat without approximation.  To begin, consider the velocity of the target nucleus decomposed into a radial ($xy$) and axial ($z$) component:
-\begin{align*}
+\begin{align}
   \vec{V}_A = V_{xy} \cos\eta \vec{i} + V_{xy} \sin\eta \vec{j} + V_z \vec{k}
-\end{align*}
+\end{align}
 where $\eta \in \left[0, w\pi\right]$, and
-\begin{align*}
+\begin{align}
   d^3V_A = V_{xy} d\eta dV_{xy} dV_z \;\;.
-\end{align*}
+\end{align}
 The primary quantity that needs to be evaluated for the averaging is the relative speed.  If we define the coordinate reference frame so that the $\vec{k}$ unit vector is pointing in the direction of neutron travel then we have
-\begin{align*}
+\begin{align}
   V_R = | \vec{V}_n - \vec{V}_A | = \sqrt{V_{xy}^2  + \left(V_n - V_z\right)^2} \;\;.
-\end{align*}
+\end{align}
 Additionally,
-\begin{align*}
+\begin{align}
   V_A^2 = V_{xy}^2 + V_z^2 = V_R^2 - V_n^2 + 2V_nV_z \;\;.
-\end{align*}
+\end{align}
 Finally, changing the variable of integration of the first integral from $V_{xy}$ to $E_\text{exc}$ using the relationship
-\begin{align*}
+\begin{align}
   E_\text{exc} = \frac{1}{2}m\left[V_{xy}^2 + (V_n - V_z)^2\right]
-\end{align*}
+\end{align}
 (which requires changing the bounds of the $V_z$ integration) and integrating over $V_z$ yields
-\begin{align*}
+\begin{align}\label{eq::avgMirco}
   \bar{\sigma}_x(E) = \frac{1}{\Delta\sqrt{\pi}} \int_0^\infty dE_\text{exc} \sqrt{\frac{E_\text{exc}}{E}} \sigma_x(E_\text{exc}) 
   \left\{ \exp\left[ -\frac{A}{kT}\left(\sqrt{E_\text{exc}} - \sqrt{E} \right)^2 \right] 
          \exp\left[ -\frac{A}{kT}\left(\sqrt{E_\text{exc}} + \sqrt{E} \right)^2 \right]  \right\}
-\end{align*}
+\end{align}
 where
-\begin{align*}
+\begin{align}
   \Delta = 2 \sqrt{\frac{EkT}{A}} \quad \text{and} \quad E = \frac{1}{2}mV_n^2 \;\;.
-\end{align*}
+\end{align}
 
+*** Averaging Resonance Cross Sections
+In the case of an isolated, narrow resonance above the thermal neutron energy range we can take several further steps to simplify Eq. \eqref{eq::avgMicro}.
+1. If the neutron has a kinetic energy significantly above the average kinetic energy of the nuclei then $E_\text{exc} \approx E$ and we may assume that $\exp\left[-\frac{A}{kT}\left(\sqrt{E_\text{exc}} + \sqrt{E}\right)^2\right] << \exp\left[-\frac{A}{kT}\left(\sqrt{E_\text{exc}} - \sqrt{E}\right)^2\right]$.  Consequently we will take
+   \begin{align}
+     \exp\left[-\frac{A}{kT}\left(\sqrt{E_\text{exc}} + \sqrt{E}\right)^2\right] \approx 0 \;\;.
+   \end{align}
+2. Because we have assumed that the resonance is narrow we may assume that the peak energy, $E_i$, is much greater than the resonance width, $\Gamma_i$.
+3. When $E_\text{exc}$ is much different than $E$, the first exponential term in Eq. \eqref{eq::avgMicro} will rapidly tend to a small number.  Thus we may generate a Taylor expansion of $\left(\sqrt{E_\text{exc}} - \sqrt{E}\right)$ in $E$ with $E_\text{exc} = E + \varepsilon$ and $\varepsilon << E$.
+4. We assume $s-\text{wave}$ interactions and use lab variables so that Eqs. \eqref{eq::simpleSLBW1} and \eqref{eq::simpleSLBW2} may be used.
+5. Assume that $\Gamma_{x,i}$ and $\Gamma_i$ are constant.  (In reality there is some variation with energy.)
 ** References
 - [[ebib:Hebert2009][Hebert (2009)]]
 ** Problems                                                       :noexport:
@@ -654,21 +674,21 @@ where
 
 * Mathematical Odds and Ends
 ** Trigonometric Identities
-\begin{align*}
+\begin{align}
   \sin\left(A \pm B\right) = \sin A \cos B \pm \cos A \sin B
-\end{align*}
-\begin{align*}
+\end{align}
+\begin{align}
   \cos\left(A \pm B\right) = \cos A \cos B \mp \sin A \sin B
-\end{align*}
+\end{align}
 ** Law of Sines and Cosines
 Given the triangle shown in Figure \ref{fig::triangle}, the /law of sines/ states that
-\begin{align*}
+\begin{align}
   \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = \text{ constant} \;\;.
-\end{align*}
+\end{align}
 The /law of cosines/ states that
-\begin{align*}
+\begin{align}
   c^2 = a^2 + b^2 - 2ab\cos{C}
-\end{align*}
+\end{align}
 
 \begin{figure}
 \centering

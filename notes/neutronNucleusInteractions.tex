@@ -1,4 +1,4 @@
-% Created 2016-01-24 Sun 22:02
+% Created 2016-01-26 Tue 22:25
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -17,6 +17,7 @@
 \usepackage{tikz}
 \usepackage{fancyhdr}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\renewcommand\vec{\mathbf}
 \newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
 \newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
 \pagestyle{fancyplain}
@@ -123,28 +124,28 @@ We also define the angles \(\gamma\), \(\theta\), and \(\psi\) as shown in Figur
 \end{figure}
 
 The analysis of scattering kinematics is greatly simplifed by working in the center-of-mass reference frame (CM) rather than the laboratory reference frame (LAB).  The origin in the CM reference frame is 
-\begin{align*}
+\begin{align}
   \vec{r}_{CM} = \frac{1}{A+1} \left( \vec{r}_n + A\vec{r}_A \right)
-\end{align*}
+\end{align}
 where \(\vec{r}_n\) and \(\vec{r}_A\) are the positions of the neutron and the nucleus, respectively, and \(A\) is the atomic mass ratio of the nucleus.  Consequently we may deduce that the origin of the CM system is moving with a velocity of
-\begin{align*}
+\begin{align}
   \vec{V}_{CM} = \frac{1}{A+1} \left(\vec{V}_n + A\vec{V}_A \right).
-\end{align*}
+\end{align}
 
 The velocities of the neutron and nuclear in the CM system are given by the following relations:
 \begin{subequations}
-\begin{align*}
+\begin{align}
   \vec{v}_n  &= \vec{V}_n - \vec{V}_{CM} \\
   \vec{v}_n' &= \vec{V}_n' - \vec{V}_{CM} \\ 
   \vec{v}_A  &= \vec{V}_A - \vec{V}_{CM} \\
   \vec{v}_A' &= \vec{V}_A' - \vec{V}_{CM}
-\end{align*}
+\end{align}
 \label{eq:cmDefs}
 \end{subequations}
 We will also define the \emph{relative} velocity between the neutron and nucleus, which is the same in both the CM and LAB systems:
-\begin{align*}
+\begin{align}
   \vec{V}_R = \vec{V}_n - \vec{V}_A
-\end{align*}
+\end{align}
 This definition allows us to write the CM neutron and nucleus velocities as
 \begin{subequations}
 \begin{align}
@@ -189,54 +190,54 @@ Thus in the CM system, both neutron and nucleus are moving along the same line i
 \end{figure}
 
 Consider now the kinetic energy of the system before the collision.  Letting the variable, \(e\), denote the kinetic energy of a particle in the CM system (i.e., relative to the CM velocity) we  have
-\begin{align*}
+\begin{align}
   e_n + e_A = e_{\text{exc}}
-\end{align*}
+\end{align}
 where the subscripts are used in the same way as they were in the velocity variables.  The new variable \(e_{\text{exc}}\) is called the \emph{excitation energy}, which is the energy that is available for the reaction, and may be written
-\begin{align*}
+\begin{align}
   e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2.
-\end{align*}
+\end{align}
 
 \subsection{Elastic Scattering}
 \label{sec:orgheadline4}
 We will now assume that linear momentum is conserved through the collision.  In the LAB system this means
-\begin{align*}
+\begin{align}
   \vec{V}_n + A\vec{V}_A = \vec{V}_n' + A\vec{V}_A'
-\end{align*}
+\end{align}
 By using the definitions in Eq. \eqref{eq:cmDefs} we see that this relationship carries over to CM system, allowing us to write
-\begin{align*}
+\begin{align}
   \vec{v}_n + A\vec{v}_A = \vec{v}_n' + A\vec{v}_A'
-\end{align*}
+\end{align}
 Writing the left-hand-side of this expression (i.e., the pre-collision linear momentum) in terms of the relative velocity reveals that net linear momentum both before and after the collision is zero:
-\begin{align*}
+\begin{align}
   \frac{A}{A+1}\vec{V}_R - \frac{A}{A+1}\vec{V}_R = \vec{0}
-\end{align*}
+\end{align}
 This means that
-\begin{align*}
+\begin{align}
   \vec{v}_n = -A \vec{v}_A, \\
   \vec{V}_n' = -A \vec{v}_A'.
-\end{align*}
+\end{align}
 
 Let us now additionally assume conservation of kinetic energy before and after the collision.  That is, 
-\begin{align*}
+\begin{align}
   e_n + e_A = e_n' + e_A' = e_{\text{exc}}.
-\end{align*}
+\end{align}
 Using Eq. \eqref{eq:cmVelRel}, we find that 
-\begin{align*}
+\begin{align}
   v_n = v_n' = \frac{A}{A+1}V_R,
-\end{align*}
+\end{align}
 and
-\begin{align*}
+\begin{align}
   v_A = v_A' = \frac{1}{A+1}V_R.
-\end{align*}
+\end{align}
 
 \subsubsection{Stationary Target Nucleus}
 \label{sec:orgheadline3}
 Consider the special case where target nucleus is stationary, i.e. \(\vec{V}_A = 0\).  From the previous section we know that
-\begin{align*}
+\begin{align}
   \vec{V}_{CM} = \frac{1}{A+1} \vec{V}_n, \text{ and} \\
   v_n = v_n' = \frac{A}{A+1}V_n.
-\end{align*}
+\end{align}
 We can sketch a diagram of the relationship between the LAB and CM velocities and the velocity of the center-of-mass.
 
 \begin{figure}
@@ -272,14 +273,14 @@ which simplifies to
   V_n'^2 = \left[ \frac{A^2+1}{(A+1)^2} + 2 \frac{A}{(A+1)^2}\cos(\varphi) \right] \vec{V}_n^2.
 \end{equation}
 An immediate implication of this expression is the relationship between the final and initial kinetic energies of the neutron and the scattering angle in the CM system:
-\begin{align*}
+\begin{align}
   \frac{E_n'}{E_n} = \frac{V_n'^2}{\vec{V}_n^2}
                    = \frac{(1+\alpha) + (1-\alpha) \cos(\varphi)}{2}
-\end{align*}
+\end{align}
 where
-\begin{align*}
+\begin{align}
   \alpha = \left( \frac{A-1}{A+1} \right)^2
-\end{align*}
+\end{align}
 
 To understand this a bit better let's consider a few limiting cases.
 \begin{description}
@@ -292,32 +293,32 @@ Another important ramification is that for any fixed size of the target nucleus,
 The preceding work shows us that the amount of energy lost by a neutron depends on the mass of the target nucleus and the cosine of the deflection angle in the CM system.  We can derive a similar relationship between the energy loss and the cosine of the deflection angle in the LAB system, which is often more useful from simulation perspective.
 
 Again starting with the diagram and using the law of cosines we have
-\begin{align*}
+\begin{align}
   v_n'^2 = V_n'^2 + V_{CM}^2 - 2 V_n' V_{CM} \cos\theta.
-\end{align*}
+\end{align}
 This simplifies to 
-\begin{align*}
+\begin{align}
   \left( \frac{A}{A+1} \right)^2 V_n^2 = V_n'^2 + \left( \frac{1}{A+1} \right)^2 V_n^2 - \frac{2}{A+1} V_n' V_n \cos\theta.
-\end{align*}
+\end{align}
 Multiplying by the mass of a neutron squared divided by four (to get an expression in terms of energies) and solving for \(\cos\theta\) yields
-\begin{align*}
+\begin{align}
   \cos\theta = \frac{1}{2}\left( A+1 \right) \sqrt{\frac{E_n'}{E_n}}
              - \frac{1}{2}\left( A-1 \right) \sqrt{\frac{E_n}{E_n'}}.
-\end{align*}
+\end{align}
 
 \subsection{Reactions Involving a Compound Nucleus}
 \label{sec:orgheadline5}
 Elastic scattering may be viewed a billiard ball collision.  The neutron and nucleus exchange kinetic energy and linear momentum but nothing else.  In collisions such as inelastic scattering, neutron capture, and fission however, the neutron and nucleus combine to form a new, compound nucleus.  Moreover, this compound nucleus will generally be in an \emph{excited} state, having received additional internal energy from the collision.  We may write such a reaction as
-\begin{align*}
+\begin{align}
   \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
   \rightarrow \leftidx{^{A+1}_Z}{X}{^*}
-\end{align*}
+\end{align}
 where the * symbol is used to indicate an excited state.  The first reaction in this process is the absorption of a neutron into the target nucleus.  The resultant excited nucleus will then decay, generally on a time scale of \(10^{-14}\) to \(10^{-21}\) seconds.
 
 There are two sources of the excitation energy in a compound nucleus.  First, there is the kinetic energy that is available to the reaction.  This energy, \(e_{\text{exc}}\), is the total pre-collision kinetic energy of the neutron and nucleus in the CM reference frame.  Second, there is a potential source of energy arising from the change in binding energy between the original and compound nuclei.  This change in energy may be expressed as
-\begin{align*}
+\begin{align}
   \Delta BE = \left[ M(A,z) + m_n - M(A+1,Z) \right] c^2
-\end{align*}
+\end{align}
 where \(M(A,Z)\) is the mass of nucleus \(\leftidx{^A_Z}{X}{}\), \(m_n\) is the mass of the neutron and \(c\) is the speed of light in a vacuum.  Thus the total energy available to the reaction is \(e_{\text{exc}} + \Delta BE\).
 
 Figure \ref{fig::compoundNucleus} shows a cartoon depicting the excitation of a nucleus following neutron capture and three possible de-excitation processes (also called \emph{decay channels}).  Elastic scattering has already been discussed, and as we will see, can be treated as a special case of inelastic scattering, which we will now discuss.
@@ -376,15 +377,14 @@ Figure \ref{fig::compoundNucleus} shows a cartoon depicting the excitation of a 
 \label{fig::compoundNucleus}
 \end{figure}
 
-
 \subsection{Inelastic Scattering}
 \label{sec:orgheadline6}
 Inelastic scattering involves the formation of a compound nucleus which subsequently decays through the emission of a neutron and one or more photons (\(\gamma\) rays):
-\begin{align*}
+\begin{align}
   \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
   \rightarrow \leftidx{^{A+1}_Z}{X}{^*}
   \rightarrow \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} + \gamma
-\end{align*}
+\end{align}
 The presence of the photon at the end of this reaction clearly indicates that energy has not been conserved between the neutron-nucleus pair.  What has happened instead, is that upon ejection of the neutron, the \(\leftidx{^A_Z}{X}{}\) was actually left in an excited state and emitted one (or more) photons to return to the ground state.
 
 When considering the energetics of inelastic scattering, note that the final nucleus is simply the original target nucleus.  Thus the role of the change in binding energy has no net effect on the energy of the system.  There was \(e_\text{exc}\) energy available before the collision (from the kinetic energy of the neutron and nucleus) and there is still \(e_\text{exc}\) energy available after the collision, although the photon has appeared and claimed part of the available energy.
@@ -394,10 +394,10 @@ A second consideration is that for the compound nucleus to decay into an excited
 \subsection{Radiative Capture}
 \label{sec:orgheadline7}
 A radiative capture reaction is essentially an inelastic neutron scattering \emph{without the neutron}.  That is, the target nucleus absorbs a neutron then de-excites simply by emitting one or more photons:
-\begin{align*}
+\begin{align}
   \leftidx{^A_Z}{X}{} + \leftidx{^1_0}{n}{} 
   \rightarrow \leftidx{^{A+1}_Z}{X}{^*} + \gamma
-\end{align*}
+\end{align}
 Note that the total amount of energy to be relieved through the emission of photons is \(e_{\text{exc}} + \Delta BE\).
 
 \subsection{Fission Reactions}
