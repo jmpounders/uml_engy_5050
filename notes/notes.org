@@ -1,4 +1,5 @@
 #+TITLE: ENGY 5050
+#+LATEX_CLASS: article
 #+LATEX_HEADER: \usepackage{tikz}
 #+LATEX_HEADER: \usepackage{fancyhdr}
 #+LATEX_HEADER: \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
@@ -517,7 +518,7 @@ There is a result from quantum mechanics that provides an expression for a react
 
 For a reaction of type $x$ from which there are no emerging neutrons (e.g., radiative capture), the SLBW may be written
 \begin{align}
-  \sigma_x(e_{\text{exc}}) = \sigma_0 \frac{\gamma_{x,i}\gamma_i}{\gamma_i^2+4(e_\text{ext}-e_i)^2}
+  \sigma_x(e_{\text{exc}}) = \sigma_0 \frac{\gamma_{x,i}\gamma_i}{\gamma_i^2+4(e_\text{exc}-e_i)^2}
 \end{align}
 where
 \begin{align}
@@ -778,6 +779,21 @@ Both $\sigma_n(E)$ and $P(E \rightarrow E', \mu)$ depend on the thermal motion o
 3. Plot the Maxwell-Boltzmann distribution as a function of kinetic energy using your results from the previous problem.  Use $T = 300$ K.  Does this plot inform the reasoning behind picking an energy of around 1 eV as the cutoff for ``thermal'' neutron energies?
 4. Derive Eqn. \ref{eq::dopplerSLBWx}.
 5. Plot some resonance stuff...
+* Neutron Slowing Down                                             :noexport:
+** Energy balance equation
+If we assume that a reactor is very large with respect to the mean free path of a neutron and consists of a homogeneous material then we may write a balance equations for the neutron density with respect to energy.  In reality, spatial effects will play a role in determining the neutron density, but we will consider those later.  Describing the neutron density with respect to energy alone unveils some important aspects of reactor physics.  The energy balance equation is 
+\begin{align}
+  \left[\Sigma_a(E) + \Sigma_s(E)\right] \phi(E) dE
+  = \left[ \int_0^\infty dE' \Sigma_s(E' \rightarrow E\right) \phi(E')
+           + \frac{\chi(E)}{k_\infty} \int_0^\infty dE' \nu\Sigma_f(E') \phi(E') \right] dE.
+\end{align}
+** Basic Neutron Spectrum
+** Resonance Absorption
+** Problems
+** References
+- Stacey
+- Duderstadt and Hamilton
+* Neutron Transport                                                :noexport:
 * Nuclear Physics in 60 Seconds
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 
@@ -786,14 +802,21 @@ Both $\sigma_n(E)$ and $P(E \rightarrow E', \mu)$ depend on the thermal motion o
 *Quantum Description:*  A common and quite accurate quantum description of the nucleus is given by the /shell model/, which is analogous to the description of atomic electrons.  Neutrons, protons and electrons are all classified as /fermions/, which are particles with a spin of $\frac{1}{2}\hbar$ that obey the Pauli exclusion principle.  Neutrons and protons in a nucleus reside in discrete energy states and posses angular momentum that also occurs in discrete amounts.  The angular momentum is specified by the positive, integer quantum nunber $\ell \geq 0$, and the first few angular momentum states are are labeled $s$, $p$, $d$, $f$, etc, again in analogy to atomic electrons.  The /ground state/ of a nucleus occurs when all of the nuclear particles are in the lowest energy states allowed by the Pauli exclusion principle.  An /excited state/ occurs when a nucleon is elevated to a higher (and unstable) energy level.
 
 * Mathematical Odds and Ends
-** Trigonometric Identities
+** Trigonometric Identities and Relationships
+*** Euler's Formula
+Euler's formula is given by
+\begin{align}
+  e^{i x} = \cos x + i \sin x
+\end{align}
+where $e$ is the base of the natural logarithm and $i = \sqrt{-1}$.  Many of the standard trigonometric identities can be quickly derived from this one formula.
+*** Additive Identities
 \begin{align}
   \sin\left(A \pm B\right) = \sin A \cos B \pm \cos A \sin B
 \end{align}
 \begin{align}
   \cos\left(A \pm B\right) = \cos A \cos B \mp \sin A \sin B
 \end{align}
-** Law of Sines and Cosines
+*** Law of Sines and Cosines
 Given the triangle shown in Figure \ref{fig::triangle}, the /law of sines/ states that
 \begin{align}
   \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = \text{ constant} \;\;.
@@ -824,7 +847,7 @@ The /law of cosines/ states that
 \label{fig::triangle}
 \end{figure}
 ** Special Functions
-*** Dirac Delta Function
+*** Delta Functions
 The Dirac delta function is a generalized function defined by
 \begin{align}
   \int_{-\infty}^\infty \delta(x-a) f(x) dx = f(a)
@@ -837,7 +860,108 @@ for some function $f(x)$, and
     \text{undefined}, & x=a \;\;.
   \end{cases}
 \end{align}
-The fact that the Delta function is a /generalized/ function means that it is only really defined with respect to integration.  Pragmatically this presents no difficulty if it used in probability density functions or other functions that must be integrated to yield physically meaningful results.  It is often used to define functions that exist only at a point because
+The fact that the Delta function is a /generalized/ function means that it is only really defined with respect to integration.  Pragmatically this presents no difficulty if it used in probability density functions or other functions that must be integrated to yield physically meaningful results.
+
+The discrete analog of the Dirac delta function is the Kronecker delta, defined
+\begin{align}
+  \delta_{i,j} = 
+  \begin{cases}
+    0 & i \neq j, \\
+    1 & i = j.
+  \end{cases}
+\end{align}
+*** Legendre Polynomials
+The Legendre polynomials are a set of polynomials, $\left\{ P_n \right\}_{n=0}^\infty$.  For a given $n$, the polynomial $P_n(x)$ is a polynomial of degree $n$.  For example, the first few Legendre polynomials are
+\begin{align*}
+  P_0(x) &= 1, \\
+  P_1(x) &= x, \\
+  P_2(x) &= \frac{1}{2}\left(3 x^2 - 1 \right), \\
+  P_3(x) &= \frac{1}{2}\left(5 x^3 - 3 x \right), \\
+  P_4(x) &= \frac{1}{8}\left(34 x^4 - 30 x^2 + 3 \right).
+\end{align*}
+
+The Legendre polynomials are orthogonal over the interval $(-1, 1)$ and satisfy the following orthogonality relationship:
+\begin{align}
+  \int_{-1}^1 P_n(x) P_m(x) dx = \frac{2}{2n+1} \delta_{n,m},
+\end{align}
+where $\delta_{n,m}$ is the Kronecker delta.
+
+The polynomials also satisfy the following two recurrence relations:
+\begin{align}
+  (n+1) P_{n+1}(x) - (2n + 1) x P_n(x) + n P_{n-1}(x) = 0, \\
+  \left(1 - x^2\right) \frac{dP_n}{dx} = -n x P_n(x) + n P_{n-1}(x).
+\end{align}
+
+The Legendre polynomials form a complete set over the interval $[-1, 1]$.  This means that a bounded, piecewise-continuous function $f(x)$ may be written as linear combination of the Legendre polynomials.  Namely,
+\begin{align}
+  f(x) = \sum_{n=0}^\infty f_n P_n(x), \quad x \in [-1,1]
+\end{align}
+where
+\begin{align}
+  f_n = \frac{2n+1}{2} \int_{-1}^{1} f(x) P_n(x) dx.
+\end{align}
+** The Direction Vector
+The unit direction vector can be expressed in terms of a polar angle, \theta, and a azimuthal angle, \varphi, as shown in Figure \ref{fig::unitDirection}.  In a Cartesian coordinates the unit direction vector can be written
+\begin{align}
+  \hat{\Omega} = \Omega_x \vec{i} + \Omega_y \vec{j} + \Omega_z \vec{k}
+\end{align} 
+where
+\begin{subequations}
+\begin{align}
+  \Omega_x = \sin\theta \cos\varphi, \\
+  \Omega_y = \sin\theta \sin\varphi, \\
+  \Omega_z = \cos\theta.
+\end{align}
+\end{subequations}
+The differential solid angle can be written
+\begin{align}
+  d\hat{\Omega} = \sin\theta d\varphi d\theta.
+\end{align}
+The direction vector is said to subtend $4\pi$ steradians, as
+\begin{align}
+  \int_0^\pi d\theta \sin\theta \int_0^{2\pi} d\varphi = 4\pi.
+\end{align}
+For this reason, integration over all solid angles is commonly denoted $\int_{4\pi} d\hat{\Omega}$.
+It is common to make the change of variable $\theta \rightarrow \mu = \cos\theta$.  In this case
+\begin{align}
+  \int_{4\pi} d\hat{\Omega} = \int_{-1}^1 d\mu \int_0^{2\pi} d\varphi.
+\end{align}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.8]
+  \draw [->] (0,0) -- (12,0) node [anchor=south east] {$x$};
+  \draw [->] (0,0) -- (-5,-6) node [anchor=south east] {$y$};
+  \draw [->] (0,0) -- (0,8) node [anchor=north east] {$z$};
+
+  \draw [->,very thick] (0,0) -- (7,4) node [anchor=south east] {\Large $\hat{\Omega}$};
+
+  \draw [dashed] (0,0) -- (7,-5);
+  \draw [dashed] (7,4) -- (7,-5);
+  \draw [dashed] (7,-5) -- (7+25/6,0);
+  \draw [dashed] (7,4) -- (0,4+5/7*4);
+
+  \draw (1,4/7) arc [start angle=29.74, end angle=90, radius=1.15];
+  \draw (0.6,1.3) node [anchor=south west] {\large $\theta$};
+
+  \draw (1,-5/7) arc [start angle=324.46,end angle=360, radius=1.23];
+  \draw (1.65,-0.65) node [anchor=west] {\large $\varphi$};
+\end{tikzpicture}
+\caption{Description of the unit direction vector.}
+\label{fig::unitDirection}
+\end{figure}
+
+It is common for directions to be described probabilistically, given some probability density $p\left(\hat{\Omega}\right)$.  For example, if a direction is selected isotropically, then we have
+\begin{align}
+  p\left(\hat{\Omega}\right) = \frac{1}{4\pi}.
+\end{align}
+In one-dimensional problems the isotropic distribution can be reduced to a function of \theta alone.  This is done by integrating over the circles of radius $\sin\theta$ formed by tracing out \varphi over $2\pi$ angles for each \theta:
+\begin{align}
+  p(\theta) = \int_0^{2\pi} p\left(\hat{\Omega}\right) \sin\theta d\varphi
+            = \frac{1}{2} \sin\theta.
+\end{align}
+This distribution, for example, describes isotropic neutron emission in a CM scattering event.
+
 * Probability and Statistics
 Consider a real and continuous /random variable/, $\xi$.  This variable will take a value somewhere on the interval $[a,b]$, and let the probability of the random variable occurring between $x_1$ and $x_2$ be given by $P\left[ x_1 \leq \xi \leq x_2 \right]$.  We can define a /probability density function/, $f(x)$, such that $f(x)dx$ is the probability that the continuous random variable, $\xi$, will have a value between $x$ and $x+dx$ in the limit of $dx \rightarrow 0$.  In other words,
 \begin{align}
@@ -854,24 +978,61 @@ Because the random variable $\xi$ must take a value \emph{somewhere} on the inte
 \end{align}
 This normalization guarantees (with probability one) that the random variable will have a value somewhere in $[a,b]$.  Note that $a$ and $b$ are allowed to go to plus or minus infinity, respectively.  The interval $[a,b]$ is called the /support/ of $f(x)$.
 
+Note that colloquially, the variable $x$ is often referred to as the random variable rather than $\xi$.  Recall that a random variable does not have a definite value, it is only described by its probability density.  One may reference a point, $x$, in the probability density function, but this is conceptually distinct from the random variable itself, $\xi$.  What is often meant in saying that $x$ is a random variable is that $x$ is a value /sampled/ from the probability density $f(x)$.  In this case, the random sample $x$ may be thought of as having a concrete value randomly selected from the support of $f(x)$ based on the probability density contained within.
+
 The /mean/ value of a probability density function is defined by
 \begin{align}
   \left< x \right> = \int_a^b x f(x) dx \;\;.
 \end{align}
 
 In addition to the probability density function, the /cumulative probability distribution function/ can be defined as the probability that the random variable $\xi$ will take a value less than or equal to $x$:
-%
 \begin{align}
   F(x) = P\left[ \xi \leq x \right] \;\;\; .
 \end{align}
-%
 The cumulative distribution can be defined in terms of the density function by
-%
 \begin{align}
-  F(x) = \int_a^x f(x') dx' \;\;\; .
+  F(x) = \int_a^x f(x') dx' \;\;\; ,
 \end{align}
-%
+or conversely,
+\begin{align}
+  f(x) = \frac{dF}{dx} \;\;\;.
+\end{align}
 
+Now let's say that we have a variable $y = y(x)$.  If $x$ is a variable sampled from the probability density $f(x)$ (i.e., it is random), then $y$ will be random as well.  We may assume that $y$ could be described by it's own probability density, say $g(y)$.  In this case the probability of sampling $x$ from $f(x)$ within an interval $dx$ should be the same as sampling $y$ from $g(y)$ within an interval $dy$.  Thus,
+\begin{align}
+  \left| f(x) dx \right| = \left| g(y) dy \right| \;\;\;.
+\end{align}
+This leads to the result
+\begin{align}
+  g(y) = f(x) \left| \frac{dx}{dy} \right \right| \;\;\;.
+\end{align}
+Thus if we know the relationship between $x$ and $y$, then we can derive the underlying probability density behind the variable $y$ knowing only the probability density behind $x$.  This is useful for changing the independent variable of a known probability density function.
+
+* Constants
+Speed of light in a vacuum
+\begin{align*}
+  c = 2.99792458 \times 10^8 \; \text{m/s}
+\end{align*}
+
+Mass of a neutron
+\begin{align*}
+  m &= 1.0086649 \; \text{u} \\
+    &= 1.67493 \times 10^{-27} \; \text{kg} \\
+    &= 939.57 \; \frac{\text{MeV}}{c^2}
+\end{align*}
+
+Boltzmann constant
+\begin{align*}
+  k &= 1.380650 \times 10^{-23} \; \text{J/K} \\
+    &= 8.61734 \times 10^{-5} \; \text{eV/K}
+\end{align*}
+
+Plank constant
+\begin{align*}
+  h &= 6.626070040 \times 10^{-34} \; \text{J s} \\
+    &= 4.135667662 \times 10^{-15} \; \text{eV s} \\
+  \hbar &= \frac{h}{2\pi}
+\end{align*}
 
 * COMMENT setup
 #+begin_src emacs-lisp :results silent
