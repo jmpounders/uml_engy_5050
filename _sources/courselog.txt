@@ -28,3 +28,8 @@ Course Log
 
      - Review Problem 3
      - Answer Problem 3 Assessment questions (due 2/3)
+
+4. Feb 1
+
+   - Where does nuclear data actually come from?
+   - Practical exercise: plotting SLBW cross sections

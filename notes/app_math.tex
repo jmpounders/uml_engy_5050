@@ -1,4 +1,4 @@
-% Created 2016-01-27 Wed 10:34
+% Created 2016-01-28 Thu 13:00
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,23 +30,32 @@
  pdftitle={Mathematical Odds and Ends},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.3)}, 
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
  pdflang={English}}
 \begin{document}
 
 \maketitle
 \tableofcontents
 
-\section{Trigonometric Identities}
+\section{Trigonometric Identities and Relationships}
+\label{sec:orgheadline4}
+\subsection{Euler's Formula}
 \label{sec:orgheadline1}
+Euler's formula is given by
+\begin{align}
+  e^{i x} = \cos x + i \sin x
+\end{align}
+where \(e\) is the base of the natural logarithm and \(i = \sqrt{-1}\).  Many of the standard trigonometric identities can be quickly derived from this one formula.
+\subsection{Additive Identities}
+\label{sec:orgheadline2}
 \begin{align}
   \sin\left(A \pm B\right) = \sin A \cos B \pm \cos A \sin B
 \end{align}
 \begin{align}
   \cos\left(A \pm B\right) = \cos A \cos B \mp \sin A \sin B
 \end{align}
-\section{Law of Sines and Cosines}
-\label{sec:orgheadline2}
+\subsection{Law of Sines and Cosines}
+\label{sec:orgheadline3}
 Given the triangle shown in Figure \ref{fig::triangle}, the \emph{law of sines} states that
 \begin{align}
   \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = \text{ constant} \;\;.
@@ -77,9 +86,9 @@ The \emph{law of cosines} states that
 \label{fig::triangle}
 \end{figure}
 \section{Special Functions}
-\label{sec:orgheadline4}
-\subsection{Dirac Delta Function}
-\label{sec:orgheadline3}
+\label{sec:orgheadline7}
+\subsection{Delta Functions}
+\label{sec:orgheadline5}
 The Dirac delta function is a generalized function defined by
 \begin{align}
   \int_{-\infty}^\infty \delta(x-a) f(x) dx = f(a)
@@ -92,5 +101,107 @@ for some function \(f(x)\), and
     \text{undefined}, & x=a \;\;.
   \end{cases}
 \end{align}
-The fact that the Delta function is a \emph{generalized} function means that it is only really defined with respect to integration.  Pragmatically this presents no difficulty if it used in probability density functions or other functions that must be integrated to yield physically meaningful results.  It is often used to define functions that exist only at a point because
+The fact that the Delta function is a \emph{generalized} function means that it is only really defined with respect to integration.  Pragmatically this presents no difficulty if it used in probability density functions or other functions that must be integrated to yield physically meaningful results.
+
+The discrete analog of the Dirac delta function is the Kronecker delta, defined
+\begin{align}
+  \delta_{i,j} = 
+  \begin{cases}
+    0 & i \neq j, \\
+    1 & i = j.
+  \end{cases}
+\end{align}
+\subsection{Legendre Polynomials}
+\label{sec:orgheadline6}
+The Legendre polynomials are a set of polynomials, \(\left\{ P_n \right\}_{n=0}^\infty\).  For a given \(n\), the polynomial \(P_n(x)\) is a polynomial of degree \(n\).  For example, the first few Legendre polynomials are
+\begin{align*}
+  P_0(x) &= 1, \\
+  P_1(x) &= x, \\
+  P_2(x) &= \frac{1}{2}\left(3 x^2 - 1 \right), \\
+  P_3(x) &= \frac{1}{2}\left(5 x^3 - 3 x \right), \\
+  P_4(x) &= \frac{1}{8}\left(34 x^4 - 30 x^2 + 3 \right).
+\end{align*}
+
+The Legendre polynomials are orthogonal over the interval \((-1, 1)\) and satisfy the following orthogonality relationship:
+\begin{align}
+  \int_{-1}^1 P_n(x) P_m(x) dx = \frac{2}{2n+1} \delta_{n,m},
+\end{align}
+where \(\delta_{n,m}\) is the Kronecker delta.
+
+The polynomials also satisfy the following two recurrence relations:
+\begin{align}
+  (n+1) P_{n+1}(x) - (2n + 1) x P_n(x) + n P_{n-1}(x) = 0, \\
+  \left(1 - x^2\right) \frac{dP_n}{dx} = -n x P_n(x) + n P_{n-1}(x).
+\end{align}
+
+The Legendre polynomials form a complete set over the interval \([-1, 1]\).  This means that a bounded, piecewise-continuous function \(f(x)\) may be written as linear combination of the Legendre polynomials.  Namely,
+\begin{align}
+  f(x) = \sum_{n=0}^\infty f_n P_n(x), \quad x \in [-1,1]
+\end{align}
+where
+\begin{align}
+  f_n = \frac{2n+1}{2} \int_{-1}^{1} f(x) P_n(x) dx.
+\end{align}
+\section{The Direction Vector}
+\label{sec:orgheadline8}
+The unit direction vector can be expressed in terms of a polar angle, \(\theta\), and a azimuthal angle, \(\varphi\), as shown in Figure \ref{fig::unitDirection}.  In a Cartesian coordinates the unit direction vector can be written
+\begin{align}
+  \hat{\Omega} = \Omega_x \vec{i} + \Omega_y \vec{j} + \Omega_z \vec{k}
+\end{align} 
+where
+\begin{subequations}
+\begin{align}
+  \Omega_x = \sin\theta \cos\varphi, \\
+  \Omega_y = \sin\theta \sin\varphi, \\
+  \Omega_z = \cos\theta.
+\end{align}
+\end{subequations}
+The differential solid angle can be written
+\begin{align}
+  d\hat{\Omega} = \sin\theta d\varphi d\theta.
+\end{align}
+The direction vector is said to subtend \(4\pi\) steradians, as
+\begin{align}
+  \int_0^\pi d\theta \sin\theta \int_0^{2\pi} d\varphi = 4\pi.
+\end{align}
+For this reason, integration over all solid angles is commonly denoted \(\int_{4\pi} d\hat{\Omega}\).
+It is common to make the change of variable \(\theta \rightarrow \mu = \cos\theta\).  In this case
+\begin{align}
+  \int_{4\pi} d\hat{\Omega} = \int_{-1}^1 d\mu \int_0^{2\pi} d\varphi.
+\end{align}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=0.25in,y=0.25in,scale=0.8]
+  \draw [->] (0,0) -- (12,0) node [anchor=south east] {$x$};
+  \draw [->] (0,0) -- (-5,-6) node [anchor=south east] {$y$};
+  \draw [->] (0,0) -- (0,8) node [anchor=north east] {$z$};
+
+  \draw [->,very thick] (0,0) -- (7,4) node [anchor=south east] {\Large $\hat{\Omega}$};
+
+  \draw [dashed] (0,0) -- (7,-5);
+  \draw [dashed] (7,4) -- (7,-5);
+  \draw [dashed] (7,-5) -- (7+25/6,0);
+  \draw [dashed] (7,4) -- (0,4+5/7*4);
+
+  \draw (1,4/7) arc [start angle=29.74, end angle=90, radius=1.15];
+  \draw (0.6,1.3) node [anchor=south west] {\large $\theta$};
+
+  \draw (1,-5/7) arc [start angle=324.46,end angle=360, radius=1.23];
+  \draw (1.65,-0.65) node [anchor=west] {\large $\varphi$};
+\end{tikzpicture}
+\caption{Description of the unit direction vector.}
+\label{fig::unitDirection}
+\end{figure}
+
+It is common for directions to be described probabilistically, given some probability density \(p\left(\hat{\Omega}\right)\).  For example, if a direction is selected isotropically, then we have
+\begin{align}
+  p\left(\hat{\Omega}\right) = \frac{1}{4\pi}.
+\end{align}
+In one-dimensional problems the isotropic distribution can be reduced to a function of \(\theta\) alone.  This is done by integrating over the circles of radius \(\sin\theta\) formed by tracing out \(\varphi\) over \(2\pi\) angles for each \(\theta\):
+\begin{align}
+  p(\theta) = \int_0^{2\pi} p\left(\hat{\Omega}\right) \sin\theta d\varphi
+            = \frac{1}{2} \sin\theta.
+\end{align}
+This distribution, for example, describes isotropic neutron emission in a CM scattering event.
 \end{document}
