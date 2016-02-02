@@ -10,3 +10,4 @@ A. Reference Notes (PDF)
 B. :download:`Nuclear Physics in 60 Seconds <../notes/app_nuclearPhysics.pdf>`
 C. :download:`Mathematical Odds and Ends <../notes/app_math.pdf>`
 D. :download:`Probability and Statistics <../notes/app_probstats.pdf>`
+E. :download:`Constants <../notes/app_constants.pdf>`
