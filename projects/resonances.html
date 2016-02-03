@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Neutron Interaction Resonances &mdash; ENGY 5050 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="ENGY 5050 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Projects" href="../projects.html" />
+    <link rel="next" title="Appendix" href="../appendix.html" />
+    <link rel="prev" title="Projects" href="../projects.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="neutron-interaction-resonances">
+<h1>1. Neutron Interaction Resonances<a class="headerlink" href="#neutron-interaction-resonances" title="Permalink to this headline">¶</a></h1>
+<p>In this first project, we will take a close a look at resonance cross sections.</p>
+<p>Note that specific project items will be rolled out as we cover the associated material in class.  Thus what is listed below is not the entire project, but I want to give you all the opportunity to start early.  In case, lake tapas, you chose to work &#8220;little and often.&#8221;</p>
+<ol class="arabic">
+<li><p class="first">Plot the 0 K single-level Breit-Wigner form of the cross section associated with the following data, which represents one of the resonances from uranium-238.  Plot the capture, elastic scattering and total cross sections corresponding to an s-wave interaction (<span class="math">\(\ell=0\)</span>).  The angular momentum of the target (<span class="math">\(I\)</span>) is zero and the angular momentum of the compound nucleus (<span class="math">\(J\)</span>) is 1/2.  Rather than the diffusion radius (<span class="math">\(a\)</span>) you may use the &#8220;hard sphere&#8221; radius, which is given in units of meters by</p>
+<div class="math">
+\[R = \left( 0.123 A^{1/3} + 0.08 \right) 10^{-14} \;.\]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="74%" />
+<col width="26%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Peak energy, <span class="math">\(E_i\)</span></td>
+<td>80.749 eV</td>
+</tr>
+<tr class="row-even"><td>Total width, <span class="math">\(\Gamma_i\)</span></td>
+<td>0.024865 eV</td>
+</tr>
+<tr class="row-odd"><td>Neutron width, <span class="math">\(\Gamma_{n,i}\)</span></td>
+<td>0.001865 eV</td>
+</tr>
+<tr class="row-even"><td>Capture width, <span class="math">\(\Gamma_{g,i}\)</span></td>
+<td>0.023000 eV</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p class="first">Now that we have the 0 K resonance cross section, broaden the cross sections buy assuming the target nuclei are in thermal equilibrium as 600 K, 1200 K, and (just for fun) 10000 K.  Use the <span class="math">\(\psi\)</span> and <span class="math">\(\phi\)</span> functions derived in class, and because <span class="math">\(\Gamma_i &lt;&lt; E_i\)</span>, you may assume that <span class="math">\(\Gamma_i/E_i \approx 0\)</span>.  You should evaluate the integrals numerically using a Gauss-Hermite quadrature (see Appendix, Mathematical Odds and Ends).</p>
+</li>
+</ol>
+<div class="section" id="project-guidelines">
+<h2>1.1. Project Guidelines<a class="headerlink" href="#project-guidelines" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You may use any software you like to do the calculations and plotting.  I suggest using the one that you are already most familiar/comfortable with.</li>
+<li>I encourage you to work with others on this project, but...</li>
+<li>Each <em>individual</em> must submit their own project report.</li>
+<li>The report should contain the following information<ul>
+<li><strong>Background:</strong> What is the significance of understanding this concept?  How does it impact Reactor Physics?</li>
+<li><strong>Theory:</strong> What equations, formulas, and assumptions are used to obtain the results?</li>
+<li><strong>Results:</strong> Plots <em>and</em> discussion.</li>
+<li><strong>Summary:</strong> What do you take away from this project?</li>
+</ul>
+</li>
+<li>The report should be neat, well-organized, and appropriately styled, i.e., follow the basic rules of manuscript writing:<ul>
+<li>label tables/figures;</li>
+<li>reference all tables/figures explicitly from the text;</li>
+<li>use clear, concise language, avoiding fluff and flower;</li>
+<li>number equations consistently.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/UMLRR-internal.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">ENGY 5050</h2>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problems.html">Problems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courselog.html">Course Log</a></li>
+</ul>
+
+
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Neutron Interaction Resonances</a><ul>
+<li><a class="reference internal" href="#project-guidelines">1.1. Project Guidelines</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../projects.html">Projects</a><ul>
+      <li>Previous: <a href="../projects.html" title="previous chapter">Projects</a></li>
+      <li>Next: <a href="../appendix.html" title="next chapter">Appendix</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Justin Pounders.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/projects/resonances.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,4 +1,4 @@
-% Created 2016-01-28 Thu 13:00
+% Created 2016-02-03 Wed 11:15
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -204,4 +204,60 @@ In one-dimensional problems the isotropic distribution can be reduced to a funct
             = \frac{1}{2} \sin\theta.
 \end{align}
 This distribution, for example, describes isotropic neutron emission in a CM scattering event.
+
+\section{Numerical Integration Quadrature}
+\label{sec:orgheadline10}
+\subsection{Gauss-Hermite Quadrature}
+\label{sec:orgheadline9}
+The Gauss-Hermite quadrature is a form of Gaussian quadrature for approximating integrals of the form
+\begin{align}
+  \int_{-\infty}^\infty e^{-x^2} f(x) dx.
+\end{align}
+The approximate evaluation of this integral using the quadrature is
+\begin{align}
+  \int_{-\infty}^\infty e^{-x^2} f(x) dx \approx \sum_{i=1}^n w_i f(x_i)
+\end{align}
+where the \(x_i\) are the roots of the degree-\(n\) Hermite Polynomial, \(H_n(x)\), and the \(w_i\) are the associated weights given by
+\begin{align}
+  w_i = \frac{2^{n-1} n! \sqrt{\pi}}{n^2 H_{n-1}^2(x_i)}.
+\end{align}
+
+In Python the appropriate quadrature may be generate by
+\begin{verbatim}
+import numpy as np
+(x,w) = np.polynomial.hermite.hermgauss(n)
+\end{verbatim}
+where \texttt{n} is the degree of the polynomial, \texttt{x} is a numpy array of the ordinates, and \texttt{w} is a numpy array of the weights.
+
+Matlab does not have a built in a function for computing the quadrature.  The following function was extracted from a function uploaded by Geert Van Damme to \href{http://www.mathworks.com/matlabcentral/fileexchange/26737-legendre-laguerre-and-hermite-gauss-quadrature/content/GaussHermite.m}{Matlab Central File Exchange} under a BSD License.
+\begin{verbatim}
+function [x, w] = GaussHermite(n)
+% This function determines the abscisas (x) and weights (w) for the
+% Gauss-Hermite quadrature of order n>1, on the interval [-INF, +INF].
+    % This function is valid for any degree n>=2, as the companion matrix
+    % (of the n'th degree Hermite polynomial) is constructed as a
+    % symmetrical matrix, guaranteeing that all the eigenvalues (roots)
+    % will be real.
+
+%  Geert Van Damme
+% geert@vandamme-iliano.be
+% February 21, 2010    
+
+% Building the companion matrix CM
+    % CM is such that det(xI-CM)=L_n(x), with L_n the Hermite polynomial
+    % under consideration. Moreover, CM will be constructed in such a way
+    % that it is symmetrical.
+i   = 1:n-1;
+a   = sqrt(i/2);
+CM  = diag(a,1) + diag(a,-1);
+
+% Determining the abscissas (x) and weights (w)
+    % - since det(xI-CM)=L_n(x), the abscissas are the roots of the
+    %   characteristic polynomial, i.d. the eigenvalues of CM;
+    % - the weights can be derived from the corresponding eigenvectors.
+[V L]   = eig(CM);
+[x ind] = sort(diag(L));
+V       = V(:,ind)';
+w       = sqrt(pi) * V(:,1).^2;
+\end{verbatim}
 \end{document}

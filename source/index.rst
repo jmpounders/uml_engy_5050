@@ -12,6 +12,7 @@ Nuclear Reactor Physics
 
    preface
    problems
+   projects
    appendix
    courselog
 

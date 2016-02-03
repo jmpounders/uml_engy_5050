@@ -1,0 +1,45 @@
+Neutron Interaction Resonances
+==============================
+
+In this first project, we will take a close a look at resonance cross sections.
+
+Note that specific project items will be rolled out as we cover the associated material in class.  Thus what is listed below is not the entire project, but I want to give you all the opportunity to start early.  In case, lake tapas, you chose to work "little and often."
+
+1. Plot the 0 K single-level Breit-Wigner form of the cross section associated with the following data, which represents one of the resonances from uranium-238.  Plot the capture, elastic scattering and total cross sections corresponding to an s-wave interaction (:math:`\ell=0`).  The angular momentum of the target (:math:`I`) is zero and the angular momentum of the compound nucleus (:math:`J`) is 1/2.  Rather than the diffusion radius (:math:`a`) you may use the "hard sphere" radius, which is given in units of meters by
+
+   .. math::
+
+      R = \left( 0.123 A^{1/3} + 0.08 \right) 10^{-14} \;.
+
+   +-------------------------------------+-------------+
+   | Peak energy, :math:`E_i`            | 80.749 eV   |
+   +-------------------------------------+-------------+
+   | Total width, :math:`\Gamma_i`       | 0.024865 eV |
+   +-------------------------------------+-------------+
+   | Neutron width, :math:`\Gamma_{n,i}` | 0.001865 eV |
+   +-------------------------------------+-------------+
+   | Capture width, :math:`\Gamma_{g,i}` | 0.023000 eV |
+   +-------------------------------------+-------------+
+
+2. Now that we have the 0 K resonance cross section, broaden the cross sections buy assuming the target nuclei are in thermal equilibrium as 600 K, 1200 K, and (just for fun) 10000 K.  Use the :math:`\psi` and :math:`\phi` functions derived in class, and because :math:`\Gamma_i << E_i`, you may assume that :math:`\Gamma_i/E_i \approx 0`.  You should evaluate the integrals numerically using a Gauss-Hermite quadrature (see Appendix, Mathematical Odds and Ends).
+
+
+Project Guidelines
+------------------
+
+- You may use any software you like to do the calculations and plotting.  I suggest using the one that you are already most familiar/comfortable with.
+- I encourage you to work with others on this project, but...
+- Each *individual* must submit their own project report.
+- The report should contain the following information
+
+  - **Background:** What is the significance of understanding this concept?  How does it impact Reactor Physics?
+  - **Theory:** What equations, formulas, and assumptions are used to obtain the results?
+  - **Results:** Plots *and* discussion.
+  - **Summary:** What do you take away from this project?
+
+- The report should be neat, well-organized, and appropriately styled, i.e., follow the basic rules of manuscript writing:
+
+  - label tables/figures;
+  - reference all tables/figures explicitly from the text;
+  - use clear, concise language, avoiding fluff and flower;
+  - number equations consistently.

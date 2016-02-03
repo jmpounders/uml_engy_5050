@@ -33,3 +33,9 @@ Course Log
 
    - Where does nuclear data actually come from?
    - Practical exercise: plotting SLBW cross sections
+
+5. Feb 3
+
+   - Review first project
+   - Discuss the scattering kernel
+   - Derive the neutron balance equation in energy
