@@ -374,6 +374,9 @@ In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to over
    (b) Find the average number of scattering collisions $\left< n \right>$ to slow down a neutron from energy $E_0$ to $E = 0.025$ eV in the LAB.
    (c) Compute $\left< u - u' \right>$ and $\left< n \right>$ for the following nuclei: \leftidx{^1}{H}{}, \leftidx{^{12}}{C}{}, and \leftidx{^{238}}{U}{}.
 ** Solutions                                                      :noexport:
+1. 
+2. 
+3. 
 4. Applying the law of sines to Figure \ref{fig::scatteringVelLABvsCM} gives us
 \begin{align}
   \frac{\sin\theta}{v_n'} = \frac{sin(\pi-\varphi)}{V_n'} \;\;.
@@ -778,16 +781,124 @@ Both $\sigma_n(E)$ and $P(E \rightarrow E', \mu)$ depend on the thermal motion o
 2. Derive the Maxwell-Boltzmann distribution as a function of /kinetic energy/, $E = \frac{1}{2}mA|\vec{V}_A|^2 = \frac{1}{2} m_A V_A^2$. Start with the Maxwell-Boltzmann distribution written as a function of velocity $\vec{V}_A$.  Because this is a /distribution/ the change of variables must be done so that $p(\vec{V}_A) d^3V_A = p(E) dE$.  (Note that although $\vec{V}_A$ is a vector, the direction of the vector is not important, as all that appears in the distribution is $V_A^2$, which is proportional to energy.  Thus we may write $d^3 V_A = 4\pi V_A^2 dV_A$.)
 3. Plot the Maxwell-Boltzmann distribution as a function of kinetic energy using your results from the previous problem.  Use $T = 300$ K.  Does this plot inform the reasoning behind picking an energy of around 1 eV as the cutoff for ``thermal'' neutron energies?
 4. Derive Eqn. \ref{eq::dopplerSLBWx}.
-5. Plot some resonance stuff...
-* Neutron Slowing Down                                             :noexport:
-** Energy balance equation
-If we assume that a reactor is very large with respect to the mean free path of a neutron and consists of a homogeneous material then we may write a balance equations for the neutron density with respect to energy.  In reality, spatial effects will play a role in determining the neutron density, but we will consider those later.  Describing the neutron density with respect to energy alone unveils some important aspects of reactor physics.  The energy balance equation is 
+** Solutions
+1. The potential elastic scattering cross section is given by
 \begin{align}
-  \left[\Sigma_a(E) + \Sigma_s(E)\right] \phi(E) dE
-  = \left[ \int_0^\infty dE' \Sigma_s(E' \rightarrow E\right) \phi(E')
-           + \frac{\chi(E)}{k_\infty} \int_0^\infty dE' \nu\Sigma_f(E') \phi(E') \right] dE.
+  \sigma_p^\ell = 4\pi \lambda^2 \left(2 \ell + 1 \right) \sin^2\phi_\ell.
 \end{align}
-** Basic Neutron Spectrum
+For an \(s\)-wave interaction $\ell = 0$, and $\phi_0$ = a/\lambda$.  Because $a/\lambda << 1$ we can use the small-angle approximation for sine: $\sin\theta \approx \theta$ for $|\theta| << 1$.  Plugging $\ell$ and $\phi_\ell$ into the equation and using the small-angle approximation leads
+\begin{align}
+  \sigma_p^0 = 4\pi a^2.
+\end{align}
+Note that this is the surface area of a sphere with radius $a$.
+2. Begin with 
+\begin{align}
+  p(\vec{V}_A) = \left( \frac{m_A}{2\pi k T} \right)^\frac{3}{2} \exp\left(-\frac{m_A V_A^2}{2kT}\right) .
+\end{align}
+and $d^3 V_A = 4\pi V_A^2 dV_A$.  Given $E = \frac{1}{2}m_A V_A^2$, we have $dE = m_A V_A dV_A$.  Thus,
+\begin{align}
+  p(\vec{V}_A) d^3 V_A &= 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right) dE.
+\end{align}
+Thus
+\begin{align}
+  p(E) = 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right).
+\end{align}
+Note that the energy-dependent distribution does not depend on mass!
+* Neutron Slowing Down
+** Energy balance equation
+If we assume that a reactor is very large with respect to the mean free path of a neutron and consists of a homogeneous material then we may write a balance equations for the neutron density with respect to energy.  In reality, spatial effects will play a role in determining the neutron density, but we will consider those later.  Describing the neutron density with respect to energy alone unveils some important aspects of reactor physics.  The neutron balance equation for neutrons with energy between $E$ and $E+dE$ is
+\begin{align}
+  \left[ \Sigma_a(E) + \Sigma_s(E) \right] \phi(E) dE
+  = \left[ \int_0^\infty dE' \Sigma_s(E' \rightarrow E ) \phi(E')
+           + \frac{\chi(E)}{k_\infty} \int_0^\infty dE' \nu\Sigma_f(E') \phi(E') \right] dE
+\end{align}
+where $\Sigma_a(E)$ is the macroscopic absorption cross section, $\Sigma_s(E)$ is the macroscopic scattering cross section, $\Sigma_s(E' \rightarrow E)$ is the scattering kernel (i.e., $\Sigma_s(E)$ multiplied by the probability of a scattering event changing a neutron's energy from $E'$ to $E$), and $\Sigma_f(E)$ is the macroscopic fission cross section.  Additionally, $\chi(E)$ is the /fission spectrum/, which represents the probability that a neutron emitted from fission will emerge with an energy $E$, and $\nu$ is the average number of neutrons released per fission.  The factor $k_\infty$ is the /infinite multiplication factor/, which is needed to ensure a steady-state solution for the scalar flux, $\phi(E)$.
+
+It is presumed that all cross sections and fission parameters are known.  Our present goal is then to solve the neutron balance equation for the energy-dependent flux $\phi(E)$.  Note that this equation is not an ``energy balance'' equation in the sense that it balances the neutron kinetic energy.  Rather, it balances the number of neutrons with a given kinetic energy, namely $n(E)dE$, which is the number of neutrons between $E$ and $E+dE$.  The function $\phi(E)$, where $E$ is the only independent variable, is often called the /neutron spectrum/.
+
+Rather than seeking an immediate solution to this equation, we will first conduct a qualitative exploration of three typical energy ranges: the fission, slowing-down, and thermal energy ranges.
+** Characteristic Neutron Energy Ranges
+*** Fission Energy Range
+Neutrons are typically emitted from fission with a kinetic energy of 1 to 2 MeV.  This is much higher than the thermal equilibrium energy that is on the order of 1 eV.  At these high energies, the rate of neutrons being created in interval $dE$ from fission is much greater than neutrons being scattered into $dE$ from lower energies.  Thus
+\begin{align}
+  \phi(E) dE \approx  \frac{\chi(E)}{k_\infty\Sigma_t(E)} \int_0^\infty dE' \nu\Sigma_f(E') \phi(E')  dE = \frac{\chi(E)}{\Sigma_t(E)} \times \text{ constant}.
+\end{align}
+Thus the neutron spectrum at high energies, say $E > 0.5 MeV$, is roughly proportional to the fission spectrum divided by the total cross section.
+
+*** Slowing-Down Energy Range
+At energies between 1 eV and 50 keV, there are very few neutrons created directly from fission and elastic scattering is much more important than inelastic scattering.  (Why?)  The elastic scattering cross kernel can be written
+\begin{align}
+  \Sigma_s(E' \rightarrow E) = 
+  \begin{cases}
+    \frac{\Sigma_s(E')}{E'(1-\alpha)}, & E \leq E' \leq \frac{E}{\alpha} \\
+    0, & \text{otherwise}
+  \end{cases}
+\end{align}
+where $\alpha = \left[(A-1)/(A+1)\right]^2$.  If there are $J$ nuclides present then the neutron balance equation becomes
+\begin{align}
+  \Sigma_t(E) \phi(E) dE
+  = \sum_{j=1}^J \left[ \int_E^{E/\alpha_j} dE' \frac{\Sigma_s(E')}{E'(1-\alpha)} \phi(E') \right] dE.
+\end{align}
+
+Let's consider the case of neutron slowing down in the presence of hydrogen plus large resonance aborbers.  If the $j=1$ nuclide is hydrogen ($\alpha=0$) and all the others are quite heavy ($\alpha \approx 1$) then we can write
+\begin{align}
+  \Sigma_t(E) \phi(E)
+  &=  \left[ \int_E^\infty dE' \frac{\Sigma_s^H(E')}{E'} \phi(E') \right]
+    + \sum_{j=2}^J \left[ \int_E^{E/\alpha_j} dE' \frac{\Sigma_s^j(E')}{E'(1-\alpha)} \phi(E') \right] \\
+  &\approx  \int_E^\infty dE' \frac{\Sigma_s(E')}{E'} \phi(E')
+    + \sum_{j=2}^J \frac{\Sigma_s(E)}{\alpha} \phi(E) 
+\end{align}
+where in the second approximation we have used $\Sigma_s^j(E')\phi(E')/E' \approx \Sigma_s^j(E)\phi(E)/E$ for $E' \in [E, E/\alpha_j]$.  This equation can be manipulated to yield (approximately
+\begin{align}
+  \left[ \Sigma_a(E) + \Sigma_s^H(E) \right] \phi(E)
+  &= \int_E^\infty dE' \frac{\Sigma_s^H(E')}{E'} \phi(E')
+\end{align}
+where on the left-hand-side we have used $\Sigma_s^H(E) \approx \Sigma_s(E) - \sum_{j=2}^J \Sigma_s^j(E)/\alpha$.  Differentiating this expression and defining a new function $f(E) = \left[ \Sigma_a(E) + \Sigma_s^H(E) \right] \phi(E)$ leads to
+\begin{align}
+  \frac{df}{dE} &= - \frac{\Sigma_s^H(E)}{E\left[ \Sigma_a(E) + \Sigma_s^H(E) \right]} f(E).
+\end{align}
+This equation can be solved using an integrating factor and integrating from $E$ to some arbitrary energy $E_1$, ultimately leading to
+\begin{align}
+  \phi(E) = \frac{\left[ \Sigma_a(E) + \Sigma_s^H(E) \right] E_1 \phi(E_1)}{\left[ \Sigma_a(E) + \Sigma_s^H(E) \right] E}
+            \exp\left[ -\int_E^{E_1} \frac{\Sigma_a(E')}{\left[ \Sigma_a(E) + \Sigma_s^H(E) \right] E'} dE' \right].
+\end{align}
+Thus $\phi(E)$ varies fundamentally as $1/E$ with localized perturbations caused by resonances that manifest in $\Sigma_a(E)$ in the denominator of the first term and an overall attenuation arising from the exponential term, which again is primarily affected by resonances along the energy path from $E_1$ to $E$.
+
+The fact that the flux will be locally depressed in the vicinity of a large absorption resonance is called /energy self-shielding/.  The name suggests that because the neutron population is suppressed in a resonance energy range, the neutrons are naturally ``shielded'' from the resonance to some degree.
+
+A rough estimate of the number of neutrons that will be absorbed by a given resonance can be obtained by approximating the number of neutrons that are attenuated by the resonance.  Assuming that within an absorption resonance of width $\Delta E$ we will have $\Sigma_a(E) >> \Sigma_s^H(E)$ leads to
+\begin{align}
+  \exp\left[ -\int_E^{E_1} \frac{\Sigma_a(E')}{\left[ \Sigma_a(E) + \Sigma_s^H(E) \right] E'} dE' \right]
+  \approx \exp\left( -\int_E^{E+\Delta E} \frac{1}{E'} dE' \right)
+  = \frac{1}{1+\Delta E/E}.
+\end{align}
+The first large resonance in uranium-238, for example is located at 6.67 eV with a width of about 0.027 eV.  Thus neutrons slowing down through the this resonance would be attenuated by a factor of roughly 0.996, which represents a loss of about 0.4%.
+
+*** Thermal Energy Range
+We have previously noted that free atoms have random energies that obey the Maxwell-Boltzmann distribution, which written in terms of energy is
+\begin{align}
+  p(E) = 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right).
+\end{align}
+We might expect that as neutrons slow down to ``thermal'' energies they would assume the a similar energy profile, effectively becoming part of the equilibrium system.  This assumption would not be far off in general.
+
+In fact, in the absence of absorption and a neutron source, the flux becomes
+\begin{align}
+  \label{eq::maxwellianFlux}
+  \phi(E) = v(E) n_0 p(E),
+\end{align}
+where $v(E) = \sqrt{2E/m}$ and $n_0$ is a normalization constant.  To show that this is so requires the /principle of detailed balance/, which states that all scattering kernels possess the property
+\begin{align}
+  v(E') \Sigma_s(E' \rightarrow E) p(E') = v(E) \Sigma_s(E \rightarrow E') p(E).
+\end{align}
+Under the stated assumptions, the neutron balance equation becomes
+\begin{align}
+  \Sigma_s(E) \phi(E) = \int_0^\infty dE' \Sigma_s(E' \rightarrow E ) \phi(E').
+\end{align}
+Using the property of detailed balance and Eq. \eqref{eq::maxwellianFlux} in the above equation demonstrates that the Maxwellian flux given by Eq. \eqref{eq::maxwellianFlux} is indeed a solution.
+
+Of course assuming that there is no source of neutrons, no absorption and no leakage is a stretch to say the least.  The effects of the slowing-down source, absorption and leakage tend to have the general effect of ``shifting'' the Maxwell-Boltzmann distribution up in temperature.  Thus one may replace $T$ by some effective temperature, $T_{\text{eff}}$, in $p(E)$ to obtain a closer match to reality.
+
+There are numerous sophisticated models for predicting the thermal neutron energy distributions, or one may simply solve the neutron balance equation numerically on a computer.  In either approach, an accurate model should include the effects of molecular and crystalline effects on nuclear motion (when they exist), as these are important factors at thermal energies.
 ** Resonance Absorption
 ** Problems
 ** References
@@ -1004,7 +1115,7 @@ Now let's say that we have a variable $y = y(x)$.  If $x$ is a variable sampled 
 \end{align}
 This leads to the result
 \begin{align}
-  g(y) = f(x) \left| \frac{dx}{dy} \right \right| \;\;\;.
+  g(y) = f(x) \left| \frac{dx}{dy} \right| \;\;\;.
 \end{align}
 Thus if we know the relationship between $x$ and $y$, then we can derive the underlying probability density behind the variable $y$ knowing only the probability density behind $x$.  This is useful for changing the independent variable of a known probability density function.
 
