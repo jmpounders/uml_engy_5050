@@ -773,34 +773,34 @@ The function $\delta(x)$ is the /Dirac delta function/ (see the Appendix for det
 Both $\sigma_n(E)$ and $P(E \rightarrow E', \mu)$ depend on the thermal motion of nuclei and there are methods for averaging these quantities over that motion similar to what was shown in the previous section, but these procedures will not be discussed here as they become quite complex, even for the relatively simple case of elastic scattering.
 ** References
 - [[ebib:Hebert2009][Hebert (2009)]]
-** Problems                                                       :noexport:
+** Problems
 1. In general the ratio of the diffusion radius of a nucleus ($a$) to the neutron wavelength ($\lambda$) is much less than one, i.e. $\frac{a}{\lambda} << 1$.  Under this assumption, derive an approximate expression for the /potential/ elastic scattering cross section, $\sigma_p^\ell$, for \(s\)-wave interactions.
 2. Derive the Maxwell-Boltzmann distribution as a function of /kinetic energy/, $E = \frac{1}{2}mA|\vec{V}_A|^2 = \frac{1}{2} m_A V_A^2$. Start with the Maxwell-Boltzmann distribution written as a function of velocity $\vec{V}_A$.  Because this is a /distribution/ the change of variables must be done so that $p(\vec{V}_A) d^3V_A = p(E) dE$.  (Note that although $\vec{V}_A$ is a vector, the direction of the vector is not important, as all that appears in the distribution is $V_A^2$, which is proportional to energy.  Thus we may write $d^3 V_A = 4\pi V_A^2 dV_A$.)
 3. Plot the Maxwell-Boltzmann distribution as a function of kinetic energy using your results from the previous problem.  Use $T = 300$ K.  Does this plot inform the reasoning behind picking an energy of around 1 eV as the cutoff for ``thermal'' neutron energies?
 4. Derive Eqn. \ref{eq::dopplerSLBWx}.
 ** Solutions
 1. The potential elastic scattering cross section is given by
-\begin{align}
-  \sigma_p^\ell = 4\pi \lambda^2 \left(2 \ell + 1 \right) \sin^2\phi_\ell.
-\end{align}
-For an \(s\)-wave interaction $\ell = 0$, and $\phi_0$ = a/\lambda$.  Because $a/\lambda << 1$ we can use the small-angle approximation for sine: $\sin\theta \approx \theta$ for $|\theta| << 1$.  Plugging $\ell$ and $\phi_\ell$ into the equation and using the small-angle approximation leads
-\begin{align}
-  \sigma_p^0 = 4\pi a^2.
-\end{align}
-Note that this is the surface area of a sphere with radius $a$.
+   \begin{align}
+     \sigma_p^\ell = 4\pi \lambda^2 \left(2 \ell + 1 \right) \sin^2\phi_\ell.
+   \end{align}
+   For an \(s\)-wave interaction $\ell = 0$, and $\phi_0 = a/\lambda$.  Because $a/\lambda << 1$ we can use the small-angle approximation for sine: $\sin\theta \approx \theta$ for $|\theta| << 1$.  Plugging $\ell$ and $\phi_\ell$ into the equation and using the small-angle approximation leads
+   \begin{align}
+     \sigma_p^0 = 4\pi a^2.
+   \end{align}
+   Note that this is the surface area of a sphere with radius $a$.
 2. Begin with 
-\begin{align}
-  p(\vec{V}_A) = \left( \frac{m_A}{2\pi k T} \right)^\frac{3}{2} \exp\left(-\frac{m_A V_A^2}{2kT}\right) .
-\end{align}
-and $d^3 V_A = 4\pi V_A^2 dV_A$.  Given $E = \frac{1}{2}m_A V_A^2$, we have $dE = m_A V_A dV_A$.  Thus,
-\begin{align}
-  p(\vec{V}_A) d^3 V_A &= 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right) dE.
-\end{align}
-Thus
-\begin{align}
-  p(E) = 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right).
-\end{align}
-Note that the energy-dependent distribution does not depend on mass!
+   \begin{align}
+     p(\vec{V}_A) = \left( \frac{m_A}{2\pi k T} \right)^\frac{3}{2} \exp\left(-\frac{m_A V_A^2}{2kT}\right) .
+   \end{align}
+   and $d^3 V_A = 4\pi V_A^2 dV_A$.  Given $E = \frac{1}{2}m_A V_A^2$, we have $dE = m_A V_A dV_A$.  Thus,
+   \begin{align}
+     p(\vec{V}_A) d^3 V_A &= 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right) dE.
+   \end{align}
+   Thus
+   \begin{align}
+     p(E) = 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right).
+   \end{align}
+   Note that the energy-dependent distribution does not depend on mass!
 * Neutron Slowing Down
 ** Energy balance equation
 If we assume that a reactor is very large with respect to the mean free path of a neutron and consists of a homogeneous material then we may write a balance equations for the neutron density with respect to energy.  In reality, spatial effects will play a role in determining the neutron density, but we will consider those later.  Describing the neutron density with respect to energy alone unveils some important aspects of reactor physics.  The neutron balance equation for neutrons with energy between $E$ and $E+dE$ is
