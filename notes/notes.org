@@ -177,7 +177,7 @@ Writing the left-hand-side of this expression (i.e., the pre-collision linear mo
 This means that
 \begin{align}
   \vec{v}_n = -A \vec{v}_A, \\
-  \vec{V}_n' = -A \vec{v}_A'.
+  \vec{v}_n' = -A \vec{v}_A'.
 \end{align}
 
 Let us now additionally assume conservation of kinetic energy before and after the collision.  That is, 
@@ -362,58 +362,55 @@ In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to over
 - [[ebib:Hebert2009][Hebert]]
 - [[ebib:Duderstadt:Hamilton1976][Duderstadt and Hamilton]]
 - [[ebib:Stacey2001][Stacey]]
-** Problems                                                       :noexport:
+** Problems
 1. In the formation of a compound nucleus, why is the available energy equal to $e_\text{exc}$, the energy in the CM system, rather than the total kinetic energy in the LAB system?
 2. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
 3. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
-4. [Hebert 2.1] Assume an elastic and isotropic collision in the CM system.  Neglect the initial velocity of the target nucleus.  
-   (a) Obtain the probability density $f(\mu)$ where $f(\mu)d\mu$ is the probability for the deviation cosine ($\cos\theta$) to have a value equal to $\mu$ (within an interval $d\mu$) in the LAB system.  (Hint: first obtain the relation between $\mu=\cos\theta$ and $\cos\phi$ by using the Law of Sines in Figure \ref{fig::scatteringVelLABvsCM}.
-   (b) Plot.
-5. [Hebert 2.4] Consider a neutron with an initial energy $E_0 = 2$ MeV in the LAB that elastically and isotropically (in CM) scatters off a nucleus that is initially at rest.
-   (a) Express the average lethargy gain $\left< u - u' \right>$ of the neutron in the LAB in terms of the mass ration $A$ of the nucleus.
-   (b) Find the average number of scattering collisions $\left< n \right>$ to slow down a neutron from energy $E_0$ to $E = 0.025$ eV in the LAB.
-   (c) Compute $\left< u - u' \right>$ and $\left< n \right>$ for the following nuclei: \leftidx{^1}{H}{}, \leftidx{^{12}}{C}{}, and \leftidx{^{238}}{U}{}.
-** Solutions                                                      :noexport:
-1. 
-2. 
-3. 
-4. Applying the law of sines to Figure \ref{fig::scatteringVelLABvsCM} gives us
-\begin{align}
-  \frac{\sin\theta}{v_n'} = \frac{sin(\pi-\varphi)}{V_n'} \;\;.
-\end{align}
-Rearranging and using a trigonometric identity leads to
-\begin{align}
-  \sin\theta = -\frac{v_n'}{V_n'} sin(\varphi) \;\;.
-\end{align}
-
-We know from the law of cosines (as was shown in the notes) that
-\begin{align}
-  V_n'^2 = \left[ \frac{A^2+1}{(A+1)^2} + 2 \frac{A}{(A+1)^2}\cos(\varphi) \right] \vec{V}_n^2 \;\;.
-\end{align}
-We also know that $v_n' = \frac{A}{A+1}V_n$, which leads to 
-\begin{align}
-  V_n'^2 = \left[ \frac{A^2+1}{A^2} + 2 \frac{1}{A}\cos(\varphi) \right] (\vec{v}_n')^2 \;\;.
-\end{align}
-
-Putting these two pieces together leads to
-\begin{align}
-  \sin^2\theta &= \frac{v_n'}{V_n'} sin^2(\varphi) \\
-               &= \frac{1}{\frac{A^2+1}{A^2} + 2 \frac{1}{A}\cos(\varphi)} sin^2(\varphi) \\
-               &= \frac{A^2 sin^2(\varphi)}{A^2+1 + 2 A \cos(\varphi)}  \;\;.
-\end{align}
-We can use trigonometry to recast this expression in terms of $\cos\theta$:
-\begin{align}
-  \cos\theta &= \pm \sqrt{1-\frac{A^2 sin^2(\varphi)}{A^2+1 + 2 A \cos(\varphi)}}  \;\;.
-\end{align}
-Care must be taken in selecting the appropriate sign.  By inspecting the diagram, we see that a sign change will occur for $\cos\theta$ when $\frac{A^2 sin^2(\varphi)}{A^2+1 + 2 A \cos(\varphi)}=1$.  Call this critical value $\varphi^*$.  When $\varphi \leq \varphi^*$, the positive square root should be taken; when $\varphi > \varphi^*$, the negative square root should be taken.
-
-Our expression relates $\theta$ and $\phi$, but for this to yield a probability density function it must normalize to one.  It can be confirmed that $\cos\theta$ will take values between -1 and 1.  Thus we should check normalization by integrating over this domain: $\int_{-1}^1 \cos\theta d(\cos\theta) = \int_{-1}^1 \mu d\mu = 1$.  Therefore
-\begin{align}
-  f(\mu) =
-  \begin{cases}
-    
-  \end{cases}
-\end{align}
+** Solutions
+1. [@2]Starting with conservation of momentum in the in the LAB system we have
+   \begin{align}
+     \vec{V}_n + A \vec{V}_A = \vec{V}_n' + A \vec{V}_A'.
+   \end{align}
+   Substituting in the CM velocity definitions provides
+   \begin{align}
+     \vec{v}_n + A \vec{v}_A + (1+A) \vec{V}_{CM} = \vec{V}_n' + A \vec{V}_A' + (1+A) \vec{V}_{CM}.
+   \end{align}
+   Canceling the CM velocity terms yields conservation of momentum in the CM system.
+2. Starting with conservation kinetic energy in the LAB system we have
+   \begin{align}
+     \frac{1}{2} m V_n^2 + \frac{1}{2}mA V_A^2 = \frac{1}{2} m (V_n')^2 + \frac{1}{2}mA (V_A')^2 
+   \end{align}
+   From the CM velocity definitions we have
+   \begin{align}
+     V_n^2 &= \left| \vec{v}_n + \vec{V}_{CM} \right|^2 \\
+           &= \left( v_n \cos\theta_n + V_{CM} \cos\theta_{CM} \right)^2 +
+              \left( v_n \sin\theta_n + V_{CM} \sin\theta_{CM} \right)^2 \\
+           &= \left( v_n^2 \cos^2\theta_n + 2 v_n V_{CM} \cos\theta_n \cos\theta_{CM} + V_{CM}^2 \cos^2\theta_{CM} \right) + \\
+           &\phantom{=} \left( v_n^2 \sin^2\theta_n + 2 v_n V_{CM} \sin\theta_n \sin\theta_{CM} + V_{CM}^2 \sin^2\theta_{CM} \right) \\
+           &= v_n^2 + V_{CM}^2 + 2 v_n V_{CM} \cos(\theta_n-\theta_{CM})
+   \end{align}
+   and a similar expression for $V_A^2$.  The angles $\theta_n$ and $\theta_{CM}$ are the angles associated with the $\vec{v}_n$ and $\vec{V_{CM}}$ vectors, respectively.  Substituting these expressions into the energy balance equation yields
+   \begin{align}
+     \frac{1}{2} m (v_n^2 + V_{CM}^2 + 2 v_n V_{CM} \cos(\theta_n-\theta_{CM})) 
+   + \frac{1}{2}mA (v_A^2 + V_{CM}^2 + 2 v_A V_{CM} \cos(\theta_A-\theta_{CM})) \\
+   = \frac{1}{2} m (v_n'^2 + V_{CM}^2 + 2 v_n' V_{CM} \cos(\theta_n'-\theta_{CM}))
+   + \frac{1}{2}mA (v_A'^2 + V_{CM}^2 + 2 v_A' V_{CM} \cos(\theta_A'-\theta_{CM})) 
+   \end{align}
+   which becomes
+   \begin{align}
+     \frac{1}{2} m (v_n^2 + 2 \vec{v}_n \cdot \vec{V}_{CM} ) 
+   + \frac{1}{2}mA (v_A^2 + 2 \vec{v}_A \cdot \vec{V}_{CM}) \\
+   = \frac{1}{2} m (v_n'^2 + 2 \vec{v}_n' \cdot \vec{V}_{CM})
+   + \frac{1}{2}mA (v_A'^2 + 2 \vec{v}_A' \cdot \vec{V}_{CM}) .
+   \end{align}
+   We know that $\vec{v}_n = -A \vec{v}_A$ and $\vec{v}_n' = -A \vec{v}_A'$, so we have
+   \begin{align}
+     \frac{1}{2} m v_n^2
+   + \frac{1}{2}mA v_A^2
+   = \frac{1}{2} m v_n'^2
+   + \frac{1}{2}mA v_A'^2,
+   \end{align}
+   which is the conservation of energy in the CM.
 
 * Cross Sections
 ** What is a Cross Section?

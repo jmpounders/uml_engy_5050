@@ -1,4 +1,4 @@
-% Created 2016-01-26 Tue 22:25
+% Created 2016-02-04 Thu 14:18
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,7 +30,7 @@
  pdftitle={Neutron-Nucleus Reactions},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.3)}, 
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
  pdflang={English}}
 \begin{document}
 
@@ -127,7 +127,7 @@ The analysis of scattering kinematics is greatly simplifed by working in the cen
 \begin{align}
   \vec{r}_{CM} = \frac{1}{A+1} \left( \vec{r}_n + A\vec{r}_A \right)
 \end{align}
-where \(\vec{r}_n\) and \(\vec{r}_A\) are the positions of the neutron and the nucleus, respectively, and \(A\) is the atomic mass ratio of the nucleus.  Consequently we may deduce that the origin of the CM system is moving with a velocity of
+where \(\vec{r}_n\) and \(\vec{r}_A\) are the positions of the neutron and the nucleus, respectively, and \(A\) is the atomic mass ratio of the nucleus (i.e., the ratio of the mass of the nucleus to the mass of the neutron).  Consequently we may deduce that the origin of the CM system is moving with a velocity of
 \begin{align}
   \vec{V}_{CM} = \frac{1}{A+1} \left(\vec{V}_n + A\vec{V}_A \right).
 \end{align}
@@ -195,8 +195,9 @@ Consider now the kinetic energy of the system before the collision.  Letting the
 \end{align}
 where the subscripts are used in the same way as they were in the velocity variables.  The new variable \(e_{\text{exc}}\) is called the \emph{excitation energy}, which is the energy that is available for the reaction, and may be written
 \begin{align}
-  e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2.
+  e_{\text{exc}} = \frac{1}{2} \frac{mA}{A+1}V_R^2
 \end{align}
+where \(m\) is the mass of a neutron.
 
 \subsection{Elastic Scattering}
 \label{sec:orgheadline4}
@@ -215,7 +216,7 @@ Writing the left-hand-side of this expression (i.e., the pre-collision linear mo
 This means that
 \begin{align}
   \vec{v}_n = -A \vec{v}_A, \\
-  \vec{V}_n' = -A \vec{v}_A'.
+  \vec{v}_n' = -A \vec{v}_A'.
 \end{align}
 
 Let us now additionally assume conservation of kinetic energy before and after the collision.  That is, 
@@ -410,4 +411,60 @@ In a fission reaction, the energy \(e_{\text{exc}} + \Delta BE\) is enough to ov
 \item \href{Duderstadt:Hamilton1976}{Duderstadt and Hamilton}
 \item \href{Stacey2001}{Stacey}
 \end{itemize}
+\section{Problems}
+\label{sec:orgheadline11}
+\begin{enumerate}
+\item In the formation of a compound nucleus, why is the available energy equal to \(e_\text{exc}\), the energy in the CM system, rather than the total kinetic energy in the LAB system?
+\item Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
+\item Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
+\end{enumerate}
+\section{Solutions}
+\label{sec:orgheadline12}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Starting with conservation of momentum in the in the LAB system we have
+\begin{align}
+  \vec{V}_n + A \vec{V}_A = \vec{V}_n' + A \vec{V}_A'.
+\end{align}
+Substituting in the CM velocity definitions provides
+\begin{align}
+  \vec{v}_n + A \vec{v}_A + (1+A) \vec{V}_{CM} = \vec{V}_n' + A \vec{V}_A' + (1+A) \vec{V}_{CM}.
+\end{align}
+Canceling the CM velocity terms yields conservation of momentum in the CM system.
+\item Starting with conservation kinetic energy in the LAB system we have
+\begin{align}
+  \frac{1}{2} m V_n^2 + \frac{1}{2}mA V_A^2 = \frac{1}{2} m (V_n')^2 + \frac{1}{2}mA (V_A')^2 
+\end{align}
+From the CM velocity definitions we have
+\begin{align}
+  V_n^2 &= \left| \vec{v}_n + \vec{V}_{CM} \right|^2 \\
+        &= \left( v_n \cos\theta_n + V_{CM} \cos\theta_{CM} \right)^2 +
+           \left( v_n \sin\theta_n + V_{CM} \sin\theta_{CM} \right)^2 \\
+        &= \left( v_n^2 \cos^2\theta_n + 2 v_n V_{CM} \cos\theta_n \cos\theta_{CM} + V_{CM}^2 \cos^2\theta_{CM} \right) + \\
+        &\phantom{=} \left( v_n^2 \sin^2\theta_n + 2 v_n V_{CM} \sin\theta_n \sin\theta_{CM} + V_{CM}^2 \sin^2\theta_{CM} \right) \\
+        &= v_n^2 + V_{CM}^2 + 2 v_n V_{CM} \cos(\theta_n-\theta_{CM})
+\end{align}
+and a similar expression for \(V_A^2\).  The angles \(\theta_n\) and \(\theta_{CM}\) are the angles associated with the \(\vec{v}_n\) and \(\vec{V_{CM}}\) vectors, respectively.  Substituting these expressions into the energy balance equation yields
+\begin{align}
+  \frac{1}{2} m (v_n^2 + V_{CM}^2 + 2 v_n V_{CM} \cos(\theta_n-\theta_{CM})) 
++ \frac{1}{2}mA (v_A^2 + V_{CM}^2 + 2 v_A V_{CM} \cos(\theta_A-\theta_{CM})) \\
+= \frac{1}{2} m (v_n'^2 + V_{CM}^2 + 2 v_n' V_{CM} \cos(\theta_n'-\theta_{CM}))
++ \frac{1}{2}mA (v_A'^2 + V_{CM}^2 + 2 v_A' V_{CM} \cos(\theta_A'-\theta_{CM})) 
+\end{align}
+which becomes
+\begin{align}
+  \frac{1}{2} m (v_n^2 + 2 \vec{v}_n \cdot \vec{V}_{CM} ) 
++ \frac{1}{2}mA (v_A^2 + 2 \vec{v}_A \cdot \vec{V}_{CM}) \\
+= \frac{1}{2} m (v_n'^2 + 2 \vec{v}_n' \cdot \vec{V}_{CM})
++ \frac{1}{2}mA (v_A'^2 + 2 \vec{v}_A' \cdot \vec{V}_{CM}) .
+\end{align}
+We know that \(\vec{v}_n = -A \vec{v}_A\) and \(\vec{v}_n' = -A \vec{v}_A'\), so we have
+\begin{align}
+  \frac{1}{2} m v_n^2
++ \frac{1}{2}mA v_A^2
+= \frac{1}{2} m v_n'^2
++ \frac{1}{2}mA v_A'^2,
+\end{align}
+which is the conservation of energy in the CM.
+\end{enumerate}
 \end{document}
