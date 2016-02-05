@@ -945,18 +945,20 @@ The average logarithmic energy loss per elastic collision (or equivalent, the av
 Note that hydrogen, $\alpha = 0$ and the equation can not evaluated directly, but it can be shown that $\lim_{\alpha \rightarrow 0} \xi = 1$.  Also note that this value is independent of $E$.
 
 ** Resonance Absorption
-Let us now consider the problem of estimating the neutron flux inside of a single resonance.  We will assume that the medium consists of a single moderating material whose scattering cross sections is much larger than its absorption cross section ($\Sigma_s^M >> \Sigma_a^M$) and a resonance isotope.  The neutron balance equation in this case can be written
+To calculate a local neutron spectrum (independent of space) one could solve the slowing-down equation numerically to an arbitrary degree of accuracy.  An analytically exact solution is generally not possible to the complex dependence of the cross section on energy, including many closely-spaced and unresolved resonances.  If we consider a very simplistic case, however, we can make some reasonable approximations that lead to closed-form expressions of the flux spectrum.  These approximation are rarely used in production-level software anymore, but they permit insight that is generally not available from purely numerical solutions.  
+
+Assume that a medium consists of a single moderating material whose scattering cross sections is much larger than its absorption cross section ($\Sigma_s^M >> \Sigma_a^M$) and a resonance isotope.  We will consider the problem of estimating the neutron flux inside of a /single/ resonance within the resonance isotope.  The neutron balance equation in this case can be written
 \begin{align}
-  \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M(E) \right] \phi(E) dE
-  = \frac{\Sigma_s^M}{E}
+  \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M(E) \right] \phi(E)
+  = \int_{\alpha_M E}^E \frac{\Sigma_s^M(E') \phi(E')}{E'(1-\alpha_M)} dE'
   + \int_{\alpha_\text{res} E}^E \frac{\Sigma_s^\text{res}(E') \phi(E')}{E'(1-\alpha_\text{res})} dE',
 \end{align}
-where we have also assumed that $\Sigma_s^M$ is roughly constant over the energy range of interest.
+where we have also assumed that $\Sigma_s^M$ is roughly constant over the energy range of interest.  In fact we may assume that the moderator scattering cross section is roughly equal to the potential cross section of the moderating isotope.
 
 It was previously observed that the neutron flux tends to vary as $1/E$ in the resonance range.  This variation of the flux is asymptotically valid, away from resonances peaks.  If we normalize the flux so that $\phi(E) = 1/E$ above the resonance currently in question, then substitute this value into the first integral in the balance equation we have
 \begin{align}
-  \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M(E) \right] \phi(E) dE
-  = \int_{\alpha_M E}^E \frac{\Sigma_s^M(E') \phi(E')}{E'(1-\alpha_M)} dE' +
+  \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M \right] \phi(E)
+  = \frac{\Sigma_s^M}{E} +
     \int_{\alpha_\text{res} E}^E \frac{\Sigma_s^\text{res}(E') \phi(E')}{E'(1-\alpha_\text{res})} dE'.
 \end{align}
 
@@ -965,11 +967,34 @@ For the sake of simplicity, we will consider only a single resonance that is wel
   \Gamma_p \approx \sqrt{\frac{\sigma_0}{\sigma_p^0}} \Gamma_{x,i}.
 \end{align}
 In general the practical width $\Gamma_p$ will be larger than the actual width $\Gamma_{x,i}$.  We will use the practical width only as a rule of thumb in determining how narrow (or wide) a resonance effectively is.
+
+*** Narrow Resonance Approximation
+If the practical width of a resonance is much smaller than the average energy loss due to elastic scattering (i.e., $\Gamma_p << E_i(1-\alpha_M)/2$), then it is likely that neutron will ``jump over'' the resonance.  Thus, as we did with the moderating integral, we may assume that the flux takes it's asymptotic $1/E$ shape in the resonance integral.  We may also assume that the $\Sigma_s^\text{res} \approx \Sigma_p^{0,\text{res}$}, which is independent of energy for $a / \lambda << 1$.  This leads to
+\begin{align}
+  \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M \right] \phi(E)
+  = \frac{\Sigma_s^M}{E}
+  + \frac{\Sigma_p^{0,\text{res}}}{E}.
+\end{align}
+This is called the /narrow resonance approximation/ and produces the flux
+\begin{align}
+  \phi_\text{NR}(E)
+  = \frac{\Sigma_s^M + \Sigma_p^{0,\text{res}}}{\left[ \Sigma_t^\text{res}(E) + \Sigma_s^M \right]E}.
+\end{align}
+
+*** Wide Resonance Approximation
+If the practical width of a resonance is large compared with the average energy loss due to elastic scattering (i.e., $\Gamma_p >> E_i(1-\alpha_M)/2$), then it is likely that a neutron will experience a reaction inside the resonance peak.  In this case we will not assume the flux has it's asymptotic form, but rather that $\frac{\Sigma_s^\text{res}(E') \phi(E')}{E')} \approx \frac{\Sigma_s^\text{res}(E) \phi(E)}{E)}$ within the in-scattering range of the resonance material, which is small because $\alpha_\text{res} \approx 1$.  This leads to
+\begin{align}
+  \phi_\text{WR}(E)
+  = \frac{\Sigma_s^M}{\left[ \Sigma_a^\text{res}(E) + \Sigma_s^M \right] E}.
+\end{align}
+This is known as the /wide resonance approximation/ (which emphasizes the relationship between the practical resonance width and the average energy loss) or the /narrow resonance, infinite mass approximation/ (which emphasizes the assumption that $\alpha_\text{res} \approx 1$).
+
+*** Resonance Integral
 ** Problems
 ** References
 - Stacey
 - Duderstadt and Hamilton
-* Neutron Transport                                                :noexport:
+* Steady-State Neutron Transport                                   :noexport:
 * Nuclear Physics in 60 Seconds
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 
