@@ -908,7 +908,63 @@ Using the property of detailed balance and Eq. \eqref{eq::maxwellianFlux} in the
 Of course assuming that there is no source of neutrons, no absorption and no leakage is a stretch to say the least.  The effects of the slowing-down source, absorption and leakage tend to have the general effect of ``shifting'' the Maxwell-Boltzmann distribution up in temperature.  Thus one may replace $T$ by some effective temperature, $T_{\text{eff}}$, in $p(E)$ to obtain a closer match to reality.
 
 There are numerous sophisticated models for predicting the thermal neutron energy distributions, or one may simply solve the neutron balance equation numerically on a computer.  In either approach, an accurate model should include the effects of molecular and crystalline effects on nuclear motion (when they exist), as these are important factors at thermal energies.
+** Elastically Scattering Through Energy
+In the section ``Neutron-Nucleus Reactions'' we observed that the fact that for a stationary target a neutron can be scattered from an energy $E$ to an energy $E' \in [\alpha E]$ where $\alpha = (A-1)^2/(A+1)^2$.  In the following we will derive two quantities that will be useful in discussions resonance absorption: the average energy loss and the average lethargy loss in elastic collisions.  To derive the quantities we need the probability density function for scattering from $E$ to $E'$, which we will call $P(E' \rightarrow E)$.
+
+*** Elastic Scattering Energy Change
+If we assume a stationary target we know that
+\begin{align}
+  \label{eq::elasticEnergyChange}
+  \frac{E'}{E} = \frac{(1-\alpha) + (1-\alpha) \cos\phi}{2}
+\end{align}
+where $\phi$ is the scattering deflection angle in the CM.  Thus energy change is correlated to the angle $\phi$.  If scattering is isotropic in CM, then the probability of scattering through deflection angle $\phi$ is
+\begin{align}
+  P(\phi) = \frac{1}{2}\sin\phi.
+\end{align}
+Because an incremental energy change $dE'$ is correlated to a incremental scattering angle $-d\phi$, we have
+\begin{align}
+  P(E \rightarrow E') dE = -P(\phi) d\phi.
+\end{align}
+Substituting the derivative of Eq. \eqref{eq::elasticEnergyChange} into this equation leads to
+\begin{align}
+  P(E \rightarrow E') = \frac{1}{E(1-\alpha)}.
+\end{align}
+
+*** Average Energy Loss
+The average amount of energy lost in a scattering collision is given by
+\begin{align}
+  \left< \Delta E \right> = E - \int_{\alpha E}^E E' P(E \rightarrow E') dE' = \frac{1}{2}(1-\alpha)E.
+\end{align}
+Thus the average amount of energy lost per collision is proportional to the pre-collision energy and the mass term $\alpha$.
+
+*** Average Logarithmic Energy Loss
+The average logarithmic energy loss per elastic collision (or equivalent, the average lethargy loss) is given by
+\begin{align}
+  \xi = \int_{\alpha E}^E \ln\left(\frac{E}{E'}\right) P(E \rightarrow E') dE' = 1 + \frac{\alpha}{1-\alpha} \ln\alpha.
+\end{align}
+Note that hydrogen, $\alpha = 0$ and the equation can not evaluated directly, but it can be shown that $\lim_{\alpha \rightarrow 0} \xi = 1$.  Also note that this value is independent of $E$.
+
 ** Resonance Absorption
+Let us now consider the problem of estimating the neutron flux inside of a single resonance.  We will assume that the medium consists of a single moderating material whose scattering cross sections is much larger than its absorption cross section ($\Sigma_s^M >> \Sigma_a^M$) and a resonance isotope.  The neutron balance equation in this case can be written
+\begin{align}
+  \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M(E) \right] \phi(E) dE
+  = \frac{\Sigma_s^M}{E}
+  + \int_{\alpha_\text{res} E}^E \frac{\Sigma_s^\text{res}(E') \phi(E')}{E'(1-\alpha_\text{res})} dE',
+\end{align}
+where we have also assumed that $\Sigma_s^M$ is roughly constant over the energy range of interest.
+
+It was previously observed that the neutron flux tends to vary as $1/E$ in the resonance range.  This variation of the flux is asymptotically valid, away from resonances peaks.  If we normalize the flux so that $\phi(E) = 1/E$ above the resonance currently in question, then substitute this value into the first integral in the balance equation we have
+\begin{align}
+  \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M(E) \right] \phi(E) dE
+  = \int_{\alpha_M E}^E \frac{\Sigma_s^M(E') \phi(E')}{E'(1-\alpha_M)} dE' +
+    \int_{\alpha_\text{res} E}^E \frac{\Sigma_s^\text{res}(E') \phi(E')}{E'(1-\alpha_\text{res})} dE'.
+\end{align}
+
+For the sake of simplicity, we will consider only a single resonance that is well-separated from other resonances, in which case the SLBW formula is applicable.  The /practical width/ of a resonance is a heuristic measurement for the ``reach'' of a given resonance in terms of energy.  This practical width can be formed by comparing the /potential/ cross section, $\sigma_p^\ell$, with $\sigma_0$ in the SLBW capture cross section.  Looking for an effective width that produces $\sigma_0/\sigma_p^0 \approx 1$ leads to the practical width
+\begin{align}
+  \Gamma_p \approx \sqrt{\frac{\sigma_0}{\sigma_p^0}} \Gamma_{x,i}.
+\end{align}
+In general the practical width $\Gamma_p$ will be larger than the actual width $\Gamma_{x,i}$.  We will use the practical width only as a rule of thumb in determining how narrow (or wide) a resonance effectively is.
 ** Problems
 ** References
 - Stacey
