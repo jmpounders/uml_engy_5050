@@ -813,8 +813,16 @@ where $\Sigma_a(E)$ is the macroscopic absorption cross section, $\Sigma_s(E)$ i
 
 It is presumed that all cross sections and fission parameters are known.  Our present goal is then to solve the neutron balance equation for the energy-dependent flux $\phi(E)$.  Note that this equation is not an ``energy balance'' equation in the sense that it balances the neutron kinetic energy.  Rather, it balances the number of neutrons with a given kinetic energy, namely $n(E)dE$, which is the number of neutrons between $E$ and $E+dE$.  The function $\phi(E)$, where $E$ is the only independent variable, is often called the /neutron spectrum/.
 
-Rather than seeking an immediate solution to this equation, we will first conduct a qualitative exploration of three typical energy ranges: the fission, slowing-down, and thermal energy ranges.
 ** Characteristic Neutron Energy Ranges
+Rather than seeking an immediate solution to this neutron balance equation, we will first conduct a qualitative exploration of solution.  Neutrons are created from fission with a relatively high kinetic energy, yet the fission cross section tends to be highest at lower (thermal) energies, as shown in Figure \ref{fig::u235fission}.  In between there are large discrete capture resonances that the neutrons must escape while slowing down to thermal energies.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.75\textwidth]{u235fission.png}
+  \caption{Fission cross section (blue) and fission spectrum (red) of uranium-235.}
+  \label{fig::u235fission}
+\end{figure}
+
+These three energy ranges (fission spectrum, slowing down, and thermal) each impact the neutron spectrum, $\phi(E)$, in qualitatively different ways.  We can roughly characterize the spectrum in each range by introducing some approximations that permit an analytical solution to the neutron balance equation.
 *** Fission Energy Range
 Neutrons are typically emitted from fission with a kinetic energy of 1 to 2 MeV.  This is much higher than the thermal equilibrium energy that is on the order of 1 eV.  At these high energies, the rate of neutrons being created in interval $dE$ from fission is much greater than neutrons being scattered into $dE$ from lower energies.  Thus
 \begin{align}
@@ -832,7 +840,7 @@ where $I$ is a normalization constant, and $a$ and $b$ are parameters.  For uran
   a &= 1, \\
   b &= 2,
 \end{align}
-for $E$ in MeV.
+for $E$ in MeV.  Integrating this function reveals that roughly 88% of neutrons are created with an energy between 0.1 and 4 MeV, and only 1.4% are created with an energy /less/ than 0.1 MeV.  The average energy is 2 MeV and the median is about 1.6 MeV.
 
 *** Slowing-Down Energy Range
 At energies between 1 eV and 50 keV, there are very few neutrons created directly from fission and elastic scattering is much more important than inelastic scattering.  (Why?)  The elastic scattering cross kernel can be written
@@ -969,7 +977,7 @@ For the sake of simplicity, we will consider only a single resonance that is wel
 In general the practical width $\Gamma_p$ will be larger than the actual width $\Gamma_{x,i}$.  We will use the practical width only as a rule of thumb in determining how narrow (or wide) a resonance effectively is.
 
 *** Narrow Resonance Approximation
-If the practical width of a resonance is much smaller than the average energy loss due to elastic scattering (i.e., $\Gamma_p << E_i(1-\alpha_M)/2$), then it is likely that neutron will ``jump over'' the resonance.  Thus, as we did with the moderating integral, we may assume that the flux takes it's asymptotic $1/E$ shape in the resonance integral.  We may also assume that the $\Sigma_s^\text{res} \approx \Sigma_p^{0,\text{res}$}, which is independent of energy for $a / \lambda << 1$.  This leads to
+If the practical width of a resonance is much smaller than the average energy loss due to elastic scattering (i.e., $\Gamma_p << E_i(1-\alpha_M)/2$), then it is likely that neutron will ``jump over'' the resonance.  Thus, as we did with the moderating integral, we may assume that the flux takes it's asymptotic $1/E$ shape in the resonance integral.  We may also assume that the $\Sigma_s^\text{res} \approx \Sigma_p^{0,\text{res}}$, which is independent of energy for $a / \lambda << 1$.  This leads to
 \begin{align}
   \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M \right] \phi(E)
   = \frac{\Sigma_s^M}{E}
@@ -990,6 +998,10 @@ If the practical width of a resonance is large compared with the average energy 
 This is known as the /wide resonance approximation/ (which emphasizes the relationship between the practical resonance width and the average energy loss) or the /narrow resonance, infinite mass approximation/ (which emphasizes the assumption that $\alpha_\text{res} \approx 1$).
 
 *** Resonance Integral
+Once the spectrum $\phi(E)$ has been determined, we may use it to evaluate the total absorption rate due to the resonance.  This information is normally computed as the /resonance integral/,
+\begin{align}
+  I_{\gamma,i} = \frac{R_{\gamma,i}}{N^\text{res}} = \int_0^\infty \sigma_{\gamma,i}(E) \phi(E) dE.
+\end{align}
 ** Problems
 ** References
 - Stacey
