@@ -39,3 +39,9 @@ Course Log
    - Review first project
    - Discuss the scattering kernel
    - Derive the neutron balance equation in energy
+
+6. Feb 8
+
+   - Snow day
+   - Review Problem 4
+   - Work on project 1
