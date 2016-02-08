@@ -817,7 +817,7 @@ It is presumed that all cross sections and fission parameters are known.  Our pr
 Rather than seeking an immediate solution to this neutron balance equation, we will first conduct a qualitative exploration of solution.  Neutrons are created from fission with a relatively high kinetic energy, yet the fission cross section tends to be highest at lower (thermal) energies, as shown in Figure \ref{fig::u235fission}.  In between there are large discrete capture resonances that the neutrons must escape while slowing down to thermal energies.
 \begin{figure}
   \centering
-  \includegraphics[scale=0.75\textwidth]{u235fission.png}
+  \includegraphics[width=0.75\textwidth]{u235fission.png}
   \caption{Fission cross section (blue) and fission spectrum (red) of uranium-235.}
   \label{fig::u235fission}
 \end{figure}
@@ -1002,7 +1002,7 @@ Once the spectrum $\phi(E)$ has been determined, we may use it to evaluate the t
 \begin{align}
   I_{\gamma,i} = \frac{R_{\gamma,i}}{N^\text{res}} = \int_0^\infty \sigma_{\gamma,i}(E) \phi(E) dE.
 \end{align}
-** Problems
+** Problems                                                       :noexport:
 ** References
 - Stacey
 - Duderstadt and Hamilton

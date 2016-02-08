@@ -1,4 +1,4 @@
-% Created 2016-02-06 Sat 11:59
+% Created 2016-02-08 Mon 11:30
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,7 +30,7 @@
  pdftitle={Neutron Slowing Down},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.3)}, 
  pdflang={English}}
 \begin{document}
 
@@ -246,10 +246,12 @@ This is known as the \emph{wide resonance approximation} (which emphasizes the r
 
 \subsection{Resonance Integral}
 \label{sec:orgheadline12}
-\section{Problems}
-\label{sec:orgheadline14}
+Once the spectrum \(\phi(E)\) has been determined, we may use it to evaluate the total absorption rate due to the resonance.  This information is normally computed as the \emph{resonance integral},
+\begin{align}
+  I_{\gamma,i} = \frac{R_{\gamma,i}}{N^\text{res}} = \int_0^\infty \sigma_{\gamma,i}(E) \phi(E) dE.
+\end{align}
 \section{References}
-\label{sec:orgheadline15}
+\label{sec:orgheadline14}
 \begin{itemize}
 \item Stacey
 \item Duderstadt and Hamilton
