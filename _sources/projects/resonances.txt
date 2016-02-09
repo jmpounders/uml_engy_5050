@@ -21,7 +21,7 @@ Note that specific project items will be rolled out as we cover the associated m
    | Capture width, :math:`\Gamma_{g,i}` | 0.02600 eV  |
    +-------------------------------------+-------------+
 
-2. Now that we have the 0 K resonance cross section, broaden the cross sections buy assuming the target nuclei are in thermal equilibrium at 100 K and 600 K.  Use the :math:`\psi` and :math:`\phi` functions derived in class, and because :math:`\Gamma_i << E_i`, you may assume that :math:`\Gamma_i/E_i \approx 0`.  You should evaluate the integrals numerically using a Gauss-Hermite quadrature (see Appendix, Mathematical Odds and Ends). As one final simplification, you may assume that in the vicinity of the resonance :math:`E \approx E_i` in the definition of :math:`\Delta`.
+2. Now that we have the 0 K resonance cross section, broaden the cross sections buy assuming the target nuclei are in thermal equilibrium at 100 K and 600 K.  Use the :math:`\psi` and :math:`\phi` functions derived in class, and because :math:`\Gamma_i << E_i`, you may assume that :math:`\Gamma_i/E_i \approx 0`, which leads to :math:`\alpha \approx 0`.  You should evaluate the integrals numerically using a Gauss-Hermite quadrature (see Appendix, Mathematical Odds and Ends). As one final simplification, you may assume that in the vicinity of the resonance :math:`E \approx E_i` in the definition of :math:`\Delta`.
 
 3. Use  the narrow resonance approximation to calculate and plot the neutron flux in and around the resonance at each of the four temperatures.
 
