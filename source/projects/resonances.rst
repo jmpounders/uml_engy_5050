@@ -12,16 +12,16 @@ Note that specific project items will be rolled out as we cover the associated m
       R = \left( 0.123 A^{1/3} + 0.08 \right) 10^{-14} \;.
 
    +-------------------------------------+-------------+
-   | Peak energy, :math:`E_i`            | 80.749 eV   |
+   | Peak energy, :math:`E_i`            | 6.67 eV     |
    +-------------------------------------+-------------+
-   | Total width, :math:`\Gamma_i`       | 0.024865 eV |
+   | Total width, :math:`\Gamma_i`       | 0.02752 eV  |
    +-------------------------------------+-------------+
-   | Neutron width, :math:`\Gamma_{n,i}` | 0.001865 eV |
+   | Neutron width, :math:`\Gamma_{n,i}` | 0.00152 eV  |
    +-------------------------------------+-------------+
-   | Capture width, :math:`\Gamma_{g,i}` | 0.023000 eV |
+   | Capture width, :math:`\Gamma_{g,i}` | 0.02600 eV  |
    +-------------------------------------+-------------+
 
-2. Now that we have the 0 K resonance cross section, broaden the cross sections buy assuming the target nuclei are in thermal equilibrium as 600 K, 1200 K, and (just for fun) 10000 K.  Use the :math:`\psi` and :math:`\phi` functions derived in class, and because :math:`\Gamma_i << E_i`, you may assume that :math:`\Gamma_i/E_i \approx 0`.  You should evaluate the integrals numerically using a Gauss-Hermite quadrature (see Appendix, Mathematical Odds and Ends).
+2. Now that we have the 0 K resonance cross section, broaden the cross sections buy assuming the target nuclei are in thermal equilibrium at 100 K and 600 K.  Use the :math:`\psi` and :math:`\phi` functions derived in class, and because :math:`\Gamma_i << E_i`, you may assume that :math:`\Gamma_i/E_i \approx 0`.  You should evaluate the integrals numerically using a Gauss-Hermite quadrature (see Appendix, Mathematical Odds and Ends).
 
 3. Use  the narrow resonance approximation to calculate and plot the neutron flux in and around the resonance at each of the four temperatures.
 
