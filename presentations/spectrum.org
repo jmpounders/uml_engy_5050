@@ -1,0 +1,117 @@
+#+STARTUP: hidestars indent
+#+STARTUP: beamer
+#+TITLE: The Neutron Spectrum
+#+AUTHOR: Justin Pounders
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+BEAMER_THEME: Warsaw
+#+OPTIONS: H:1 toc:nil
+
+* Review: SLBW Capture
+\begin{align*}
+  \bar{\sigma}_x(E) = \sigma_0(E) \frac{\Gamma_{x,i}}{\Gamma_i} \psi(u,\alpha,\beta)
+\end{align*}
+where
+\begin{align*}
+  \psi(u,\alpha,\beta) &= \frac{1}{\beta\sqrt{\pi}}
+                         \int_{-\infty}^\infty dv \frac{1}{1+v^2} \times \\
+                       &\phantom{=}  \exp\left\{ -\frac{(v-u)^2}{\beta^2}
+                         \left[ 1 - \frac{1}{2}\alpha(v-u) + \frac{5}{16}\alpha^2(v-u)^2 + \hdots \right] \right\}
+\end{align*}
+\begin{align*}
+  \alpha = \frac{\Gamma_i}{2E}
+  \quad \text{and} \quad
+  \beta = \frac{2\Gamma_D}{\Gamma_i} = 4 \sqrt{\frac{E_i kT}{A}} \frac{1}{\Gamma_i} \;\;.
+\end{align*}
+* Review: SLBW Scattering
+\begin{align*}
+  \bar{\sigma}_e(E) = 4\pi a^2 + \sigma_0(E)\frac{2a}{\lambda}\phi(u,\alpha,\beta) + \sigma_0(E)\frac{\Gamma_{n,i}}{\Gamma_i}\psi(u,\alpha,\beta)
+\end{align*}
+where
+\begin{align*}
+  \phi(u,\alpha,\beta) &= \frac{1}{\beta\sqrt{\pi}}
+                         \int_{-\infty}^\infty dv \frac{v}{1+v^2} \times \\
+                       &\phantom{=} \exp\left\{ -\frac{(v-u)^2}{\beta^2}
+                         \left[ 1 - \frac{1}{2}\alpha(v-u) + \frac{5}{16}\alpha^2(v-u)^2 + \hdots \right] \right\}
+\end{align*}
+
+* Introduction
+** What is a neutron /spectrum/?
+The neutron population depends on energy, $n(E)$.  Multiplying by speed produces $\phi(E) = v(E)n(E)$.  This is called the spectrum.
+* Introduction
+** Classifying the neutron spectrum
+1. Fission range ($E > 0.5 \text{ MeV}$)
+2. Slowing-down range ($1 \text{ eV} < E < 50 \text{ keV}$)
+3. Thermal range ($E < 1 \text{ eV}$)
+* Introduction
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../notes/u235fission.png}
+  \caption{Fission cross section (blue) and fission spectrum (red) of uranium-235.}
+  \label{fig::u235fission}
+\end{figure}
+* Fission Energy Range
+- Highest energy range
+- $E > 0.5 \text{ MeV}$
+- Neutrons created from fission
+\begin{align*}
+\phi(E) dE \approx \frac{\chi(E)}{\Sigma_t(E)} \times \text{ constant}
+\end{align*}
+* Slowing-Down Range
+- Intermediate (epi-thermal) energy range
+- $1 \text{ eV} < E < 50 \text{ keV}$
+- Resonances live here
+- Interactions dominated by elastic scattering and resonance absorption
+\begin{align*}
+  \phi(E) &= \frac{\left[ \Sigma_a(E_1) + \Sigma_s^H \right] E_1 \phi(E_1)}{\left[ \Sigma_a(E) + \Sigma_s^H \right] E} \times \\
+          &\phantom{=}  \exp\left[ -\int_E^{E_1} \frac{\Sigma_a(E')}{\left[ \Sigma_a(E') + \Sigma_s^H \right] E'} dE' \right].
+\end{align*}
+* Thermal Range
+- Low energy range
+- $E < 1 \text{ eV}$
+- Neutrons in thermal equilibrium with medium
+- Few if any resonances
+- Characterized by Maxwell-Boltzmann dist. with effective temperature
+\begin{align*}
+  \phi(E) = 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right).
+\end{align*}
+* Characteristic Neutron Spectrum
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../notebooks/spectrumcartoon.png}
+  \caption{Rough caricature of a typical neutron spectrum.}
+  \label{fig::spectrum}
+\end{figure}
+* Slowing Down and Resonance Absorption
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../notebooks/xs0.png}
+  \caption{Resonance cross section at 0K.}
+\end{figure}
+* Slowing Down and Resonance Absorption
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../notebooks/capture_broad.png}
+  \caption{Doppler broadening of capture resonance.}
+\end{figure}
+
+* Slowing Down and Resonance Absorption
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../notebooks/scatter_broad.png}
+  \caption{Doppler broadening of scatter resonance.}
+\end{figure}
+
+* Slowing Down and Resonance Absorption
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../notebooks/selfshielding.png}
+  \caption{Self shielding of neutron flux in resonance.}
+\end{figure}
+
+* Slowing Down and Resonance Absorption
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../notebooks/selfshielding_broadZoom.png}
+  \caption{Self shielding of neutron flux in resonance.}
+\end{figure}
