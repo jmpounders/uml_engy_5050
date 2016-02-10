@@ -924,7 +924,7 @@ Of course assuming that there is no source of neutrons, no absorption and no lea
 
 There are numerous sophisticated models for predicting the thermal neutron energy distributions, or one may simply solve the neutron balance equation numerically on a computer.  In either approach, an accurate model should include the effects of molecular and crystalline effects on nuclear motion (when they exist), as these are important factors at thermal energies.
 ** Elastically Scattering Through Energy
-In the section ``Neutron-Nucleus Reactions'' we observed that the fact that for a stationary target a neutron can be scattered from an energy $E$ to an energy $E' \in [\alpha E]$ where $\alpha = (A-1)^2/(A+1)^2$.  In the following we will derive two quantities that will be useful in discussions resonance absorption: the average energy loss and the average lethargy loss in elastic collisions.  To derive the quantities we need the probability density function for scattering from $E$ to $E'$, which we will call $P(E' \rightarrow E)$.
+In the section ``Neutron-Nucleus Reactions'' we observed that the fact that for a stationary target a neutron can be scattered from an energy $E$ to an energy $E' \in [\alpha E, E]$ where $\alpha = (A-1)^2/(A+1)^2$.  In the following we will derive two quantities that will be useful in discussions resonance absorption: the average energy loss and the average lethargy loss in elastic collisions.  To derive the quantities we need the probability density function for scattering from $E$ to $E'$, which we will call $P(E' \rightarrow E)$.
 
 *** Elastic Scattering Energy Change
 If we assume a stationary target we know that
@@ -960,7 +960,7 @@ The average logarithmic energy loss per elastic collision (or equivalent, the av
 Note that hydrogen, $\alpha = 0$ and the equation can not evaluated directly, but it can be shown that $\lim_{\alpha \rightarrow 0} \xi = 1$.  Also note that this value is independent of $E$.
 
 ** Resonance Absorption
-To calculate a local neutron spectrum (independent of space) one could solve the slowing-down equation numerically to an arbitrary degree of accuracy.  An analytically exact solution is generally not possible to the complex dependence of the cross section on energy, including many closely-spaced and unresolved resonances.  If we consider a very simplistic case, however, we can make some reasonable approximations that lead to closed-form expressions of the flux spectrum.  These approximation are rarely used in production-level software anymore, but they permit insight that is generally not available from purely numerical solutions.  
+To calculate a local neutron spectrum (independent of space) one could solve the slowing-down equation numerically to an arbitrary degree of accuracy.  An analytically exact solution is generally not possible due to the complex dependence of the cross section on energy, including many closely-spaced and unresolved resonances.  If we consider a very simplistic case, however, we can make some reasonable approximations that lead to closed-form expressions of the flux spectrum.  These approximation are rarely used in production-level software anymore, but they permit insight that is generally not available from purely numerical solutions.  
 
 Assume that a medium consists of a single moderating material whose scattering cross sections is much larger than its absorption cross section ($\Sigma_s^M >> \Sigma_a^M$) and a resonance isotope.  We will consider the problem of estimating the neutron flux inside of a /single/ resonance within the resonance isotope.  The neutron balance equation in this case can be written
 \begin{align}
@@ -984,7 +984,7 @@ For the sake of simplicity, we will consider only a single resonance that is wel
 In general the practical width $\Gamma_p$ will be larger than the actual width $\Gamma_{x,i}$.  We will use the practical width only as a rule of thumb in determining how narrow (or wide) a resonance effectively is.
 
 *** Narrow Resonance Approximation
-If the practical width of a resonance is much smaller than the average energy loss due to elastic scattering (i.e., $\Gamma_p << E_i(1-\alpha_M)/2$), then it is likely that neutron will ``jump over'' the resonance.  Thus, as we did with the moderating integral, we may assume that the flux takes it's asymptotic $1/E$ shape in the resonance integral.  We may also assume that the $\Sigma_s^\text{res} \approx \Sigma_p^{0,\text{res}}$, which is independent of energy for $a / \lambda << 1$.  This leads to
+If the practical width of a resonance is much smaller than the average energy loss due to elastic scattering (i.e., $\Gamma_p << E_i(1-\alpha_M)/2$), then it is likely that a neutron will ``jump over'' the resonance.  Thus, as we did with the moderating integral, we may assume that the flux takes it's asymptotic $1/E$ shape in the resonance integral.  We may also assume that the $\Sigma_s^\text{res} \approx \Sigma_p^{0,\text{res}}$, which is independent of energy for $a / \lambda << 1$.  This leads to
 \begin{align}
   \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M \right] \phi(E)
   = \frac{\Sigma_s^M}{E}
@@ -1009,7 +1009,8 @@ Once the spectrum $\phi(E)$ has been determined, we may use it to evaluate the t
 \begin{align}
   I_{\gamma,i} = \frac{R_{\gamma,i}}{N^\text{res}} = \int_0^\infty \sigma_{\gamma,i}(E) \phi(E) dE.
 \end{align}
-** Problems                                                       :noexport:
+** Problems
+1. Derive the the solution $\phi(E)$ using the narrow and wide resonance approximations.
 ** References
 - Stacey
 - Duderstadt and Hamilton

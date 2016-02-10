@@ -1,4 +1,4 @@
-% Created 2016-02-08 Mon 13:07
+% Created 2016-02-09 Tue 22:02
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -767,7 +767,14 @@ and
   \quad \text{and} \quad
   \beta = \frac{2\Delta}{\Gamma_i} \;\;.
 \end{align}
-This expression \(\psi(u,\alpha,\beta)\) is called the \emph{generalized Doppler psi function}.
+This expression \(\psi(u,\alpha,\beta)\) is called the \emph{generalized Doppler psi function}.  A common simplification is to assume that \(E \simeq E_i\), in which case,
+\begin{align}
+  \beta = \frac{2\Gamma_D}{\Gamma_i}
+\end{align}
+where the \emph{Doppler width} has been defined as
+\begin{align}
+  \Gamma_D = 2 \sqrt{\frac{E_i kT}{A}}.
+\end{align}
 
 Using the same mathematical treatment, a similar expression can be derivied for the SLBW elastic scattering resonance formula.  The result is
 \begin{align}
@@ -887,7 +894,7 @@ Thus
 Note that the energy-dependent distribution does not depend on mass!
 \end{enumerate}
 \section{Neutron Slowing Down}
-\label{sec:orgheadline42}
+\label{sec:orgheadline43}
 \subsection{Energy balance equation}
 \label{sec:orgheadline28}
 If we assume that a reactor is very large with respect to the mean free path of a neutron and consists of a homogeneous material then we may write a balance equations for the neutron density with respect to energy.  In reality, spatial effects will play a role in determining the neutron density, but we will consider those later.  Describing the neutron density with respect to energy alone unveils some important aspects of reactor physics.  The neutron balance equation for neutrons with energy between \(E\) and \(E+dE\) is
@@ -1009,7 +1016,7 @@ Of course assuming that there is no source of neutrons, no absorption and no lea
 There are numerous sophisticated models for predicting the thermal neutron energy distributions, or one may simply solve the neutron balance equation numerically on a computer.  In either approach, an accurate model should include the effects of molecular and crystalline effects on nuclear motion (when they exist), as these are important factors at thermal energies.
 \subsection{Elastically Scattering Through Energy}
 \label{sec:orgheadline36}
-In the section ``Neutron-Nucleus Reactions'' we observed that the fact that for a stationary target a neutron can be scattered from an energy \(E\) to an energy \(E' \in [\alpha E]\) where \(\alpha = (A-1)^2/(A+1)^2\).  In the following we will derive two quantities that will be useful in discussions resonance absorption: the average energy loss and the average lethargy loss in elastic collisions.  To derive the quantities we need the probability density function for scattering from \(E\) to \(E'\), which we will call \(P(E' \rightarrow E)\).
+In the section ``Neutron-Nucleus Reactions'' we observed that the fact that for a stationary target a neutron can be scattered from an energy \(E\) to an energy \(E' \in [\alpha E, E]\) where \(\alpha = (A-1)^2/(A+1)^2\).  In the following we will derive two quantities that will be useful in discussions resonance absorption: the average energy loss and the average lethargy loss in elastic collisions.  To derive the quantities we need the probability density function for scattering from \(E\) to \(E'\), which we will call \(P(E' \rightarrow E)\).
 
 \subsubsection{Elastic Scattering Energy Change}
 \label{sec:orgheadline33}
@@ -1049,7 +1056,7 @@ Note that hydrogen, \(\alpha = 0\) and the equation can not evaluated directly, 
 
 \subsection{Resonance Absorption}
 \label{sec:orgheadline40}
-To calculate a local neutron spectrum (independent of space) one could solve the slowing-down equation numerically to an arbitrary degree of accuracy.  An analytically exact solution is generally not possible to the complex dependence of the cross section on energy, including many closely-spaced and unresolved resonances.  If we consider a very simplistic case, however, we can make some reasonable approximations that lead to closed-form expressions of the flux spectrum.  These approximation are rarely used in production-level software anymore, but they permit insight that is generally not available from purely numerical solutions.  
+To calculate a local neutron spectrum (independent of space) one could solve the slowing-down equation numerically to an arbitrary degree of accuracy.  An analytically exact solution is generally not possible due to the complex dependence of the cross section on energy, including many closely-spaced and unresolved resonances.  If we consider a very simplistic case, however, we can make some reasonable approximations that lead to closed-form expressions of the flux spectrum.  These approximation are rarely used in production-level software anymore, but they permit insight that is generally not available from purely numerical solutions.  
 
 Assume that a medium consists of a single moderating material whose scattering cross sections is much larger than its absorption cross section (\(\Sigma_s^M >> \Sigma_a^M\)) and a resonance isotope.  We will consider the problem of estimating the neutron flux inside of a \emph{single} resonance within the resonance isotope.  The neutron balance equation in this case can be written
 \begin{align}
@@ -1074,7 +1081,7 @@ In general the practical width \(\Gamma_p\) will be larger than the actual width
 
 \subsubsection{Narrow Resonance Approximation}
 \label{sec:orgheadline37}
-If the practical width of a resonance is much smaller than the average energy loss due to elastic scattering (i.e., \(\Gamma_p << E_i(1-\alpha_M)/2\)), then it is likely that neutron will ``jump over'' the resonance.  Thus, as we did with the moderating integral, we may assume that the flux takes it's asymptotic \(1/E\) shape in the resonance integral.  We may also assume that the \(\Sigma_s^\text{res} \approx \Sigma_p^{0,\text{res}}\), which is independent of energy for \(a / \lambda << 1\).  This leads to
+If the practical width of a resonance is much smaller than the average energy loss due to elastic scattering (i.e., \(\Gamma_p << E_i(1-\alpha_M)/2\)), then it is likely that a neutron will ``jump over'' the resonance.  Thus, as we did with the moderating integral, we may assume that the flux takes it's asymptotic \(1/E\) shape in the resonance integral.  We may also assume that the \(\Sigma_s^\text{res} \approx \Sigma_p^{0,\text{res}}\), which is independent of energy for \(a / \lambda << 1\).  This leads to
 \begin{align}
   \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M \right] \phi(E)
   = \frac{\Sigma_s^M}{E}
@@ -1101,14 +1108,19 @@ Once the spectrum \(\phi(E)\) has been determined, we may use it to evaluate the
 \begin{align}
   I_{\gamma,i} = \frac{R_{\gamma,i}}{N^\text{res}} = \int_0^\infty \sigma_{\gamma,i}(E) \phi(E) dE.
 \end{align}
-\subsection{References}
+\subsection{Problems}
 \label{sec:orgheadline41}
+\begin{enumerate}
+\item Derive the the solution \(\phi(E)\) using the narrow and wide resonance approximations.
+\end{enumerate}
+\subsection{References}
+\label{sec:orgheadline42}
 \begin{itemize}
 \item Stacey
 \item Duderstadt and Hamilton
 \end{itemize}
 \section{Nuclear Physics in 60 Seconds}
-\label{sec:orgheadline43}
+\label{sec:orgheadline44}
 \textbf{Notation:} An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, \(Z\), while the number of neutrons is given by \(N\).  The mass number, \(A\), is the sum of the number of neutrons and protons.  A neutral atom, \(X\), is typically written with the \(A\) and \(Z\) numbers prepended, i.e., \(\leftidx{^A_Z}{X}{}\), with the neutron number implicit.
 
 \textbf{Mass:} Masses on the nuclear scale at typically expressed in units of \emph{atomic mass units} (u), defined so that the mass of a neutron atom of \(\leftidx{^{12}_6}{C}{}\) is exactly 12 u.
@@ -1116,18 +1128,18 @@ Once the spectrum \(\phi(E)\) has been determined, we may use it to evaluate the
 \textbf{Quantum Description:}  A common and quite accurate quantum description of the nucleus is given by the \emph{shell model}, which is analogous to the description of atomic electrons.  Neutrons, protons and electrons are all classified as \emph{fermions}, which are particles with a spin of \(\frac{1}{2}\hbar\) that obey the Pauli exclusion principle.  Neutrons and protons in a nucleus reside in discrete energy states and posses angular momentum that also occurs in discrete amounts.  The angular momentum is specified by the positive, integer quantum nunber \(\ell \geq 0\), and the first few angular momentum states are are labeled \(s\), \(p\), \(d\), \(f\), etc, again in analogy to atomic electrons.  The \emph{ground state} of a nucleus occurs when all of the nuclear particles are in the lowest energy states allowed by the Pauli exclusion principle.  An \emph{excited state} occurs when a nucleon is elevated to a higher (and unstable) energy level.
 
 \section{Mathematical Odds and Ends}
-\label{sec:orgheadline54}
+\label{sec:orgheadline55}
 \subsection{Trigonometric Identities and Relationships}
-\label{sec:orgheadline47}
+\label{sec:orgheadline48}
 \subsubsection{Euler's Formula}
-\label{sec:orgheadline44}
+\label{sec:orgheadline45}
 Euler's formula is given by
 \begin{align}
   e^{i x} = \cos x + i \sin x
 \end{align}
 where \(e\) is the base of the natural logarithm and \(i = \sqrt{-1}\).  Many of the standard trigonometric identities can be quickly derived from this one formula.
 \subsubsection{Additive Identities}
-\label{sec:orgheadline45}
+\label{sec:orgheadline46}
 \begin{align}
   \sin\left(A \pm B\right) = \sin A \cos B \pm \cos A \sin B
 \end{align}
@@ -1135,7 +1147,7 @@ where \(e\) is the base of the natural logarithm and \(i = \sqrt{-1}\).  Many of
   \cos\left(A \pm B\right) = \cos A \cos B \mp \sin A \sin B
 \end{align}
 \subsubsection{Law of Sines and Cosines}
-\label{sec:orgheadline46}
+\label{sec:orgheadline47}
 Given the triangle shown in Figure \ref{fig::triangle}, the \emph{law of sines} states that
 \begin{align}
   \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = \text{ constant} \;\;.
@@ -1166,9 +1178,9 @@ The \emph{law of cosines} states that
 \label{fig::triangle}
 \end{figure}
 \subsection{Special Functions}
-\label{sec:orgheadline50}
+\label{sec:orgheadline51}
 \subsubsection{Delta Functions}
-\label{sec:orgheadline48}
+\label{sec:orgheadline49}
 The Dirac delta function is a generalized function defined by
 \begin{align}
   \int_{-\infty}^\infty \delta(x-a) f(x) dx = f(a)
@@ -1192,7 +1204,7 @@ The discrete analog of the Dirac delta function is the Kronecker delta, defined
   \end{cases}
 \end{align}
 \subsubsection{Legendre Polynomials}
-\label{sec:orgheadline49}
+\label{sec:orgheadline50}
 The Legendre polynomials are a set of polynomials, \(\left\{ P_n \right\}_{n=0}^\infty\).  For a given \(n\), the polynomial \(P_n(x)\) is a polynomial of degree \(n\).  For example, the first few Legendre polynomials are
 \begin{align*}
   P_0(x) &= 1, \\
@@ -1223,7 +1235,7 @@ where
   f_n = \frac{2n+1}{2} \int_{-1}^{1} f(x) P_n(x) dx.
 \end{align}
 \subsection{The Direction Vector}
-\label{sec:orgheadline51}
+\label{sec:orgheadline52}
 The unit direction vector can be expressed in terms of a polar angle, \(\theta\), and a azimuthal angle, \(\varphi\), as shown in Figure \ref{fig::unitDirection}.  In a Cartesian coordinates the unit direction vector can be written
 \begin{align}
   \hat{\Omega} = \Omega_x \vec{i} + \Omega_y \vec{j} + \Omega_z \vec{k}
@@ -1286,9 +1298,9 @@ In one-dimensional problems the isotropic distribution can be reduced to a funct
 This distribution, for example, describes isotropic neutron emission in a CM scattering event.
 
 \subsection{Numerical Integration Quadrature}
-\label{sec:orgheadline53}
+\label{sec:orgheadline54}
 \subsubsection{Gauss-Hermite Quadrature}
-\label{sec:orgheadline52}
+\label{sec:orgheadline53}
 The Gauss-Hermite quadrature is a form of Gaussian quadrature for approximating integrals of the form
 \begin{align}
   \int_{-\infty}^\infty e^{-x^2} f(x) dx.
@@ -1341,7 +1353,7 @@ V       = V(:,ind)';
 w       = sqrt(pi) * V(:,1).^2;
 \end{verbatim}
 \section{Probability and Statistics}
-\label{sec:orgheadline55}
+\label{sec:orgheadline56}
 Consider a real and continuous \emph{random variable}, \(\xi\).  This variable will take a value somewhere on the interval \([a,b]\), and let the probability of the random variable occurring between \(x_1\) and \(x_2\) be given by \(P\left[ x_1 \leq \xi \leq x_2 \right]\).  We can define a \emph{probability density function}, \(f(x)\), such that \(f(x)dx\) is the probability that the continuous random variable, \(\xi\), will have a value between \(x\) and \(x+dx\) in the limit of \(dx \rightarrow 0\).  In other words,
 \begin{align}
   \label{eq::probDensFuncDef}
@@ -1388,7 +1400,7 @@ This leads to the result
 Thus if we know the relationship between \(x\) and \(y\), then we can derive the underlying probability density behind the variable \(y\) knowing only the probability density behind \(x\).  This is useful for changing the independent variable of a known probability density function.
 
 \section{Constants}
-\label{sec:orgheadline56}
+\label{sec:orgheadline57}
 Speed of light in a vacuum
 \begin{align*}
   c = 2.99792458 \times 10^8 \; \text{m/s}
