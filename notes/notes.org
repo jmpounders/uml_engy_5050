@@ -1009,6 +1009,7 @@ Once the spectrum $\phi(E)$ has been determined, we may use it to evaluate the t
 \begin{align}
   I_{\gamma,i} = \frac{R_{\gamma,i}}{N^\text{res}} = \int_0^\infty \sigma_{\gamma,i}(E) \phi(E) dE.
 \end{align}
+The resonance integral is useful for calculating the /resonance escape probability/ and multigroup cross sections, which we will discuss later.
 ** Problems
 1. Derive the the solution $\phi(E)$ using the narrow and wide resonance approximations.
 ** References
