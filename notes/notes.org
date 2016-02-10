@@ -883,8 +883,8 @@ where on the left-hand-side we have used $\Sigma_s^H(E) \approx \Sigma_s(E) - \s
 \end{align}
 This equation can be solved using an integrating factor and integrating from $E$ to some arbitrary energy $E_1$, ultimately leading to
 \begin{align}
-  \phi(E) = \frac{\left[ \Sigma_a(E) + \Sigma_s^H(E) \right] E_1 \phi(E_1)}{\left[ \Sigma_a(E) + \Sigma_s^H(E) \right] E}
-            \exp\left[ -\int_E^{E_1} \frac{\Sigma_a(E')}{\left[ \Sigma_a(E) + \Sigma_s^H(E) \right] E'} dE' \right].
+  \phi(E) = \frac{\left[ \Sigma_a(E_1) + \Sigma_s^H(E_1) \right] E_1 \phi(E_1)}{\left[ \Sigma_a(E) + \Sigma_s^H(E) \right] E}
+            \exp\left[ -\int_E^{E_1} \frac{\Sigma_a(E')}{\left[ \Sigma_a(E') + \Sigma_s^H(E') \right] E'} dE' \right].
 \end{align}
 Thus $\phi(E)$ varies fundamentally as $1/E$ with localized perturbations caused by resonances that manifest in $\Sigma_a(E)$ in the denominator of the first term and an overall attenuation arising from the exponential term, which again is primarily affected by resonances along the energy path from $E_1$ to $E$.
 
