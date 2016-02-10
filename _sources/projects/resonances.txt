@@ -1,6 +1,8 @@
 Neutron Interaction Resonances
 ==============================
 
+**Due date:** Feb. 19, 11:59 PM
+
 In this first project, we will take a close a look at resonance cross sections.
 
 Note that specific project items will be rolled out as we cover the associated material in class.  Thus what is listed below is not the entire project, but I want to give you all the opportunity to start early.  In case, lake tapas, you chose to work "little and often."
