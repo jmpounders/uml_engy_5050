@@ -45,3 +45,14 @@ Course Log
    - Snow day
    - Review Problem 4
    - Work on project 1
+
+7. Feb 10
+
+   - Review first project (due 2/19)
+   - Review SLBW work to-date
+   - Discuss neutron spectra
+   - Discuss slowing down and resonance absorption
+   - For next time
+
+     - Read Problem 4 notes
+     - Answer Problem 4 Comprehension Assessment
