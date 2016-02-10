@@ -1,4 +1,4 @@
-% Created 2016-02-09 Tue 22:27
+% Created 2016-02-09 Tue 22:44
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1129,7 +1129,7 @@ The resonance integral is useful for calculating the \emph{resonance escape prob
 \textbf{Quantum Description:}  A common and quite accurate quantum description of the nucleus is given by the \emph{shell model}, which is analogous to the description of atomic electrons.  Neutrons, protons and electrons are all classified as \emph{fermions}, which are particles with a spin of \(\frac{1}{2}\hbar\) that obey the Pauli exclusion principle.  Neutrons and protons in a nucleus reside in discrete energy states and posses angular momentum that also occurs in discrete amounts.  The angular momentum is specified by the positive, integer quantum nunber \(\ell \geq 0\), and the first few angular momentum states are are labeled \(s\), \(p\), \(d\), \(f\), etc, again in analogy to atomic electrons.  The \emph{ground state} of a nucleus occurs when all of the nuclear particles are in the lowest energy states allowed by the Pauli exclusion principle.  An \emph{excited state} occurs when a nucleon is elevated to a higher (and unstable) energy level.
 
 \section{Mathematical Odds and Ends}
-\label{sec:orgheadline55}
+\label{sec:orgheadline56}
 \subsection{Trigonometric Identities and Relationships}
 \label{sec:orgheadline48}
 \subsubsection{Euler's Formula}
@@ -1299,9 +1299,19 @@ In one-dimensional problems the isotropic distribution can be reduced to a funct
 This distribution, for example, describes isotropic neutron emission in a CM scattering event.
 
 \subsection{Numerical Integration Quadrature}
-\label{sec:orgheadline54}
-\subsubsection{Gauss-Hermite Quadrature}
+\label{sec:orgheadline55}
+\subsubsection{Midpoint Rule}
 \label{sec:orgheadline53}
+Perhaps the simplest quadrature is based on the midpoint rule.  This is essentially the method of "rectangles."  Given an interval \([a,b]\) and a set of points \(x_i\) for \(i=0,\hdots,n\) with \(x_{i-1} < x_i\), \(x_0 = a\) and \(x_n = b\) we have the following approximate evaluation of an integral:
+\begin{align}
+  \int_a^b f(x) \approx \sum_{i=1}^n \left( x_i - x_{i-1} \right) f\left(\frac{x_i+x_{i-1}}{2}\right).
+\end{align}
+If the spacing is uniform with \(h = x_i - x_{i-1}\) then we have
+\begin{align}
+  \int_a^b f(x) \approx \sum_{i=1}^n h f\left(a + ih/2\right).
+\end{align}
+\subsubsection{Gauss-Hermite Quadrature}
+\label{sec:orgheadline54}
 The Gauss-Hermite quadrature is a form of Gaussian quadrature for approximating integrals of the form
 \begin{align}
   \int_{-\infty}^\infty e^{-x^2} f(x) dx.
@@ -1354,7 +1364,7 @@ V       = V(:,ind)';
 w       = sqrt(pi) * V(:,1).^2;
 \end{verbatim}
 \section{Probability and Statistics}
-\label{sec:orgheadline56}
+\label{sec:orgheadline57}
 Consider a real and continuous \emph{random variable}, \(\xi\).  This variable will take a value somewhere on the interval \([a,b]\), and let the probability of the random variable occurring between \(x_1\) and \(x_2\) be given by \(P\left[ x_1 \leq \xi \leq x_2 \right]\).  We can define a \emph{probability density function}, \(f(x)\), such that \(f(x)dx\) is the probability that the continuous random variable, \(\xi\), will have a value between \(x\) and \(x+dx\) in the limit of \(dx \rightarrow 0\).  In other words,
 \begin{align}
   \label{eq::probDensFuncDef}
@@ -1401,7 +1411,7 @@ This leads to the result
 Thus if we know the relationship between \(x\) and \(y\), then we can derive the underlying probability density behind the variable \(y\) knowing only the probability density behind \(x\).  This is useful for changing the independent variable of a known probability density function.
 
 \section{Constants}
-\label{sec:orgheadline57}
+\label{sec:orgheadline58}
 Speed of light in a vacuum
 \begin{align*}
   c = 2.99792458 \times 10^8 \; \text{m/s}

@@ -1185,6 +1185,15 @@ In one-dimensional problems the isotropic distribution can be reduced to a funct
 This distribution, for example, describes isotropic neutron emission in a CM scattering event.
 
 ** Numerical Integration Quadrature
+*** Midpoint Rule
+Perhaps the simplest quadrature is based on the midpoint rule.  This is essentially the method of "rectangles."  Given an interval $[a,b]$ and a set of points $x_i$ for $i=0,\hdots,n$ with $x_{i-1} < x_i$, $x_0 = a$ and $x_n = b$ we have the following approximate evaluation of an integral:
+\begin{align}
+  \int_a^b f(x) \approx \sum_{i=1}^n \left( x_i - x_{i-1} \right) f\left(\frac{x_i+x_{i-1}}{2}\right).
+\end{align}
+If the spacing is uniform with $h = x_i - x_{i-1}$ then we have
+\begin{align}
+  \int_a^b f(x) \approx \sum_{i=1}^n h f\left(a + ih/2\right).
+\end{align}
 *** Gauss-Hermite Quadrature
 The Gauss-Hermite quadrature is a form of Gaussian quadrature for approximating integrals of the form
 \begin{align}

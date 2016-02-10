@@ -1,4 +1,4 @@
-% Created 2016-02-03 Wed 11:15
+% Created 2016-02-09 Tue 22:43
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,7 +30,7 @@
  pdftitle={Mathematical Odds and Ends},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.3)}, 
  pdflang={English}}
 \begin{document}
 
@@ -206,9 +206,19 @@ In one-dimensional problems the isotropic distribution can be reduced to a funct
 This distribution, for example, describes isotropic neutron emission in a CM scattering event.
 
 \section{Numerical Integration Quadrature}
-\label{sec:orgheadline10}
-\subsection{Gauss-Hermite Quadrature}
+\label{sec:orgheadline11}
+\subsection{Midpoint Rule}
 \label{sec:orgheadline9}
+Perhaps the simplest quadrature is based on the midpoint rule.  This is essentially the method of "rectangles."  Given an interval \([a,b]\) and a set of points \(x_i\) for \(i=0,\hdots,n\) with \(x_{i-1} < x_i\), \(x_0 = a\) and \(x_n = b\) we have the following approximate evaluation of an integral:
+\begin{align}
+  \int_a^b f(x) \approx \sum_{i=1}^n \left( x_i - x_{i-1} \right) f\left(\frac{x_i+x_{i-1}}{2}\right).
+\end{align}
+If the spacing is uniform with \(h = x_i - x_{i-1}\) then we have
+\begin{align}
+  \int_a^b f(x) \approx \sum_{i=1}^n h f\left(a + ih/2\right).
+\end{align}
+\subsection{Gauss-Hermite Quadrature}
+\label{sec:orgheadline10}
 The Gauss-Hermite quadrature is a form of Gaussian quadrature for approximating integrals of the form
 \begin{align}
   \int_{-\infty}^\infty e^{-x^2} f(x) dx.
