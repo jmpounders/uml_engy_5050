@@ -12,7 +12,7 @@ The actual neutron distribution in a reactor will be a function of space, time, 
 Background
 ----------
 
-:download:`Reference notes, Cross Sections <../../notes/spectrum.pdf>`.
+:download:`Reference notes, Neutron Spectrum <../../notes/spectrum.pdf>`.
 
 Comprehension Assessment
 ------------------------
