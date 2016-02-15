@@ -1,0 +1,79 @@
+% Created 2016-02-15 Mon 13:25
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\renewcommand\vec{\mathbf}
+\newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
+\newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
+\pagestyle{fancyplain}
+\cfoot{{\it ENGY 5050, Nuclear Reactor Physics, UMass Lowell}}
+\author{Justin Pounders}
+\date{\today}
+\title{Neutron Transport}
+\hypersetup{
+ pdfauthor={Justin Pounders},
+ pdftitle={Neutron Transport},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+At this point we have characterized neutron-nucleus interactions and described the physics of a neutron slowing down from high (fission) energies to low (thermal) energies in the presence of moderators and resonance absorbers.  We will now proceed to a full description of neutron transport, the goal of which is to describe how neutrons are distributed through space and energy as a function of time.
+
+\section{Fundamental Concepts and Variables}
+\label{sec:orgheadline1}
+We know that a scattering reaction will tend to change the kinetic energy of a neutron and the direction in which it is traveling.  Thus our attempt to describe the distribution of neutrons must take into account space (where neutrons are), energy (how fast they are moving), angle (in what direction they are moving) and time.  This collection of independent variables is called the \emph{phase space} of neutron transport.
+
+The space parameter will be denoted by the variable \(\vec{r}\).  While it is possible to represent this vector in any number coordinate systems, we will focus on Cartesian systems so that space can be represented by vectors of the form \(\vec{r} = x\vec{i} + y\vec{j} + z \vec{k}\).  In three-dimensional space the differential space element is a differential volume \(dV = dx dy dz\).
+
+A neutrons direction (or angle) at a given point is given by the unit vector \(\vec{\Omega}\).  The definition and properties of \(\vec{\Omega}\) is given in the ``Mathematical Odds and Ends'' appendix accompanying these notes.  The angle \(\vec{\Omega}\) can be described in terms of its projections along each of three Cartesian coordinate axes, \(\vec{\Omega} = \Omega_x \vec{i} + \Omega_y \vec{j} + \Omega_z \vec{k}\), or in terms of the polar and azimuthal angles \(\theta\) and \(\varphi\), \(\vec{\Omega} = \sin\theta \cos\varphi \vec{i} + \sin\theta \sin\varphi \vec{j} + \cos\theta \vec{k}\).  In three dimensions the differential \emph{solid angle} is \(d\vec{\Omega} = \sin\theta d\varphi d\theta\).
+
+Because there is such a high density of neutrons in a reactor and their collisions are probabilistic, it is infeasible to determine location and velocity of every single neutron, nor would such an abundance of information be particularly useful.  Instead we will attempt to determine the \emph{expected} number of a neutrons within differential space, angle and energy elements as a function of time:
+\begin{align}
+  n(\vec{r},\vec{\Omega},E,t) dV d\vec{\Omega} dt.
+\end{align}
+The function \(n(\vec{r},\vec{\Omega},E,t)\) in this quantity is the \emph{neutron angular density}.  We may also define the \emph{neutron scalar density} as the expected number of neutrons in all directions, \(n(\vec{r},E,t) = \int_{4\pi} n(\vec{r},\vec{\Omega},E,t) d\vec{\Omega}\).
+
+We know that the reaction rate density (i.e., the number of neutron interactions per unit volume per unit time) is the product of the nuclelar density, the microscopic cross section for the reaction, the neutron speed and the neutron density.  The product of the first two parameters is called the macroscopic cross section, while the product of the latter two parameters is called the neutron flux.  If we write the neutron flux to explicitly include variation with respect to angle then we have the \emph{angular neutron flux}, \(\psi(\vec{r},\vec{\Omega},E,t) = v(E)n(\vec{r},\vec{\Omega},E,t)\).  If we integrate over all angles then we have the \emph{scalar neutron flux}, \(\phi(\vec{r},E,t) = \int_{4\pi} \psi(\vec{r},\vec{\Omega},E,t)\).
+
+Knowing the angular and scalar fluxes is valuable because it enables us to compute reaction rates, including the rate at which energy is produced from fission reactions.  An intuitive interpretation of these functions, however, is not immediately evident.  Recall that the neutron \emph{speed} is the differential path length divided by a differential unit of time.  The product of the neutron density with speed (i.e., flux) is therefore the \emph{total path length} traversed by all neutrons per unit volume per unit time.  Thus multiplying flux by the macroscopic cross section (probability of interaction per unit path length) gives us interactions per unit volume per unit time.  The \emph{angular} flux is the total path length of all the neutrons moving along a given direction; the \emph{scalar} flux is the total path length of all the neutrons regardless of direction.
+
+Finally, if we multiply the angular neutron density by the vector velocity then we get the \emph{angular neutron current}: \(\vec{J}(\vec{r},\vec{\Omega},E,t) = \vec{v}(\vec{\Omega},E) n(\vec{r},\vec{\Omega},E,t)\).  Integrating this variable over all angles provides a vector-valued quantity which is usually just called \emph{neutron current}: \(\vec{J}(\vec{r},E,t) = \int_{4\pi} \vec{v}(\vec{\Omega},E) n(\vec{r},\vec{\Omega},E,t) d\vec{\Omega}\).  Noting \(\vec{v}(\vec{\Omega},E) = \vec{\Omega}v(E)\) permits writing the current in terms of the angular neutron flux.
+
+The neutron current is a useful quantity because it allows us to calculate the rate at which neutrons are ``flowing'' through a surface.  In particular, the rate at which neutrons with energy \(E\) are crossing a differential surface with area \(dA\) and unit normal vector \(\vec{n}\) is given by
+\begin{align}
+  dA \vec{n} \cdot \vec{J}(\vec{r},E,t).
+\end{align}
+
+\begin{table}
+  \centering
+  \caption{Basic quantities in neutron transport}
+  \begin{tabular}{ll}
+  \hline
+  Angular density & $n(\vec{r},\vec{\Omega},E,t)$ \\
+  Angular flux & $\psi(\vec{r},\vec{\Omega},E,t) = v(E) n(\vec{r},\vec{\Omega},E,t)$ \\
+  Scalar flux & $\phi(\vec{r},E,t) = \int_{4\pi} \psi(\vec{r},\vec{\Omega},E,t) d\vec{\Omega}$ \\
+  Current & $\vec{J}(\vec{r},\vec{\Omega},E,t) = \int_{4\pi} \vec{\Omega} \psi(\vec{r},\vec{\Omega},E,t)$ \\
+  \hline
+  \end{tabular}
+\end{table}
+\end{document}

@@ -1,4 +1,4 @@
-% Created 2016-02-09 Tue 22:43
+% Created 2016-02-15 Mon 13:28
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,7 +30,7 @@
  pdftitle={Mathematical Odds and Ends},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.3)}, 
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
  pdflang={English}}
 \begin{document}
 
@@ -146,7 +146,7 @@ where
 \label{sec:orgheadline8}
 The unit direction vector can be expressed in terms of a polar angle, \(\theta\), and a azimuthal angle, \(\varphi\), as shown in Figure \ref{fig::unitDirection}.  In a Cartesian coordinates the unit direction vector can be written
 \begin{align}
-  \hat{\Omega} = \Omega_x \vec{i} + \Omega_y \vec{j} + \Omega_z \vec{k}
+  \vec{\Omega} = \Omega_x \vec{i} + \Omega_y \vec{j} + \Omega_z \vec{k}
 \end{align} 
 where
 \begin{subequations}
@@ -158,16 +158,16 @@ where
 \end{subequations}
 The differential solid angle can be written
 \begin{align}
-  d\hat{\Omega} = \sin\theta d\varphi d\theta.
+  d\vec{\Omega} = \sin\theta d\varphi d\theta.
 \end{align}
 The direction vector is said to subtend \(4\pi\) steradians, as
 \begin{align}
   \int_0^\pi d\theta \sin\theta \int_0^{2\pi} d\varphi = 4\pi.
 \end{align}
-For this reason, integration over all solid angles is commonly denoted \(\int_{4\pi} d\hat{\Omega}\).
+For this reason, integration over all solid angles is commonly denoted \(\int_{4\pi} d\vec{\Omega}\).
 It is common to make the change of variable \(\theta \rightarrow \mu = \cos\theta\).  In this case
 \begin{align}
-  \int_{4\pi} d\hat{\Omega} = \int_{-1}^1 d\mu \int_0^{2\pi} d\varphi.
+  \int_{4\pi} d\vec{\Omega} = \int_{-1}^1 d\mu \int_0^{2\pi} d\varphi.
 \end{align}
 
 \begin{figure}
@@ -177,7 +177,7 @@ It is common to make the change of variable \(\theta \rightarrow \mu = \cos\thet
   \draw [->] (0,0) -- (-5,-6) node [anchor=south east] {$y$};
   \draw [->] (0,0) -- (0,8) node [anchor=north east] {$z$};
 
-  \draw [->,very thick] (0,0) -- (7,4) node [anchor=south east] {\Large $\hat{\Omega}$};
+  \draw [->,very thick] (0,0) -- (7,4) node [anchor=south east] {\Large $\vec{\Omega}$};
 
   \draw [dashed] (0,0) -- (7,-5);
   \draw [dashed] (7,4) -- (7,-5);
@@ -194,13 +194,13 @@ It is common to make the change of variable \(\theta \rightarrow \mu = \cos\thet
 \label{fig::unitDirection}
 \end{figure}
 
-It is common for directions to be described probabilistically, given some probability density \(p\left(\hat{\Omega}\right)\).  For example, if a direction is selected isotropically, then we have
+It is common for directions to be described probabilistically, given some probability density \(p\left(\vec{\Omega}\right)\).  For example, if a direction is selected isotropically, then we have
 \begin{align}
-  p\left(\hat{\Omega}\right) = \frac{1}{4\pi}.
+  p\left(\vec{\Omega}\right) = \frac{1}{4\pi}.
 \end{align}
 In one-dimensional problems the isotropic distribution can be reduced to a function of \(\theta\) alone.  This is done by integrating over the circles of radius \(\sin\theta\) formed by tracing out \(\varphi\) over \(2\pi\) angles for each \(\theta\):
 \begin{align}
-  p(\theta) = \int_0^{2\pi} p\left(\hat{\Omega}\right) \sin\theta d\varphi
+  p(\theta) = \int_0^{2\pi} p\left(\vec{\Omega}\right) \sin\theta d\varphi
             = \frac{1}{2} \sin\theta.
 \end{align}
 This distribution, for example, describes isotropic neutron emission in a CM scattering event.
