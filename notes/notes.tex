@@ -1,4 +1,4 @@
-% Created 2016-02-10 Wed 14:18
+% Created 2016-02-15 Mon 08:54
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -1061,8 +1061,8 @@ To calculate a local neutron spectrum (independent of space) one could solve the
 Assume that a medium consists of a single moderating material whose scattering cross sections is much larger than its absorption cross section (\(\Sigma_s^M >> \Sigma_a^M\)) and a resonance isotope.  We will consider the problem of estimating the neutron flux inside of a \emph{single} resonance within the resonance isotope.  The neutron balance equation in this case can be written
 \begin{align}
   \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M(E) \right] \phi(E)
-  = \int_{\alpha_M E}^E \frac{\Sigma_s^M(E') \phi(E')}{E'(1-\alpha_M)} dE'
-  + \int_{\alpha_\text{res} E}^E \frac{\Sigma_s^\text{res}(E') \phi(E')}{E'(1-\alpha_\text{res})} dE',
+  = \int_E^{E/\alpha_M} \frac{\Sigma_s^M(E') \phi(E')}{E'(1-\alpha_M)} dE'
+  + \int_E^{E/\alpha_\text{res}} \frac{\Sigma_s^\text{res}(E') \phi(E')}{E'(1-\alpha_\text{res})} dE',
 \end{align}
 where we have also assumed that \(\Sigma_s^M\) is roughly constant over the energy range of interest.  In fact we may assume that the moderator scattering cross section is roughly equal to the potential cross section of the moderating isotope.
 
@@ -1070,7 +1070,7 @@ It was previously observed that the neutron flux tends to vary as \(1/E\) in the
 \begin{align}
   \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M \right] \phi(E)
   = \frac{\Sigma_s^M}{E} +
-    \int_{\alpha_\text{res} E}^E \frac{\Sigma_s^\text{res}(E') \phi(E')}{E'(1-\alpha_\text{res})} dE'.
+    \int_E^{E/\alpha_\text{res}} \frac{\Sigma_s^\text{res}(E') \phi(E')}{E'(1-\alpha_\text{res})} dE'.
 \end{align}
 
 For the sake of simplicity, we will consider only a single resonance that is well-separated from other resonances, in which case the SLBW formula is applicable.  The \emph{practical width} of a resonance is a heuristic measurement for the ``reach'' of a given resonance in terms of energy.  This practical width can be formed by comparing the \emph{potential} cross section, \(\sigma_p^\ell\), with \(\sigma_0\) in the SLBW capture cross section.  Looking for an effective width that produces \(\sigma_0/\sigma_p^0 \approx 1\) leads to the practical width
