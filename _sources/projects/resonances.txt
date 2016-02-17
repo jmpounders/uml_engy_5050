@@ -25,7 +25,7 @@ Note that specific project items will be rolled out as we cover the associated m
 
 2. Now that we have the 0 K resonance cross section, broaden the cross sections buy assuming the target nuclei are in thermal equilibrium at 100 K and 600 K.  Use the :math:`\psi` and :math:`\phi` functions derived in class, and because :math:`\Gamma_i << E_i`, you may assume that :math:`\Gamma_i/E_i \approx 0`, which leads to :math:`\alpha \approx 0`.  You should evaluate the integrals numerically using a Gauss-Hermite quadrature (see Appendix, Mathematical Odds and Ends). As one final simplification, you may assume that in the vicinity of the resonance :math:`E \approx E_i` in the definition of :math:`\Delta`.
 
-3. Use  the narrow resonance approximation to calculate and plot the neutron flux in and around the resonance at each of the three temperatures.
+3. Use  the narrow resonance approximation to calculate and plot the neutron flux in and around the resonance at each of the three temperatures.  Assume that the ratio of the moderator density to the resonance isotope density is 115.
 
 4. Estimate the neutron capture rate at each of the three temperatures.  Note that the normalization on the resonance isotope is arbitrary; I suggest using a value of 1.0 per barn-cm for "nice" numbers.  Also note that the neutron capture rate should be integrated over energy.  You may pick a finite interval around the resonance to do this integration, but extend the interval at least a few eV in either direction of the peak.  It is not possible to do this integral analytically, but a very simple quadrature (such as midpoint/rectangle) will suffice.  (HINT: this should be simple!  If in doubt, let's chat.)
 

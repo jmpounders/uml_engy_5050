@@ -1026,7 +1026,7 @@ The space parameter will be denoted by the variable $\vec{r}$.  While it is poss
 A neutrons direction (or angle) at a given point is given by the unit vector $\vec{\Omega}$.  The definition and properties of $\vec{\Omega}$ is given in the ``Mathematical Odds and Ends'' appendix accompanying these notes.  The angle $\vec{\Omega}$ can be described in terms of its projections along each of three Cartesian coordinate axes, $\vec{\Omega} = \Omega_x \vec{i} + \Omega_y \vec{j} + \Omega_z \vec{k}$, or in terms of the polar and azimuthal angles $\theta$ and $\varphi$, $\vec{\Omega} = \sin\theta \cos\varphi \vec{i} + \sin\theta \sin\varphi \vec{j} + \cos\theta \vec{k}$.  In three dimensions the differential /solid angle/ is $d\vec{\Omega} = \sin\theta d\varphi d\theta$.
 
 *** Neutron Density
-Because there is such a high density of neutrons in a reactor and their collisions are probabilistic, it is infeasible to determine location and velocity of every single neutron, nor would such an abundance of information be particularly useful.  Instead we will attempt to determine the /expected/ number of a neutrons within differential space, angle and energy elements as a function of time:
+Because there is such a high density of neutrons in a reactor and their collisions are probabilistic, it is infeasible to determine the location and velocity of every single neutron, nor would such an abundance of information be particularly useful.  Instead we will attempt to determine the /expected/ number of a neutrons within differential space, angle and energy elements as a function of time:
 \begin{align}
   n(\vec{r},\vec{\Omega},E,t) dV d\vec{\Omega} dt.
 \end{align}
@@ -1062,30 +1062,184 @@ The neutron current is a useful quantity because it allows us to calculate the r
 A transport equation for neutrons can be obtained by performing a neutron balance about an element $dV d\vec{\Omega} dE dt$ in phase space.  We make the following assumptions
 1. Neutrons travel in straight line between collisions.
 2. Neutron exists as points in space, with negligible size.
-3. Neutron-nucleus interactions occur instantaneously.
-4. When scattering, the deflection of a neutron's trajectory from $\vec{\Omega}'$ to $\vec{\Omega}$ is a function of the cosine of the angle between the original and final unit directions, i.e. $\vec{\Omega}' \cdot \vec{\Omega}$.
+3. Neutron-neutron interactions can be neglected.
+4. Neutron-nucleus interactions occur instantaneously.
+5. The material is isotropic.
+6. When scattering, the deflection of a neutron's trajectory from $\vec{\Omega}'$ to $\vec{\Omega}$ is a function of the cosine of the angle between the original and final unit directions, i.e. $\vec{\Omega}' \cdot \vec{\Omega}$.
 
 We will make several additional assumptions at this point that, while not necessary, are very accurate and lead to a simpler form of the transport equation.
 1. Fission neutrons are emitted isotropically in the LAB.
 2. The average number fission neutrons is independent of the energy of the neutron that caused the fission.
 3. The only reaction that generates neutrons if fission.
-In reality, assumptions 2 and 3 will lead to small errors in the transport solution, but one may adjust the cross sections to account for these effects implicitly.
+In reality, assumptions 2 and 3 will lead to small errors in the transport solution, but typically the cross sections to account for these effects implicitly.  Specifically the quantity $\nu\Sigma_f(E)$ is usually treated as a single quantity so that the energy variation of $\nu$ is embedded in $\Sigma_f(E)$.  With regards to assumption 3, some highly excited heavy nuclei may exist two or three neutrons, leading to (n,2n) or (n,3n) reactions.  The additional neutrons in this case can be accounted for by normalizing the overall scattering to the average number of neutrons emitted, which will be very close to one.
 
-The final form of the transport equation is
+The final form of the transport equation given these assumptions is
 \begin{align}
   \frac{1}{v} \frac{\partial\psi}{\partial t}
   + \vec{\Omega} \cdot \nabla\psi
   + \Sigma \psi
-  = \int_0^\infty dE' \int_{4\pi} \Sigma(\vec{r},E' \rightarow E, \vec{\Omega}'\cdot\vec{\Omega} \psi(\vec{r},\vec{\Omega}',E',t)
-  + \frac{\chi(E)}{4\pi} \int_0^\infty dE' \int_{4\pi} \nu\Sigma_f(\vec{r},E') \psi(\vec{r},\vec{\Omega}',E',t)
+  &= \int_0^\infty dE' \int_{4\pi} \Sigma_s(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega} \psi(\vec{r},\vec{\Omega}',E',t) \\
+  &+ \frac{\chi(E)}{4\pi} \int_0^\infty dE' \int_{4\pi} \nu\Sigma_f(\vec{r},E') \psi(\vec{r},\vec{\Omega}',E',t)
   + q(\vec{r},\vec{\Omega},E,t).
+  \label{eq::transportEqn}
 \end{align}
-As with any mathematical model, we must consider under what conditions our transport equation has a viable solution.  To answer this question rigorously one should turn to the tools and theory of mathematics.  Arguments based on physics intuition, however, will lead largely to the same conclusions given sufficient clarity of thought.
+For completeness, consider the transport equation to be solved for a region $V$ so that $\vec{r} \in V$.  We will also take $E \in [0, \infty]$, although in practice a maximum and minimum energy are adopted so that the flux is negligible outside of the that interval.
+
+As with any mathematical model, we must consider under what conditions our transport equation has a viable solution.  To answer this question rigorously one should turn to the tools and theory of mathematics.  Arguments based on physics intuition, however, will lead largely to the same conclusions given sufficient clarity of thought.  We will therefore focus on intuitive arguments.
 
 *** Boundary Conditions
+As with any differential equation, we must supply appropriate boundary conditions.  Let us presently denote the boundary of $V$ by $\partial V$.  When solving the neutron transport equation for the angular flux, the boundary condition specifies the number of neutrons /entering/ the system.  There are several ways to provide this boundary source.  The simplest is the /fixed flux/ boundary condition, which has the following form:
+\begin{align}
+  \psi(\vec{r},\vec{\Omega},E,t) = \psi_\text{inc}(\vec{r},\vec{\Omega},E,t)
+\end{align}
+where $\psi_\text{inc}$ is given a function for $\vec{r} \in \partial V$ and $\vec{\Omega} \cdot \vec{n} < 0$ with $\vec{n}$ the outward unit normal vector on the surface $\partial V$.  If $\psi_\text{inc} = 0$ then we have the /vacuum/ condition, which means that there are no incoming neutrons.
+
+Most reactors exhibit a high degree of spatial repetition, fuel rods in an assembly lattice being the prime example.  A common approximation in modeling a single fuel rod is to assume that the lattice repeats infinitely in the radial directions.  Thus each fuel rod looks like every other fuel rod.  This form of symmetry can be exploited by placing mirror boundary conditions known as /specular reflection/ between the rods.  In this type of reflection we have
+\begin{align}
+  \psi(\vec{r},\vec{\Omega},E,t) = \psi(\vec{r},\vec{\Omega}',E,t)
+\end{align}
+where $\vec{\Omega}$ is the incoming direction corresponding to mirror reflection of $\vec{\Omega}'$ outgoing direction.  Mathematically this means $\vec{\Omega} \cdot \vec{n} = - \vec{\Omega}' \cdot \vec{n}$ and $\left(\vec{\Omega} \times \vec{\Omega}'\right) \cdot \vec{n} = 0$.
+
+Vaccum and specular reflection boundary conditions are by far the most common.  Other possible boundary conditions are /white reflection/, in which outgoing neutrons are distributed uniformly across all incoming directions, and periodic boundary conditions, which account for translational and rotational symmetry.
+
 *** Initial Condition
+Because the transport equation, as it is written, is time-dependent, we must also supply an initial condition.  The initial condition is simply
+\begin{align}
+  \psi(\vec{r},\vec{\Omega},E,0) = \psi_0(\vec{r},\vec{\Omega},E)
+\end{align}
+with $\psi_0$ a given function for $\vec{r} \in V$.
+
 *** Existence of a Steady-State Solution
+We often want to determine the ``steady-state'' flux solution for a system that is in some form of equilibrium.  In general, Eq. \eqref{eq::transportEqn} may or may not have a steady-state solution.  The complicating factor is fission.  If more neutrons are begin created from fission than lost by all capture and leakage, then the chain reaction will drive the neutron population perpetually upward.  If the opposite is true then the neutron population will rapidly decrease.  Thus steady-state is only obtained when there is a /precise/ balance between production and loss.  
+
+If neutron loss (by leakage or capture) is much more likely than neutron production by fission (called a sub-critical configuration), then we will have a steady-state solution as long as the external source term, $q$ is non-zero.  These problems are called /fixed-source/ problems, and include accelerator systems, radiation shielding, and sub-critical reactors as a characteristic examples.  If $q=0$ then there will be only the trivial solution.
+
+In reactor design and analysis, however, we frequently want to determine the steady-state power distribution corresponding to a ``critical reactor'' in which neutron production is exactly balanced by neutron loss.  In this case the external source of neutrons, $q(\vec{r},\vec{\Omega},E,t)$, is either zero or negligible, and the transport equation becomes
+\begin{align}
+  \vec{\Omega} \cdot \nabla\psi(\vec{r},\vec{\Omega},E)
+  + \Sigma(\vec{r},\vec{\Omega}) \psi(\vec{r},\vec{\Omega},E)
+  &= \int_0^\infty dE' \int_{4\pi} \Sigma(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega}',E') \\
+  &+ \frac{\chi(E)}{4\pi} \int_0^\infty dE' \int_{4\pi} \nu\Sigma_f(\vec{r},E') \psi(\vec{r},\vec{\Omega}',E').
+  \label{eq::ssTransportEqn}
+\end{align}
+As it is written, Eq. \eqref{eq::ssTransportEqn} will practically /never/ have a solution.  Any imbalance in the transport equation, whether due to the physical configuration, cross section uncertainties, or numerical error, will cause the equation to be unsolvable because no corresponding steady-state solution exists.  Solvability exists at the infinitesimal point where all of the cross section values align to produce a precisely balanced system.  Numerically there is no hope in finding this magical point.
+
+We may not be able to model the reactor precisely enough to determine a steady-state solution, but we can look for a solution that is ``close'' to a steady-state solution.  This is accomplished by introducing a scaling factor, typically on the fission term.  Calling this scaling factor $\lambda$ the transport equation becomes
+\begin{align}
+  \vec{\Omega} \cdot \nabla\psi(\vec{r},\vec{\Omega},E)
+  + \Sigma(\vec{r},E) \psi(\vec{r},\vec{\Omega},E)
+  &= \int_0^\infty dE' \int_{4\pi} \Sigma_s(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega}',E') \\
+  &+ \lambda\frac{\chi(E)}{4\pi} \int_0^\infty dE' \int_{4\pi} \nu\Sigma_f(\vec{r},E') \psi(\vec{r},\vec{\Omega}',E').
+  \label{eq::eigTransportEqn}
+\end{align}
+The factor $\lambda$ adds a ``knob'' so that we can dial-in a solution that approximates the reactor's steady-state, given that our naive numerical model has no chance of being precise enough.  The closer $\lambda$ is to one, the closer we are to a legitimate steady-state solution.  It is common to call the inverse of $\lambda$ the /effective multiplication factor/, or $k_\text{eff} = \lambda^{-1}$, because it represents the rate at which the neutron population would be increasing (or multiplying) if this system were ``real.''  Inspection of Eq. \eqref{eq::eigTransportEqn} reveals that it is in fact a generalized eigenvalue problem with $\lambda$ the eigenvalue.  The equation may be massaged into a traditional eigenvalue problem with $k_\text{eff}$ the eigenvalue.  We will discuss this further at a later time.
+
+A final practical consideration is that the eigenvalue form of the transport equation is homogeneous and linear in the angular flux.  This means that the angular flux can be arbitrarily scaled and the solution remains valid.  (This is the typical behavior of eigenvalue problems.)  Thus to determine a /unique/ solution, we must provide an additional constraint.  Typically the total reactor power fulfills this requirement.
+
+*** What just happened?
+It is very easy at this point to be temporarily blinded by the sudden onslaught of mathematical technicality that has attacked our transport equation.  It is worth a moments time to consider what happens in a real reactor so that we remain somewhat oriented with respect to reality.  If you have not been previously exposed to reactor physics or reactor operations (or have not paid attention to such discussions) then some of the following must be taken initially on faith.
+
+First, in the previous section we painted a very bleak picture of a steady-state reactor being balanced on a precipice between explosion and stagnation.  Commercial reactors, however, are designed to inherently be quite stable beasts.  One of the most important stabilizing factors has already been introduced in these notes, which is the Doppler broadening of capture cross sections.  If a reactor is generating more neutrons from fission than are being lost, then the neutron population will increase and the fission reaction rate will follow in lock-step.  As power increases temperature will rise.  You have seen that increasing the temperature of an isotope with capture resonance will increase the capture rate of neutrons.  This increase in capture rate will naturally arrest a modest increase in power and bring the system into steady-state at a naturally-attained equilibrium temperature.  The same sequence will happen in the opposite direction for a decreasing neutron population.  A second stabilizing effect occurs when, as in the case of modern commercial reactors, the coolant serves double-duty as the moderator.  As temperature increases, the moderator density decreases, often leading decrease in the thermalization of neutrons.
+
+We now see that obtaining a ``real'' steady-state solution would require solving not just the transport equation, but heat transfer and likely fluid dynamics equations as well.  Moreover introducing temperature (and density) as variables leads to nonlinearities in the transport equation.  In short, the not-so-simple transport equation just become orders of magnitude more challenging to solve.  So instead, how about we hold temperature constant (say at an average value), then solve the transport equation approximately by scaling fission to account for the fact that we are neglecting stabilizing feedback mechanisms.  The eigenvalue approach should look quite appealing at this point!
+
+*** Solving the Transport Equation
+Finding a closed-form solution of the transport equation is impossible for all but the simplest of cases.  In practice we must adopt both physical and numerical approximations.  Following is a partial list of complications we should expect.
+1. Most mathematical theory deals with either partial differential equations /or/ integral equations.  The transport equation is an /integro-differential/ equation containing both an integral and gradient term.
+2. The dimensionality of the phase space is quite high.  Three dimensions in space, two in angle, one in energy and one in time leads to a seven-dimensional space in the most general setting.  Numerically this will generate a very large number of unknowns that must be solved.
+3. The energy dependence of the cross sections is very complex because of resonances.  Representing these cross sections numerically a very large number of discretization points.
+4. The size of virtually all reactors is much greater than the neutron mean-free-path.  Thus any spatial discretization must include a large number of points.
+
+On the other hand, the transport equation is linear, so if we can manage the /size/ of the problem then we shouldn't loose too much sleep.  Given advances in modern computing, we are able to calculate much larger and more accurate transport solutions than ever before.  Nevertheless, solving large transport problems is very challenging.  Our goal presently is not to explore the computational approaches to this problem in any significant detail, but rather present an overview of the approximations and strategies that are made to solve neutron transport for reactor physics analyses.
+
+** The Multigroup Approximation
+In the previous section we examined the behavior of neutrons with respect to the energy variable.  The neutron balance equation we derived there was actually the transport equation for an infinitely large, homogeneous region.  Under those conditions, $\nabla\psi = \vec{0}$, and the flux did not depend on angle because of rotational symmetry.  We will now introduce an approximation that will lead to a simpler energy landscape so that we can devote more attention to spatial variations of the neutron flux.
+
+The /multigroup approximation/ attempts to simplify the energy-dependent description of neutron transport by binning neutrons to ``groups'' based on their energy.  To begin, pick a set of energy group boundaries, 
+\begin{align}
+  E_G < E_{G-1} < E_{G-2} < \hdots < E_g < \hdots < E_2 < E_1 < E_0.
+\end{align}
+Note that (for historical reasons) $E_0$ is the highest energy, while $E_G$ is the lowest energy.  Energy group $g$ is defined by the interval $[E_g, E_{g-1}]$.  
+
+Next, integrate the transport equation over a single energy group.  We may use any of variant of the transport equation.  Going with the eigenvalue form [Eq. \eqref{eq::eigTransportEqn}] produces an equation that can be written
+\begin{align}
+  \vec{\Omega} \cdot \nabla \psi_g(\vec{r},\vec{\Omega})
+  + \Sigma_g(\vec{r}) \psi_g(\vec{r},\vec{\Omega})
+  &= \sum_{g'=1}^G \int_{4\pi} \Sigma_{g'\rightarrow g}(\vec{r}, \vec{\Omega}'\cdot\vec{\Omega}) \psi_g'(\vec{r},\vec{\Omega}') d\vec{\Omega}'\\
+  &+ \lambda\frac{\chi_g}{4\pi} \sum_{g'=1}^G \int_{4\pi} \nu\Sigma_{f,g'}(\vec{r}) \psi_g'(\vec{r},\vec{\Omega}') d\vec{\Omega}'.
+  \label{eq::mgTransportEqn}
+\end{align}
+where we have defined
+\begin{align}
+  \psi_g(\vec{r},\vec{\Omega}) &= \int_{E_g}^{E_g} dE \psi(\vec{r},\vec{\Omega},E), \\
+  \Sigma_g(\vec{r}) &= \frac{\int_{E_g}^{E_g} dE \Sigma(\vec{r},E) \psi(\vec{r},\vec{\Omega},E)}{\int_{E_g}^{E_g} dE \psi(\vec{r},\vec{\Omega},E)}, \\
+  \nu\Sigma_{f,g}(\vec{r}) &= \frac{\int_{E_g}^{E_g} dE \nu\Sigma_f(\vec{r},E) \psi(\vec{r},\vec{\Omega},E)}{\int_{E_g}^{E_g} dE \psi(\vec{r},\vec{\Omega},E)}, \\
+  \chi_g &=  \int_{E_g}^{E_g} dE \chi(E), \\
+  \Sigma_{g'\rightarrow g}(\vec{r}, \vec{\Omega}'\cdot\vec{\Omega} &= 
+    \frac{\int_{E_g}^{E_g} dE \int_{E_{g'}}^{E_{g'}} dE' \Sigma_s(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega},E)}{\int_{E_g}^{E_g} dE \psi(\vec{r},\vec{\Omega},E)}.
+\end{align}
+The above parameters are called the multigroup constants and Eq. \eqref{eq::mgTransportEqn} the multigroup transport equation.  
+
+The benefit of the multigroup equation is that /if/ we can calculate the multigroup constants, we can obtain a flux solution by solving the $G$ coupled group equations for $\psi_g$ rather than the transport equation that depends continuously on energy.  If $G$ is chosen to be smaller than the number of points required to represent the most complex cross section (which is often in thousands), then we have simplified the computational task of solving the transport equation.  In practice, $G$ may be be as large as a few hundred to as few as two.
+
+Of course there is a catch-22 in that we need the detailed flux spectrum, $\psi(\vec{r},\vec{\Omega},E)$, to calculate the group constants, but if we had the detailed flux spectrum then we could immediately calculate the group fluxes!  This is where an approximation is leveraged to maximize accuracy in the energy variable at the expense of the spatial variable.  Because most reactors feature regular arrays of fuel rods, symmetry can be used to simplify the transport problem.  Often a reactor physics calculations begins by solving the transport equation with 100's or 1000's of energy grid points in an infinite medium (0D), infinitely tall cylinder (1D) or occasionally a square pin-cell (2D).  Reflective boundary conditions around the simplified problem introduce an approximation, but if the neutron spectrum changes slowly with respect to space then the approximation is reasonable because the spectrum is only used as a weighting function to generate the multigroup cross sections.  In the past when computing power was scarce, the spectrum was obtained not by solving the transport equation, but simply by gluing a fission spectrum, a $1/E$ intermediate spectrum and a thermal spectrum together.
+
+Once an appropriate spectrum has been used to generate the multigroup constants, one may attempt to solve the transport equation for more complex geometries because the burden of excessive energy complexity has been lightened.  A single assembly calculation may use tens to a few hundred energy groups; a full-core calculation may use as few as two energy groups.
+
+** Numerical Solutions of the Mutligroup Equation
+The multigroup approximation effectively handles the energy dependence of the transport equation (given a suitably accurate weighting spectrum for the cross section collapsing.)  There are several ways to discretize the equation with respect to angle.  In what follows we will look at the spherical harmonics (or $P_N$) and discrete ordinates (or $S_N$) approaches.  For simplicity our discussion will be limited to one spatial dimension.  Adopting the $z$ direction (aligned with the $\vec{k}$ unit direction) as the dimension of choice, the multigroup transport equation becomes
+\begin{align}
+  \mu \frac{\partial \psi_g(z,\mu)}{\partial z}
+  + \Sigma_g(z) \psi_g(z,\mu)
+  &= \sum_{g'=1}^G \int_{-1}^1 \Sigma_{g'\rightarrow g}(z, \mu_0) \psi_g'(z,\mu') d\mu' \\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \int_{-1}^1 \nu\Sigma_{f,g'}(z) \psi_g'(z,\mu') d\mu'.
+  \label{eq::1dMgTransportEqn}
+\end{align}
+Note that in obtaining this equation we have set $\frac{\partial \psi}{\partial x} = \frac{\partial \psi}{\partial y} = 0$, integrated over all azimuthal angles, and set $\mu=\cos\theta$ where $\theta \in [0,\pi]$ is the polar angle.  We have additionally defined $\mu_0 = \vec{\Omega}\cdot\vec{\Omega}' = \cos\theta_0$ as the cosine of the scattering deflection angle.
+
+Before presenting the angular treatment of the transport equation, let's first consider a practical treatment of of the scattering cross section angular dependence.  As discussed in the appendix, the Legendre polynomials provide a basis for representing functions defined on the interval $[-1,1]$.  Because $\theta_0 \in [0,\pi]$, the scattering cross section is just such a function when the position and group indices are fixed.  Specifically, let
+\begin{align}
+  \Sigma_{g'\rightarrow g}(z, \mu_0) = \sum_{\ell=0}^\infty \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu_0)
+\end{align}
+where $P_\ell(\mu_0)$ is the $\ell^\text{th}$ Legendre polynomial.  Multiplying this equation by $P_{\ell'}(\mu_0)$, integrating over $\mu_0$, and applying the orthogonality relationship leads to
+\begin{align}
+  \Sigma_{g' \rightarrow g}^\ell(z) = \frac{2\ell+1}{2} \int_{-1}^1 P_{\ell}(\mu_0)\Sigma_{g'\rightarrow g}(z, \mu_0) d\mu_0.
+\end{align}
+The $\Sigma_{g' \rightarrow g}^\ell(z)$ coefficients are called the scattering moments.
+
+Inserting the scattering kernel expansion into the transport equation provides
+\begin{align}
+  \mu \frac{\partial \psi_g(z,\mu)}{\partial z}
+  + \Sigma_g(z) \psi_g(z,\mu)
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \int_{-1}^1 \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu_0) \psi_g'(z,\mu') d\mu' \\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \int_{-1}^1 \nu\Sigma_{f,g'}(z) \psi_g'(z,\mu') d\mu'.
+\end{align}
+Using the addition theorem of Legendre polynomials allows us to write the polynomial $\mu_0$ as the product of polynomials in $\mu$ and $\mu'$:
+\begin{align}
+  \mu \frac{\partial \psi_g(z,\mu)}{\partial z}
+  + \Sigma_g(z) \psi_g(z,\mu)
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu) \int_{-1}^1 P_\ell(\mu') \psi_g'(z,\mu') d\mu' \\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \int_{-1}^1 \nu\Sigma_{f,g'}(z) \psi_g'(z,\mu') d\mu'.
+\end{align}
+
+*** The Spherical Harmonics Method
+The spherical harmonics are a set of functions that provide a basis for representing functions that exist on a spherical surface.  Given that the unit direction $\vec{\Omega}$ sweeps out the surface a sphere, they can be used as a basis for representing the angular dependence of the neutron flux in three dimensions.  In one dimension, the spherical harmonics can be integrated down to the Legendre polynomials, which provide a polynomial basis for functions defined on the interval $[-1,1]$.  The angular flux in one spatial dimension is a function of the cosine $\mu$, which takes values between -1 and 1; thus the $\mu$-dependence of the angular flux may be represented by a Legendre polynomial expansion.
+
+Specifically, let
+\begin{align}
+  \psi_g(z,\mu) = \sum_{n=0}^\infty \psi_{g,n}(z) P_n(\mu).
+\end{align}
+Orthogonality of the polynomials reveals that
+\begin{align}
+  \psi_{g,n}(z) = \frac{2n+1}{2} \int_{-1}^1 \psi_g(z,\mu) P_n(\mu).
+\end{align}
+
+Now insert the flux expansion...
+
+*** The Discrete Ordinates Method
+
 ** The Diffusion Approximation
+** Problems
 * Nuclear Physics in 60 Seconds
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 
@@ -1191,6 +1345,19 @@ The Legendre polynomials form a complete set over the interval $[-1, 1]$.  This 
 where
 \begin{align}
   f_n = \frac{2n+1}{2} \int_{-1}^{1} f(x) P_n(x) dx.
+\end{align}
+
+The following addition theorem is particularly useful when using Legendre polynomials to describe the scattering kernel.  Given an incident direction $\vec{\Omega}$ and an outgoing direction $\vec{\Omega}'$, the scattering kernel can be expressed in terms of relative angle between the vectors $\vec{\Omega}$ and $\vec{\Omega}'$, let's call it $\theta_0$, which is the deflection angle.  Writing the unit direction vectors in terms of spherical coordinates we have
+\begin{align}
+  \cos\theta_0 = \sin\theta \sin\theta' \cos\left(\varphi - \varphi'\right) + \cos\theta \cos\theta'
+\end{align}
+where $\theta$ is the polar angle and $\varphi$ is the azimuthal angle of the corresponding direction vector (either primed or unprimed).  The addition theorem states that under these circumstances a Legendre polynomial evaluated at $\cos\theta_0$ can be expressed as
+\begin{align}
+  P_n(\cos\theta_0) = P_n(\cos\theta) P_n(\cos\theta') + \sum_{m=1}^n \frac{(n-m)!}{(n+m)!} P_n^m(\cos\theta) P_n^m(\cos\theta') \cos\left[m\left(\varphi-\varphi'\right)\right]
+\end{align}
+where the $P_n^m(x)$ are the /associated Legendre polynomials/ and are not described here.  Integrating $P_n(\cos\theta_0)$ over $\varphi$ or $\varphi'$ (from $1$ to $2\pi$) causes the summation on the right-hand-side to vanish, resulting in
+\begin{align}
+  P_n(\cos\theta_0) = P_n(\cos\theta) P_n(\cos\theta').
 \end{align}
 ** The Direction Vector
 The unit direction vector can be expressed in terms of a polar angle, \theta, and a azimuthal angle, \varphi, as shown in Figure \ref{fig::unitDirection}.  In a Cartesian coordinates the unit direction vector can be written
