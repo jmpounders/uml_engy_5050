@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4. How does the neutron population depend on energy? &mdash; ENGY 5050 1.0 documentation</title>
+    <title>5. How does the neutron distribution depend on space? &mdash; ENGY 5050 1.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="ENGY 5050 1.0 documentation" href="../index.html" />
     <link rel="up" title="Problems" href="../problems.html" />
-    <link rel="next" title="5. How does the neutron distribution depend on space?" href="5_transport.html" />
-    <link rel="prev" title="3. How can we characterize neutron interactions?" href="3_crossSections.html" />
+    <link rel="next" title="Projects" href="../projects.html" />
+    <link rel="prev" title="4. How does the neutron population depend on energy?" href="4_energy.html" />
    
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
@@ -40,25 +40,23 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="how-does-the-neutron-population-depend-on-energy">
-<h1>4. How does the neutron population depend on energy?<a class="headerlink" href="#how-does-the-neutron-population-depend-on-energy" title="Permalink to this headline">¶</a></h1>
-<p>The last problem showed us that we can characterize neutron interactions through cross sections.  Because of nuclear structure, cross sections can exhibit complex behavior in the resolved resonance energy range.  We migh suspect that this complex cross section behaviour could impact the neutron distribution in equally complex ways.</p>
-<p>Thus our next problem will be to answer this question:</p>
+  <div class="section" id="how-does-the-neutron-distribution-depend-on-space">
+<h1>5. How does the neutron distribution depend on space?<a class="headerlink" href="#how-does-the-neutron-distribution-depend-on-space" title="Permalink to this headline">¶</a></h1>
+<p>In the last section we characterized the neutron <em>spectrum</em>.  We saw that the neutron distribution in energy varied roughly with the fission spectrum at high energies, followed a <span class="math">\(1/E\)</span> shape through the resonance region (asymptotically, at least), then setteld down into a thermal spectrum resembling the Maxwell-Boltzmann distribution.  Within the resonance region, of course, the <span class="math">\(1/E\)</span> shape was punctuated by sharp dips corresponding to the location of resonances.</p>
+<p>All of that, however, was for a system that was initfinitely large and homogeneous.  What if we begin to consider the more realstic case in which materials vary as you move in and out of fuel, clad and cooling regions.  That is,</p>
 <blockquote>
-<div>What does the neutron distribution look like with respect to energy?</div></blockquote>
-<p>The actual neutron distribution in a reactor will be a function of space, time, energy, and direction, but presently we will focus only on energy.</p>
+<div>How can determine the spatial variation of the neutron flux?</div></blockquote>
+<p>It turns out that considering &#8220;space&#8221; means also considering direction and, of course, energy.  The emphasis here, however, will be on deriving a neutron balance equation (the transport equation) in which the energy variable takes a momentary back seat.  Transport theory deals principally with following neutrons around as they collide and flow through a medium.  This problem can become quite large and complex very quickly.  We will look at the theoretical basis for neutron transport in a multiplying (i.e., fissioning) medium, some numerical approaches to solving the problem, and approximations that simplify the problem.</p>
 <div class="section" id="background">
-<h2>4.1. Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference download internal" href="../_downloads/spectrum.pdf"><code class="xref download docutils literal"><span class="pre">Reference</span> <span class="pre">notes,</span> <span class="pre">Neutron</span> <span class="pre">Spectrum</span></code></a>.</p>
+<h2>5.1. Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference download internal" href="../_downloads/transport.pdf"><code class="xref download docutils literal"><span class="pre">Reference</span> <span class="pre">notes,</span> <span class="pre">Neutron</span> <span class="pre">Transport</span></code></a>.</p>
+<p>(NOTE: this notes will be extended in the near future!  Check back later for an update. 2/22/16)</p>
 </div>
 <div class="section" id="comprehension-assessment">
-<h2>4.2. Comprehension Assessment<a class="headerlink" href="#comprehension-assessment" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Derive the the solution <span class="math">\(\phi(E)\)</span> using the narrow and wide resonance approximations.</li>
-</ol>
+<h2>5.2. Comprehension Assessment<a class="headerlink" href="#comprehension-assessment" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="in-class-problem">
-<h2>4.3. In-Class Problem<a class="headerlink" href="#in-class-problem" title="Permalink to this headline">¶</a></h2>
+<h2>5.3. In-Class Problem<a class="headerlink" href="#in-class-problem" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -94,10 +92,10 @@
 
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">4. How does the neutron population depend on energy?</a><ul>
-<li><a class="reference internal" href="#background">4.1. Background</a></li>
-<li><a class="reference internal" href="#comprehension-assessment">4.2. Comprehension Assessment</a></li>
-<li><a class="reference internal" href="#in-class-problem">4.3. In-Class Problem</a></li>
+<li><a class="reference internal" href="#">5. How does the neutron distribution depend on space?</a><ul>
+<li><a class="reference internal" href="#background">5.1. Background</a></li>
+<li><a class="reference internal" href="#comprehension-assessment">5.2. Comprehension Assessment</a></li>
+<li><a class="reference internal" href="#in-class-problem">5.3. In-Class Problem</a></li>
 </ul>
 </li>
 </ul>
@@ -119,8 +117,8 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="../problems.html">Problems</a><ul>
-      <li>Previous: <a href="3_crossSections.html" title="previous chapter">3. How can we characterize neutron interactions?</a></li>
-      <li>Next: <a href="5_transport.html" title="next chapter">5. How does the neutron distribution depend on space?</a></li>
+      <li>Previous: <a href="4_energy.html" title="previous chapter">4. How does the neutron population depend on energy?</a></li>
+      <li>Next: <a href="../projects.html" title="next chapter">Projects</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -137,7 +135,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
-      <a href="../_sources/problems/4_energy.txt"
+      <a href="../_sources/problems/5_transport.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1015,7 +1015,7 @@ The resonance integral is useful for calculating the /resonance escape probabili
 ** References
 - Stacey
 - Duderstadt and Hamilton
-* Neutron Transport                                                :noexport:
+* Neutron Transport
 At this point we have characterized neutron-nucleus interactions and described the physics of a neutron slowing down from high (fission) energies to low (thermal) energies in the presence of moderators and resonance absorbers.  We will now proceed to a full description of neutron transport, the goal of which is to describe how neutrons are distributed through space and energy as a function of time.
 
 ** Fundamental Concepts and Variables
