@@ -56,3 +56,18 @@ Course Log
 
      - Read Problem 4 notes
      - Answer Problem 4 Comprehension Assessment
+
+8. Feb 16
+
+   - Resonance self-shielding
+   - Neutron transport phase space
+   - Neutron balance preliminaries
+   - In-class project work
+
+9. Feb 17
+
+   - Derivation of neutron transport equation
+   - For next time
+
+     - Review notes on the unit direction vector
+     - Project due Friday before midnight
