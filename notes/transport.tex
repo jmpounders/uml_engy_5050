@@ -1,4 +1,4 @@
-% Created 2016-02-17 Wed 15:15
+% Created 2016-02-22 Mon 14:37
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,7 +30,7 @@
  pdftitle={Neutron Transport},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.3)}, 
  pdflang={English}}
 \begin{document}
 
@@ -65,10 +65,17 @@ Knowing the angular and scalar fluxes is valuable because it enables us to compu
 \label{sec:orgheadline3}
 If we multiply the angular neutron density by the vector velocity then we get the \emph{angular neutron current}: \(\vec{J}(\vec{r},\vec{\Omega},E,t) = \vec{v}(\vec{\Omega},E) n(\vec{r},\vec{\Omega},E,t)\).  Integrating this variable over all angles provides a vector-valued quantity which is usually just called \emph{neutron current}: \(\vec{J}(\vec{r},E,t) = \int_{4\pi} \vec{v}(\vec{\Omega},E) n(\vec{r},\vec{\Omega},E,t) d\vec{\Omega}\).  Noting \(\vec{v}(\vec{\Omega},E) = \vec{\Omega}v(E)\) permits writing the current in terms of the angular neutron flux.
 
-The neutron current is a useful quantity because it allows us to calculate the rate at which neutrons are ``flowing'' through a surface.  In particular, the rate at which neutrons with energy \(E\) are crossing a differential surface with area \(dA\) and unit normal vector \(\vec{n}\) is given by
+The neutron current is a useful quantity because it allows us to calculate the net rate at which neutrons are ``flowing'' through a surface.  In particular, the rate at which neutrons with energy \(E\) are crossing a differential surface with area \(dA\) and unit normal vector \(\vec{n}\) is given by
 \begin{align}
   dA \left( \vec{n} \cdot \vec{J}(\vec{r},E,t) \right).
 \end{align}
+
+Occasionally it is useful to represent the total number of neutrons passing in to or out from a system through a surface.  At a point, these quantities are called the partial currents.  The incoming and outgoing partial currents can be expressed as follows:
+\begin{align}
+  j^+(\vec{r},E,t) &= \int_{\vec{n}\cdot\vec{\Omega}>0} \vec{n} \cdot \vec{\Omega} \psi(\vec{r},E,t) d\vec{\Omega} \rightarrow \text{outgoing partial current},s \\
+  j^-(\vec{r},E,t) &= -\int_{\vec{n}\cdot\vec{\Omega}<0} \vec{n} \cdot \vec{\Omega} \psi(\vec{r},E,t) d\vec{\Omega} \rightarrow \text{incoming partial current}.
+\end{align}
+Note that the \emph{net} number of neutrons passing through this surface (per unit area) then becomes \(j^+ - j^- = \vec{n}\cdot\vec{J}\).
 
 \begin{table}
   \centering
@@ -225,7 +232,7 @@ Of course there is a catch-22 in that we need the detailed flux spectrum, \(\psi
 Once an appropriate spectrum has been used to generate the multigroup constants, one may attempt to solve the transport equation for more complex geometries because the burden of excessive energy complexity has been lightened.  A single assembly calculation may use tens to a few hundred energy groups; a full-core calculation may use as few as two energy groups.
 
 \section{Numerical Solutions of the Mutligroup Equation}
-\label{sec:orgheadline14}
+\label{sec:orgheadline13}
 The multigroup approximation effectively handles the energy dependence of the transport equation (given a suitably accurate weighting spectrum for the cross section collapsing.)  There are several ways to discretize the equation with respect to angle.  In what follows we will look at the spherical harmonics (or \(P_N\)) and discrete ordinates (or \(S_N\)) approaches.  For simplicity our discussion will be limited to one spatial dimension.  Adopting the \(z\) direction (aligned with the \(\vec{k}\) unit direction) as the dimension of choice, the multigroup transport equation becomes
 \begin{align}
   \mu \frac{\partial \psi_g(z,\mu)}{\partial z}
@@ -238,11 +245,11 @@ Note that in obtaining this equation we have set \(\frac{\partial \psi}{\partial
 
 Before presenting the angular treatment of the transport equation, let's first consider a practical treatment of of the scattering cross section angular dependence.  As discussed in the appendix, the Legendre polynomials provide a basis for representing functions defined on the interval \([-1,1]\).  Because \(\theta_0 \in [0,\pi]\), the scattering cross section is just such a function when the position and group indices are fixed.  Specifically, let
 \begin{align}
-  \Sigma_{g'\rightarrow g}(z, \mu_0) = \sum_{\ell=0}^\infty \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu_0)
+  \Sigma_{g'\rightarrow g}(z, \mu_0) = \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu_0)
 \end{align}
 where \(P_\ell(\mu_0)\) is the \(\ell^\text{th}\) Legendre polynomial.  Multiplying this equation by \(P_{\ell'}(\mu_0)\), integrating over \(\mu_0\), and applying the orthogonality relationship leads to
 \begin{align}
-  \Sigma_{g' \rightarrow g}^\ell(z) = \frac{2\ell+1}{2} \int_{-1}^1 P_{\ell}(\mu_0)\Sigma_{g'\rightarrow g}(z, \mu_0) d\mu_0.
+  \Sigma_{g' \rightarrow g}^\ell(z) = \int_{-1}^1 P_{\ell}(\mu_0)\Sigma_{g'\rightarrow g}(z, \mu_0) d\mu_0.
 \end{align}
 The \(\Sigma_{g' \rightarrow g}^\ell(z)\) coefficients are called the scattering moments.
 
@@ -250,15 +257,16 @@ Inserting the scattering kernel expansion into the transport equation provides
 \begin{align}
   \mu \frac{\partial \psi_g(z,\mu)}{\partial z}
   + \Sigma_g(z) \psi_g(z,\mu)
-  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \int_{-1}^1 \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu_0) \psi_g'(z,\mu') d\mu' \\
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \int_{-1}^1 \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu_0) \psi_g'(z,\mu') d\mu' \\
   &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \int_{-1}^1 \nu\Sigma_{f,g'}(z) \psi_g'(z,\mu') d\mu'.
 \end{align}
 Using the addition theorem of Legendre polynomials allows us to write the polynomial \(\mu_0\) as the product of polynomials in \(\mu\) and \(\mu'\):
 \begin{align}
   \mu \frac{\partial \psi_g(z,\mu)}{\partial z}
   + \Sigma_g(z) \psi_g(z,\mu)
-  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu) \int_{-1}^1 P_\ell(\mu') \psi_g'(z,\mu') d\mu' \\
-  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \int_{-1}^1 \nu\Sigma_{f,g'}(z) \psi_g'(z,\mu') d\mu'.
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu) \int_{-1}^1 P_\ell(\mu') \psi_{g'}(z,\mu') d\mu' \\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \int_{-1}^1 \nu\Sigma_{f,g'}(z) \psi_{g'}(z,\mu') d\mu'.
+  \label{eq::1dTransportWithScatteringExpansion}
 \end{align}
 
 \subsection{The Spherical Harmonics Method}
@@ -267,20 +275,66 @@ The spherical harmonics are a set of functions that provide a basis for represen
 
 Specifically, let
 \begin{align}
-  \psi_g(z,\mu) = \sum_{n=0}^\infty \psi_{g,n}(z) P_n(\mu).
+  \psi_g(z,\mu) = \sum_{n=0}^\infty \frac{2n+1}{2} \psi_{g,n}(z) P_n(\mu).
 \end{align}
 Orthogonality of the polynomials reveals that
 \begin{align}
-  \psi_{g,n}(z) = \frac{2n+1}{2} \int_{-1}^1 \psi_g(z,\mu) P_n(\mu).
+  \psi_{g,n}(z) = \int_{-1}^1 \psi_g(z,\mu) P_n(\mu).
 \end{align}
 
-Now insert the flux expansion\ldots{}
+Before going any further note that we can use this definition of flux moments to simplify Eq. \eqref{eq::1dTransportWithScatteringExpansion}:
+\begin{align}
+  \mu \frac{\partial \psi_g(z,\mu)}{\partial z}
+  + \Sigma_g(z) \psi_g(z,\mu)
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g}^\ell(z) \psi_{g',\ell}(z) P_\ell(\mu) \notag\\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g'}(z) \psi_{g',0}(z)
+  \label{eq::1dTransportWithMoments}
+\end{align}
+where we have used the fact that \(P_0(\mu) = 1\).  Now insert the flux expansion into Eq. \eqref{eq::1dTransportWithMoments} to obtain
+\begin{align}
+  \sum_{n=0}^\infty \frac{2n+1}{2} \left[ \mu \frac{\partial \psi_{g,n}(z)}{\partial z} P_n(\mu)
+  + \Sigma_g(z) \psi_{g,n}(z) P_n(\mu) \right]  
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g}^\ell(z) \psi_{g',\ell}(z) P_\ell(\mu) \notag\\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g'}(z) \psi_{g',0}(z).
+  \label{eq::1dTransportWithFluxExpansion}
+\end{align}
+Using the recurrence relationship for the Legendre polynomials in the first term leads to
+\begin{align}
+  \sum_{n=0}^\infty \frac{2n+1}{2} &\left\{ \left[ \frac{(n+1)}{2n+1} P_{n+1}(\mu) + \frac{n}{2n+1} P_{n-1}(\mu) \right] 
+  \frac{\partial \psi_{g,n}(z)}{\partial z} 
+  + \Sigma_g(z) \psi_{g,n}(z) P_n(\mu) \right\} \notag\\
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g}^\ell(z) \psi_{g',\ell}(z) P_\ell(\mu) \notag\\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g'}(z) \psi_{g',0}(z).
+  \label{eq::1dTransportWithFluxExpansion}
+\end{align}
+We will again summon orthogonality to simplify this equation.  Multiplying by \(P_{n'}(\mu)\), integrating over all \(\mu\), then writing \(n\) instead of \(n'\) for notational aesthetic leads to
+\begin{align}
+  \frac{n}{2n+1} \frac{\partial \psi_{g,n-1}(z)}{\partial z} + \frac{n+1}{2n+1} \frac{\partial \psi_{g,n+1}(z)}{\partial z}
+  + \Sigma_g(z) \psi_{g,n}(z)
+  &= \sum_{g'=1}^G \Sigma_{g' \rightarrow g}^n(z) \psi_{g',n}(z) \notag\\
+  &+ \lambda \chi_g \delta_{n,0} \sum_{g'=1}^G \nu\Sigma_{f,g'}(z) \psi_{g',0}(z).
+  \label{eq::1dTransportPNInf}
+\end{align}
+Note that this equation represents not one but an infinite series of coupled equations.  Because we have neither infinite time nor infinite resources with which to solve such a set of equations, it is universal practice to truncate the flux expansion at some finite value, say \(N\).  The implicit approximation is that \(\psi_{n,g}(z) \approx 0\) for \(n>N\).  We call the resulting finite sequence of equations the \(P_N\) equations.
 
-\subsection{The Discrete Ordinates Method}
-\label{sec:orgheadline13}
+A charming effect of the Legendre polynomial recurrence relation is that each equation is only coupled to the equations immediately preceding and following it in the \(n\) sequence.  The index \(n\) represents an increasing order of anisotropy in the angular flux.  If the flux were truly isotropic then the solution to the single equation corresponding to \(N=0\) would solve the transport equation exactly.  The \(N=1\) solution adds a component of anisotropy linear in \(\mu\).  Because the \(n^\text{th}\) Legendre polynomial is a degree-\(n\) polynomial, the \(n^\text{th}\) term in the flux expansion represents an \$n\$-degree polynomial representation of anisotropy.  The higher values of \(n\) are also more oscillatory because the Legendre polynomial \(P_n(\mu)\) has all \(n\) roots in the interval \([-1,1]\).
 
-\section{The Diffusion Approximation}
-\label{sec:orgheadline15}
-\section{Problems}
-\label{sec:orgheadline16}
+The set of \((N+1)\) \(P_N\) equations are not complete until boundary conditions are specified.  Each of the equations is a first-order partial differential equation, thus we require \(N+1\) boundary conditions.  In one spatial dimension we have two boundaries, and because it seems rational to have the same number of conditions on each boundary we limit ourselves to even numbers of equations (\(P_1\), \(P_3\), \(P_5\), etc.).
+
+Boundary conditions in \(P_N\) theory are complicated by the fact that we are not solving for the flux directly but rather the flux moments.  For reflecting surfaces the angular flux should be an even function of \(\mu\), thus the odd flux moments should vanish.  (The curious reader may confirm that odd-degree Legendre polynomials are odd functions on the interval \([-1,1]\).)  This provides the \((N+1)/2\) conditions for each reflecting boundary surface.
+
+If there are no neutrons entering a surface (the vacuum condition) then the angular flux corresponding to directions entering the system should be zero.  It is not possible to rigorously enforce this condition in \(P_N\) theory.  A reasonable approach, however, is to require that, for example, on the right-most boundary of a one-dimensional system (say at \(z=b\)),
+\begin{align}
+  \int_{-1}^0 P_n(\mu) \psi_g(z_b,\mu) d\mu = 0
+\end{align}
+for odd \(i\).  In \(P_1\) theory, observe that this requirement becomes
+\begin{align}
+  \int_{-1}^0 \mu \psi_g(b,\mu) d\mu = 0,
+\end{align}
+which is equivalent to requiring the incoming partial current, \(j_g^-(z_b)\), to be zero.  Expanding the flux we see that
+\begin{align}
+  \int_{-1}^0 \mu \left[ \frac{1}{2} \psi_{g,0}(z_b) + \frac{3}{2} \mu \psi_{g,1}(z_b) \right] d\mu
+  = -\frac{1}{4} \psi_{g,0}(z_b) + \frac{1}{2} \psi_{g,1}(z_b) = 0.
+\end{align}
+We will revisit this result when derive diffusion theory.
 \end{document}
