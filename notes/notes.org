@@ -1085,9 +1085,9 @@ The final form of the transport equation given these assumptions is
   \frac{1}{v} \frac{\partial\psi}{\partial t}
   + \vec{\Omega} \cdot \nabla\psi
   + \Sigma \psi
-  &= \int_0^\infty dE' \int_{4\pi} \Sigma_s(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega} \psi(\vec{r},\vec{\Omega}',E',t) \\
+  &= \int_0^\infty dE' \int_{4\pi} \Sigma_s(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega}',E',t) \notag\\
   &+ \frac{\chi(E)}{4\pi} \int_0^\infty dE' \int_{4\pi} \nu\Sigma_f(\vec{r},E') \psi(\vec{r},\vec{\Omega}',E',t)
-  + q(\vec{r},\vec{\Omega},E,t).
+  + q_\text{ext}(\vec{r},\vec{\Omega},E,t).
   \label{eq::transportEqn}
 \end{align}
 For completeness, consider the transport equation to be solved for a region $V$ so that $\vec{r} \in V$.  We will also take $E \in [0, \infty]$, although in practice a maximum and minimum energy are adopted so that the flux is negligible outside of the that interval.
@@ -1125,7 +1125,7 @@ In reactor design and analysis, however, we frequently want to determine the ste
 \begin{align}
   \vec{\Omega} \cdot \nabla\psi(\vec{r},\vec{\Omega},E)
   + \Sigma(\vec{r},\vec{\Omega}) \psi(\vec{r},\vec{\Omega},E)
-  &= \int_0^\infty dE' \int_{4\pi} \Sigma(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega}',E') \\
+  &= \int_0^\infty dE' \int_{4\pi} \Sigma(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega}',E') \notag\\
   &+ \frac{\chi(E)}{4\pi} \int_0^\infty dE' \int_{4\pi} \nu\Sigma_f(\vec{r},E') \psi(\vec{r},\vec{\Omega}',E').
   \label{eq::ssTransportEqn}
 \end{align}
@@ -1135,7 +1135,7 @@ We may not be able to model the reactor precisely enough to determine a steady-s
 \begin{align}
   \vec{\Omega} \cdot \nabla\psi(\vec{r},\vec{\Omega},E)
   + \Sigma(\vec{r},E) \psi(\vec{r},\vec{\Omega},E)
-  &= \int_0^\infty dE' \int_{4\pi} \Sigma_s(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega}',E') \\
+  &= \int_0^\infty dE' \int_{4\pi} \Sigma_s(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega}',E') \notag\\
   &+ \lambda\frac{\chi(E)}{4\pi} \int_0^\infty dE' \int_{4\pi} \nu\Sigma_f(\vec{r},E') \psi(\vec{r},\vec{\Omega}',E').
   \label{eq::eigTransportEqn}
 \end{align}
@@ -1172,7 +1172,7 @@ Next, integrate the transport equation over a single energy group.  We may use a
 \begin{align}
   \vec{\Omega} \cdot \nabla \psi_g(\vec{r},\vec{\Omega})
   + \Sigma_g(\vec{r}) \psi_g(\vec{r},\vec{\Omega})
-  &= \sum_{g'=1}^G \int_{4\pi} \Sigma_{g'\rightarrow g}(\vec{r}, \vec{\Omega}'\cdot\vec{\Omega}) \psi_g'(\vec{r},\vec{\Omega}') d\vec{\Omega}'\\
+  &= \sum_{g'=1}^G \int_{4\pi} \Sigma_{g'\rightarrow g}(\vec{r}, \vec{\Omega}'\cdot\vec{\Omega}) \psi_g'(\vec{r},\vec{\Omega}') d\vec{\Omega}' \notag\\
   &+ \lambda\frac{\chi_g}{4\pi} \sum_{g'=1}^G \int_{4\pi} \nu\Sigma_{f,g'}(\vec{r}) \psi_g'(\vec{r},\vec{\Omega}') d\vec{\Omega}'.
   \label{eq::mgTransportEqn}
 \end{align}
