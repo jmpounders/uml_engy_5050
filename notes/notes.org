@@ -1178,12 +1178,12 @@ Next, integrate the transport equation over a single energy group.  We may use a
 \end{align}
 where we have defined
 \begin{align}
-  \psi_g(\vec{r},\vec{\Omega}) &= \int_{E_g}^{E_g} dE \psi(\vec{r},\vec{\Omega},E), \\
-  \Sigma_g(\vec{r}) &= \frac{\int_{E_g}^{E_g} dE \Sigma(\vec{r},E) \psi(\vec{r},\vec{\Omega},E)}{\int_{E_g}^{E_g} dE \psi(\vec{r},\vec{\Omega},E)}, \\
-  \nu\Sigma_{f,g}(\vec{r}) &= \frac{\int_{E_g}^{E_g} dE \nu\Sigma_f(\vec{r},E) \psi(\vec{r},\vec{\Omega},E)}{\int_{E_g}^{E_g} dE \psi(\vec{r},\vec{\Omega},E)}, \\
-  \chi_g &=  \int_{E_g}^{E_g} dE \chi(E), \\
+  \psi_g(\vec{r},\vec{\Omega}) &= \int_{E_g}^{E_{g-1}} dE \psi(\vec{r},\vec{\Omega},E), \\
+  \Sigma_g(\vec{r}) &= \frac{\int_{E_g}^{E_{g-1}} dE \Sigma(\vec{r},E) \psi(\vec{r},\vec{\Omega},E)}{\int_{E_g}^{E_{g-1}} dE \psi(\vec{r},\vec{\Omega},E)}, \\
+  \nu\Sigma_{f,g}(\vec{r}) &= \frac{\int_{E_g}^{E_{g-1}} dE \nu\Sigma_f(\vec{r},E) \psi(\vec{r},\vec{\Omega},E)}{\int_{E_g}^{E_{g-1}} dE \psi(\vec{r},\vec{\Omega},E)}, \\
+  \chi_g &=  \int_{E_g}^{E_{g-1}} dE \chi(E), \\
   \Sigma_{g'\rightarrow g}(\vec{r}, \vec{\Omega}'\cdot\vec{\Omega} &= 
-    \frac{\int_{E_g}^{E_g} dE \int_{E_{g'}}^{E_{g'}} dE' \Sigma_s(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega},E)}{\int_{E_g}^{E_g} dE \psi(\vec{r},\vec{\Omega},E)}.
+    \frac{\int_{E_g}^{E_{g-1}} dE \int_{E_{g'}}^{E_{g'}} dE' \Sigma_s(\vec{r},E' \rightarrow E, \vec{\Omega}'\cdot\vec{\Omega}) \psi(\vec{r},\vec{\Omega},E)}{\int_{E_g}^{E_{g-1}} dE \psi(\vec{r},\vec{\Omega},E)}.
 \end{align}
 The above parameters are called the multigroup constants and Eq. \eqref{eq::mgTransportEqn} the multigroup transport equation.  
 
