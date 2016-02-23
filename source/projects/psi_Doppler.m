@@ -1,6 +1,6 @@
 function f = psi_Doppler(u, beta)
 
-n = 10;
+n = 200;
 [x, w] = GaussHermite(n);
 f = 0;
 for i = 1:n

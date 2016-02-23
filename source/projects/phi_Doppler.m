@@ -1,0 +1,10 @@
+function f = phi_Doppler(u, beta)
+
+    n = 200;
+    [x, w] = GaussHermite(n);
+    f = 0;
+    for i = 1:n
+        f = f + (x(i)*beta + u)./(1.0 + (x(i)*beta + u).^2)*w(i);
+    end
+
+f = 1.0/sqrt(pi)*f;

@@ -11,14 +11,3 @@ m = 939.57e6/c^2                   % mass of neutron, eV/c^2 = eV s^2/cm^2
 hbar = 4.135667662e-15/(2.0*pi)  % reduced plank's constant, eV s
 gJ = (2*J+1)/(2*(2*I+1))            % statistical spin factor, unitless
 
-T = 600;
-k = 8.61734e-5;
-Delta = 2.0*sqrt(E_i*k*T/A);
-beta = 2.0*Delta/Gamma_i;
-
-E = linspace(80.0,81.8,100);
-u = 2.0/Gamma_i*(E-E_i);
-%sigmag600 = sigma0(E)*Gamma_gi/Gamma_i*psi(u,beta)*1.0e24  % capture cross section, barns
-sigmag600 = psi_Doppler(u,beta)*1.0e24;  % capture cross section, barns
-
-plot(E,sigmag600)

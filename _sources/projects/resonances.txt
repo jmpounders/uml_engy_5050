@@ -49,3 +49,10 @@ Project Guidelines
   - reference all tables/figures explicitly from the text;
   - use clear, concise language, avoiding fluff and flower;
   - number equations consistently.
+
+Solutions
+=========
+
+:download:`Python Notebook <PythonNotebook.html>`
+
+`Matlab Notebook <../_static/Proj1/Project1.html>`_
