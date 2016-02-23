@@ -53,6 +53,7 @@ Project Guidelines
 Solutions
 =========
 
-:download:`Python Notebook <PythonNotebook.html>`
+Pick your flavor:
 
-`Matlab Notebook <../_static/Proj1/Project1.html>`_
+- :download:`Python Notebook <PythonNotebook.html>`
+- `Matlab Notebook <../_static/Proj1/Project1.html>`_
