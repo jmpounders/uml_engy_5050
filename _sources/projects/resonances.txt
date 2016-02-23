@@ -51,7 +51,7 @@ Project Guidelines
   - number equations consistently.
 
 Solutions
-=========
+---------
 
 Pick your flavor:
 
