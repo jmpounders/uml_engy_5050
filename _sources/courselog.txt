@@ -71,3 +71,22 @@ Course Log
 
      - Review notes on the unit direction vector
      - Project due Friday before midnight
+
+10. Feb 22
+
+    - The steady-state neutron transport equation
+    - Fixed-source vs. eigenvalue problem
+
+11. Feb 24
+
+    - Multigroup approximation in energy
+    - Introduction to Legendre Polynomials
+    - For next time
+
+      - Review transport theory notes
+      - Review notes on unit direction vector
+      - Review notes on Legendre polynomial
+
+    - For 3/2
+
+      - Do Problem 5, Questions 1-3

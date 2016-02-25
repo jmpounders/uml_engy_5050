@@ -52,11 +52,21 @@
 <p><a class="reference download internal" href="../_downloads/transport.pdf"><code class="xref download docutils literal"><span class="pre">Reference</span> <span class="pre">notes,</span> <span class="pre">Neutron</span> <span class="pre">Transport</span></code></a>.</p>
 <p>(NOTE: this notes will be extended in the near future!  Check back later for an update. 2/22/16)</p>
 </div>
-<div class="section" id="comprehension-assessment">
-<h2>5.2. Comprehension Assessment<a class="headerlink" href="#comprehension-assessment" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="in-class-problem">
-<h2>5.3. In-Class Problem<a class="headerlink" href="#in-class-problem" title="Permalink to this headline">¶</a></h2>
+<h2>5.2. In-Class Problem<a class="headerlink" href="#in-class-problem" title="Permalink to this headline">¶</a></h2>
+<p>Consider the 1D angular flux at a point, <span class="math">\(\psi(\mu)\)</span>, where <span class="math">\(\mu\)</span> is the cosine of the polar angle.  The polar angle in this case must be the angle between the direction vector and the single axis defining your system.  The flux <span class="math">\(\psi(\mu)\)</span> in 1D can be seen as the reduction of the of the general flux, <span class="math">\(\psi({\bf \Omega}) = \psi(\varphi,\mu)\)</span>, in the case that the flux is independent of the azimuthal angle, <span class="math">\(\varphi\)</span>.</p>
+<p>In one spatial dimension there is symmetry with respect to rotation in the azimuthal symmetry, so assuming that the flux is a function of <span class="math">\(\mu\)</span> alone is indeed valid.  (Draw a picture of this to convince yourself!)</p>
+<p>In 1D problems, there is no need integrate over azimuthal angles when performing integrals over &#8220;all&#8221; angles, since such an integration would simply yield a factor of <span class="math">\(2\pi\)</span> that will cancel across the equation.  Rather, integrating over &#8220;all&#8221; angles in 1D simply means integrating over the (cosine of) the polar angle, <span class="math">\(\mu\)</span>.</p>
+<p>If we assume that the 1D flux is <em>linearly anisotropic</em>, then the flux can be written</p>
+<div class="math">
+\[\psi(\mu) = a + b \mu\]</div>
+<p>for some constants <span class="math">\(a\)</span> and <span class="math">\(b\)</span>.</p>
+<ol class="arabic simple">
+<li>Find an expression for the <em>scalar flux</em> in terms of <span class="math">\(a\)</span> and <span class="math">\(b\)</span>.</li>
+<li>Show that the &#8220;vector&#8221; current in 1D becomes simply a scalar function.  In other words, if the polar angle is defined with respect to the <span class="math">\(z\)</span> axis, then the vector elements of the current corresponding to the <span class="math">\(x\)</span> and <span class="math">\(y\)</span> directions will be zero.  (HINT: Use the general definition of neutron current in three dimensions, then perform the integrations using the assumption <span class="math">\(\psi(\varphi,\mu) \rightarrow \psi(\mu)\)</span>.)</li>
+<li>Find an expression for the 1D <em>neutron current</em> in terms of <span class="math">\(a\)</span> and <span class="math">\(b\)</span>.</li>
+<li>Derive the 1D <span class="math">\(P_N\)</span> transport equations.  <em>Show every step!</em></li>
+</ol>
 </div>
 </div>
 
@@ -94,8 +104,7 @@
   <ul>
 <li><a class="reference internal" href="#">5. How does the neutron distribution depend on space?</a><ul>
 <li><a class="reference internal" href="#background">5.1. Background</a></li>
-<li><a class="reference internal" href="#comprehension-assessment">5.2. Comprehension Assessment</a></li>
-<li><a class="reference internal" href="#in-class-problem">5.3. In-Class Problem</a></li>
+<li><a class="reference internal" href="#in-class-problem">5.2. In-Class Problem</a></li>
 </ul>
 </li>
 </ul>

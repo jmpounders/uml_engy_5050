@@ -19,6 +19,3 @@ Comprehension Assessment
 
 1. Derive the the solution :math:`\phi(E)` using the narrow and wide resonance approximations.
 
-In-Class Problem
-----------------
-
