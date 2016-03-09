@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Transport Theory in Reactor Physics &mdash; ENGY 5050 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="ENGY 5050 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Projects" href="../projects.html" />
+    <link rel="next" title="Appendix" href="../appendix.html" />
+    <link rel="prev" title="1. Neutron Interaction Resonances" href="resonances.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="transport-theory-in-reactor-physics">
+<h1>2. Transport Theory in Reactor Physics<a class="headerlink" href="#transport-theory-in-reactor-physics" title="Permalink to this headline">¶</a></h1>
+<p><strong>Due date:</strong> April 6, 2016, 11:59 PM</p>
+<p>Neutron transport theory plays an important role in reactor physcis.  In this project we will develop a simple transport theory model of a notional 1D reactor.</p>
+<div class="section" id="project-specification">
+<h2>2.1. Project Specification<a class="headerlink" href="#project-specification" title="Permalink to this headline">¶</a></h2>
+<p>This project will consist of three parts.  The following assumptions may be made universally:</p>
+<ol class="arabic simple">
+<li>Isotropic neutron emission from fission;</li>
+<li>Isotropic scattering;</li>
+<li>One spatial dimension.</li>
+</ol>
+<div class="section" id="part-1">
+<h3>2.1.1. Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Derive the <span class="math">\(S_N\)</span> sweep equations for both forward (<span class="math">\(\mu_m &gt; 0\)</span>) and backward (<span class="math">\(\mu_m &lt; 0\)</span>) directions.  You may assume one energy group, and the scattering and fission sources should be represented by a single variable (e.g., <span class="math">\(q_{m,i}\)</span>).</li>
+<li>Implement a function (in either Matlab or Python) that solves the <span class="math">\(S_N\)</span> sweep equations.  The function should accept mesh and cross section data structures (see the framework notes below) and return the a vector array consisting of the <em>scalar</em> flux in each spatial cell.  Use the group-2 core cross sections provided to you.</li>
+<li>TBA</li>
+</ol>
+</div>
+<div class="section" id="part-2">
+<h3>2.1.2. Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Derive the one-group diffusion equation from the one-group <span class="math">\(P_1\)</span> equations.</li>
+<li>Derive the analytical solution of the diffusion equation for a homogeneous medium.  Boundary conditions should approximate the condition of no incoming neutrons.  Part of your solution should be an expression for the effective multiplication factor, <span class="math">\(k = k_\text{eff} = \lambda^{-1}\)</span>.</li>
+<li>TBA</li>
+</ol>
+</div>
+<div class="section" id="part-3">
+<h3>2.1.3. Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
+<p>TBA</p>
+</div>
+</div>
+<div class="section" id="project-framework">
+<h2>2.2. Project Framework<a class="headerlink" href="#project-framework" title="Permalink to this headline">¶</a></h2>
+<p>This project will be done with a framework that will (a) make everyone&#8217;s work somewhat uniform, (b) provide a convenient mechanism for loading and representing data, and (c) make it possible to generalize and extend your work with minimal effort.</p>
+<div class="section" id="data-structures">
+<h3>2.2.1. Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h3>
+<p>A <em>data structure</em>, for our purposes, will be a convenient method of encapsulating similar data for your transport solver.  We will use to two distinct data structures for this project: a mesh structure and a cross section structure.</p>
+<p>The mesh structure consists of the following data:</p>
+<ul class="simple">
+<li>the number of spatial cells, <code class="docutils literal"><span class="pre">nX</span></code>;</li>
+<li>an array of the cell interface locations, <code class="docutils literal"><span class="pre">x</span></code>;</li>
+<li>an array of cell material identifiers, <code class="docutils literal"><span class="pre">mat</span></code>;</li>
+<li>a length-2 array of boundary condition identifiers, <code class="docutils literal"><span class="pre">bc</span></code>.</li>
+</ul>
+<p>In Matlab, for example, you can create a mesh strucure as follows.</p>
+<div class="highlight-python"><div class="highlight"><pre>solnMesh = struct(&#39;nX&#39;,  10, ...
+                  &#39;x&#39;,   linspace(0,400,11), ...
+                  &#39;mat&#39;, [2;1;1;1;3;3;1;1;1;2],  ...
+                  &#39;bc&#39;,  [2,1]);
+</pre></div>
+</div>
+<p>In Python, this code becomes</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">solnMesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span>
+                <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Note that in the Python version the names are implicit in the ordering.  Both versions of the code will create a 10-cell geometry starting at <span class="math">\(x=0\)</span> and extending to <span class="math">\(x=400\)</span>.  There are three different materials, indexed by the integers one through three.  The left boundary condition is type 2 and the right boundary condition is type 1.  The boundary condition &#8220;types&#8221; are defined in the implementation of transport sweep.</p>
+<p>Each member of the data structure can be accessed using the dot (<code class="docutils literal"><span class="pre">.</span></code>) operator.  To get the array of materials, for example, we would use <code class="docutils literal"><span class="pre">solnMesh.mat</span></code> in both Python and Matlab.</p>
+<p>The cross section structure consists of the following data:</p>
+<ul class="simple">
+<li>the total cross section, <code class="docutils literal"><span class="pre">sigTr</span></code>;</li>
+<li>the absorption cross section, <code class="docutils literal"><span class="pre">sigA</span></code>;</li>
+<li>the fission cross section, <code class="docutils literal"><span class="pre">sigF</span></code>;</li>
+<li>the average number of neutrons per fission, <code class="docutils literal"><span class="pre">nuBar</span></code>;</li>
+<li>the scattering kernel, <code class="docutils literal"><span class="pre">sigS</span></code>.</li>
+</ul>
+<p>You will be provided with a function, <code class="docutils literal"><span class="pre">getXS</span></code>, that will automatically generate an array of these cross section structures.  Each element of the array will be a set of cross sections corresponding to unique material.  The position in the array corresponds to material identifier.  In both Matlab and Python, the cross section array is obtained by the following code.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">xs</span> <span class="o">=</span> <span class="n">getXS</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The first element in the <code class="docutils literal"><span class="pre">xs</span></code> array consists of the core cross sections.  The second element of the array consists of the reflector cross sections.  The third element of the array consists of control rod cross sections.</p>
+<p>To demonstrate the use of the cross section array, say that we wanted to print the thermal (group-2) absorption cross sections for each cell in our geometry.  In Matlab we could write</p>
+<div class="highlight-python"><div class="highlight"><pre>for i = 1:solnMesh.nX
+  disp(xs(solnMesh.mat(i)).sigA(2))
+end
+</pre></div>
+</div>
+<p>In Python we could write</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">solnMesh</span><span class="o">.</span><span class="n">nX</span><span class="p">)</span> <span class="p">:</span>
+   <span class="k">print</span> <span class="n">xs</span><span class="p">[</span><span class="n">solnMesh</span><span class="o">.</span><span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sigA</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="downloads">
+<h3>2.2.2. Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h3>
+<p>The code containing the framework items described above can be downloaded below:</p>
+<p>Matlab:</p>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/getXS.m"><code class="xref download docutils literal"><span class="pre">getXS.m</span></code></a></li>
+</ul>
+<p>Python:</p>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/proj.py"><code class="xref download docutils literal"><span class="pre">proj.py</span></code></a></li>
+</ul>
+<p>To use the Matlab functions, simply place them in the directory in which you are running Matlab (i.e., your working directory) or in the Matlab path.  To use the Python functions, place the python file in the directory in which you are running Python or another accessible path, and put <code class="docutils literal"><span class="pre">from</span> <span class="pre">proj</span> <span class="pre">import</span> <span class="pre">*</span></code> at the top of your script or Jupyter notebook.</p>
+</div>
+</div>
+<div class="section" id="project-guidelines">
+<h2>2.3. Project Guidelines<a class="headerlink" href="#project-guidelines" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You may use any software you like to do the calculations and plotting.  I suggest using the one that you are already most familiar/comfortable with.</li>
+<li>I encourage you to work with others on this project, but...</li>
+<li>Each <em>individual</em> must submit their own project report.</li>
+<li>The report should contain the following information<ul>
+<li><strong>Background:</strong> What is the significance of understanding this concept?  How does it impact Reactor Physics?</li>
+<li><strong>Theory:</strong> What equations, formulas, and assumptions are used to obtain the results?</li>
+<li><strong>Results:</strong> Plots <em>and</em> discussion.</li>
+<li><strong>Summary:</strong> What do you take away from this project?</li>
+</ul>
+</li>
+<li>The report should be neat, well-organized, and appropriately styled, i.e., follow the basic rules of manuscript writing:<ul>
+<li>label tables/figures;</li>
+<li>reference all tables/figures explicitly from the text;</li>
+<li>use clear, concise language, avoiding fluff and flower;</li>
+<li>number equations consistently.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/UMLRR-internal.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">ENGY 5050</h2>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problems.html">Problems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courselog.html">Course Log</a></li>
+</ul>
+
+
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Transport Theory in Reactor Physics</a><ul>
+<li><a class="reference internal" href="#project-specification">2.1. Project Specification</a><ul>
+<li><a class="reference internal" href="#part-1">2.1.1. Part 1</a></li>
+<li><a class="reference internal" href="#part-2">2.1.2. Part 2</a></li>
+<li><a class="reference internal" href="#part-3">2.1.3. Part 3</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#project-framework">2.2. Project Framework</a><ul>
+<li><a class="reference internal" href="#data-structures">2.2.1. Data Structures</a></li>
+<li><a class="reference internal" href="#downloads">2.2.2. Downloads</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#project-guidelines">2.3. Project Guidelines</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../projects.html">Projects</a><ul>
+      <li>Previous: <a href="resonances.html" title="previous chapter">1. Neutron Interaction Resonances</a></li>
+      <li>Next: <a href="../appendix.html" title="next chapter">Appendix</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Justin Pounders.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/projects/transport.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

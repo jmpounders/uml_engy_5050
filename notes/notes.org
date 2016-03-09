@@ -3,6 +3,8 @@
 #+LATEX_HEADER: \usepackage{tikz}
 #+LATEX_HEADER: \usepackage{fancyhdr}
 #+LATEX_HEADER: \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+#+LATEX_HEADER: \usepackage{algorithm}
+#+LATEX_HEADER: \usepackage{algpseudocode}
 #+LATEX_HEADER_EXTRA: \renewcommand\vec{\mathbf}
 #+LATEX_HEADER_EXTRA: \newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
 #+LATEX_HEADER_EXTRA: \newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
@@ -1298,10 +1300,157 @@ which is equivalent to requiring the incoming partial current, $j_g^-(z_b)$, to 
 \end{align}
 We will revisit this result when derive diffusion theory.
 
-*** The Discrete Ordinates Method                                :noexport:
+*** The Discrete Ordinates Method
+Rather than expanding the angular flux in a series of Legendre polynomials, the discrete ordinates approximation to the transport equation attempts a more direct approach of angular discretization.  The method begins by selecting a set of $M$ discrete directions (or ordinates).  In one dimension the only angular variable is the polar angle, so we may select a set
+\begin{align*}
+  \mu_1 < \mu_2 < \hdots < \mu_{M}
+\end{align*}
+where, as usual, $\mu_m = \cos\theta_m$ for a discrete polar angle $\theta_m$.
 
+We now evaluate the transport equation, Eq. \eqref{eq::1dTransportWithScatteringExpansion}, at each of the discrete directions, producing
+\begin{align}
+  \mu_m \frac{\partial \psi_{g,m}(z)}{\partial z}
+  + \Sigma_g(z) \psi_{g,m}(z)
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu_m) \int_{-1}^1 P_\ell(\mu') \psi_{g'}(z,\mu') d\mu' \\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \int_{-1}^1 \nu\Sigma_{f,g'}(z) \psi_{g'}(z,\mu') d\mu'
+\end{align}
+where $\psi_{g,m}(z) \equiv \psi_g(z,\mu_m)$.  To complete the discretization we must approximate the angular integrals appearing in the scattering and fission terms on a discrete basis.  The fact that we have already selected the set of points $\mu_i$ suggests that a numerical quadrature would be appropriate.  Thus for each ordinate $\mu_m$ we assign a corresponding weight $w_m$ so that
+\begin{align*}
+  \int_{-1}^1 f(\mu) d\mu \approx \sum_{m=1}^M f(\mu_m) w_m
+\end{align*}
+for a suitably ``well-behaved'' function $f(\mu)$.  The transport equation now becomes
+\begin{align}
+  \mu_m \frac{\partial \psi_{g,m}(z)}{\partial z}
+  + \Sigma_g(z) \psi_{g,m}(z)
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g}^\ell(z) P_\ell(\mu_m) \sum_{m'=1}^M P_\ell(\mu_m) \psi_{g',m'}(z) w_{m'} \\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g'}(z) \sum_{m'=1}^M  \psi_{g',m'}(z) w_{m'}.
+  \label{eq::1dSnTransportEqn}
+\end{align}
+Eq. \eqref{eq::1dSnTransportEqn} is the /discrete ordinates/ transport equation, also known as the $S_N$ equation, where $N$ is the number of discrete directions, which in this case we have called $M$.  The discrete ordinates equation has been completely discretized with respect to the angular variable.  The discrete angular fluxes $\psi_{g,m}(z)$ can be solved by simultaneously solving the $GM$ equations represented by Eq. \eqref{eq::1dSnTransportEqn}.
+
+The selection of the $\mu_m$ and $w_m$ parameters comprising the discrete ordinates approximation has an important effect on the accuracy of the solution.  Selecting these parameters from the Gauss-Legendre quadrature (where the $\mu_m$ are the roots of the Legendre polynomial $P_M(\mu)$) is a common choice that produces a high order of accuracy.
+*** Spatial Discretization of the Discrete Ordinates Equations
+At this point we have discretized the energy and angle variables using the multigroup and $P_N$ or $S_N$ methods, respectively.  The only phase variable that has not been discretized is the spatial variable.  In this section we will complete the phase space discretization of the discrete ordinates equation by introducing a /spatial/ discretization.
+
+Because we are considering only 1D domains in a Cartesian space, our geometry is simply a closed interval $[a,b]$.  (Theoretically we could also choose an infinite or semi-infinite interval in which one or both end points go to infinity.  This is sometimes done when studying cosmic particle transport.)  The interval $[a,b]$ can be discretized by defining a set of contiguous, non-overlapping regions whose union is equal to the interval.  This is called a /partition/ of the interval, but it is really just a mathematically formal way of saying that we chop the interval into lots of little intervals.  Let's call each one of these regions a /cell/ and define $z_i$ as the center of cell $i$, as shown in Figure \ref{fig::cellDiscretization}.  The boundaries of cell $i$ we'll call $z_{i-1/2}$ (on the left) and $z_{i+1/2}$ (on the right) so that the width of the cell is $\Delta z_i = z_{i+1/2} - z_{i-1/2}$.  If the cells are numbered sequentially from 1 to $I$ then we will have $z_{1/2} = a$ and $z_{I+1/2} = b$, the boundaries.  We will finally assume that cross sections are spatially constant within each cell and write $\Sigma_g(z)$ as $\Sigma_{g,i}$ for $z \in [z_{i-1/2},z_{i+1/2}]$.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=0.35]
+  \draw [thick] (-10,15) -- (10,15);
+  \draw (-10,14) -- (-10,16);
+  \draw (-8,14) -- (-8,16);
+  \draw (-6,14) -- (-6,16);
+  \draw (-4,14) -- (-4,16);
+  \draw (-2,14) -- (-2,16);
+  \draw (0,14) -- (0,16);
+  \draw (2,14) -- (2,16);
+  \draw (4,14) -- (4,16);
+  \draw (6,14) -- (6,16);
+  \draw (8,14) -- (8,16);
+  \draw (10,14) -- (10,16);
+
+  \draw (-10,13) node {$a$};
+  \draw (10,13) node {$b$};
+
+  \draw [->,dashed] (-2,14) -- (-5,2);
+  \draw [->,dashed] (0,14) -- (5,2);
+
+  \draw [<->,thick] (-17,0) -- (17,0);
+  \draw (-15,-2) -- (-15,2);
+  \draw (-5,-2) -- (-5,2);
+  \draw (5,-2) -- (5,2);
+  \draw (15,-2) -- (15,2);
+
+  \draw (-10,0) circle [radius=0.5];
+  \draw (0,0) circle [radius=0.5];
+  \draw (10,0) circle [radius=0.5];
+
+  \draw (-10,-2) node {$z_{i-1}$};
+  \draw (0,-2) node {$z_i$};
+  \draw (10,-2) node {$z_{i+1}$};
+
+  \draw (-5,-3) node {$z_{i-1/2}$};
+  \draw (5,-3) node {$z_{i+1/2}$};
+
+  \draw (0,3) node {Cell $i$};
+\end{tikzpicture}
+\caption{Neutron-nucleus collision in LAB coordinates.}
+\label{fig::cellDiscretization}
+\end{figure}
+
+Next integrate the discrete ordinates transport equation \eqref{eq::1dSnTransportEqn} over cell $i$.  The result is
+\begin{align}
+  \mu_m \left[ \psi_{g,m}(z_{i+1/2}) - \psi_{g,m}(z_{i-1/2}) \right]
+  + \Sigma_{g,i} \int_{z_{i-1/2}}^{z_{i+1/2}} \psi_{g,m}(z) dz
+  &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g,i}^\ell P_\ell(\mu_m) \sum_{m'=1}^M P_\ell(\mu_m) w_{m'} \int_{z_{i-1/2}}^{z_{i+1/2}} \psi_{g',m'}(z) dz \\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g',i} \sum_{m'=1}^M w_{m'} \int_{z_{i-1/2}}^{z_{i+1/2}} \psi_{g',m'}(z) dz.
+\end{align}
+Next we will shift notation by defining $\psi_{g,m,i\pm 1/2} = \psi_{g,m}(z_{i \pm 1/2})$.  We will also define the cell-averaged flux as $\psi_{g,m,i} = \frac{1}{\Delta z_i} \int_{z_{i-1/2}}^{z_{i+1/2}} \psi_{g,m}(z) dz$.  The transport equation then becomes
+\begin{align}
+  \mu_m \left[ \psi_{g,m}(z_{i+1/2}) - \psi_{g,m}(z_{i-1/2}) \right]
+  + \Sigma_{g,i} \psi_{g',m',i} \Delta z_i
+  &= \Delta z_i \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g,i}^\ell P_\ell(\mu_m) \sum_{m'=1}^M P_\ell(\mu_m) w_{m'} \psi_{g',m',i} \\
+  &+ \Delta z_i \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g',i} \sum_{m'=1}^M w_{m'} \psi_{g',m',i}.
+  \label{eq::1dSnDiscreteTransportEqn}
+\end{align}
+Alas, this is a fully discrete form of the transport equation.  If we have $I$ spatial cells, however, then the total number of unknowns for each group and discrete ordinate will be the number of cell-interface fluxes (minus the incoming boundary) plus the number of cell-averaged fluxes, for a total of $2I$.  To be able to solve this set of equations we need to introduce auxiliary equations relating the cell interface and average fluxes.  In the /diamond-difference/ formulation of the discrete ordinates equation we assume the relationship
+\begin{align}
+  \psi_{g,m,i} = \frac{1}{2} \left( \psi_{g,m,i-1/2} + \psi_{g,m,i+1/2} \right)
+  \label{eq::diamondDifference}
+\end{align}
+for each cell.
+*** Solving the Discrete Ordinates Equation
+Eqs. \eqref{eq::1dSnDiscreteTransportEqn} and \eqref{eq::diamondDifference} provide a sufficient number of linear, algebraic equations to solve for all of the unknowns $\psi_{g,m,i}$ and $\psi_{g,m,i\pm 1/2}$.  There is an efficient way to solve these equations short of simply throwing everything into a gigantic matrix known as /sweeping/, although to be fair, sweeping is really just a matrix factorization based as much on intuition as mathematics.
+
+To describe the sweeping algorithm let us temporarily assume that the scattering and fission sources are known and lumped into an effective source term,
+\begin{align}
+  q_{g,m,i} = &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g,i}^\ell P_\ell(\mu_m) \sum_{m'=1}^M P_\ell(\mu_m) w_{m'} \psi_{g',m',i} \\
+  &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g',i} \sum_{m'=1}^M w_{m'} \psi_{g',m',i}
+\end{align}
+so that the transport equation becomes
+\begin{align}
+  \mu_m \left[ \psi_{g,m}(z_{i+1/2}) - \psi_{g,m}(z_{i-1/2}) \right]
+  + \Sigma_{g,i} \psi_{g',m',i} \Delta z_i
+  &= \Delta z_i q_{g,m,i}.
+\end{align}
+Recall that boundary conditions in transport theory consist of specifying the angular flux /entering/ a system.  Thus presently we must specify $\psi_{g,m,1/2}$ for $\mu_m > 0$ and $\psi_{g,m,I+1/2}$ for $\mu_m<0$.
+
+A transport sweep consists of starting at a boundary then solving for all /downstream/ neutron fluxes in a particular direction.  For example if we pick a direction $\mu_m > 0$ then we should start at the left boundary and sweep to the right, cell by cell.  As we encounter each cell we know from the previous cell the value of $\psi_{g,m,i-1/2}$.  To determine the $\psi_{g,m,i}$ we use the diamond difference relation to eliminate $\psi_{g,m,i+1/2}$ from the transport equation.  The result is
+\begin{align}
+  \psi_{g,m,i} = \frac{q_{g,m,i} \Delta z_i + 2 \psi_{g,m,i-1/2}}{\Sigma_{g,i} \Delta z_i + 2 \mu_m}.
+\end{align}
+Once this cell-averaged flux has been computed we may again call on the diamond difference relationship to calculate the flux on the cell's right boundary,
+\begin{align}
+  \psi_{g,m,i+1/2} = 2 \psi_{g,m,i} - \psi_{g,m,i-1/2}.
+\end{align}
+The flux $\psi_{g,m,i+1/2}$ is then becomes the /left/ boundary flux of the /next/ cell, and the sweep continues.  The same procedure holds for $\mu_m < 0$, but the sweep is in the opposite direction.
+
+*** Inner (Scattering) and Outer (Fission) Iterations
+In the previous discussion we assumed that the scattering and fission sources were known.  In reality they are not, as they both depend on the angular flux which is the solution itself.  This discrepancy is treated through a nesting of iterations.  Algorithm \ref{alg::transportSolution} shows the most common implementation of this nesting, where inner scattering iterations converge the scattering source and outer fission iterations converge the fission source.  The fission iteration in this case is actually a /power iteration/, used to converge the eigenvalue $\lambda$.  (``Power iteration'' refers to a specific numerical method for calculating eigenvalues, not the reactor power.)
+
+\begin{algorithm}
+\caption{Transport Solution}
+\label{alg::transportSolution}
+\begin{algorithmic}[1]
+  \State Initialize $\psi_{g,m,i}$ (initial guess)
+  \State $\lambda^{(0)} = 1.0$
+  \For {$j = 1,2,\hdots$} \Comment{Fission iteration}
+    \State Set $q_{g,m,i}^{f,(j)} = \lambda^{(j-1)}\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g',i} \sum_{m'=1}^M w_{m'} \psi_{g',m',i}$
+    \State Set $F^(j) = 2 \sum_{i=1}^I \Delta z _i \sum_{g=1}^G q_{g,m,i}^{f,(j)}$
+    \For {$k=1,2,\hdots$} \Comment{Scattering iteration}
+      \State Set $q_{g,m,i}^{s,(k)} = \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g,i}^\ell P_\ell(\mu_m) \sum_{m'=1}^M P_\ell(\mu_m) w_{m'} \psi_{g',m',i}$
+      \State Solve TE with $q_{g,m,i} = q_{g,m,i}^{s,(k)} + q_{g,m,i}^{f,(j)}$
+      \State If $\max_{g,m,i} \left| q_{g,m,i}^{s,(k)} - q_{g,m,i}^{s,(k-1)} \right| < \varepsilon_s$ then terminate scattering iter.
+    \EndFor
+    \State If $\max_{g,m,i} \left| q_{g,m,i}^{f,(j)} - q_{g,m,i}^{f,(j-1)} \right| < \varepsilon_f$ then terminate fission iter.
+    \State Set $\lambda^{(j)} = \lambda^{(j-1)} \frac{F^{(j-1)}}{F^{(j)}}$
+  \EndFor
+\end{algorithmic}
+\end{algorithm}
 ** The Diffusion Approximation                                    :noexport:
 ** Problems                                                       :noexport:
+1. Derive the $S_N$ sweep equations for both positive and negative directions.
 * Nuclear Physics in 60 Seconds
 *Notation:* An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, $Z$, while the number of neutrons is given by $N$.  The mass number, $A$, is the sum of the number of neutrons and protons.  A neutral atom, $X$, is typically written with the $A$ and $Z$ numbers prepended, i.e., $\leftidx{^A_Z}{X}{}$, with the neutron number implicit.
 

@@ -19,3 +19,7 @@ B. Miscellaneous Notes (PDF)
 C. Presentations (PDF)
 
    1. :download:`Neutron Spectrum (2/10) <../presentations/spectrum.pdf>`
+
+D. Texts
+
+   1. :download:`Nuclear Reactor Theory <_static/BellGlasstone.pdf>` (This PDF was obtained from the M&C division of the American Nuclear Society.)
