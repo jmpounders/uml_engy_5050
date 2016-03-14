@@ -1175,7 +1175,7 @@ Next, integrate the transport equation over a single energy group.  We may use a
   \vec{\Omega} \cdot \nabla \psi_g(\vec{r},\vec{\Omega})
   + \Sigma_g(\vec{r}) \psi_g(\vec{r},\vec{\Omega})
   &= \sum_{g'=1}^G \int_{4\pi} \Sigma_{g'\rightarrow g}(\vec{r}, \vec{\Omega}'\cdot\vec{\Omega}) \psi_g'(\vec{r},\vec{\Omega}') d\vec{\Omega}' \notag\\
-  &+ \lambda\frac{\chi_g}{4\pi} \sum_{g'=1}^G \int_{4\pi} \nu\Sigma_{f,g'}(\vec{r}) \psi_g'(\vec{r},\vec{\Omega}') d\vec{\Omega}'.
+  &+ \lambda\frac{\chi_g}{4\pi} \sum_{g'=1}^G \int_{4\pi} \nu\Sigma_{f,g'}(\vec{r}) \psi_{g'}(\vec{r},\vec{\Omega}') d\vec{\Omega}'.
   \label{eq::mgTransportEqn}
 \end{align}
 where we have defined
@@ -1382,14 +1382,14 @@ Because we are considering only 1D domains in a Cartesian space, our geometry is
 Next integrate the discrete ordinates transport equation \eqref{eq::1dSnTransportEqn} over cell $i$.  The result is
 \begin{align}
   \mu_m \left[ \psi_{g,m}(z_{i+1/2}) - \psi_{g,m}(z_{i-1/2}) \right]
-  + \Sigma_{g,i} \int_{z_{i-1/2}}^{z_{i+1/2}} \psi_{g,m}(z) dz
+  &+ \Sigma_{g,i} \int_{z_{i-1/2}}^{z_{i+1/2}} \psi_{g,m}(z) dz \\
   &= \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g,i}^\ell P_\ell(\mu_m) \sum_{m'=1}^M P_\ell(\mu_m) w_{m'} \int_{z_{i-1/2}}^{z_{i+1/2}} \psi_{g',m'}(z) dz \\
   &+ \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g',i} \sum_{m'=1}^M w_{m'} \int_{z_{i-1/2}}^{z_{i+1/2}} \psi_{g',m'}(z) dz.
 \end{align}
 Next we will shift notation by defining $\psi_{g,m,i\pm 1/2} = \psi_{g,m}(z_{i \pm 1/2})$.  We will also define the cell-averaged flux as $\psi_{g,m,i} = \frac{1}{\Delta z_i} \int_{z_{i-1/2}}^{z_{i+1/2}} \psi_{g,m}(z) dz$.  The transport equation then becomes
 \begin{align}
   \mu_m \left[ \psi_{g,m}(z_{i+1/2}) - \psi_{g,m}(z_{i-1/2}) \right]
-  + \Sigma_{g,i} \psi_{g',m',i} \Delta z_i
+  &+ \Sigma_{g,i} \psi_{g',m',i} \Delta z_i \\
   &= \Delta z_i \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g,i}^\ell P_\ell(\mu_m) \sum_{m'=1}^M P_\ell(\mu_m) w_{m'} \psi_{g',m',i} \\
   &+ \Delta z_i \lambda\frac{\chi_g}{2} \sum_{g'=1}^G \nu\Sigma_{f,g',i} \sum_{m'=1}^M w_{m'} \psi_{g',m',i}.
   \label{eq::1dSnDiscreteTransportEqn}
@@ -1418,7 +1418,7 @@ Recall that boundary conditions in transport theory consist of specifying the an
 
 A transport sweep consists of starting at a boundary then solving for all /downstream/ neutron fluxes in a particular direction.  For example if we pick a direction $\mu_m > 0$ then we should start at the left boundary and sweep to the right, cell by cell.  As we encounter each cell we know from the previous cell the value of $\psi_{g,m,i-1/2}$.  To determine the $\psi_{g,m,i}$ we use the diamond difference relation to eliminate $\psi_{g,m,i+1/2}$ from the transport equation.  The result is
 \begin{align}
-  \psi_{g,m,i} = \frac{q_{g,m,i} \Delta z_i + 2 \psi_{g,m,i-1/2}}{\Sigma_{g,i} \Delta z_i + 2 \mu_m}.
+  \psi_{g,m,i} = \frac{q_{g,m,i} \Delta z_i + 2 \mu_m \psi_{g,m,i-1/2}}{\Sigma_{g,i} \Delta z_i + 2 \mu_m}.
 \end{align}
 Once this cell-averaged flux has been computed we may again call on the diamond difference relationship to calculate the flux on the cell's right boundary,
 \begin{align}
@@ -1440,7 +1440,7 @@ In the previous discussion we assumed that the scattering and fission sources we
     \State Set $F^(j) = 2 \sum_{i=1}^I \Delta z _i \sum_{g=1}^G q_{g,m,i}^{f,(j)}$
     \For {$k=1,2,\hdots$} \Comment{Scattering iteration}
       \State Set $q_{g,m,i}^{s,(k)} = \sum_{g'=1}^G \sum_{\ell=0}^\infty \frac{2\ell+1}{2} \Sigma_{g' \rightarrow g,i}^\ell P_\ell(\mu_m) \sum_{m'=1}^M P_\ell(\mu_m) w_{m'} \psi_{g',m',i}$
-      \State Solve TE with $q_{g,m,i} = q_{g,m,i}^{s,(k)} + q_{g,m,i}^{f,(j)}$
+      \State For each group $g$, solve TE with $q_{g,m,i} = q_{g,m,i}^{s,(k)} + q_{g,m,i}^{f,(j)}$
       \State If $\max_{g,m,i} \left| q_{g,m,i}^{s,(k)} - q_{g,m,i}^{s,(k-1)} \right| < \varepsilon_s$ then terminate scattering iter.
     \EndFor
     \State If $\max_{g,m,i} \left| q_{g,m,i}^{f,(j)} - q_{g,m,i}^{f,(j-1)} \right| < \varepsilon_f$ then terminate fission iter.
