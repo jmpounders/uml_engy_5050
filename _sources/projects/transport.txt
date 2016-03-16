@@ -18,7 +18,7 @@ Part 1
 ~~~~~~
 
 1. Derive the :math:`S_N` sweep equations for both forward (:math:`\mu_m > 0`) and backward (:math:`\mu_m < 0`) directions.  You may assume one energy group, and the scattering and fission sources should be represented by a single variable (e.g., :math:`q_{m,i}`).
-2. Implement a function (in either Matlab or Python) that solves the :math:`S_N` sweep equations.  The function should accept mesh and cross section data structures (see the framework notes below) and return the a vector array consisting of the *scalar* flux in each spatial cell.  Use the group-2 core cross sections provided to you.
+2. Implement a function (in either Matlab or Python) that solves the :math:`S_N` sweep equations.  The function should accept mesh and cross section data structures (see the framework notes below) and return the a vector array consisting of the *scalar* flux in each spatial cell.  Use the group-2 core cross sections provided to you.  This function should solve the *within-group* transport equation.  In other words, assume that you have a known, given source term that takes the place of the scattering and fission sources.  This is effectively a one-group, fixed-source transport sweep with no fission or scattering.  (See details below for guidance on implementing this function.)
 3. TBA
 
 Part 2
@@ -103,6 +103,27 @@ In Python we could write
    for i in range(solnMesh.nX) :
       print xs[solnMesh.mat[i]-1].sigA[1]
 
+Sweep Implementation
+~~~~~~~~~~~~~~~~~~~~
+
+In part 1 of this projection you have to implement a function that solves the within-group transport equation.  There only requirement is that this implementation be in a *function*.  In implementing your function, avoid global variables.  This means that all of the input to your function should be provided as function arguments.  These arguments should at a minimum be the ``solnMesh``, ``xs`` and a source array.  The output should be the *scalar* flux for each *cell center* (the interface values are not needed).
+
+In selecting your discrete ordinates, you should use the Gauss-Legendre quadrature.  In Python, you can get the quadrature points and weights from numpy
+
+::
+
+   (mu,w) = np.polynomial.legendre.leggauss(M)
+
+where ``M`` is the integer number of ordinates you want, ``mu`` is an array of the oridnates, and ``w`` is an array of the weights.
+
+In Matlab, I have made a file available from `MatLab File Exchange <http://www.mathworks.com/matlabcentral/fileexchange/4540-legendre-gauss-quadrature-weights-and-nodes>`_ that performs the same function.  The function is named `lgwt` and should be used as follows:
+
+::
+
+   [mu,w] = lgwt(N,-1,1);
+
+The vectors ``mu`` and ``w`` contain the ordinate directions and weights, respectively.
+   
 Downloads
 ~~~~~~~~~
 
@@ -111,6 +132,7 @@ The code containing the framework items described above can be downloaded below:
 Matlab:
 
 - :download:`getXS.m <project2/getXS.m>`
+- :download:`lgwt.m <project2/lgwt.m>`
 
 Python:
 

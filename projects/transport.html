@@ -56,7 +56,7 @@
 <h3>2.1.1. Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Derive the <span class="math">\(S_N\)</span> sweep equations for both forward (<span class="math">\(\mu_m &gt; 0\)</span>) and backward (<span class="math">\(\mu_m &lt; 0\)</span>) directions.  You may assume one energy group, and the scattering and fission sources should be represented by a single variable (e.g., <span class="math">\(q_{m,i}\)</span>).</li>
-<li>Implement a function (in either Matlab or Python) that solves the <span class="math">\(S_N\)</span> sweep equations.  The function should accept mesh and cross section data structures (see the framework notes below) and return the a vector array consisting of the <em>scalar</em> flux in each spatial cell.  Use the group-2 core cross sections provided to you.</li>
+<li>Implement a function (in either Matlab or Python) that solves the <span class="math">\(S_N\)</span> sweep equations.  The function should accept mesh and cross section data structures (see the framework notes below) and return the a vector array consisting of the <em>scalar</em> flux in each spatial cell.  Use the group-2 core cross sections provided to you.  This function should solve the <em>within-group</em> transport equation.  In other words, assume that you have a known, given source term that takes the place of the scattering and fission sources.  This is effectively a one-group, fixed-source transport sweep with no fission or scattering.  (See details below for guidance on implementing this function.)</li>
 <li>TBA</li>
 </ol>
 </div>
@@ -127,12 +127,27 @@ end
 </pre></div>
 </div>
 </div>
+<div class="section" id="sweep-implementation">
+<h3>2.2.2. Sweep Implementation<a class="headerlink" href="#sweep-implementation" title="Permalink to this headline">¶</a></h3>
+<p>In part 1 of this projection you have to implement a function that solves the within-group transport equation.  There only requirement is that this implementation be in a <em>function</em>.  In implementing your function, avoid global variables.  This means that all of the input to your function should be provided as function arguments.  These arguments should at a minimum be the <code class="docutils literal"><span class="pre">solnMesh</span></code>, <code class="docutils literal"><span class="pre">xs</span></code> and a source array.  The output should be the <em>scalar</em> flux for each <em>cell center</em> (the interface values are not needed).</p>
+<p>In selecting your discrete ordinates, you should use the Gauss-Legendre quadrature.  In Python, you can get the quadrature points and weights from numpy</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">w</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">legendre</span><span class="o">.</span><span class="n">leggauss</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">M</span></code> is the integer number of ordinates you want, <code class="docutils literal"><span class="pre">mu</span></code> is an array of the oridnates, and <code class="docutils literal"><span class="pre">w</span></code> is an array of the weights.</p>
+<p>In Matlab, I have made a file available from <a class="reference external" href="http://www.mathworks.com/matlabcentral/fileexchange/4540-legendre-gauss-quadrature-weights-and-nodes">MatLab File Exchange</a> that performs the same function.  The function is named <cite>lgwt</cite> and should be used as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">mu</span><span class="p">,</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">lgwt</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The vectors <code class="docutils literal"><span class="pre">mu</span></code> and <code class="docutils literal"><span class="pre">w</span></code> contain the ordinate directions and weights, respectively.</p>
+</div>
 <div class="section" id="downloads">
-<h3>2.2.2. Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.3. Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h3>
 <p>The code containing the framework items described above can be downloaded below:</p>
 <p>Matlab:</p>
 <ul class="simple">
 <li><a class="reference download internal" href="../_downloads/getXS.m"><code class="xref download docutils literal"><span class="pre">getXS.m</span></code></a></li>
+<li><a class="reference download internal" href="../_downloads/lgwt.m"><code class="xref download docutils literal"><span class="pre">lgwt.m</span></code></a></li>
 </ul>
 <p>Python:</p>
 <ul class="simple">
@@ -206,7 +221,8 @@ end
 </li>
 <li><a class="reference internal" href="#project-framework">2.2. Project Framework</a><ul>
 <li><a class="reference internal" href="#data-structures">2.2.1. Data Structures</a></li>
-<li><a class="reference internal" href="#downloads">2.2.2. Downloads</a></li>
+<li><a class="reference internal" href="#sweep-implementation">2.2.2. Sweep Implementation</a></li>
+<li><a class="reference internal" href="#downloads">2.2.3. Downloads</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#project-guidelines">2.3. Project Guidelines</a></li>
