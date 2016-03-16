@@ -18,8 +18,96 @@ Part 1
 ~~~~~~
 
 1. Derive the :math:`S_N` sweep equations for both forward (:math:`\mu_m > 0`) and backward (:math:`\mu_m < 0`) directions.  You may assume one energy group, and the scattering and fission sources should be represented by a single variable (e.g., :math:`q_{m,i}`).
-2. Implement a function (in either Matlab or Python) that solves the :math:`S_N` sweep equations.  The function should accept mesh and cross section data structures (see the framework notes below) and return the a vector array consisting of the *scalar* flux in each spatial cell.  Use the group-2 core cross sections provided to you.  This function should solve the *within-group* transport equation.  In other words, assume that you have a known, given source term that takes the place of the scattering and fission sources.  This is effectively a one-group, fixed-source transport sweep with no fission or scattering.  (See details below for guidance on implementing this function.)
-3. TBA
+2. Implement a function (in either Matlab or Python) that solves the :math:`S_N` sweep equations.  The function should accept mesh and cross section data structures (see the :ref:`dataStructures` below) and return the a vector array consisting of the *scalar* flux in each spatial cell.  This function should solve the *within-group* transport equation.  In other words, assume that you have a known, given source term that takes the place of the scattering and fission sources.  This is effectively a one-group, fixed-source transport sweep with no fission or scattering.  (See details below for guidance on implementing this function.)
+3. Calculate the scalar flux of a homogeneous 1D system.  Let the reactor be 10 cm wide, and use 6 discrete directions.  Set the source term to be equal to 1/2 everywhere.  For convenience, Python and Matlab templates are provided below.  All you need to do is implement your sweep function (step 2 previously) and insert it into the code below.
+
+Python:
+
+::
+
+   from proj import *
+   import numpy as np
+   import matplotlib.pyplot as plt
+
+   # Create the mesh
+   solnMesh = Mesh(10, 
+                   np.linspace(0.0,10,11), 
+                   [1,1,1,1,1,1,1,1,1,1],
+                   [2,1])
+
+   # Refine the mesh
+   for i in range(4) :
+       solnMesh = refineMesh(solnMesh);
+
+   # Get the cross sections
+   xs = getXS()
+
+   # Create the source array
+   q = 0.5*np.ones(solnMesh.nX-1)
+
+   # Implement the sweep function
+   def sweep(solnMesh, xs, q, N) : 
+   #
+   # !!!PUT YOUR FUNCTION HERE!!!
+   # (...or in the proj file)
+   #
+
+   # Calculate the scalar flux
+   phi = sweep(solnMesh,xs,q,6)
+
+   # Plot your results at cell centers
+   xCell = np.zeros(solnMesh.nX-1);
+   for i in range(solnMesh.nX-1) :
+       xCell[i] = (solnMesh.x[i]+solnMesh.x[i+1])/2.0;
+
+   plt.plot(xCell,phi)
+   plt.xlabel('z')
+   plt.ylabel('Scalar flux')
+
+Matlab:
+
+::
+
+   clear;
+   clc;
+
+   % Create the mesh
+   solnMesh = struct('nX',  10, ...
+                     'x',   linspace(0,10,11), ...
+                     'mat', [1;1;1;1;1;1;1;1;1;1],  ...
+                     'bc',  [1,1]);
+
+   % Refine the mesh
+   for i = 1:4
+      solnMesh = refineMesh(solnMesh);
+   end
+
+   % Get the cross sections
+   xs = getXS();
+
+   % Create the source array
+   q = 1/2*ones(solnMesh.nX-1,1);
+
+   % Make sure your sweep file (sweep.m) is in your path
+
+   % Calculate the scalar flux
+   phi = sweep(solnMesh,xs,q,6);
+
+   % Plot your results at cell centers
+   xCell = zeros(solnMesh.nX-1,1);
+   for i = 1:solnMesh.nX-1
+      xCell(i) = (solnMesh.x(i)+solnMesh.x(i+1))/2.0;
+   end
+   plot(xCell,phi)
+   xlabel('z')
+   ylabel('Scalar flux')
+
+
+
+
+
+
+
 
 Part 2
 ~~~~~~
@@ -33,10 +121,14 @@ Part 3
 
 TBA
 
+.. _framework:
+
 Project Framework
 -----------------
 
 This project will be done with a framework that will (a) make everyone's work somewhat uniform, (b) provide a convenient mechanism for loading and representing data, and (c) make it possible to generalize and extend your work with minimal effort.
+
+.. _dataStructures:
 
 Data Structures
 ~~~~~~~~~~~~~~~
@@ -103,10 +195,32 @@ In Python we could write
    for i in range(solnMesh.nX) :
       print xs[solnMesh.mat[i]-1].sigA[1]
 
-Sweep Implementation
-~~~~~~~~~~~~~~~~~~~~
+.. _quadrature:
 
-In part 1 of this projection you have to implement a function that solves the within-group transport equation.  There only requirement is that this implementation be in a *function*.  In implementing your function, avoid global variables.  This means that all of the input to your function should be provided as function arguments.  These arguments should at a minimum be the ``solnMesh``, ``xs`` and a source array.  The output should be the *scalar* flux for each *cell center* (the interface values are not needed).
+Refining Your Mesh
+~~~~~~~~~~~~~~~~~~
+
+The accuracy of solution depends on how closely spaced your grid points are.  A *finer mesh*, with grid points spaced more closely, will lead to a more accurate solution, but it will take longer to compute such a solution.  For this project you may begin by defining, for example, 10 cells but then realize you need more for an accurate answer.
+
+To make this easy, a function called ``refineMesh`` has been included with this project.  This function takes an original ``solnMesh`` structure and refines it by splitting each cell into two.  This process may be repeated to create a mesh that is aribtrarily fine.
+
+For example, if your mesh originall has 10 cells, the following code will produce a mesh with 160 cells.  In Python,
+
+::
+
+   for i in range(4) :
+       solnMesh = refineMesh(solnMesh)
+
+In Matlab,
+
+::
+
+   for i = 1:4
+      solnMesh = refineMesh(solnMesh);
+   end
+       
+Angular Quadrature
+~~~~~~~~~~~~~~~~~~
 
 In selecting your discrete ordinates, you should use the Gauss-Legendre quadrature.  In Python, you can get the quadrature points and weights from numpy
 
@@ -123,6 +237,25 @@ In Matlab, I have made a file available from `MatLab File Exchange <http://www.m
    [mu,w] = lgwt(N,-1,1);
 
 The vectors ``mu`` and ``w`` contain the ordinate directions and weights, respectively.
+
+.. _sweepImplementation:
+      
+Sweep Implementation
+~~~~~~~~~~~~~~~~~~~~
+
+In part 1 of this projection you have to implement a function that solves the within-group transport equation.  There only requirement is that this implementation be in a *function*.  In implementing your function, avoid global variables.  This means that all of the input to your function should be provided as function arguments.  These arguments should be (in order) the ``solnMesh``, ``xs``, a source array, and the number of quadrature points to use.  The output should be the *scalar* flux for each *cell center* (the interface values are not needed).
+
+In Python the function declaration should thus be
+
+::
+
+   def sweep(solnMesh, xs, q, N) :
+
+In Matlab is should be
+
+::
+
+   function phi = sweep(solnMesh, xs, q, N)
    
 Downloads
 ~~~~~~~~~
@@ -132,6 +265,7 @@ The code containing the framework items described above can be downloaded below:
 Matlab:
 
 - :download:`getXS.m <project2/getXS.m>`
+- :download:`refineMesh.m <project2/refineMesh.m>`
 - :download:`lgwt.m <project2/lgwt.m>`
 
 Python:

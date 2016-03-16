@@ -1,3 +1,4 @@
+import numpy as np
 
 class Mesh :
     def __init__(self,nX,x,mat,bc) :
@@ -42,17 +43,16 @@ def refineMesh(meshIn) :
     else :
         nxOut = nxIn
 
-    meshOut = meshIn
-    meshOut.nX = nxOut
-  
-    meshOut.x = np.zeros(nxOut+1)
-    meshOut.mat = np.zeros(nxOut)
+    x = np.zeros(nxOut+1)
+    mat = np.zeros(nxOut, dtype=np.int8)
   
     for i in range(0,nxOut,2) :
-        meshOut.x[i] = meshIn.x[i/2]
-        meshOut.x[i+1] = (meshIn.x[i/2] + meshIn.x[i/2 + 1])/2
-    meshOut.x[nxOut] = meshIn.x[nxIn]
+        x[i] = meshIn.x[i/2]
+        x[i+1] = (meshIn.x[i/2] + meshIn.x[i/2 + 1])/2
+    x[nxOut] = meshIn.x[nxIn]
   
     for i in range(0,nxOut,2) :
-        meshOut.mat[i] = meshIn.mat[i/2]
-        meshOut.mat[i+1] = meshIn.mat[i/2]
+        mat[i] = meshIn.mat[i/2]
+        mat[i+1] = meshIn.mat[i/2]
+
+    return Mesh(nxOut,x,mat,meshIn.bc)
