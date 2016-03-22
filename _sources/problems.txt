@@ -10,3 +10,4 @@ Problems
    problems/3_crossSections
    problems/4_energy
    problems/5_transport
+   problems/6_diffusion
