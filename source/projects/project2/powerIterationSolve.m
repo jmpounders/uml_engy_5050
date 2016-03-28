@@ -1,22 +1,24 @@
-function [ flux, k ] = powerIterationSolve( options,solnMesh,xs )
+function [ flux, k ] = powerIterationSolve( solnMesh,xs,N )
 % Solve the diffusion eigenvalue problem using a power iteration
 
-flux = ones(solnMesh.nX,options.numGroups);
+maxPowerIterations = 1000;
+
+flux = ones(solnMesh.nX-1,length(xs(1).sigTr));
 k = 1;
 F = 1;
-for kiter = 1:options.maxPowerIters
-    Fold = F/k;
+for kiter = 1:maxPowerIterations
+    Fold = F;
     [ fissionSource, F ] = calculateFissionSource( solnMesh, xs, flux );
     
     kold = k;
-    k = F/Fold;
-    if (abs(k - kold) < options.eigvTol)
+    k = k*F/Fold;
+    if (abs(k - kold) < 1.0e-6)
         break
     end
     solnMesh.src = fissionSource/k;
-    flux = MultigroupFixedSourceSolve(options,solnMesh,xs);
+    flux = MultigroupFixedSourceSolve(solnMesh,xs,N,flux);
 end
-if (kiter == options.maxPowerIters)
+if (kiter == maxPowerIterations)
     warning('Eigenvalue not converged.')
 end
 

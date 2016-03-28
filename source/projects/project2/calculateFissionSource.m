@@ -5,7 +5,6 @@ function [ fissionSource, fissionSourceTotal ] = calculateFissionSource( solnMes
     fissionSourceTotal = 0;
     fissionSource = zeros(solnMesh.nX-1,1);
     for i = 1:solnMesh.nX-1
-        m = solnMesh.mat(i);
         fissionSource(i) = xs(solnMesh.mat(i)).nuBar*sum(xs(solnMesh.mat(i)).sigF(:)'.*flux(i,:));
         fissionSourceTotal = fissionSourceTotal + fissionSource(i)*(solnMesh.x(i+1)-solnMesh.x(i));
     end

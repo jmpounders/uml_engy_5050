@@ -1,4 +1,4 @@
-function phi = sweep(solnMesh, xs, q, N)
+function phi = sweep(solnMesh, xs, q, N, g)
 
 % Get quadrature
 [mu,w] = lgwt(N,-1,1);
@@ -12,7 +12,7 @@ for m = 1:N
         psiInc = 0.0;
         for i = 1:solnMesh.nX-1
             h = solnMesh.x(i+1) - solnMesh.x(i);
-            sigma = xs(solnMesh.mat(i)).sigTr(2);
+            sigma = xs(solnMesh.mat(i)).sigTr(g);
             psi(i,m) = (q(i)*h + 2.0*mu(m)*psiInc)/(sigma*h+2.0*mu(m));
             psiInc = 2.0*psi(i,m) - psiInc;
         end
@@ -20,7 +20,7 @@ for m = 1:N
         psiInc = 0.0;
         for i = solnMesh.nX-1:-1:1
             h = solnMesh.x(i+1) - solnMesh.x(i);
-            sigma = xs(solnMesh.mat(i)).sigTr(2);
+            sigma = xs(solnMesh.mat(i)).sigTr(g);
             psi(i,m) = (q(i)*h - 2.0*mu(m)*psiInc)/(sigma*h-2.0*mu(m));
             psiInc = 2.0*psi(i,m) - psiInc;
         end

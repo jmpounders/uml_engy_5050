@@ -1,38 +1,37 @@
-function flux = MultigroupFixedSourceSolve(options,solnMesh,xs)
+function flux = MultigroupFixedSourceSolve(solnMesh,xs,N,fluxInit)
 % Coordinate solution of multigroup fixed-source diffusion system
 % This only accounts for downscattering from the previous one group!!!!
 
 nx = solnMesh.nX - 1;
-
-flux = ones(nx,options.numGroups);
+numGroups = length(xs(1).sigTr);
 
 % Calculate the fixed external source
-sourceVec = zeros(nx,1);
+fissionSource = zeros(nx,1);
 for j = 1:nx
-   sourceVec(j) = solnMesh.src(j)*(solnMesh.x(j+1) - solnMesh.x(j));
+   fissionSource(j) = solnMesh.src(j)/2;
 end
 
-for g = 1:options.numGroups
-   % calculate the down-scatter source
-   if (options.numGroups > 1 && g > 1),
-     dsSrc = zeros(nx,1);
-     for j = 1:nx
-        sigDS = xs(solnMesh.mat(j)).sigS(g,g-1);
-        dsSrc(j) = sigDS*fluxg(j)*(solnMesh.x(j+1)-solnMesh.x(j));
-     end
-   end
-   
-   % create matrix diagonals and source vector
-   Ag = createSparseLinearSys(solnMesh,xs,g);
+flux = fluxInit;
+for si = 1:1000
+    fluxOld = flux;
 
-   if (g == 1),
-       bg = sourceVec;
-   else
-       bg = dsSrc;
-   end
-   
-   % solve sparse linear system
-   fluxg = Ag\bg;
-   flux(:,g) = fluxg;
+    for g = 1:numGroups
+       % calculate the down-scatter source
+       scatterSource = zeros(nx,1);
+       for gp = 1:numGroups
+         for j = 1:nx
+            scatterSource(j) = scatterSource(j) + xs(solnMesh.mat(j)).sigS(g,gp)*flux(j,gp)/2;
+         end
+       end
+
+       if (g == 1),
+           bg = scatterSource+fissionSource;
+       else
+           bg = scatterSource;
+       end
+
+       % solve sparse linear system
+       flux(:,g) = sweep(solnMesh, xs, bg, N, g);
+    end
+    if max(abs(flux-fluxOld)./flux) < 1e-4, break; end
 end
-
