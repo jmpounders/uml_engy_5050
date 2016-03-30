@@ -19,7 +19,7 @@ Part 1
 
 1. Derive the :math:`S_N` sweep equations for both forward (:math:`\mu_m > 0`) and backward (:math:`\mu_m < 0`) directions.  You may assume one energy group, and the scattering and fission sources should be represented by a single variable (e.g., :math:`q_{m,i}`).
 2. Implement a function (in either Matlab or Python) that solves the :math:`S_N` sweep equations.  The function should accept mesh and cross section data structures (see the :ref:`dataStructures` below) and return the a vector array consisting of the *scalar* flux in each spatial cell.  This function should solve the *within-group* transport equation.  In other words, assume that you have a known, given source term that takes the place of the scattering and fission sources.  This is effectively a one-group, fixed-source transport sweep with no fission or scattering.  (See details below for guidance on implementing this function.)
-3. Calculate the scalar flux of a homogeneous 1D system.  Let the reactor be 10 cm wide, and use 6 discrete directions.  Set the source term to be equal to 1/2 everywhere.  For convenience, Python and Matlab templates are provided below.  All you need to do is implement your sweep function (step 2 previously) and insert it into the code below.
+3. Calculate the scalar flux of a homogeneous 1D system.  Let the reactor be 10 cm wide, and use 6 discrete directions.  For the cross sections, use the group-2 (thermal) cross sections for material 1.  Set the source term to be equal to 1/2 everywhere.  For convenience, Python and Matlab templates are provided below.  All you need to do is implement your sweep function (step 2 previously) and insert it into the code below.
 
 Python:
 
@@ -46,14 +46,15 @@ Python:
    q = 0.5*np.ones(solnMesh.nX-1)
 
    # Implement the sweep function
-   def sweep(solnMesh, xs, q, N) : 
+   def sweep(solnMesh, xs, q, N, g) : 
    #
    # !!!PUT YOUR FUNCTION HERE!!!
    # (...or in the proj file)
    #
 
    # Calculate the scalar flux
-   phi = sweep(solnMesh,xs,q,6)
+   g = 2
+   phi = sweep(solnMesh,xs,q,6,g)
 
    # Plot your results at cell centers
    xCell = np.zeros(solnMesh.nX-1);
@@ -91,7 +92,8 @@ Matlab:
    % Make sure your sweep file (sweep.m) is in your path
 
    % Calculate the scalar flux
-   phi = sweep(solnMesh,xs,q,6);
+   g = 2;
+   phi = sweep(solnMesh,xs,q,6, g);
 
    % Plot your results at cell centers
    xCell = zeros(solnMesh.nX-1,1);

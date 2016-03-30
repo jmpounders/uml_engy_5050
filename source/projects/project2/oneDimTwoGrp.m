@@ -7,7 +7,7 @@ disp('One-Dim, Two-Group Diffusion Theory Solver')
 
 solnMesh = struct('nX',  10, ...
                   'x',   linspace(0,400,11), ...
-                  'mat', [1;1;1;1;1;1;1;1;1;1],  ...
+                  'mat', [2;1;1;1;1;1;1;1;1;2],  ...
                   'bc',  [2,1]);
 
 for i = 1:4
@@ -16,8 +16,7 @@ end
 
 xs = getXS();
 
-[ flux, k ] = powerIterationSolve( solnMesh,xs,2 );
-k
+[ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
 
 
 Bsq = (pi/max(solnMesh.x))^2;
