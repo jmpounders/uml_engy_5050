@@ -3,7 +3,7 @@ function [ flux, k ] = powerIterationSolve( solnMesh,xs,N )
 
 maxPowerIterations = 1000;
 
-flux = ones(solnMesh.nX-1,length(xs(1).sigTr));
+flux = ones(solnMesh.nX,length(xs(1).sigTr));
 k = 1;
 F = 1;
 for kiter = 1:maxPowerIterations

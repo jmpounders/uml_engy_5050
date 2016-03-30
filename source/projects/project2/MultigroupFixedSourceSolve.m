@@ -2,7 +2,7 @@ function flux = MultigroupFixedSourceSolve(solnMesh,xs,N,fluxInit)
 % Coordinate solution of multigroup fixed-source diffusion system
 % This only accounts for downscattering from the previous one group!!!!
 
-nx = solnMesh.nX - 1;
+nx = solnMesh.nX;
 numGroups = length(xs(1).sigTr);
 
 % Calculate the fixed external source
@@ -31,7 +31,7 @@ for si = 1:1000
        end
 
        % solve sparse linear system
-       flux(:,g) = sweep(solnMesh, xs, bg, N, g);
+       flux(:,g) = sweep_refl(solnMesh, xs, bg, N, g);
     end
     if max(abs(flux-fluxOld)./flux) < 1e-4, break; end
 end

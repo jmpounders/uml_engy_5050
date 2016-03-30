@@ -1,9 +1,12 @@
 clear;
-clc;
+% clc;
 disp('One-Dim, Multi-Group SN Solver')
 
+pitch = 0.5;
+width = 0.35;
+ci = (pitch-width)/2.0;
 solnMesh = struct('nX',  3, ...
-                  'x',   [0.0, 0.5, 1.5, 2.0], ...
+                  'x',   [0.0, ci, ci+width, pitch], ...
                   'mat', [2;1;2],  ...
                   'bc',  [2,1]);
 
@@ -11,7 +14,7 @@ for i = 1:4
     solnMesh = refineMesh(solnMesh);
 end
 
-xs = getXS();
+xs = getXS2();
 
 [ flux, k ] = powerIterationSolve( solnMesh,xs,2 );
 k

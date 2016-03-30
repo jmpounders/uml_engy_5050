@@ -17,7 +17,7 @@ end
 xs = getXS();
 
 q = 1/2*ones(solnMesh.nX-1,1);
-phi_SN = sweep(solnMesh,xs,q,6);
+phi = sweep(solnMesh,xs,q,6,2);
 % phi_diffusion = solveDiffusion(solnMesh,xs,q*2);
 
 xCell = zeros(solnMesh.nX-1,1);
