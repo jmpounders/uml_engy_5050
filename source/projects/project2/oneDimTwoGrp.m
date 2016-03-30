@@ -13,8 +13,7 @@ end
 
 xs = getXS();
 
-[ flux, k ] = powerIterationSolve( solnMesh,xs,2 );
-k
+[ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
 
 
 % Bsq = (pi/max(solnMesh.x))^2;
