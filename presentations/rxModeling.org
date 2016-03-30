@@ -1,0 +1,72 @@
+#+STARTUP: hidestars indent
+#+STARTUP: beamer
+#+TITLE: Reactor Modeling and Analysis
+#+AUTHOR: Justin Pounders
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+BEAMER_THEME: Warsaw
+#+OPTIONS: H:1 toc:nil
+
+* Introduction
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{nukePlan.png}
+  \caption{Why are we here?}
+\end{figure}
+* Introduction
+\begin{figure}
+  \centering
+  \includegraphics[width=0.45\textwidth]{pwr-rx-vessel-large.png}
+\end{figure}
+* Introduction
+\begin{figure}
+  \centering
+  \includegraphics[width=0.55\textwidth]{lwrPlanView.png}
+\end{figure}
+* Introduction
+\begin{figure}
+  \centering
+  \includegraphics[width=0.55\textwidth]{assemblyGrid.png}
+\end{figure}
+* Introduction
+\begin{figure}
+  \centering
+  \includegraphics[width=0.35\textwidth]{NEAT22-Figure-1-bwr-fuel-c.png}
+\end{figure}
+* Introduction
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{pwr_fa_17x17.png}
+  \caption{PWR assembly geometry.}
+\end{figure}
+* Introduction
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{bwr_fa.png}
+  \caption{BWR assembly geometry.}
+\end{figure}
+* Introduction
+\begin{table}[]
+\centering
+\caption{Typical LWR Parameters}
+\label{my-label}
+\begin{tabular}{|l|c|c|}
+\hline
+Parameter             & BWR   & PWR   \\
+\hline
+Rod diameter {[}in{]} & 0.48  & 0.37  \\
+Rod height {[}m{]}    & 4.1   & 4.0   \\
+Rod pitch             & 0.64  & 0.50  \\
+Assembly lattice      & 8x8   & 17x17 \\
+\# rods/assembly      & 62    & 264   \\
+\# assemblies/core    & 732   & 241   \\
+Total \# rods         & 45384 & 63624 \\
+\hline
+\end{tabular}
+\end{table}
+* Energy Self Shielding
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../notebooks/selfshielding.png}
+  \caption{Self shielding of neutron flux in resonance.}
+\end{figure}
