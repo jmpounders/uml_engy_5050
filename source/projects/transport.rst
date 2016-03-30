@@ -33,7 +33,7 @@ Python:
    solnMesh = Mesh(10, 
                    np.linspace(0.0,10,11), 
                    [1,1,1,1,1,1,1,1,1,1],
-                   [2,1])
+                   [1,1])
 
    # Refine the mesh
    for i in range(4) :
@@ -43,7 +43,7 @@ Python:
    xs = getXS()
 
    # Create the source array
-   q = 0.5*np.ones(solnMesh.nX-1)
+   q = 0.5*np.ones(solnMesh.nX)
 
    # Implement the sweep function
    def sweep(solnMesh, xs, q, N, g) : 
@@ -57,8 +57,8 @@ Python:
    phi = sweep(solnMesh,xs,q,6,g)
 
    # Plot your results at cell centers
-   xCell = np.zeros(solnMesh.nX-1);
-   for i in range(solnMesh.nX-1) :
+   xCell = np.zeros(solnMesh.nX);
+   for i in range(solnMesh.nX) :
        xCell[i] = (solnMesh.x[i]+solnMesh.x[i+1])/2.0;
 
    plt.plot(xCell,phi)
@@ -87,7 +87,7 @@ Matlab:
    xs = getXS();
 
    % Create the source array
-   q = 1/2*ones(solnMesh.nX-1,1);
+   q = 1/2*ones(solnMesh.nX,1);
 
    % Make sure your sweep file (sweep.m) is in your path
 
@@ -96,8 +96,8 @@ Matlab:
    phi = sweep(solnMesh,xs,q,6, g);
 
    % Plot your results at cell centers
-   xCell = zeros(solnMesh.nX-1,1);
-   for i = 1:solnMesh.nX-1
+   xCell = zeros(solnMesh.nX,1);
+   for i = 1:solnMesh.nX
       xCell(i) = (solnMesh.x(i)+solnMesh.x(i+1))/2.0;
    end
    plot(xCell,phi)
