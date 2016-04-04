@@ -14,10 +14,31 @@ for i = 1:4
     solnMesh = refineMesh(solnMesh);
 end
 
-xs = getXS2();
+xs = getXS();
 
 [ flux, k ] = powerIterationSolve( solnMesh,xs,2 );
 k
+
+xCell = zeros(solnMesh.nX,1);
+for i = 1:solnMesh.nX
+    xCell(i) = (solnMesh.x(i)+solnMesh.x(i+1))/2.0;
+end
+subplot(1,2,1)
+plot(xCell,flux(:,1))
+title('Fast flux')
+xlabel('x')
+dy = ylim;
+line([ci ci],dy,'Color','black')
+line([pitch-ci pitch-ci],dy,'Color','black')
+ylim(dy)
+subplot(1,2,2)
+plot(xCell,flux(:,2))
+title('Thermal flux')
+xlabel('x')
+dy = ylim;
+line([ci ci],dy,'Color','black')
+line([pitch-ci pitch-ci],dy,'Color','black')
+ylim(dy)
 
 
 % Bsq = (pi/max(solnMesh.x))^2;

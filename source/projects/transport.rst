@@ -120,7 +120,7 @@ Part 2
 Part 3
 ~~~~~~
 
-1. Consider a 25-cm "slab" reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.
+1. Consider a 25-cm "slab" reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.  (Note that you need to extend your results from part 2 to two-group to do this.)
 2. What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.
 
 .. _framework:
@@ -271,7 +271,7 @@ Matlab:
 - :download:`lgwt.m <project2/lgwt.m>`
 - :download:`calculateFissionSource.m <project2/calculateFissionSource.m>`
 - :download:`MultiGroupFixedSourceSolve.m <project2/MultiGroupFixedSourceSolve.m>`
-- :download:`calculateFissionSource.m <project2/calculateFissionSource.m>`
+- :download:`powerIterationSolve.m <project2/powerIterationSolve.m>`
 
 Python:
 

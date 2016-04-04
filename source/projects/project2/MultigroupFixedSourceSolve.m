@@ -31,7 +31,7 @@ for si = 1:1000
        end
 
        % solve sparse linear system
-       flux(:,g) = sweep_refl(solnMesh, xs, bg, N, g);
+       flux(:,g) = sweep(solnMesh, xs, bg, N, g);
     end
     if max(abs(flux-fluxOld)./flux) < 1e-4, break; end
 end
