@@ -144,12 +144,14 @@ ylabel(&#39;Scalar flux&#39;)
 <ol class="arabic simple">
 <li>Derive the one-group diffusion equation from the one-group <span class="math">\(P_1\)</span> equations.</li>
 <li>Derive the analytical solution of the diffusion equation for a homogeneous medium.  Boundary conditions should approximate the condition of no incoming neutrons.  Part of your solution should be an expression for the effective multiplication factor, <span class="math">\(k = k_\text{eff} = \lambda^{-1}\)</span>.</li>
-<li>TBA</li>
 </ol>
 </div>
 <div class="section" id="part-3">
 <h3>2.1.3. Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
-<p>TBA</p>
+<ol class="arabic simple">
+<li>Consider a 25-cm &#8220;slab&#8221; reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.</li>
+<li>What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.</li>
+</ol>
 </div>
 </div>
 <div class="section" id="project-framework">
@@ -239,11 +241,11 @@ end
 <span id="sweepimplementation"></span><h3>2.2.4. Sweep Implementation<a class="headerlink" href="#sweep-implementation" title="Permalink to this headline">¶</a></h3>
 <p>In part 1 of this projection you have to implement a function that solves the within-group transport equation.  There only requirement is that this implementation be in a <em>function</em>.  In implementing your function, avoid global variables.  This means that all of the input to your function should be provided as function arguments.  These arguments should be (in order) the <code class="docutils literal"><span class="pre">solnMesh</span></code>, <code class="docutils literal"><span class="pre">xs</span></code>, a source array, and the number of quadrature points to use.  The output should be the <em>scalar</em> flux for each <em>cell center</em> (the interface values are not needed).</p>
 <p>In Python the function declaration should thus be</p>
-<div class="highlight-python"><div class="highlight"><pre>def sweep(solnMesh, xs, q, N) :
+<div class="highlight-python"><div class="highlight"><pre>def sweep(solnMesh, xs, q, N, g) :
 </pre></div>
 </div>
 <p>In Matlab is should be</p>
-<div class="highlight-python"><div class="highlight"><pre>function phi = sweep(solnMesh, xs, q, N)
+<div class="highlight-python"><div class="highlight"><pre>function phi = sweep(solnMesh, xs, q, N, g)
 </pre></div>
 </div>
 </div>
@@ -255,6 +257,9 @@ end
 <li><a class="reference download internal" href="../_downloads/getXS.m"><code class="xref download docutils literal"><span class="pre">getXS.m</span></code></a></li>
 <li><a class="reference download internal" href="../_downloads/refineMesh.m"><code class="xref download docutils literal"><span class="pre">refineMesh.m</span></code></a></li>
 <li><a class="reference download internal" href="../_downloads/lgwt.m"><code class="xref download docutils literal"><span class="pre">lgwt.m</span></code></a></li>
+<li><a class="reference download internal" href="../_downloads/calculateFissionSource.m"><code class="xref download docutils literal"><span class="pre">calculateFissionSource.m</span></code></a></li>
+<li><a class="reference download internal" href="../_downloads/MultiGroupFixedSourceSolve.m"><code class="xref download docutils literal"><span class="pre">MultiGroupFixedSourceSolve.m</span></code></a></li>
+<li><a class="reference download internal" href="../_downloads/calculateFissionSource.m"><code class="xref download docutils literal"><span class="pre">calculateFissionSource.m</span></code></a></li>
 </ul>
 <p>Python:</p>
 <ul class="simple">
