@@ -120,7 +120,40 @@ Part 2
 Part 3
 ~~~~~~
 
-1. Consider a 25-cm "slab" reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.  (Note that you need to extend your results from part 2 to two-group to do this.)
+1. Consider a 25-cm "slab" reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.  (Note that you need to extend your results from part 2 to two-group to do this.)  For this part you will also need the most-up-to-date files from the website (updated 4/4/16).  You can then generate the multigroup solution as follows:
+
+Matlab:
+
+::
+
+   solnMesh = struct('nX',  10, ...
+                     'x',   [linspace(0,25,11)], ...
+                      'mat', [1;1;1;1;1;1;1;1;1;1],  ...
+                      'bc',  [1,1]);
+
+Python:
+
+::
+
+   solnMesh = Mesh(10, 
+                np.linspace(0.0,25,11), 
+                [1,1,1,1,1,1,1,1,1,1],
+                [2,1])
+   for i in range(4) :
+       solnMesh = refineMesh(solnMesh);
+   xs = getXS()
+   [ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6,sweep )
+
+for i = 1:4
+    solnMesh = refineMesh(solnMesh);
+end
+
+xs = getXS();
+
+[ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
+
+
+   
 2. What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.
 
 .. _framework:
