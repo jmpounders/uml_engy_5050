@@ -270,7 +270,7 @@ Matlab:
 - :download:`refineMesh.m <project2/refineMesh.m>`
 - :download:`lgwt.m <project2/lgwt.m>`
 - :download:`calculateFissionSource.m <project2/calculateFissionSource.m>`
-- :download:`MultiGroupFixedSourceSolve.m <project2/MultiGroupFixedSourceSolve.m>`
+- :download:`MultigroupFixedSourceSolve.m <project2/MultigroupFixedSourceSolve.m>`
 - :download:`powerIterationSolve.m <project2/powerIterationSolve.m>`
 
 Python:
