@@ -16,15 +16,14 @@ end
 
 xs = getXS();
 
-q = 1/2*ones(solnMesh.nX-1,1);
-phi_SN = sweep(solnMesh,xs,q,6);
-% phi_diffusion = solveDiffusion(solnMesh,xs,q*2);
+q = 1/2*ones(solnMesh.nX,1);
+phi_SN = sweep(solnMesh,xs,q,6,2);
 
-xCell = zeros(solnMesh.nX-1,1);
-for i = 1:solnMesh.nX-1
+xCell = zeros(solnMesh.nX,1);
+for i = 1:solnMesh.nX
     xCell(i) = (solnMesh.x(i)+solnMesh.x(i+1))/2.0;
 end
-plot(xCell,phi)
+plot(xCell,phi_SN)
 xlabel('z')
 ylabel('Scalar flux')
 

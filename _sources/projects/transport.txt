@@ -116,12 +116,12 @@ Part 2
 
 1. Derive the one-group diffusion equation from the one-group :math:`P_1` equations.
 2. Derive the analytical solution of the diffusion equation for a homogeneous medium.  Boundary conditions should approximate the condition of no incoming neutrons.  Part of your solution should be an expression for the effective multiplication factor, :math:`k = k_\text{eff} = \lambda^{-1}`.
-3. TBA
 
 Part 3
 ~~~~~~
 
-TBA
+1. Consider a 25-cm "slab" reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.
+2. What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.
 
 .. _framework:
 
@@ -251,13 +251,13 @@ In Python the function declaration should thus be
 
 ::
 
-   def sweep(solnMesh, xs, q, N) :
+   def sweep(solnMesh, xs, q, N, g) :
 
 In Matlab is should be
 
 ::
 
-   function phi = sweep(solnMesh, xs, q, N)
+   function phi = sweep(solnMesh, xs, q, N, g)
    
 Downloads
 ~~~~~~~~~
@@ -269,6 +269,9 @@ Matlab:
 - :download:`getXS.m <project2/getXS.m>`
 - :download:`refineMesh.m <project2/refineMesh.m>`
 - :download:`lgwt.m <project2/lgwt.m>`
+- :download:`calculateFissionSource.m <project2/calculateFissionSource.m>`
+- :download:`MultiGroupFixedSourceSolve.m <project2/MultiGroupFixedSourceSolve.m>`
+- :download:`calculateFissionSource.m <project2/calculateFissionSource.m>`
 
 Python:
 
