@@ -130,6 +130,12 @@ Matlab:
                      'x',   [linspace(0,25,11)], ...
                       'mat', [1;1;1;1;1;1;1;1;1;1],  ...
                       'bc',  [1,1]);
+   for i = 1:4
+      solnMesh = refineMesh(solnMesh);
+   end
+   xs = getXS();
+   [ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
+
 
 Python:
 
@@ -143,15 +149,6 @@ Python:
        solnMesh = refineMesh(solnMesh);
    xs = getXS()
    [ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6,sweep )
-
-for i = 1:4
-    solnMesh = refineMesh(solnMesh);
-end
-
-xs = getXS();
-
-[ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
-
 
    
 2. What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.

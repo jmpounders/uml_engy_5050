@@ -156,6 +156,11 @@ ylabel(&#39;Scalar flux&#39;)
                   &#39;x&#39;,   [linspace(0,25,11)], ...
                    &#39;mat&#39;, [1;1;1;1;1;1;1;1;1;1],  ...
                    &#39;bc&#39;,  [1,1]);
+for i = 1:4
+   solnMesh = refineMesh(solnMesh);
+end
+xs = getXS();
+[ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
 </pre></div>
 </div>
 <p>Python:</p>
@@ -169,13 +174,6 @@ ylabel(&#39;Scalar flux&#39;)
 <span class="p">[</span> <span class="n">flux_s6</span><span class="p">,</span> <span class="n">k_s6</span> <span class="p">]</span> <span class="o">=</span> <span class="n">powerIterationSolve</span><span class="p">(</span> <span class="n">solnMesh</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">sweep</span> <span class="p">)</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>for i = 1:4</dt>
-<dd>solnMesh = refineMesh(solnMesh);</dd>
-</dl>
-<p>end</p>
-<p>xs = getXS();</p>
-<p>[ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );</p>
 <ol class="arabic simple" start="2">
 <li>What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.</li>
 </ol>
