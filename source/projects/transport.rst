@@ -1,7 +1,7 @@
 Transport Theory in Reactor Physics
 ===================================
 
-**Due date:** April 6, 2016, 11:59 PM
+**Due date:** April 11, 2016, 11:59 PM
 
 Neutron transport theory plays an important role in reactor physcis.  In this project we will develop a simple transport theory model of a notional 1D reactor.
 
