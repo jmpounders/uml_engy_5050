@@ -149,7 +149,32 @@ ylabel(&#39;Scalar flux&#39;)
 <div class="section" id="part-3">
 <h3>2.1.3. Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Consider a 25-cm &#8220;slab&#8221; reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.</li>
+<li>Consider a 25-cm &#8220;slab&#8221; reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.  (Note that you need to extend your results from part 2 to two-group to do this.)  For this part you will also need the most-up-to-date files from the website (updated 4/4/16).  You can then generate the multigroup solution as follows:</li>
+</ol>
+<p>Matlab:</p>
+<div class="highlight-python"><div class="highlight"><pre>solnMesh = struct(&#39;nX&#39;,  10, ...
+                  &#39;x&#39;,   [linspace(0,25,11)], ...
+                   &#39;mat&#39;, [1;1;1;1;1;1;1;1;1;1],  ...
+                   &#39;bc&#39;,  [1,1]);
+for i = 1:4
+   solnMesh = refineMesh(solnMesh);
+end
+xs = getXS();
+[ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">solnMesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span>
+             <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span>
+             <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+             <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">solnMesh</span> <span class="o">=</span> <span class="n">refineMesh</span><span class="p">(</span><span class="n">solnMesh</span><span class="p">);</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">getXS</span><span class="p">()</span>
+<span class="p">[</span> <span class="n">flux_s6</span><span class="p">,</span> <span class="n">k_s6</span> <span class="p">]</span> <span class="o">=</span> <span class="n">powerIterationSolve</span><span class="p">(</span> <span class="n">solnMesh</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">sweep</span> <span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
 <li>What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.</li>
 </ol>
 </div>
@@ -258,8 +283,8 @@ end
 <li><a class="reference download internal" href="../_downloads/refineMesh.m"><code class="xref download docutils literal"><span class="pre">refineMesh.m</span></code></a></li>
 <li><a class="reference download internal" href="../_downloads/lgwt.m"><code class="xref download docutils literal"><span class="pre">lgwt.m</span></code></a></li>
 <li><a class="reference download internal" href="../_downloads/calculateFissionSource.m"><code class="xref download docutils literal"><span class="pre">calculateFissionSource.m</span></code></a></li>
-<li><a class="reference download internal" href="../_downloads/MultiGroupFixedSourceSolve.m"><code class="xref download docutils literal"><span class="pre">MultiGroupFixedSourceSolve.m</span></code></a></li>
-<li><a class="reference download internal" href="../_downloads/calculateFissionSource.m"><code class="xref download docutils literal"><span class="pre">calculateFissionSource.m</span></code></a></li>
+<li><a class="reference download internal" href="../_downloads/MultigroupFixedSourceSolve.m"><code class="xref download docutils literal"><span class="pre">MultigroupFixedSourceSolve.m</span></code></a></li>
+<li><a class="reference download internal" href="../_downloads/powerIterationSolve.m"><code class="xref download docutils literal"><span class="pre">powerIterationSolve.m</span></code></a></li>
 </ul>
 <p>Python:</p>
 <ul class="simple">
