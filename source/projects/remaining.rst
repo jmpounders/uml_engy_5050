@@ -13,7 +13,39 @@ In this final project you will form groups of two to three to study an aspect of
 5. Method of characteristics (transport theory),
 6. Monte Carlo methods (transport theory).
 
-Once you have been assigned a topic, the project will consist of the following components.
+*UPDATE:*
+
+- Fuel depletion: Abhishek, Chelsea, Randall
+  
+  - Things to consider:
+
+    - Burnup equations
+    - Uranium (fuel) burn-up
+    - Plutonium buildup
+    - Fission product poisoining
+    - Breeding and conversion
+    - Uranium vs. thorium fuel cycles
+
+  - Reference:
+
+    - :download:`Exceprt from Stacey, *Nuclear Reactor Physics* <../_static/FuelBurnup.pdf>`
+  
+- Monte Carlo: Danielle, Dylan, Jim, Schayne
+
+  - Things to consider:
+
+    - How to "track" neutrons (probabilistically)
+    - How to gain meaningful results (statistically)
+    - Pros and cons of Monte Carlo
+    - Cross section data
+    - How to represent geometry
+    - How to "optimize" Monte Carlo
+
+  - Reference:
+
+    - :download:`Exceprt from Lewis and Miller, *Computational Methods of Neutron Transport* <../_static/MonteCarlo.pdf>`
+
+The project will consist of the following components.
 
 1. *Group-study:* You and your group members should study the topic thoroughly so that you understand (a) what the underlying problem is and (b) how your topic solves that problem.
 2. *Faculty check-in:* Once you feel that you have a reasonable grasp of the content, you should set up an appointment to chat with me for feedback and suggestions.
