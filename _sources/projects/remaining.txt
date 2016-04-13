@@ -1,6 +1,8 @@
 Research, Paper, Presentation
 =============================
 
+*Presentations:* Friday, May 6, 3:00-6:00 PM
+
 Project Specification
 ---------------------
 
@@ -59,7 +61,7 @@ Timeline
 - 4/6: Topic assignment
 - 4/20: Meet with me *before* this date for comments and guidance.
 - 4/25: Bring hard-copy report to class for review.
-- 5/6 (tentative): Presentations
+- 5/6, 3-6 PM: Presentations
 
 Documentation Guidelines
 ------------------------
