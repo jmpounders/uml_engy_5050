@@ -11,3 +11,4 @@ Problems
    problems/4_energy
    problems/5_transport
    problems/6_diffusion
+   problems/7_time
