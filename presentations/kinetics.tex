@@ -1,0 +1,126 @@
+% Created 2016-04-25 Mon 12:39
+\documentclass[presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usetheme{Warsaw}
+\author{Justin Pounders}
+\date{\today}
+\title{Reactor Kinetics}
+\hypersetup{
+ pdfauthor={Justin Pounders},
+ pdftitle={Reactor Kinetics},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\begin{frame}[label={sec:orgheadline1}]{Point Kinetics}
+\begin{block}{PKE}
+\begin{align*}
+  \frac{dP}{dt} &= \frac{\rho - \bar{\beta}}{\Lambda}P + \sum_{i=1}^6 \lambda_i C_i \\
+  \frac{dC_i}{dt} &= \frac{\bar{\beta}_i}{\Lambda} P - \lambda_i C_i
+\end{align*}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:orgheadline2}]{Inhour Equation}
+Assume constant reactivity and a solution of the form
+\begin{align*}
+  P(t) &= P_0 e^{\omega t} \\
+  C_i(t) &= C_{i,0} e^{\omega t}
+\end{align*}
+\pause
+Plugging into the PKE leads to
+\begin{align*}
+  \omega P_0 e^{\omega t}  &= \frac{\rho - \bar{\beta}}{\Lambda}P_0 e^{\omega t}  + \sum_{i=1}^6 \lambda_i C_{i,0} e^{\omega t} \\
+  \omega C_{i,0} e^{\omega t} &= \frac{\bar{\beta}_i}{\Lambda} P_0 e^{\omega t}  - \lambda_i C_{i,0} e^{\omega t}
+\end{align*}
+\pause
+Combining the two equations results in the \emph{inhour} equation
+\begin{align*}
+  \rho = \Lambda \omega + \sum_{i=1}^6 \frac{\bar{\beta}_i \omega}{\omega + \lambda_i}
+\end{align*}
+\end{frame}
+\begin{frame}[label={sec:orgheadline3}]{Roots of the Inhour Equation}
+There are 7 roots of the inhour equation (they are the eigenvalues of the PKE \emph{system matrix}:
+\begin{align*}
+  \rho = \Lambda \omega_j + \sum_{i=1}^6 \frac{\bar{\beta}_i \omega_j}{\omega_j + \lambda_i}, \;\;\; j = 1,2,\hdots, 7
+\end{align*}
+\pause
+This means we have a solution of the form
+\begin{align*}
+  P(t) = \sum_{j=0}^6 a_j e^{\omega_j t}
+\end{align*}
+Six of the roots will always be negative
+\begin{align*}
+  \omega_j < -\lambda_j, \quad j=1,2,\hdots, 6
+\end{align*}
+The root \(\omega_{\text{0}}\) may be positive or negative.
+\begin{align*}
+  P(t) = a_0 e^{\omega_0 t} + \sum_{j=1}^6 a_j e^{-|\omega_j| t}
+\end{align*}
+\end{frame}
+\begin{frame}[label={sec:orgheadline4}]{Asymptotic Dynamics}
+Asymptotically (\(t >> 0\)) we have
+\begin{align*}
+  P(t) \approx a_0 e^{\omega_0 t} \sim e^{t/T}
+\end{align*}
+where the (asymptotic) period is defined as
+\begin{align*}
+  T = \omega_0^{-1}
+\end{align*}
+\end{frame}
+\begin{frame}[label={sec:orgheadline5}]{Subcritical Limit}
+As \(\rho \rightarrow -\infty\)
+\begin{align*}
+  T \rightarrow \lambda_1^{-1} \approx 80 \text{ seconds (U-235)}
+\end{align*}
+\end{frame}
+\begin{frame}[label={sec:orgheadline6}]{Supercritical (I)}
+For \(0 \leq \rho \leq \bar{\beta}/2\),
+\begin{align*}
+  \omega_0 + \lambda_i \approx \lambda_i
+\end{align*}
+\pause
+so
+\begin{align*}
+  \rho &=  \omega_0 \left[\Lambda + \sum_{i=1}^6 \frac{\bar{\beta}_i}{\lambda_i} \right] \\
+       &\approx \omega_0 \times 0.1 \text{ seconds}
+\end{align*}
+\pause
+This means that
+\begin{align*}
+  T = 0.1 \rho^{-1} \text{ seconds} \approx \frac{1}{4} \frac{\bar{\beta}}{\rho} \text{ minutes}
+\end{align*}
+\end{frame}
+\begin{frame}[label={sec:orgheadline7}]{Supercritical (II)}
+For \(\rho > \bar{\beta}\),
+\begin{align*}
+  \omega_0 + \lambda_i \approx \omega_0
+\end{align*}
+\pause
+so
+\begin{align*}
+  \rho = \Lambda \omega_0 + \bar{\beta}
+\end{align*}
+\pause
+This means that
+\begin{align*}
+  T = \frac{\Lambda}{\rho-\bar{\beta}} \approx 10^{-2} \left(\frac{\rho}{\bar{\beta}}-1\right)^{-1}
+\end{align*}
+\end{frame}
+\end{document}
