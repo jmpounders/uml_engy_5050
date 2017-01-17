@@ -59,9 +59,9 @@ Assessments and Grading
 The graded assessments for this course will consist of homework assignments and projects.  Class participation is also critical and will contribute to your final grade.
 
 +---------------+-----+
-| Homework      | 30% |
+| Homework      | 40% |
 +---------------+-----+
-| Projects      | 60% |
+| Projects      | 50% |
 +---------------+-----+
 | Participation | 10% |
 +---------------+-----+

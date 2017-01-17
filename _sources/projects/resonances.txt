@@ -50,10 +50,3 @@ Project Guidelines
   - use clear, concise language, avoiding fluff and flower;
   - number equations consistently.
 
-Solutions
----------
-
-Pick your flavor:
-
-- :download:`Python Notebook <PythonNotebook.html>`
-- `Matlab Notebook <../_static/Proj1/Project1.html>`_
