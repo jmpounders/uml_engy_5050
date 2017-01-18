@@ -368,7 +368,7 @@ In a fission reaction, the energy $e_{\text{exc}} + \Delta BE$ is enough to over
 1. In the formation of a compound nucleus, why is the available energy equal to $e_\text{exc}$, the energy in the CM system, rather than the total kinetic energy in the LAB system?
 2. Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
 3. Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
-** Solutions
+** Solutions                                                      :noexport:
 1. [@2]Starting with conservation of momentum in the in the LAB system we have
    \begin{align}
      \vec{V}_n + A \vec{V}_A = \vec{V}_n' + A \vec{V}_A'.
@@ -787,7 +787,7 @@ Both $\sigma_n(E)$ and $P(E \rightarrow E', \mu)$ depend on the thermal motion o
 2. Derive the Maxwell-Boltzmann distribution as a function of /kinetic energy/, $E = \frac{1}{2}mA|\vec{V}_A|^2 = \frac{1}{2} m_A V_A^2$. Start with the Maxwell-Boltzmann distribution written as a function of velocity $\vec{V}_A$.  Because this is a /distribution/ the change of variables must be done so that $p(\vec{V}_A) d^3V_A = p(E) dE$.  (Note that although $\vec{V}_A$ is a vector, the direction of the vector is not important, as all that appears in the distribution is $V_A^2$, which is proportional to energy.  Thus we may write $d^3 V_A = 4\pi V_A^2 dV_A$.)
 3. Plot the Maxwell-Boltzmann distribution as a function of kinetic energy using your results from the previous problem.  Use $T = 300$ K.  Does this plot inform the reasoning behind picking an energy of around 1 eV as the cutoff for ``thermal'' neutron energies?
 4. Derive Eqn. \ref{eq::dopplerSLBWx}.
-** Solutions
+** Solutions                                                      :noexport:
 1. The potential elastic scattering cross section is given by
    \begin{align}
      \sigma_p^\ell = 4\pi \lambda^2 \left(2 \ell + 1 \right) \sin^2\phi_\ell.

@@ -1,4 +1,4 @@
-% Created 2016-02-09 Tue 15:29
+% Created 2017-01-18 Wed 13:42
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -17,6 +17,8 @@
 \usepackage{tikz}
 \usepackage{fancyhdr}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \renewcommand\vec{\mathbf}
 \newcommand\leftidx[3]{{\vphantom{#2}}#1#2#3}
 \newenvironment{example}[1]{\vspace{0.2in}\hrule\vspace{0.1in}\noindent\emph{Example:} #1 \\}{\vspace{0.1in}\hrule\vspace{0.2in}}
@@ -30,7 +32,7 @@
  pdftitle={Cross Sections},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.2)}, 
+ pdfcreator={Emacs 25.0.90.1 (Org mode 8.3.5)}, 
  pdflang={English}}
 \begin{document}
 
@@ -430,31 +432,5 @@ Both \(\sigma_n(E)\) and \(P(E \rightarrow E', \mu)\) depend on the thermal moti
 \item Derive the Maxwell-Boltzmann distribution as a function of \emph{kinetic energy}, \(E = \frac{1}{2}mA|\vec{V}_A|^2 = \frac{1}{2} m_A V_A^2\). Start with the Maxwell-Boltzmann distribution written as a function of velocity \(\vec{V}_A\).  Because this is a \emph{distribution} the change of variables must be done so that \(p(\vec{V}_A) d^3V_A = p(E) dE\).  (Note that although \(\vec{V}_A\) is a vector, the direction of the vector is not important, as all that appears in the distribution is \(V_A^2\), which is proportional to energy.  Thus we may write \(d^3 V_A = 4\pi V_A^2 dV_A\).)
 \item Plot the Maxwell-Boltzmann distribution as a function of kinetic energy using your results from the previous problem.  Use \(T = 300\) K.  Does this plot inform the reasoning behind picking an energy of around 1 eV as the cutoff for ``thermal'' neutron energies?
 \item Derive Eqn. \ref{eq::dopplerSLBWx}.
-\end{enumerate}
-\section{Solutions}
-\label{sec:orgheadline13}
-\begin{enumerate}
-\item The potential elastic scattering cross section is given by
-\begin{align}
-  \sigma_p^\ell = 4\pi \lambda^2 \left(2 \ell + 1 \right) \sin^2\phi_\ell.
-\end{align}
-For an \(s\)-wave interaction \(\ell = 0\), and \(\phi_0 = a/\lambda\).  Because \(a/\lambda << 1\) we can use the small-angle approximation for sine: \(\sin\theta \approx \theta\) for \(|\theta| << 1\).  Plugging \(\ell\) and \(\phi_\ell\) into the equation and using the small-angle approximation leads
-\begin{align}
-  \sigma_p^0 = 4\pi a^2.
-\end{align}
-Note that this is the surface area of a sphere with radius \(a\).
-\item Begin with 
-\begin{align}
-  p(\vec{V}_A) = \left( \frac{m_A}{2\pi k T} \right)^\frac{3}{2} \exp\left(-\frac{m_A V_A^2}{2kT}\right) .
-\end{align}
-and \(d^3 V_A = 4\pi V_A^2 dV_A\).  Given \(E = \frac{1}{2}m_A V_A^2\), we have \(dE = m_A V_A dV_A\).  Thus,
-\begin{align}
-  p(\vec{V}_A) d^3 V_A &= 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right) dE.
-\end{align}
-Thus
-\begin{align}
-  p(E) = 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right).
-\end{align}
-Note that the energy-dependent distribution does not depend on mass!
 \end{enumerate}
 \end{document}
