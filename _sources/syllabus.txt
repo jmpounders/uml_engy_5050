@@ -27,7 +27,7 @@ By taking this course, I assume that you have some prior exposure to basic radia
 
 Class periods will primarily focus on discussion and problem solving.  Many of the concepts will be introduced thorugh reading assignments issued *before* the given class period.  These reading assignments are a critical component of the course structure, so it is imperative that you take them seriously.
 
-Throughout the course we will use computational software to look at data and solve certain problems.  Most of this work will be done using the Python programming language, although prior exposure to Python is *not* required.  Our use of Python will be rather superficial, and the required skills will be developed as we go along.  That being said, some prior experience of solving engineering and mathematics problems using a computer (with Matlab, for example) is expected.
+Some problems in this class will require the use of a programming language amenable to computation and plotting.  Matlab is sufficient.  Python is also a good choice.
 
 Learning Objectives
 -------------------
@@ -43,15 +43,6 @@ There is no required textbook for this class.  Reference material and instructor
 - George Bell and Samuel Glasstone, *Nuclear Reactor Theory* (out of print)
 - Alain Hebert, *Applied Reactor Physics*
 - Weston Stacey, *Nuclear Reactor Physics*
-
-Resource pertaining to the Python programming language are provided below, although most of what you will need will be provided as supplemental content on the course website.
-
-- The official documentation for Python 2.7: `<https://docs.python.org/2.7/>`_
-  
-  - A very thorough tutorial: `<https://docs.python.org/2.7/tutorial/index.html>`_
-    
-- Learn Python the Hard Way: `<http://learnpythonthehardway.org/book/>`_
-- Google: `<https://www.google.com/>`_
 
 Assessments and Grading
 -----------------------
