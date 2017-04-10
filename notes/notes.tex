@@ -1,4 +1,4 @@
-% Created 2017-01-18 Wed 14:24
+% Created 2017-03-16 Thu 10:19
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -41,7 +41,7 @@
 
 
 \section{Neutron-Nucleus Reactions}
-\label{sec:orgheadline12}
+\label{sec:orgheadline13}
 \subsection{Introduction}
 \label{sec:orgheadline1}
 A neutron striking a nucleus may elicit a number of different reactions.  The types of reactions may be broadly divided into \emph{absorption} and \emph{scattering} reactions.  Absorption reactions are those in which the neutron is integrated into the nucleus, forming a new nucleus.  Normally this results in an excited, unstable nucleus.  The most common way for the nucleus to alleviate the pressure of the new nucleon is through emission of a photon.  The neutron never re-emerges, so this type of reaction is called a \emph{capture} reaction.  For fissile isotopes, the absorption process normally causes the nucleus to split violently into two pieces, or in other words, \emph{fission}.
@@ -423,11 +423,60 @@ In a fission reaction, the energy \(e_{\text{exc}} + \Delta BE\) is enough to ov
 \item Show that conservation of linear momentum in the LAB system implies conservation of linear momentum in the CM system.
 \item Show that conservation of energy in the LAB system implies conservation of energy in the CM system.
 \end{enumerate}
+\subsection{Solutions}
+\label{sec:orgheadline12}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Starting with conservation of momentum in the in the LAB system we have
+\begin{align}
+  \vec{V}_n + A \vec{V}_A = \vec{V}_n' + A \vec{V}_A'.
+\end{align}
+Substituting in the CM velocity definitions provides
+\begin{align}
+  \vec{v}_n + A \vec{v}_A + (1+A) \vec{V}_{CM} = \vec{v}_n' + A \vec{v}_A' + (1+A) \vec{V}_{CM}.
+\end{align}
+Canceling the CM velocity terms yields conservation of momentum in the CM system.
+\item Starting with conservation kinetic energy in the LAB system we have
+\begin{align}
+  \frac{1}{2} m V_n^2 + \frac{1}{2}mA V_A^2 = \frac{1}{2} m (V_n')^2 + \frac{1}{2}mA (V_A')^2 
+\end{align}
+From the CM velocity definitions we have
+\begin{align}
+  V_n^2 &= \left| \vec{v}_n + \vec{V}_{CM} \right|^2 \\
+        &= \left( v_n \cos\theta_n + V_{CM} \cos\theta_{CM} \right)^2 +
+           \left( v_n \sin\theta_n + V_{CM} \sin\theta_{CM} \right)^2 \\
+        &= \left( v_n^2 \cos^2\theta_n + 2 v_n V_{CM} \cos\theta_n \cos\theta_{CM} + V_{CM}^2 \cos^2\theta_{CM} \right) + \\
+        &\phantom{=} \left( v_n^2 \sin^2\theta_n + 2 v_n V_{CM} \sin\theta_n \sin\theta_{CM} + V_{CM}^2 \sin^2\theta_{CM} \right) \\
+        &= v_n^2 + V_{CM}^2 + 2 v_n V_{CM} \cos(\theta_n-\theta_{CM})
+\end{align}
+and a similar expression for \(V_A^2\).  The angles \(\theta_n\) and \(\theta_{CM}\) are the angles associated with the \(\vec{v}_n\) and \(\vec{V_{CM}}\) vectors, respectively.  Substituting these expressions into the energy balance equation yields
+\begin{align}
+  \frac{1}{2} m (v_n^2 + V_{CM}^2 + 2 v_n V_{CM} \cos(\theta_n-\theta_{CM})) 
++ \frac{1}{2}mA (v_A^2 + V_{CM}^2 + 2 v_A V_{CM} \cos(\theta_A-\theta_{CM})) \\
+= \frac{1}{2} m (v_n'^2 + V_{CM}^2 + 2 v_n' V_{CM} \cos(\theta_n'-\theta_{CM}))
++ \frac{1}{2}mA (v_A'^2 + V_{CM}^2 + 2 v_A' V_{CM} \cos(\theta_A'-\theta_{CM})) 
+\end{align}
+which becomes
+\begin{align}
+  \frac{1}{2} m (v_n^2 + 2 \vec{v}_n \cdot \vec{V}_{CM} ) 
++ \frac{1}{2}mA (v_A^2 + 2 \vec{v}_A \cdot \vec{V}_{CM}) \\
+= \frac{1}{2} m (v_n'^2 + 2 \vec{v}_n' \cdot \vec{V}_{CM})
++ \frac{1}{2}mA (v_A'^2 + 2 \vec{v}_A' \cdot \vec{V}_{CM}) .
+\end{align}
+We know that \(\vec{v}_n = -A \vec{v}_A\) and \(\vec{v}_n' = -A \vec{v}_A'\), so we have
+\begin{align}
+  \frac{1}{2} m v_n^2
++ \frac{1}{2}mA v_A^2
+= \frac{1}{2} m v_n'^2
++ \frac{1}{2}mA v_A'^2,
+\end{align}
+which is the conservation of energy in the CM.
+\end{enumerate}
 
 \section{Cross Sections}
-\label{sec:orgheadline25}
+\label{sec:orgheadline27}
 \subsection{What is a Cross Section?}
-\label{sec:orgheadline13}
+\label{sec:orgheadline14}
 We have already assumed that neutrons travel along straight trajectories between collisions and argued that this is indeed a valid assumption within studies of nuclear reactor physics.  But how can we characterize the frequency of collisions for neutrons traveling along a given trajectory?  Put another way, if a neutron starts along a trajectory from a known point, how long should we expect it to travel before it experiences a collision.  This is clearly a problem for probability.  Hebert (2009) summarizes the problem nicely.
 
 \begin{quote}
@@ -511,7 +560,7 @@ The quantity $\lambda$ is called the /mean-free-path/ and, for an infinite, homo
 \end{example}
 
 \subsection{Resonance}
-\label{sec:orgheadline17}
+\label{sec:orgheadline18}
 Because of the quantum nature of reality, which is very important at the nuclear scale, a nucleus is not allowed to be excited to an arbitrary energy level.  Rather a nucleus may only sit at certain discrete energy levels, at or above its ground state.  Nuclei in excited states will seek to return to the stable ground state, typically though photon emission, although at high enough energy a neutron or even alpha particle may be emitted.  For some nuclei, the additional energy is sufficient to cause fission.  
 
 Although each excitation level, say \(e_i\), is discrete, it's value is not precisely defined due to the Heisenberg uncertainty principle.  Rather each excited state is associated with an energy width, \(\gamma_i\), that is centered at \(e_i\) and related to the average lifetime of the excited state, \(\tau_i\) by
@@ -531,7 +580,7 @@ A discussion of the quantum effects surrounding nucleus formation and de-excitat
 Recall that there is \(e^* = e_{\text{exc}} + \Delta BE\) of energy available to a newly-created compound nucleus that has been struck by a neutron.  When \(e^*\) is close to an excitation level \(e_i\) of the compound nucleus--if the available reaction energy puts the compound nucleus rather precisely into an excited state--then we observe a \emph{resonance} condition.  A resonance condition means that is \emph{very likely} that the compound nucleus will be formed at the excited state corresponding to the \(e_i\) level.  Resonance conditions have a significant impact on the likelihood that a reaction will take place, and consequently the cross section for that reaction will be significantly affected.
 
 \subsubsection{Single Level Breit-Wigner Formula}
-\label{sec:orgheadline14}
+\label{sec:orgheadline15}
 There is a result from quantum mechanics that provides an expression for a reaction cross section in the vicinity of a resonance.  The formula is known as the \emph{single level Breit-Wigner Formula} (SLBW).  The "single level" qualifier belies the assumption the resonance in question is well-separated from nearby resonances.  Conversely, if two energy states are close enough together that their associated energy widths (\(\gamma_i\) \(\gamma_{i+1}\), for example) overlap, then the there will be interference effects between the two states.  This will then lead to more complex expressions for describing the corresponding resonance effects that manifest in the cross sections.
 
 For a reaction of type \(x\) from which there are no emerging neutrons (e.g., radiative capture), the SLBW may be written
@@ -599,18 +648,18 @@ We will conclude this section by remarking that in the case of a resonance locat
 \end{align}
 
 \subsubsection{Limitations of SLBW}
-\label{sec:orgheadline15}
+\label{sec:orgheadline16}
 The main assumption of the SLBW was that resonances were well-separated and did not interfere with one another.  In reality this assumption breaks down, especially in heavy target nuclei and high energies (\(\gtrsim 10\) keV).  There is a more accurate representation of closely-spaced resonances called the multilevel Breit-Wigner (MLBW) formula.  The complexity of this formula increases significantly.  The MLBW is, however, often used in computer codes that calculate neutron cross sections for reactor physics applications.
 
 \subsubsection{Resonance Distributions}
-\label{sec:orgheadline16}
+\label{sec:orgheadline17}
 The location and density of resonances varies by nuclide and energy.  In general both the number and density of resonances increases with larger nuclides and higher incident neutron energies.  Below 1-10 keV resonances are typically separated enough so that experimentalists can determine the location and width of the resonances. At higher energies, however, the resonances become so tightly spaced that is impossible, at present, to distinguish one from the other.  We say that these resonances are \emph{unresolved}, or lie in the \emph{unresolved resonance range}, in contrast to the \emph{resolved resonance range} at lower energies.
 \subsection{Non-Stationary Nuclei}
-\label{sec:orgheadline21}
+\label{sec:orgheadline22}
 In much of our initial discussion on neutron-nuclear interactions we assumed that the target nucleus was stationary (\(\vec{V}_A\)).  Short of being at absolute zero temperature, this is never the case in reality.  If the speed of the neutron is much larger than the speed of the target nucleus this ma be a good assumption, however, so our previous discussions are justified.  At neutron energies below 1 eV the random, thermal motion of the nuclei is not negligible.
 
 \subsubsection{Averaging the Microscopic Cross Section}
-\label{sec:orgheadline18}
+\label{sec:orgheadline19}
 The velocities of nuclei in thermal equilibrium is described by the Maxwell-Boltzmann probability density function,
 \begin{align}
   p(\vec{V}_A) = \left( \frac{mA}{2\pi k T} \right)^\frac{3}{2} \exp\left(-\frac{mAV_A^2}{2kT}\right) 
@@ -677,7 +726,7 @@ where
 \end{align}
 
 \subsubsection{Averaging Resonance Cross Sections}
-\label{sec:orgheadline19}
+\label{sec:orgheadline20}
 Accounting for the thermal motion of nuclei in resonance cross sections is at the heart of the \emph{Doppler broadening effect}, which is an important player in both steady-state and transient reactor analysis.  In the case of an isolated, narrow resonance above the thermal neutron energy range we can take several further steps to simplify Eq. \eqref{eq::avgMicro}.
 \begin{enumerate}
 \item If the neutron has a kinetic energy significantly above the average kinetic energy of the nuclei then \(E_\text{exc} \approx E\) and we may assume that \(\exp\left[-\frac{A}{kT}\left(\sqrt{E_\text{exc}} + \sqrt{E}\right)^2\right] << \exp\left[-\frac{A}{kT}\left(\sqrt{E_\text{exc}} - \sqrt{E}\right)^2\right]\).  Consequently we will take
@@ -747,14 +796,14 @@ Remember that the Maxwell-Boltzmann distribution is a function of the temperatur
 
 The \(\phi-\psi\) Doppler functions derived in this section relied on several important assumptions that will not always hold up in reality.  When situations arise in which these functions are not appropriate one may resort to approximate numerical evaluations of Eq. \ref{eq::avgMicro} directly.  This is commonly done in practice.
 \subsubsection{Other Considerations}
-\label{sec:orgheadline20}
+\label{sec:orgheadline21}
 Many absorption-type cross sections (without resonances in the thermal energy range) vary as \(1/\sqrt{E}\) at low energies.  This is commonly referred to as a ``\(1/v\) energy-dependence,'' where \(v\) refers to the neutron speed.  Surprisingly, the thermal motion of nuclei does \emph{not} affect a cross sections with a \(1/v\) energy variation.  In other words, \(V_n \bar{\sigma_x}(V_n) = V_R\sigma_x(V_R)\) when \(\sigma_x(V_R) \propto V_R^{-1}\).
 
 In stating that the thermal motion of the nuclei follow the Maxwell-Boltzmann distribution, we have implicitly assumed that all nuclei are free to move independently, effectively as molecules in a gas.  Most nuclei, however, are chemically bonded to other nuclei to form molecules.  Molecular motion, including vibration and rotation, for example, affects nuclear motion, so the preceding treatment is not strictly valid.  The primary regime where this becomes important is in neutron scattering at low energy. There are treatments to deal with molecular motion that we will not discuss.  
 
 Arguably the most important example in reactor physics of where molecular motion effects are important is in the thermal scattering of neutrons in water.  An analysts should be aware that water cross sections, and hydrogen bound in water in particular, require special evaluations with respect to temperature.  When obtaining nuclear data for reactor physics calculation, this ``special evaluation'' normally appears as something called a \emph{thermal kernel} or \(S(\alpha,\beta)\) \emph{data} that is tabulated alongside all the other nuclear cross sections.
 \subsection{Differential Scattering Cross Sections}
-\label{sec:orgheadline22}
+\label{sec:orgheadline23}
 Up to this point we have considered scattering cross sections only in the sense as they relate to the probability of a scattering event taking place.  In reactor physics analysis, where we want to track the movement of neutrons through a reactor, we often need more information than this.  In particular, if a neutron scatters we want the ability to predict (in a probabilistic sense) how the scattering event will affect the neutrons energy and direction.
 
 In general we can describe probabilistic scattering kinematics as the product of two functions.  The first is the microscopic cross section for the scattering reaction, which relates the likelihood that the scattering event occur.  We can multiply the cross section by a probability function describing the probability that, upon scattering at a certain energy \(E\), the neutron will emerge from the collision with a new energy \(E'\) and a direction modified by some angle \(\theta\).  We write this as
@@ -808,22 +857,48 @@ The function $\delta(x)$ is the /Dirac delta function/ (see the Appendix for det
 
 Both \(\sigma_n(E)\) and \(P(E \rightarrow E', \mu)\) depend on the thermal motion of nuclei and there are methods for averaging these quantities over that motion similar to what was shown in the previous section, but these procedures will not be discussed here as they become quite complex, even for the relatively simple case of elastic scattering.
 \subsection{References}
-\label{sec:orgheadline23}
+\label{sec:orgheadline24}
 \begin{itemize}
 \item \href{Hebert2009}{Hebert (2009)}
 \end{itemize}
 \subsection{Problems}
-\label{sec:orgheadline24}
+\label{sec:orgheadline25}
 \begin{enumerate}
 \item In general the ratio of the diffusion radius of a nucleus (\(a\)) to the neutron wavelength (\(\lambda\)) is much less than one, i.e. \(\frac{a}{\lambda} << 1\).  Under this assumption, derive an approximate expression for the \emph{potential} elastic scattering cross section, \(\sigma_p^\ell\), for \(s\)-wave interactions.
 \item Derive the Maxwell-Boltzmann distribution as a function of \emph{kinetic energy}, \(E = \frac{1}{2}mA|\vec{V}_A|^2 = \frac{1}{2} m_A V_A^2\). Start with the Maxwell-Boltzmann distribution written as a function of velocity \(\vec{V}_A\).  Because this is a \emph{distribution} the change of variables must be done so that \(p(\vec{V}_A) d^3V_A = p(E) dE\).  (Note that although \(\vec{V}_A\) is a vector, the direction of the vector is not important, as all that appears in the distribution is \(V_A^2\), which is proportional to energy.  Thus we may write \(d^3 V_A = 4\pi V_A^2 dV_A\).)
 \item Plot the Maxwell-Boltzmann distribution as a function of kinetic energy using your results from the previous problem.  Use \(T = 300\) K.  Does this plot inform the reasoning behind picking an energy of around 1 eV as the cutoff for ``thermal'' neutron energies?
 \item Derive Eqn. \ref{eq::dopplerSLBWx}.
 \end{enumerate}
-\section{Neutron Slowing Down}
-\label{sec:orgheadline41}
-\subsection{Energy balance equation}
+\subsection{Solutions}
 \label{sec:orgheadline26}
+\begin{enumerate}
+\item The potential elastic scattering cross section is given by
+\begin{align}
+  \sigma_p^\ell = 4\pi \lambda^2 \left(2 \ell + 1 \right) \sin^2\phi_\ell.
+\end{align}
+For an \(s\)-wave interaction \(\ell = 0\), and \(\phi_0 = a/\lambda\).  Because \(a/\lambda << 1\) we can use the small-angle approximation for sine: \(\sin\theta \approx \theta\) for \(|\theta| << 1\).  Plugging \(\ell\) and \(\phi_\ell\) into the equation and using the small-angle approximation leads
+\begin{align}
+  \sigma_p^0 = 4\pi a^2.
+\end{align}
+Note that this is the surface area of a sphere with radius \(a\).
+\item Begin with 
+\begin{align}
+  p(\vec{V}_A) = \left( \frac{m_A}{2\pi k T} \right)^\frac{3}{2} \exp\left(-\frac{m_A V_A^2}{2kT}\right) .
+\end{align}
+and \(d^3 V_A = 4\pi V_A^2 dV_A\).  Given \(E = \frac{1}{2}m_A V_A^2\), we have \(dE = m_A V_A dV_A\).  Thus,
+\begin{align}
+  p(\vec{V}_A) d^3 V_A &= 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right) dE.
+\end{align}
+Thus
+\begin{align}
+  p(E) = 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right).
+\end{align}
+Note that the energy-dependent distribution does not depend on mass!
+\end{enumerate}
+\section{Neutron Slowing Down}
+\label{sec:orgheadline43}
+\subsection{Energy balance equation}
+\label{sec:orgheadline28}
 If we assume that a reactor is very large with respect to the mean free path of a neutron and consists of a homogeneous material then we may write a balance equations for the neutron density with respect to energy.  In reality, spatial effects will play a role in determining the neutron density, but we will consider those later.  Describing the neutron density with respect to energy alone unveils some important aspects of reactor physics.  The neutron balance equation for neutrons with energy between \(E\) and \(E+dE\) is
 \begin{align}
   \left[ \Sigma_a(E) + \Sigma_s(E) \right] \phi(E) dE
@@ -835,7 +910,7 @@ where \(\Sigma_a(E)\) is the macroscopic absorption cross section, \(\Sigma_s(E)
 It is presumed that all cross sections and fission parameters are known.  Our present goal is then to solve the neutron balance equation for the energy-dependent flux \(\phi(E)\).  Note that this equation is not an ``energy balance'' equation in the sense that it balances the neutron kinetic energy.  Rather, it balances the number of neutrons with a given kinetic energy, namely \(n(E)dE\), which is the number of neutrons between \(E\) and \(E+dE\).  The function \(\phi(E)\), where \(E\) is the only independent variable, is often called the \emph{neutron spectrum}.
 
 \subsection{Characteristic Neutron Energy Ranges}
-\label{sec:orgheadline30}
+\label{sec:orgheadline32}
 Rather than seeking an immediate solution to this neutron balance equation, we will first conduct a qualitative exploration of solution.  Neutrons are created from fission with a relatively high kinetic energy, yet the fission cross section tends to be highest at lower (thermal) energies, as shown in Figure \ref{fig::u235fission}.  In between there are large discrete capture resonances that the neutrons must escape while slowing down to thermal energies.
 \begin{figure}
   \centering
@@ -846,7 +921,7 @@ Rather than seeking an immediate solution to this neutron balance equation, we w
 
 These three energy ranges (fission spectrum, slowing down, and thermal) each impact the neutron spectrum, \(\phi(E)\), in qualitatively different ways.  We can roughly characterize the spectrum in each range by introducing some approximations that permit an analytical solution to the neutron balance equation.
 \subsubsection{Fission Energy Range}
-\label{sec:orgheadline27}
+\label{sec:orgheadline29}
 Neutrons are typically emitted from fission with a kinetic energy of 1 to 2 MeV.  This is much higher than the thermal equilibrium energy that is on the order of 1 eV.  At these high energies, the rate of neutrons being created in interval \(dE\) from fission is much greater than neutrons being scattered into \(dE\) from lower energies.  Thus
 \begin{align}
   \phi(E) dE \approx  \frac{\chi(E)}{k_\infty\Sigma_t(E)} \int_0^\infty dE' \nu\Sigma_f(E') \phi(E')  dE = \frac{\chi(E)}{\Sigma_t(E)} \times \text{ constant}.
@@ -866,7 +941,7 @@ where \(I\) is a normalization constant, and \(a\) and \(b\) are parameters.  Fo
 for \(E\) in MeV.  Integrating this function reveals that roughly 88\% of neutrons are created with an energy between 0.1 and 4 MeV, and only 1.4\% are created with an energy \emph{less} than 0.1 MeV.  The average energy is 2 MeV and the median is about 1.6 MeV.
 
 \subsubsection{Slowing-Down Energy Range}
-\label{sec:orgheadline28}
+\label{sec:orgheadline30}
 At energies between 1 eV and 50 keV, there are very few neutrons created directly from fission and elastic scattering is much more important than inelastic scattering.  (Why?)  The elastic scattering cross kernel can be written
 \begin{align}
   \Sigma_s(E' \rightarrow E) = 
@@ -916,7 +991,7 @@ A rough estimate of the number of neutrons that will be absorbed by a given reso
 The first large resonance in uranium-238, for example is located at 6.67 eV with a width of about 0.027 eV.  Thus neutrons slowing down through the this resonance would be attenuated by a factor of roughly 0.996, which represents a loss of about 0.4\%.
 
 \subsubsection{Thermal Energy Range}
-\label{sec:orgheadline29}
+\label{sec:orgheadline31}
 We have previously noted that free atoms have random energies that obey the Maxwell-Boltzmann distribution, which written in terms of energy is
 \begin{align}
   p_\text{MB}(E) = 2 \sqrt{\frac{E}{\pi}} \left( \frac{1}{kT} \right)^{3/2} \exp\left( - \frac{E}{kT} \right).
@@ -942,11 +1017,11 @@ Of course assuming that there is no source of neutrons, no absorption and no lea
 
 There are numerous sophisticated models for predicting the thermal neutron energy distributions, or one may simply solve the neutron balance equation numerically on a computer.  In either approach, an accurate model should include the effects of molecular and crystalline effects on nuclear motion (when they exist), as these are important factors at thermal energies.
 \subsection{Elastically Scattering Through Energy}
-\label{sec:orgheadline34}
+\label{sec:orgheadline36}
 In the section ``Neutron-Nucleus Reactions'' we observed that the fact that for a stationary target a neutron can be scattered from an energy \(E\) to an energy \(E' \in [\alpha E, E]\) where \(\alpha = (A-1)^2/(A+1)^2\).  In the following we will derive two quantities that will be useful in discussions resonance absorption: the average energy loss and the average lethargy loss in elastic collisions.  To derive the quantities we need the probability density function for scattering from \(E\) to \(E'\), which we will call \(P(E' \rightarrow E)\).
 
 \subsubsection{Elastic Scattering Energy Change}
-\label{sec:orgheadline31}
+\label{sec:orgheadline33}
 If we assume a stationary target we know that
 \begin{align}
   \label{eq::elasticEnergyChange}
@@ -966,7 +1041,7 @@ Substituting the derivative of Eq. \eqref{eq::elasticEnergyChange} into this equ
 \end{align}
 
 \subsubsection{Average Energy Loss}
-\label{sec:orgheadline32}
+\label{sec:orgheadline34}
 The average amount of energy lost in a scattering collision is given by
 \begin{align}
   \left< \Delta E \right> = E - \int_{\alpha E}^E E' P(E \rightarrow E') dE' = \frac{1}{2}(1-\alpha)E.
@@ -974,7 +1049,7 @@ The average amount of energy lost in a scattering collision is given by
 Thus the average amount of energy lost per collision is proportional to the pre-collision energy and the mass term \(\alpha\).
 
 \subsubsection{Average Logarithmic Energy Loss}
-\label{sec:orgheadline33}
+\label{sec:orgheadline35}
 The average logarithmic energy loss per elastic collision (or equivalent, the average lethargy loss) is given by
 \begin{align}
   \xi = \int_{\alpha E}^E \ln\left(\frac{E}{E'}\right) P(E \rightarrow E') dE' = 1 + \frac{\alpha}{1-\alpha} \ln\alpha.
@@ -982,7 +1057,7 @@ The average logarithmic energy loss per elastic collision (or equivalent, the av
 Note that hydrogen, \(\alpha = 0\) and the equation can not evaluated directly, but it can be shown that \(\lim_{\alpha \rightarrow 0} \xi = 1\).  Also note that this value is independent of \(E\).
 
 \subsection{Resonance Absorption}
-\label{sec:orgheadline38}
+\label{sec:orgheadline40}
 To calculate a local neutron spectrum (independent of space) one could solve the slowing-down equation numerically to an arbitrary degree of accuracy.  An analytically exact solution is generally not possible due to the complex dependence of the cross section on energy, including many closely-spaced and unresolved resonances.  If we consider a very simplistic case, however, we can make some reasonable approximations that lead to closed-form expressions of the flux spectrum.  These approximation are rarely used in production-level software anymore, but they permit insight that is generally not available from purely numerical solutions.  
 
 Assume that a medium consists of a single moderating material whose scattering cross sections is much larger than its absorption cross section (\(\Sigma_s^M >> \Sigma_a^M\)) and a resonance isotope.  We will consider the problem of estimating the neutron flux inside of a \emph{single} resonance within the resonance isotope.  The neutron balance equation in this case can be written
@@ -1007,7 +1082,7 @@ For the sake of simplicity, we will consider only a single resonance that is wel
 In general the practical width \(\Gamma_p\) will be larger than the actual width \(\Gamma_{x,i}\).  We will use the practical width only as a rule of thumb in determining how narrow (or wide) a resonance effectively is.
 
 \subsubsection{Narrow Resonance Approximation}
-\label{sec:orgheadline35}
+\label{sec:orgheadline37}
 If the practical width of a resonance is much smaller than the average energy loss due to elastic scattering (i.e., \(\Gamma_p << E_i(1-\alpha_M)/2\)), then it is likely that a neutron will ``jump over'' the resonance.  Thus, as we did with the moderating integral, we may assume that the flux takes it's asymptotic \(1/E\) shape in the resonance integral.  We may also assume that the \(\Sigma_s^\text{res} \approx \Sigma_p^{0,\text{res}}\), which is independent of energy for \(a / \lambda << 1\).  This leads to
 \begin{align}
   \left[ \Sigma_t^\text{res}(E) + \Sigma_s^M \right] \phi(E)
@@ -1021,7 +1096,7 @@ This is called the \emph{narrow resonance approximation} and produces the flux
 \end{align}
 
 \subsubsection{Wide Resonance Approximation}
-\label{sec:orgheadline36}
+\label{sec:orgheadline38}
 If the practical width of a resonance is large compared with the average energy loss due to elastic scattering (i.e., \(\Gamma_p >> E_i(1-\alpha_M)/2\)), then it is likely that a neutron will experience a reaction inside the resonance peak.  In this case we will not assume the flux has it's asymptotic form, but rather that \(\frac{\Sigma_s^\text{res}(E') \phi(E')}{E')} \approx \frac{\Sigma_s^\text{res}(E) \phi(E)}{E)}\) within the in-scattering range of the resonance material, which is small because \(\alpha_\text{res} \approx 1\).  This leads to
 \begin{align}
   \phi_\text{WR}(E)
@@ -1030,29 +1105,29 @@ If the practical width of a resonance is large compared with the average energy 
 This is known as the \emph{wide resonance approximation} (which emphasizes the relationship between the practical resonance width and the average energy loss) or the \emph{narrow resonance, infinite mass approximation} (which emphasizes the assumption that \(\alpha_\text{res} \approx 1\)).
 
 \subsubsection{Resonance Integral}
-\label{sec:orgheadline37}
+\label{sec:orgheadline39}
 Once the spectrum \(\phi(E)\) has been determined, we may use it to evaluate the total absorption rate due to the resonance.  This information is normally computed as the \emph{resonance integral},
 \begin{align}
   I_{\gamma,i} = \frac{R_{\gamma,i}}{N^\text{res}} = \int_0^\infty \sigma_{\gamma,i}(E) \phi(E) dE.
 \end{align}
 The resonance integral is useful for calculating the \emph{resonance escape probability} and multigroup cross sections, which we will discuss later.
 \subsection{Problems}
-\label{sec:orgheadline39}
+\label{sec:orgheadline41}
 \begin{enumerate}
 \item Derive the the solution \(\phi(E)\) using the narrow and wide resonance approximations.
 \end{enumerate}
 \subsection{References}
-\label{sec:orgheadline40}
+\label{sec:orgheadline42}
 \begin{itemize}
 \item Stacey
 \item Duderstadt and Hamilton
 \end{itemize}
 \section{Neutron Transport}
-\label{sec:orgheadline59}
+\label{sec:orgheadline61}
 At this point we have characterized neutron-nucleus interactions and described the physics of a neutron slowing down from high (fission) energies to low (thermal) energies in the presence of moderators and resonance absorbers.  We will now proceed to a full description of neutron transport, the goal of which is to describe how neutrons are distributed through space and energy as a function of time.
 
 \subsection{Fundamental Concepts and Variables}
-\label{sec:orgheadline45}
+\label{sec:orgheadline47}
 We know that a scattering reaction will tend to change the kinetic energy of a neutron and the direction in which it is traveling.  Thus our attempt to describe the distribution of neutrons must take into account space (where neutrons are), energy (how fast they are moving), angle (in what direction they are moving) and time.  This collection of independent variables is called the \emph{phase space} of neutron transport.
 
 The space parameter will be denoted by the variable \(\vec{r}\).  While it is possible to represent this vector in any number coordinate systems, we will focus on Cartesian systems so that space can be represented by vectors of the form \(\vec{r} = x\vec{i} + y\vec{j} + z \vec{k}\).  In three-dimensional (Cartesian) space the differential space element is a differential volume \(dV = dx dy dz\).
@@ -1060,7 +1135,7 @@ The space parameter will be denoted by the variable \(\vec{r}\).  While it is po
 A neutrons direction (or angle) at a given point is given by the unit vector \(\vec{\Omega}\).  The definition and properties of \(\vec{\Omega}\) is given in the ``Mathematical Odds and Ends'' appendix accompanying these notes.  The angle \(\vec{\Omega}\) can be described in terms of its projections along each of three Cartesian coordinate axes, \(\vec{\Omega} = \Omega_x \vec{i} + \Omega_y \vec{j} + \Omega_z \vec{k}\), or in terms of the polar and azimuthal angles \(\theta\) and \(\varphi\), \(\vec{\Omega} = \sin\theta \cos\varphi \vec{i} + \sin\theta \sin\varphi \vec{j} + \cos\theta \vec{k}\).  In three dimensions the differential \emph{solid angle} is \(d\vec{\Omega} = \sin\theta d\varphi d\theta\).
 
 \subsubsection{Neutron Density}
-\label{sec:orgheadline42}
+\label{sec:orgheadline44}
 Because there is such a high density of neutrons in a reactor and their collisions are probabilistic, it is infeasible to determine the location and velocity of every single neutron, nor would such an abundance of information be particularly useful.  Instead we will attempt to determine the \emph{expected} number of a neutrons within differential space, angle and energy elements as a function of time:
 \begin{align}
   n(\vec{r},\vec{\Omega},E,t) dV d\vec{\Omega} dt.
@@ -1068,13 +1143,13 @@ Because there is such a high density of neutrons in a reactor and their collisio
 The function \(n(\vec{r},\vec{\Omega},E,t)\) in this quantity is the \emph{neutron angular density}.  We may also define the \emph{neutron scalar density} as the expected number of neutrons in all directions, \(n(\vec{r},E,t) = \int_{4\pi} n(\vec{r},\vec{\Omega},E,t) d\vec{\Omega}\).
 
 \subsubsection{Neutron Flux}
-\label{sec:orgheadline43}
+\label{sec:orgheadline45}
 We know that the reaction rate density (i.e., the number of neutron interactions per unit volume per unit time) is the product of the nuclelar density, the microscopic cross section for the reaction, the neutron speed and the neutron density.  The product of the first two parameters is called the macroscopic cross section, while the product of the latter two parameters is called the neutron flux.  If we write the neutron flux to explicitly include variation with respect to angle then we have the \emph{angular neutron flux}, \(\psi(\vec{r},\vec{\Omega},E,t) = v(E)n(\vec{r},\vec{\Omega},E,t)\).  If we integrate over all angles then we have the \emph{scalar neutron flux}, \(\phi(\vec{r},E,t) = \int_{4\pi} \psi(\vec{r},\vec{\Omega},E,t)\).
 
 Knowing the angular and scalar fluxes is valuable because it enables us to compute reaction rates, including the rate at which energy is produced from fission reactions.  An intuitive interpretation of these functions, however, is not immediately evident.  Recall that the neutron \emph{speed} is the differential path length divided by a differential unit of time.  The product of the neutron density with speed (i.e., flux) is therefore the \emph{total path length} traversed by all neutrons per unit volume per unit time.  Thus multiplying flux by the macroscopic cross section (probability of interaction per unit path length) gives us interactions per unit volume per unit time.  The \emph{angular} flux is the total path length of all the neutrons moving along a given direction; the \emph{scalar} flux is the total path length of all the neutrons regardless of direction.
 
 \subsubsection{Neutron Current}
-\label{sec:orgheadline44}
+\label{sec:orgheadline46}
 If we multiply the angular neutron density by the vector velocity then we get the \emph{angular neutron current}: \(\vec{J}(\vec{r},\vec{\Omega},E,t) = \vec{v}(\vec{\Omega},E) n(\vec{r},\vec{\Omega},E,t)\).  Integrating this variable over all angles provides a vector-valued quantity which is usually just called \emph{neutron current}: \(\vec{J}(\vec{r},E,t) = \int_{4\pi} \vec{v}(\vec{\Omega},E) n(\vec{r},\vec{\Omega},E,t) d\vec{\Omega}\).  Noting \(\vec{v}(\vec{\Omega},E) = \vec{\Omega}v(E)\) permits writing the current in terms of the angular neutron flux.
 
 The neutron current is a useful quantity because it allows us to calculate the net rate at which neutrons are ``flowing'' through a surface.  In particular, the rate at which neutrons with energy \(E\) are crossing a differential surface with area \(dA\) and unit normal vector \(\vec{n}\) is given by
@@ -1103,7 +1178,7 @@ Note that the \emph{net} number of neutrons passing through this surface (per un
 \end{table}
 
 \subsection{The Transport Equation}
-\label{sec:orgheadline51}
+\label{sec:orgheadline53}
 A transport equation for neutrons can be obtained by performing a neutron balance about an element \(dV d\vec{\Omega} dE dt\) in phase space.  We make the following assumptions
 \begin{enumerate}
 \item Neutrons travel in straight line between collisions.
@@ -1137,7 +1212,7 @@ For completeness, consider the transport equation to be solved for a region \(V\
 As with any mathematical model, we must consider under what conditions our transport equation has a viable solution.  To answer this question rigorously one should turn to the tools and theory of mathematics.  Arguments based on physics intuition, however, will lead largely to the same conclusions given sufficient clarity of thought.  We will therefore focus on intuitive arguments.
 
 \subsubsection{Boundary Conditions}
-\label{sec:orgheadline46}
+\label{sec:orgheadline48}
 As with any differential equation, we must supply appropriate boundary conditions.  Let us presently denote the boundary of \(V\) by \(\partial V\).  When solving the neutron transport equation for the angular flux, the boundary condition specifies the number of neutrons \emph{entering} the system.  There are several ways to provide this boundary source.  The simplest is the \emph{fixed flux} boundary condition, which has the following form:
 \begin{align}
   \psi(\vec{r},\vec{\Omega},E,t) = \psi_\text{inc}(\vec{r},\vec{\Omega},E,t)
@@ -1153,7 +1228,7 @@ where \(\vec{\Omega}\) is the incoming direction corresponding to mirror reflect
 Vaccum and specular reflection boundary conditions are by far the most common.  Other possible boundary conditions are \emph{white reflection}, in which outgoing neutrons are distributed uniformly across all incoming directions, and periodic boundary conditions, which account for translational and rotational symmetry.
 
 \subsubsection{Initial Condition}
-\label{sec:orgheadline47}
+\label{sec:orgheadline49}
 Because the transport equation, as it is written, is time-dependent, we must also supply an initial condition.  The initial condition is simply
 \begin{align}
   \psi(\vec{r},\vec{\Omega},E,0) = \psi_0(\vec{r},\vec{\Omega},E)
@@ -1161,7 +1236,7 @@ Because the transport equation, as it is written, is time-dependent, we must als
 with \(\psi_0\) a given function for \(\vec{r} \in V\).
 
 \subsubsection{Existence of a Steady-State Solution}
-\label{sec:orgheadline48}
+\label{sec:orgheadline50}
 We often want to determine the ``steady-state'' flux solution for a system that is in some form of equilibrium.  In general, Eq. \eqref{eq::transportEqn} may or may not have a steady-state solution.  The complicating factor is fission.  If more neutrons are begin created from fission than lost by all capture and leakage, then the chain reaction will drive the neutron population perpetually upward.  If the opposite is true then the neutron population will rapidly decrease.  Thus steady-state is only obtained when there is a \emph{precise} balance between production and loss.  
 
 If neutron loss (by leakage or capture) is much more likely than neutron production by fission (called a sub-critical configuration), then we will have a steady-state solution as long as the external source term, \(q\) is non-zero.  These problems are called \emph{fixed-source} problems, and include accelerator systems, radiation shielding, and sub-critical reactors as a characteristic examples.  If \(q=0\) then there will be only the trivial solution.
@@ -1189,7 +1264,7 @@ The factor \(\lambda\) adds a ``knob'' so that we can dial-in a solution that ap
 A final practical consideration is that the eigenvalue form of the transport equation is homogeneous and linear in the angular flux.  This means that the angular flux can be arbitrarily scaled and the solution remains valid.  (This is the typical behavior of eigenvalue problems.)  Thus to determine a \emph{unique} solution, we must provide an additional constraint.  Typically the total reactor power fulfills this requirement.
 
 \subsubsection{What just happened?}
-\label{sec:orgheadline49}
+\label{sec:orgheadline51}
 It is very easy at this point to be temporarily blinded by the sudden onslaught of mathematical technicality that has attacked our transport equation.  It is worth a moments time to consider what happens in a real reactor so that we remain somewhat oriented with respect to reality.  If you have not been previously exposed to reactor physics or reactor operations (or have not paid attention to such discussions) then some of the following must be taken initially on faith.
 
 First, in the previous section we painted a very bleak picture of a steady-state reactor being balanced on a precipice between explosion and stagnation.  Commercial reactors, however, are designed to inherently be quite stable beasts.  One of the most important stabilizing factors has already been introduced in these notes, which is the Doppler broadening of capture cross sections.  If a reactor is generating more neutrons from fission than are being lost, then the neutron population will increase and the fission reaction rate will follow in lock-step.  As power increases temperature will rise.  You have seen that increasing the temperature of an isotope with capture resonance will increase the capture rate of neutrons.  This increase in capture rate will naturally arrest a modest increase in power and bring the system into steady-state at a naturally-attained equilibrium temperature.  The same sequence will happen in the opposite direction for a decreasing neutron population.  A second stabilizing effect occurs when, as in the case of modern commercial reactors, the coolant serves double-duty as the moderator.  As temperature increases, the moderator density decreases, often leading decrease in the thermalization of neutrons.
@@ -1197,7 +1272,7 @@ First, in the previous section we painted a very bleak picture of a steady-state
 We now see that obtaining a ``real'' steady-state solution would require solving not just the transport equation, but heat transfer and likely fluid dynamics equations as well.  Moreover introducing temperature (and density) as variables leads to nonlinearities in the transport equation.  In short, the not-so-simple transport equation just become orders of magnitude more challenging to solve.  So instead, how about we hold temperature constant (say at an average value), then solve the transport equation approximately by scaling fission to account for the fact that we are neglecting stabilizing feedback mechanisms.  The eigenvalue approach should look quite appealing at this point!
 
 \subsubsection{Solving the Transport Equation}
-\label{sec:orgheadline50}
+\label{sec:orgheadline52}
 Finding a closed-form solution of the transport equation is impossible for all but the simplest of cases.  In practice we must adopt both physical and numerical approximations.  Following is a partial list of complications we should expect.
 \begin{enumerate}
 \item Most mathematical theory deals with either partial differential equations \emph{or} integral equations.  The transport equation is an \emph{integro-differential} equation containing both an integral and gradient term.
@@ -1209,7 +1284,7 @@ Finding a closed-form solution of the transport equation is impossible for all b
 On the other hand, the transport equation is linear, so if we can manage the \emph{size} of the problem then we shouldn't loose too much sleep.  Given advances in modern computing, we are able to calculate much larger and more accurate transport solutions than ever before.  Nevertheless, solving large transport problems is very challenging.  Our goal presently is not to explore the computational approaches to this problem in any significant detail, but rather present an overview of the approximations and strategies that are made to solve neutron transport for reactor physics analyses.
 
 \subsection{The Multigroup Approximation}
-\label{sec:orgheadline52}
+\label{sec:orgheadline54}
 In the previous section we examined the behavior of neutrons with respect to the energy variable.  The neutron balance equation we derived there was actually the transport equation for an infinitely large, homogeneous region.  Under those conditions, \(\nabla\psi = \vec{0}\), and the flux did not depend on angle because of rotational symmetry.  We will now introduce an approximation that will lead to a simpler energy landscape so that we can devote more attention to spatial variations of the neutron flux.
 
 The \emph{multigroup approximation} attempts to simplify the energy-dependent description of neutron transport by binning neutrons to ``groups'' based on their energy.  To begin, pick a set of energy group boundaries, 
@@ -1244,7 +1319,7 @@ Of course there is a catch-22 in that we need the detailed flux spectrum, \(\psi
 Once an appropriate spectrum has been used to generate the multigroup constants, one may attempt to solve the transport equation for more complex geometries because the burden of excessive energy complexity has been lightened.  A single assembly calculation may use tens to a few hundred energy groups; a full-core calculation may use as few as two energy groups.
 
 \subsection{Numerical Solutions of the Mutligroup Equation}
-\label{sec:orgheadline58}
+\label{sec:orgheadline60}
 The multigroup approximation effectively handles the energy dependence of the transport equation (given a suitably accurate weighting spectrum for the cross section collapsing.)  There are several ways to discretize the equation with respect to angle.  In what follows we will look at the spherical harmonics (or \(P_N\)) and discrete ordinates (or \(S_N\)) approaches.  For simplicity our discussion will be limited to one spatial dimension.  Adopting the \(z\) direction (aligned with the \(\vec{k}\) unit direction) as the dimension of choice, the multigroup transport equation becomes
 \begin{align}
   \mu \frac{\partial \psi_g(z,\mu)}{\partial z}
@@ -1282,7 +1357,7 @@ Using the addition theorem of Legendre polynomials allows us to write the polyno
 \end{align}
 
 \subsubsection{The Spherical Harmonics Method}
-\label{sec:orgheadline53}
+\label{sec:orgheadline55}
 The spherical harmonics are a set of functions that provide a basis for representing functions that exist on a spherical surface.  Given that the unit direction \(\vec{\Omega}\) sweeps out the surface a sphere, they can be used as a basis for representing the angular dependence of the neutron flux in three dimensions.  In one dimension, the spherical harmonics can be integrated down to the Legendre polynomials, which provide a polynomial basis for functions defined on the interval \([-1,1]\).  The angular flux in one spatial dimension is a function of the cosine \(\mu\), which takes values between -1 and 1; thus the \$\(\mu\)\$-dependence of the angular flux may be represented by a Legendre polynomial expansion.
 
 Specifically, let
@@ -1351,7 +1426,7 @@ which is equivalent to requiring the incoming partial current, \(j_g^-(z_b)\), t
 We will revisit this result when derive diffusion theory.
 
 \subsubsection{The Discrete Ordinates Method}
-\label{sec:orgheadline54}
+\label{sec:orgheadline56}
 Rather than expanding the angular flux in a series of Legendre polynomials, the discrete ordinates approximation to the transport equation attempts a more direct approach of angular discretization.  The method begins by selecting a set of \(M\) discrete directions (or ordinates).  In one dimension the only angular variable is the polar angle, so we may select a set
 \begin{align*}
   \mu_1 < \mu_2 < \hdots < \mu_{M}
@@ -1381,7 +1456,7 @@ Eq. \eqref{eq::1dSnTransportEqn} is the \emph{discrete ordinates} transport equa
 
 The selection of the \(\mu_m\) and \(w_m\) parameters comprising the discrete ordinates approximation has an important effect on the accuracy of the solution.  Selecting these parameters from the Gauss-Legendre quadrature (where the \(\mu_m\) are the roots of the Legendre polynomial \(P_M(\mu)\)) is a common choice that produces a high order of accuracy.
 \subsubsection{Spatial Discretization of the Discrete Ordinates Equations}
-\label{sec:orgheadline55}
+\label{sec:orgheadline57}
 At this point we have discretized the energy and angle variables using the multigroup and \(P_N\) or \(S_N\) methods, respectively.  The only phase variable that has not been discretized is the spatial variable.  In this section we will complete the phase space discretization of the discrete ordinates equation by introducing a \emph{spatial} discretization.
 
 Because we are considering only 1D domains in a Cartesian space, our geometry is simply a closed interval \([a,b]\).  (Theoretically we could also choose an infinite or semi-infinite interval in which one or both end points go to infinity.  This is sometimes done when studying cosmic particle transport.)  The interval \([a,b]\) can be discretized by defining a set of contiguous, non-overlapping regions whose union is equal to the interval.  This is called a \emph{partition} of the interval, but it is really just a mathematically formal way of saying that we chop the interval into lots of little intervals.  Let's call each one of these regions a \emph{cell} and define \(z_i\) as the center of cell \(i\), as shown in Figure \ref{fig::cellDiscretization}.  The boundaries of cell \(i\) we'll call \(z_{i-1/2}\) (on the left) and \(z_{i+1/2}\) (on the right) so that the width of the cell is \(\Delta z_i = z_{i+1/2} - z_{i-1/2}\).  If the cells are numbered sequentially from 1 to \(I\) then we will have \(z_{1/2} = a\) and \(z_{I+1/2} = b\), the boundaries.  We will finally assume that cross sections are spatially constant within each cell and write \(\Sigma_g(z)\) as \(\Sigma_{g,i}\) for \(z \in [z_{i-1/2},z_{i+1/2}]\).
@@ -1453,7 +1528,7 @@ Alas, this is a fully discrete form of the transport equation.  If we have \(I\)
 \end{align}
 for each cell.
 \subsubsection{Solving the Discrete Ordinates Equation}
-\label{sec:orgheadline56}
+\label{sec:orgheadline58}
 Eqs. \eqref{eq::1dSnDiscreteTransportEqn} and \eqref{eq::diamondDifference} provide a sufficient number of linear, algebraic equations to solve for all of the unknowns \(\psi_{g,m,i}\) and \(\psi_{g,m,i\pm 1/2}\).  There is an efficient way to solve these equations short of simply throwing everything into a gigantic matrix known as \emph{sweeping}, although to be fair, sweeping is really just a matrix factorization based as much on intuition as mathematics.
 
 To describe the sweeping algorithm let us temporarily assume that the scattering and fission sources are known and lumped into an effective source term,
@@ -1480,7 +1555,7 @@ Once this cell-averaged flux has been computed we may again call on the diamond 
 The flux \(\psi_{g,m,i+1/2}\) is then becomes the \emph{left} boundary flux of the \emph{next} cell, and the sweep continues.  The same procedure holds for \(\mu_m < 0\), but the sweep is in the opposite direction.
 
 \subsubsection{Inner (Scattering) and Outer (Fission) Iterations}
-\label{sec:orgheadline57}
+\label{sec:orgheadline59}
 In the previous discussion we assumed that the scattering and fission sources were known.  In reality they are not, as they both depend on the angular flux which is the solution itself.  This discrepancy is treated through a nesting of iterations.  Algorithm \ref{alg::transportSolution} shows the most common implementation of this nesting, where inner scattering iterations converge the scattering source and outer fission iterations converge the fission source.  The fission iteration in this case is actually a \emph{power iteration}, used to converge the eigenvalue \(\lambda\).  (``Power iteration'' refers to a specific numerical method for calculating eigenvalues, not the reactor power.)
 
 \begin{algorithm}
@@ -1503,7 +1578,7 @@ In the previous discussion we assumed that the scattering and fission sources we
 \end{algorithmic}
 \end{algorithm}
 \section{Nuclear Physics in 60 Seconds}
-\label{sec:orgheadline60}
+\label{sec:orgheadline62}
 \textbf{Notation:} An atomic nucleus is the small, dense core of an atom, consisting of a collection of protons and neutrons.  The number of protons contained within a given nucleus is given by the atomic number, \(Z\), while the number of neutrons is given by \(N\).  The mass number, \(A\), is the sum of the number of neutrons and protons.  A neutral atom, \(X\), is typically written with the \(A\) and \(Z\) numbers prepended, i.e., \(\leftidx{^A_Z}{X}{}\), with the neutron number implicit.
 
 \textbf{Mass:} Masses on the nuclear scale at typically expressed in units of \emph{atomic mass units} (u), defined so that the mass of a neutron atom of \(\leftidx{^{12}_6}{C}{}\) is exactly 12 u.
@@ -1511,18 +1586,18 @@ In the previous discussion we assumed that the scattering and fission sources we
 \textbf{Quantum Description:}  A common and quite accurate quantum description of the nucleus is given by the \emph{shell model}, which is analogous to the description of atomic electrons.  Neutrons, protons and electrons are all classified as \emph{fermions}, which are particles with a spin of \(\frac{1}{2}\hbar\) that obey the Pauli exclusion principle.  Neutrons and protons in a nucleus reside in discrete energy states and posses angular momentum that also occurs in discrete amounts.  The angular momentum is specified by the positive, integer quantum nunber \(\ell \geq 0\), and the first few angular momentum states are are labeled \(s\), \(p\), \(d\), \(f\), etc, again in analogy to atomic electrons.  The \emph{ground state} of a nucleus occurs when all of the nuclear particles are in the lowest energy states allowed by the Pauli exclusion principle.  An \emph{excited state} occurs when a nucleon is elevated to a higher (and unstable) energy level.
 
 \section{Mathematical Odds and Ends}
-\label{sec:orgheadline72}
+\label{sec:orgheadline74}
 \subsection{Trigonometric Identities and Relationships}
-\label{sec:orgheadline64}
+\label{sec:orgheadline66}
 \subsubsection{Euler's Formula}
-\label{sec:orgheadline61}
+\label{sec:orgheadline63}
 Euler's formula is given by
 \begin{align}
   e^{i x} = \cos x + i \sin x
 \end{align}
 where \(e\) is the base of the natural logarithm and \(i = \sqrt{-1}\).  Many of the standard trigonometric identities can be quickly derived from this one formula.
 \subsubsection{Additive Identities}
-\label{sec:orgheadline62}
+\label{sec:orgheadline64}
 \begin{align}
   \sin\left(A \pm B\right) = \sin A \cos B \pm \cos A \sin B
 \end{align}
@@ -1530,7 +1605,7 @@ where \(e\) is the base of the natural logarithm and \(i = \sqrt{-1}\).  Many of
   \cos\left(A \pm B\right) = \cos A \cos B \mp \sin A \sin B
 \end{align}
 \subsubsection{Law of Sines and Cosines}
-\label{sec:orgheadline63}
+\label{sec:orgheadline65}
 Given the triangle shown in Figure \ref{fig::triangle}, the \emph{law of sines} states that
 \begin{align}
   \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = \text{ constant} \;\;.
@@ -1561,9 +1636,9 @@ The \emph{law of cosines} states that
 \label{fig::triangle}
 \end{figure}
 \subsection{Special Functions}
-\label{sec:orgheadline67}
+\label{sec:orgheadline69}
 \subsubsection{Delta Functions}
-\label{sec:orgheadline65}
+\label{sec:orgheadline67}
 The Dirac delta function is a generalized function defined by
 \begin{align}
   \int_{-\infty}^\infty \delta(x-a) f(x) dx = f(a)
@@ -1587,7 +1662,7 @@ The discrete analog of the Dirac delta function is the Kronecker delta, defined
   \end{cases}
 \end{align}
 \subsubsection{Legendre Polynomials}
-\label{sec:orgheadline66}
+\label{sec:orgheadline68}
 The Legendre polynomials are a set of polynomials, \(\left\{ P_n \right\}_{n=0}^\infty\).  For a given \(n\), the polynomial \(P_n(x)\) is a polynomial of degree \(n\).  For example, the first few Legendre polynomials are
 \begin{align*}
   P_0(x) &= 1, \\
@@ -1631,7 +1706,7 @@ where the \(P_n^m(x)\) are the \emph{associated Legendre polynomials} and are no
   P_n(\cos\theta_0) = P_n(\cos\theta) P_n(\cos\theta').
 \end{align}
 \subsection{The Direction Vector}
-\label{sec:orgheadline68}
+\label{sec:orgheadline70}
 The unit direction vector can be expressed in terms of a polar angle, \(\theta\), and a azimuthal angle, \(\varphi\), as shown in Figure \ref{fig::unitDirection}.  In a Cartesian coordinates the unit direction vector can be written
 \begin{align}
   \vec{\Omega} = \Omega_x \vec{i} + \Omega_y \vec{j} + \Omega_z \vec{k}
@@ -1694,9 +1769,9 @@ In one-dimensional problems the isotropic distribution can be reduced to a funct
 This distribution, for example, describes isotropic neutron emission in a CM scattering event.
 
 \subsection{Numerical Integration Quadrature}
-\label{sec:orgheadline71}
+\label{sec:orgheadline73}
 \subsubsection{Midpoint Rule}
-\label{sec:orgheadline69}
+\label{sec:orgheadline71}
 Perhaps the simplest quadrature is based on the midpoint rule.  This is essentially the method of "rectangles."  Given an interval \([a,b]\) and a set of points \(x_i\) for \(i=0,\hdots,n\) with \(x_{i-1} < x_i\), \(x_0 = a\) and \(x_n = b\) we have the following approximate evaluation of an integral:
 \begin{align}
   \int_a^b f(x) \approx \sum_{i=1}^n \left( x_i - x_{i-1} \right) f\left(\frac{x_i+x_{i-1}}{2}\right).
@@ -1706,7 +1781,7 @@ If the spacing is uniform with \(h = x_i - x_{i-1}\) then we have
   \int_a^b f(x) \approx \sum_{i=1}^n h f\left(a + ih/2\right).
 \end{align}
 \subsubsection{Gauss-Hermite Quadrature}
-\label{sec:orgheadline70}
+\label{sec:orgheadline72}
 The Gauss-Hermite quadrature is a form of Gaussian quadrature for approximating integrals of the form
 \begin{align}
   \int_{-\infty}^\infty e^{-x^2} f(x) dx.
@@ -1759,7 +1834,7 @@ V       = V(:,ind)';
 w       = sqrt(pi) * V(:,1).^2;
 \end{verbatim}
 \section{Probability and Statistics}
-\label{sec:orgheadline73}
+\label{sec:orgheadline75}
 Consider a real and continuous \emph{random variable}, \(\xi\).  This variable will take a value somewhere on the interval \([a,b]\), and let the probability of the random variable occurring between \(x_1\) and \(x_2\) be given by \(P\left[ x_1 \leq \xi \leq x_2 \right]\).  We can define a \emph{probability density function}, \(f(x)\), such that \(f(x)dx\) is the probability that the continuous random variable, \(\xi\), will have a value between \(x\) and \(x+dx\) in the limit of \(dx \rightarrow 0\).  In other words,
 \begin{align}
   \label{eq::probDensFuncDef}
@@ -1806,7 +1881,7 @@ This leads to the result
 Thus if we know the relationship between \(x\) and \(y\), then we can derive the underlying probability density behind the variable \(y\) knowing only the probability density behind \(x\).  This is useful for changing the independent variable of a known probability density function.
 
 \section{Constants}
-\label{sec:orgheadline74}
+\label{sec:orgheadline76}
 Speed of light in a vacuum
 \begin{align*}
   c = 2.99792458 \times 10^8 \; \text{m/s}

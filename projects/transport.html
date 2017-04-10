@@ -56,51 +56,9 @@
 <h3>2.1.1. Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Derive the <span class="math">\(S_N\)</span> sweep equations for both forward (<span class="math">\(\mu_m &gt; 0\)</span>) and backward (<span class="math">\(\mu_m &lt; 0\)</span>) directions.  You may assume one energy group, and the scattering and fission sources should be represented by a single variable (e.g., <span class="math">\(q_{m,i}\)</span>).</li>
-<li>Implement a function (in either Matlab or Python) that solves the <span class="math">\(S_N\)</span> sweep equations.  The function should accept mesh and cross section data structures (see the <a class="reference internal" href="#datastructures"><span>Data Structures</span></a> below) and return the a vector array consisting of the <em>scalar</em> flux in each spatial cell.  This function should solve the <em>within-group</em> transport equation.  In other words, assume that you have a known, given source term that takes the place of the scattering and fission sources.  This is effectively a one-group, fixed-source transport sweep with no fission or scattering.  (See details below for guidance on implementing this function.)</li>
-<li>Calculate the scalar flux of a homogeneous 1D system.  Let the reactor be 10 cm wide, and use 6 discrete directions.  For the cross sections, use the group-2 (thermal) cross sections for material 1.  Set the source term to be equal to 1/2 everywhere.  For convenience, Python and Matlab templates are provided below.  All you need to do is implement your sweep function (step 2 previously) and insert it into the code below.</li>
+<li>Implement a function Matlab that solves the <span class="math">\(S_N\)</span> sweep equations.  The function should accept mesh and cross section data structures (see the <a class="reference internal" href="#datastructures"><span>Data Structures</span></a> below) and return the a vector array consisting of the <em>scalar</em> flux in each spatial cell.  This function should solve the <em>within-group</em> transport equation.  In other words, assume that you have a known, given source term that takes the place of the scattering and fission sources.  This is effectively a one-group, fixed-source transport sweep with no fission or scattering.  (See details below for guidance on implementing this function.)</li>
+<li>Calculate the scalar flux of a homogeneous 1D system.  Let the reactor be 10 cm wide, and use 6 discrete directions.  For the cross sections, use the group-2 (thermal) cross sections for material 1.  Set the source term to be equal to 1/2 everywhere.  For convenience, a Matlab template is provided below.  All you need to do is implement your sweep function (step 2 previously) and insert it into the code below.</li>
 </ol>
-<p>Python:</p>
-<div class="highlight-python"><div class="highlight"><pre>from proj import *
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Create the mesh
-solnMesh = Mesh(10,
-                np.linspace(0.0,10,11),
-                [1,1,1,1,1,1,1,1,1,1],
-                [1,1])
-
-# Refine the mesh
-for i in range(4) :
-    solnMesh = refineMesh(solnMesh);
-
-# Get the cross sections
-xs = getXS()
-
-# Create the source array
-q = 0.5*np.ones(solnMesh.nX)
-
-# Implement the sweep function
-def sweep(solnMesh, xs, q, N, g) :
-#
-# !!!PUT YOUR FUNCTION HERE!!!
-# (...or in the proj file)
-#
-
-# Calculate the scalar flux
-g = 2
-phi = sweep(solnMesh,xs,q,6,g)
-
-# Plot your results at cell centers
-xCell = np.zeros(solnMesh.nX);
-for i in range(solnMesh.nX) :
-    xCell[i] = (solnMesh.x[i]+solnMesh.x[i+1])/2.0;
-
-plt.plot(xCell,phi)
-plt.xlabel(&#39;z&#39;)
-plt.ylabel(&#39;Scalar flux&#39;)
-</pre></div>
-</div>
 <p>Matlab:</p>
 <div class="highlight-python"><div class="highlight"><pre>clear;
 clc;
@@ -163,17 +121,6 @@ xs = getXS();
 [ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
 </pre></div>
 </div>
-<p>Python:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">solnMesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span>
-             <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span>
-             <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
-             <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">solnMesh</span> <span class="o">=</span> <span class="n">refineMesh</span><span class="p">(</span><span class="n">solnMesh</span><span class="p">);</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">getXS</span><span class="p">()</span>
-<span class="p">[</span> <span class="n">flux_s6</span><span class="p">,</span> <span class="n">k_s6</span> <span class="p">]</span> <span class="o">=</span> <span class="n">powerIterationSolve</span><span class="p">(</span> <span class="n">solnMesh</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">sweep</span> <span class="p">)</span>
-</pre></div>
-</div>
 <ol class="arabic simple" start="2">
 <li>What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.</li>
 </ol>
@@ -199,15 +146,8 @@ xs = getXS();
                   &#39;bc&#39;,  [2,1]);
 </pre></div>
 </div>
-<p>In Python, this code becomes</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">solnMesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span>
-                <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
-                <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>Note that in the Python version the names are implicit in the ordering.  Both versions of the code will create a 10-cell geometry starting at <span class="math">\(x=0\)</span> and extending to <span class="math">\(x=400\)</span>.  There are three different materials, indexed by the integers one through three.  The left boundary condition is type 2 and the right boundary condition is type 1.  The boundary condition &#8220;types&#8221; are defined in the implementation of transport sweep.</p>
-<p>Each member of the data structure can be accessed using the dot (<code class="docutils literal"><span class="pre">.</span></code>) operator.  To get the array of materials, for example, we would use <code class="docutils literal"><span class="pre">solnMesh.mat</span></code> in both Python and Matlab.</p>
+<p>This code will create a 10-cell geometry starting at <span class="math">\(x=0\)</span> and extending to <span class="math">\(x=400\)</span>.  There are three different materials, indexed by the integers one through three.  The left boundary condition is type 2 and the right boundary condition is type 1.  The boundary condition &#8220;types&#8221; are defined in the implementation of transport sweep.</p>
+<p>Each member of the data structure can be accessed using the dot (<code class="docutils literal"><span class="pre">.</span></code>) operator.  To get the array of materials, for example, we would use <code class="docutils literal"><span class="pre">solnMesh.mat</span></code> in Matlab.</p>
 <p>The cross section structure consists of the following data:</p>
 <ul class="simple">
 <li>the total cross section, <code class="docutils literal"><span class="pre">sigTr</span></code>;</li>
@@ -216,7 +156,7 @@ xs = getXS();
 <li>the average number of neutrons per fission, <code class="docutils literal"><span class="pre">nuBar</span></code>;</li>
 <li>the scattering kernel, <code class="docutils literal"><span class="pre">sigS</span></code>.</li>
 </ul>
-<p>You will be provided with a function, <code class="docutils literal"><span class="pre">getXS</span></code>, that will automatically generate an array of these cross section structures.  Each element of the array will be a set of cross sections corresponding to unique material.  The position in the array corresponds to material identifier.  In both Matlab and Python, the cross section array is obtained by the following code.</p>
+<p>You will be provided with a function, <code class="docutils literal"><span class="pre">getXS</span></code>, that will automatically generate an array of these cross section structures.  Each element of the array will be a set of cross sections corresponding to unique material.  The position in the array corresponds to material identifier.  In Matlab the cross section array is obtained by the following code.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">xs</span> <span class="o">=</span> <span class="n">getXS</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -227,22 +167,12 @@ xs = getXS();
 end
 </pre></div>
 </div>
-<p>In Python we could write</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">solnMesh</span><span class="o">.</span><span class="n">nX</span><span class="p">)</span> <span class="p">:</span>
-   <span class="k">print</span> <span class="n">xs</span><span class="p">[</span><span class="n">solnMesh</span><span class="o">.</span><span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sigA</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="refining-your-mesh">
-<span id="quadrature"></span><h3>2.2.2. Refining Your Mesh<a class="headerlink" href="#refining-your-mesh" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.2. Refining Your Mesh<a class="headerlink" href="#refining-your-mesh" title="Permalink to this headline">¶</a></h3>
 <p>The accuracy of solution depends on how closely spaced your grid points are.  A <em>finer mesh</em>, with grid points spaced more closely, will lead to a more accurate solution, but it will take longer to compute such a solution.  For this project you may begin by defining, for example, 10 cells but then realize you need more for an accurate answer.</p>
 <p>To make this easy, a function called <code class="docutils literal"><span class="pre">refineMesh</span></code> has been included with this project.  This function takes an original <code class="docutils literal"><span class="pre">solnMesh</span></code> structure and refines it by splitting each cell into two.  This process may be repeated to create a mesh that is aribtrarily fine.</p>
-<p>For example, if your mesh originall has 10 cells, the following code will produce a mesh with 160 cells.  In Python,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">solnMesh</span> <span class="o">=</span> <span class="n">refineMesh</span><span class="p">(</span><span class="n">solnMesh</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>In Matlab,</p>
+<p>For example, if your mesh originall has 10 cells, the following code will produce a mesh with 160 cells.  In Matlab,</p>
 <div class="highlight-python"><div class="highlight"><pre>for i = 1:4
    solnMesh = refineMesh(solnMesh);
 end
@@ -251,12 +181,7 @@ end
 </div>
 <div class="section" id="angular-quadrature">
 <h3>2.2.3. Angular Quadrature<a class="headerlink" href="#angular-quadrature" title="Permalink to this headline">¶</a></h3>
-<p>In selecting your discrete ordinates, you should use the Gauss-Legendre quadrature.  In Python, you can get the quadrature points and weights from numpy</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">w</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">legendre</span><span class="o">.</span><span class="n">leggauss</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>where <code class="docutils literal"><span class="pre">M</span></code> is the integer number of ordinates you want, <code class="docutils literal"><span class="pre">mu</span></code> is an array of the oridnates, and <code class="docutils literal"><span class="pre">w</span></code> is an array of the weights.</p>
-<p>In Matlab, I have made a file available from <a class="reference external" href="http://www.mathworks.com/matlabcentral/fileexchange/4540-legendre-gauss-quadrature-weights-and-nodes">MatLab File Exchange</a> that performs the same function.  The function is named <cite>lgwt</cite> and should be used as follows:</p>
+<p>In selecting your discrete ordinates, you should use the Gauss-Legendre quadrature.  For Matlab, I have made a file available from <a class="reference external" href="http://www.mathworks.com/matlabcentral/fileexchange/4540-legendre-gauss-quadrature-weights-and-nodes">MatLab File Exchange</a> that returns the weights and quadrature points.  The function is named <cite>lgwt</cite> and should be used as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">mu</span><span class="p">,</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">lgwt</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -265,11 +190,7 @@ end
 <div class="section" id="sweep-implementation">
 <span id="sweepimplementation"></span><h3>2.2.4. Sweep Implementation<a class="headerlink" href="#sweep-implementation" title="Permalink to this headline">¶</a></h3>
 <p>In part 1 of this projection you have to implement a function that solves the within-group transport equation.  There only requirement is that this implementation be in a <em>function</em>.  In implementing your function, avoid global variables.  This means that all of the input to your function should be provided as function arguments.  These arguments should be (in order) the <code class="docutils literal"><span class="pre">solnMesh</span></code>, <code class="docutils literal"><span class="pre">xs</span></code>, a source array, and the number of quadrature points to use.  The output should be the <em>scalar</em> flux for each <em>cell center</em> (the interface values are not needed).</p>
-<p>In Python the function declaration should thus be</p>
-<div class="highlight-python"><div class="highlight"><pre>def sweep(solnMesh, xs, q, N, g) :
-</pre></div>
-</div>
-<p>In Matlab is should be</p>
+<p>In Matlab the function declaration should be</p>
 <div class="highlight-python"><div class="highlight"><pre>function phi = sweep(solnMesh, xs, q, N, g)
 </pre></div>
 </div>
@@ -286,11 +207,7 @@ end
 <li><a class="reference download internal" href="../_downloads/MultigroupFixedSourceSolve.m"><code class="xref download docutils literal"><span class="pre">MultigroupFixedSourceSolve.m</span></code></a></li>
 <li><a class="reference download internal" href="../_downloads/powerIterationSolve.m"><code class="xref download docutils literal"><span class="pre">powerIterationSolve.m</span></code></a></li>
 </ul>
-<p>Python:</p>
-<ul class="simple">
-<li><a class="reference download internal" href="../_downloads/proj.py"><code class="xref download docutils literal"><span class="pre">proj.py</span></code></a></li>
-</ul>
-<p>To use the Matlab functions, simply place them in the directory in which you are running Matlab (i.e., your working directory) or in the Matlab path.  To use the Python functions, place the python file in the directory in which you are running Python or another accessible path, and put <code class="docutils literal"><span class="pre">from</span> <span class="pre">proj</span> <span class="pre">import</span> <span class="pre">*</span></code> at the top of your script or Jupyter notebook.</p>
+<p>To use the Matlab functions, simply place them in the directory in which you are running Matlab (i.e., your working directory) or in the Matlab path.</p>
 </div>
 </div>
 <div class="section" id="project-guidelines">

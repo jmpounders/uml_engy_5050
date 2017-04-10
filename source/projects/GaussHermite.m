@@ -26,5 +26,5 @@ CM  = diag(a,1) + diag(a,-1);
     % - the weights can be derived from the corresponding eigenvectors.
 [V L]   = eig(CM);
 [x ind] = sort(diag(L));
-V       = V(:,ind)';
+V       = V(:,ind);
 w       = sqrt(pi) * V(:,1).^2;

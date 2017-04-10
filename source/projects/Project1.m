@@ -155,6 +155,7 @@ legend('0 K','100 K','600 K')
 xlabel('Energy, eV')
 ylabel('Cross Section, b')
 
+
 %%
 % The Doppler broadened scatter cross section is 
 % 
