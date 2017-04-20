@@ -70,13 +70,12 @@ Matlab:
 Part 2
 ~~~~~~
 
-1. Derive the one-group diffusion equation from the one-group :math:`P_1` equations.
-2. Derive the analytical solution of the diffusion equation for a homogeneous medium.  Boundary conditions should approximate the condition of no incoming neutrons.  Part of your solution should be an expression for the effective multiplication factor, :math:`k = k_\text{eff} = \lambda^{-1}`.
+Derive the 2-group analytical solution of the diffusion equation for a homogeneous medium.  Boundary conditions should approximate the condition of no incoming neutrons.  Part of your solution should be an expression for the effective multiplication factor, :math:`k = k_\text{eff} = \lambda^{-1}`.
 
 Part 3
 ~~~~~~
 
-1. Consider a 25-cm "slab" reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.  (Note that you need to extend your results from part 2 to two-group to do this.)  For this part you will also need the most-up-to-date files from the website (updated 4/4/16).  You can then generate the multigroup solution as follows:
+1. Consider a 25-cm "slab" reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.  For this part you will also need the most-up-to-date files from the website (updated 4/4/16).  You can then generate the multigroup solution as follows:
 
 Matlab:
 
@@ -92,9 +91,23 @@ Matlab:
    xs = getXS();
    [ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
 
+For your diffusion theory solution you should the analytical results from Part 2 and the "material 1" cross sections in Matlab, i.e. ``xs(1).sigTr(:)``, ``xs(1).sigA(:)``, ``xs(1).sigF(:)``, ``xs(1).nuBar(:)`` and ``xs(1).sigS(:)``.
+   
+2. What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project; see script below) to both ends of the reactor?  Plot and discuss.
 
-2. What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.
+::
 
+   solnMesh = struct('nX',  12, ...
+                    'x',   [linspace(0,35,13)], ...
+                     'mat', [2;1;1;1;1;1;1;1;1;1;1;2],  ...
+                     'bc',  [1,1]);
+   for i = 1:4
+     solnMesh = refineMesh(solnMesh);
+   end
+   xs = getXS();
+   [ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
+
+   
 .. _framework:
 
 Project Framework

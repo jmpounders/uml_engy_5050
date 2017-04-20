@@ -99,15 +99,12 @@ ylabel(&#39;Scalar flux&#39;)
 </div>
 <div class="section" id="part-2">
 <h3>2.1.2. Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Derive the one-group diffusion equation from the one-group <span class="math">\(P_1\)</span> equations.</li>
-<li>Derive the analytical solution of the diffusion equation for a homogeneous medium.  Boundary conditions should approximate the condition of no incoming neutrons.  Part of your solution should be an expression for the effective multiplication factor, <span class="math">\(k = k_\text{eff} = \lambda^{-1}\)</span>.</li>
-</ol>
+<p>Derive the 2-group analytical solution of the diffusion equation for a homogeneous medium.  Boundary conditions should approximate the condition of no incoming neutrons.  Part of your solution should be an expression for the effective multiplication factor, <span class="math">\(k = k_\text{eff} = \lambda^{-1}\)</span>.</p>
 </div>
 <div class="section" id="part-3">
 <h3>2.1.3. Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Consider a 25-cm &#8220;slab&#8221; reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.  (Note that you need to extend your results from part 2 to two-group to do this.)  For this part you will also need the most-up-to-date files from the website (updated 4/4/16).  You can then generate the multigroup solution as follows:</li>
+<li>Consider a 25-cm &#8220;slab&#8221; reactor composed of a homogenous material (material number 1 from the project).  Calculate the effective multiplication constant and the two-group fluxes using both diffusion theory and S6 transport theory.  Compare your solutions and discuss the differences.  For this part you will also need the most-up-to-date files from the website (updated 4/4/16).  You can then generate the multigroup solution as follows:</li>
 </ol>
 <p>Matlab:</p>
 <div class="highlight-python"><div class="highlight"><pre>solnMesh = struct(&#39;nX&#39;,  10, ...
@@ -121,9 +118,21 @@ xs = getXS();
 [ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
 </pre></div>
 </div>
+<p>For your diffusion theory solution you should the analytical results from Part 2 and the &#8220;material 1&#8221; cross sections in Matlab, i.e. <code class="docutils literal"><span class="pre">xs(1).sigTr(:)</span></code>, <code class="docutils literal"><span class="pre">xs(1).sigA(:)</span></code>, <code class="docutils literal"><span class="pre">xs(1).sigF(:)</span></code>, <code class="docutils literal"><span class="pre">xs(1).nuBar(:)</span></code> and <code class="docutils literal"><span class="pre">xs(1).sigS(:)</span></code>.</p>
 <ol class="arabic simple" start="2">
-<li>What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project) to both ends of the reactor?  Plot and discuss.</li>
+<li>What happends to the effective multiplication constant and the two-group fluxes if you add 5 cm of reflector (water, material number 2 from the project; see script below) to both ends of the reactor?  Plot and discuss.</li>
 </ol>
+<div class="highlight-python"><div class="highlight"><pre>solnMesh = struct(&#39;nX&#39;,  12, ...
+                 &#39;x&#39;,   [linspace(0,35,13)], ...
+                  &#39;mat&#39;, [2;1;1;1;1;1;1;1;1;1;1;2],  ...
+                  &#39;bc&#39;,  [1,1]);
+for i = 1:4
+  solnMesh = refineMesh(solnMesh);
+end
+xs = getXS();
+[ flux_s6, k_s6 ] = powerIterationSolve( solnMesh,xs,6 );
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="project-framework">
