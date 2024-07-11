@@ -1,3 +1,5 @@
+This is the code repo. The website is at [https://jmpounders.github.io/uml_engy_5050/](https://jmpounders.github.io/uml_engy_5050/).
+
 HOW I MADE THIS SITE
 ====================
 
